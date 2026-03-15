@@ -44,6 +44,442 @@
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'developer/pipeline_internals';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -362,20 +798,146 @@
                   
   <section id="pipeline-internals">
 <h1>Pipeline Internals<a class="headerlink" href="#pipeline-internals" title="Link to this heading">#</a></h1>
-<p>Internally, the pipeline coordinates planning, execution, and storage of
-feature outputs.</p>
+<p>This page describes how <a class="reference internal" href="../api/generated/voxatlas.pipeline.pipeline.VoxAtlasPipeline.html#voxatlas.pipeline.pipeline.VoxAtlasPipeline" title="voxatlas.pipeline.pipeline.VoxAtlasPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">VoxAtlasPipeline</span></code></a>
+is implemented today: how it plans execution from declared dependencies, how it
+executes extractors (including optional parallelism), and how intermediate and
+final outputs move through the pipeline.</p>
 <section id="main-components">
 <h2>Main components<a class="headerlink" href="#main-components" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>execution planning</p></li>
-<li><p>executor scheduling</p></li>
-<li><p>feature storage</p></li>
-<li><p>cache management</p></li>
+<li><p>dependency resolution + execution planning</p></li>
+<li><p>layer execution (sequential or process-parallel)</p></li>
+<li><p>intermediate storage via <a class="reference internal" href="../api/generated/voxatlas.pipeline.feature_store.FeatureStore.html#voxatlas.pipeline.feature_store.FeatureStore" title="voxatlas.pipeline.feature_store.FeatureStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureStore</span></code></a></p></li>
+<li><p>optional disk caching via <a class="reference internal" href="../api/generated/voxatlas.pipeline.cache.DiskCache.html#voxatlas.pipeline.cache.DiskCache" title="voxatlas.pipeline.cache.DiskCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiskCache</span></code></a></p></li>
 </ul>
+</section>
+<section id="high-level-data-flow">
+<h2>High-level data flow<a class="headerlink" href="#high-level-data-flow" title="Link to this heading">#</a></h2>
+<p>At runtime, a pipeline instance is created for a single stream:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="n">audio</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The pipeline builds a <a class="reference internal" href="../api/generated/voxatlas.features.feature_input.FeatureInput.html#voxatlas.features.feature_input.FeatureInput" title="voxatlas.features.feature_input.FeatureInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureInput</span></code></a>
+and executes extractors layer-by-layer, inserting each output into the shared
+feature store. Downstream extractors can then reuse upstream outputs via
+<code class="docutils literal notranslate"><span class="pre">feature_input.context[&quot;feature_store&quot;]</span></code>.</p>
+<pre  class="mermaid">
+        graph TD
+  cfg[&quot;config (features + options)&quot;] --&gt; plan[&quot;ExecutionPlan (layers)&quot;]
+  reg[&quot;FeatureRegistry&quot;] --&gt; plan
+  audio[&quot;Audio (optional)&quot;] --&gt; input[&quot;FeatureInput&quot;]
+  units[&quot;Units (optional)&quot;] --&gt; input
+  store[&quot;FeatureStore&quot;] --&gt; input
+  plan --&gt; exec[&quot;Executor (per layer)&quot;]
+  input --&gt; exec
+  exec --&gt; store
+  cache[&quot;DiskCache (optional)&quot;] &lt;--&gt; exec
+    </pre></section>
+<section id="dependency-resolution-and-planning">
+<h2>Dependency resolution and planning<a class="headerlink" href="#dependency-resolution-and-planning" title="Link to this heading">#</a></h2>
+<p>The pipeline derives ordering from extractor metadata:</p>
+<ul class="simple">
+<li><p>Each extractor can declare a list of upstream dependencies via
+<code class="docutils literal notranslate"><span class="pre">BaseExtractor.dependencies</span></code>.</p></li>
+<li><p>The pipeline validates that requested features (and every dependency) exist
+in the registry.</p></li>
+<li><p>A DFS walk produces a dependency map and detects cycles (raises
+<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>).</p></li>
+</ul>
+<p>Planning produces an <a class="reference internal" href="../api/generated/voxatlas.pipeline.execution_plan.ExecutionPlan.html#voxatlas.pipeline.execution_plan.ExecutionPlan" title="voxatlas.pipeline.execution_plan.ExecutionPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionPlan</span></code></a>
+whose <code class="docutils literal notranslate"><span class="pre">layers</span></code> are computed by assigning each feature a level:</p>
+<ul class="simple">
+<li><p>level <code class="docutils literal notranslate"><span class="pre">0</span></code>: no dependencies</p></li>
+<li><p>level <code class="docutils literal notranslate"><span class="pre">n</span></code>: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">max(level(dep)</span> <span class="pre">for</span> <span class="pre">dep</span> <span class="pre">in</span> <span class="pre">dependencies)</span></code></p></li>
+</ul>
+<p>All features at the same level are grouped into the same layer and are assumed
+to have no remaining interdependencies.</p>
+<p>Notes on ordering:</p>
+<ul class="simple">
+<li><p>The order of features <em>within</em> a layer is currently derived from the DFS
+insertion order (which depends on <code class="docutils literal notranslate"><span class="pre">config[&quot;features&quot;]</span></code> and the declared
+dependency list ordering).</p></li>
+<li><p>Only dependency constraints are enforced; if two features have no dependency
+edge between them, their relative order is not semantically meaningful.</p></li>
+</ul>
+</section>
+<section id="featureinput-and-shared-state">
+<h2>FeatureInput and shared state<a class="headerlink" href="#featureinput-and-shared-state" title="Link to this heading">#</a></h2>
+<p>Before execution, the pipeline constructs a
+<a class="reference internal" href="../api/generated/voxatlas.features.feature_input.FeatureInput.html#voxatlas.features.feature_input.FeatureInput" title="voxatlas.features.feature_input.FeatureInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureInput</span></code></a> with:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">audio</span></code> and <code class="docutils literal notranslate"><span class="pre">units</span></code> for the current stream</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">context[&quot;config&quot;]</span></code>: the full runtime configuration dict</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">context[&quot;feature_store&quot;]</span></code>: the shared feature store</p></li>
+</ul>
+<p>This is the primary mechanism for passing cross-feature state. Extractors
+should treat this input as read-only and only communicate results via returned
+outputs (and, when necessary, by reading from the feature store).</p>
+</section>
+<section id="execution-model-layer-by-layer">
+<h2>Execution model (layer-by-layer)<a class="headerlink" href="#execution-model-layer-by-layer" title="Link to this heading">#</a></h2>
+<p>Execution proceeds in order over <code class="docutils literal notranslate"><span class="pre">ExecutionPlan.layers</span></code>:</p>
+<ol class="arabic simple">
+<li><p>For each feature in the current layer, the pipeline checks if it already
+exists in the feature store (some features may appear multiple times via
+dependency traversal).</p></li>
+<li><p>If disk caching is enabled, the pipeline checks for a cached pickle and
+loads it into the feature store when present.</p></li>
+<li><p>Remaining features in the layer are executed via
+<a class="reference internal" href="../api/generated/voxatlas.pipeline.executor.parallel_execute_layer.html#voxatlas.pipeline.executor.parallel_execute_layer" title="voxatlas.pipeline.executor.parallel_execute_layer"><code class="xref py py-func docutils literal notranslate"><span class="pre">voxatlas.pipeline.executor.parallel_execute_layer()</span></code></a>.</p></li>
+<li><p>Each computed output is inserted into the feature store (and saved to cache
+if enabled).</p></li>
+</ol>
+<p>Per-feature parameters are resolved immediately before execution using
+<code class="xref py py-func docutils literal notranslate"><span class="pre">voxatlas.config.feature_config.resolve_feature_config()</span></code> (merging the
+extractor’s <code class="docutils literal notranslate"><span class="pre">default_config</span></code> with any overrides in
+<code class="docutils literal notranslate"><span class="pre">config[&quot;feature_config&quot;][&lt;feature_name&gt;]</span></code>).</p>
+</section>
+<section id="parallelism">
+<h2>Parallelism<a class="headerlink" href="#parallelism" title="Link to this heading">#</a></h2>
+<p>Within a dependency layer, the pipeline can execute features in parallel using
+process-based parallelism (<code class="docutils literal notranslate"><span class="pre">concurrent.futures.ProcessPoolExecutor</span></code>) when
+<code class="docutils literal notranslate"><span class="pre">pipeline.n_jobs</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>.</p>
+<p>Practical constraints:</p>
+<ul class="simple">
+<li><p>Inputs and outputs must be pickleable to cross process boundaries.</p></li>
+<li><p>Worker processes do not share memory; avoid relying on global mutable state.</p></li>
+<li><p>Exceptions inside worker processes are re-raised when collecting futures,
+failing the pipeline run.</p></li>
+</ul>
+</section>
+<section id="caching-diskcache">
+<h2>Caching (DiskCache)<a class="headerlink" href="#caching-diskcache" title="Link to this heading">#</a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">pipeline.cache</span></code> is enabled, the pipeline uses
+<a class="reference internal" href="../api/generated/voxatlas.pipeline.cache.DiskCache.html#voxatlas.pipeline.cache.DiskCache" title="voxatlas.pipeline.cache.DiskCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiskCache</span></code></a> to store per-feature pickles under
+<code class="docutils literal notranslate"><span class="pre">&lt;cache_dir&gt;/&lt;feature_name&gt;/&lt;key&gt;.pkl</span></code>.</p>
+<p>The cache key is a SHA-256 hash of:</p>
+<ul class="simple">
+<li><p>the feature name</p></li>
+<li><p>an audio hash (waveform bytes + sample rate; or <code class="docutils literal notranslate"><span class="pre">&quot;no-audio&quot;</span></code> when audio is
+<code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p>a config hash (JSON dump with sorted keys)</p></li>
+</ul>
+<p>Because caching uses Python pickle, cache directories must be treated as
+trusted data.</p>
+</section>
+<section id="featurestore-semantics">
+<h2>FeatureStore semantics<a class="headerlink" href="#featurestore-semantics" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../api/generated/voxatlas.pipeline.feature_store.FeatureStore.html#voxatlas.pipeline.feature_store.FeatureStore" title="voxatlas.pipeline.feature_store.FeatureStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureStore</span></code></a> is a simple in-memory map
+from feature name to output object:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">add(name,</span> <span class="pre">result)</span></code> overwrites any existing value for the same name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exists(name)</span></code> checks presence</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get(name)</span></code> raises <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> if missing</p></li>
+</ul>
+<p>The store contains both the requested features and any computed dependencies.</p>
 </section>
 <section id="reference-pages">
 <h2>Reference pages<a class="headerlink" href="#reference-pages" title="Link to this heading">#</a></h2>
 <ul class="simple">
+<li><p><a class="reference internal" href="../api/generated/voxatlas.pipeline.pipeline.VoxAtlasPipeline.html"><span class="doc">VoxAtlasPipeline</span></a></p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.pipeline.pipeline.VoxAtlasPipeline.run.html"><span class="doc">run</span></a></p></li>
 <li><p><a class="reference internal" href="../api/generated/voxatlas.pipeline.execution_plan.html"><span class="doc">voxatlas.pipeline.execution_plan</span></a></p></li>
 <li><p><a class="reference internal" href="../api/generated/voxatlas.pipeline.executor.html"><span class="doc">voxatlas.pipeline.executor</span></a></p></li>
 <li><p><a class="reference internal" href="../api/generated/voxatlas.pipeline.feature_store.html"><span class="doc">voxatlas.pipeline.feature_store</span></a></p></li>
@@ -414,6 +976,13 @@ feature outputs.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-components">Main components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-data-flow">High-level data flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-resolution-and-planning">Dependency resolution and planning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#featureinput-and-shared-state">FeatureInput and shared state</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-model-layer-by-layer">Execution model (layer-by-layer)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelism">Parallelism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caching-diskcache">Caching (DiskCache)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#featurestore-semantics">FeatureStore semantics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-pages">Reference pages</a></li>
 </ul>
   </nav></div>
