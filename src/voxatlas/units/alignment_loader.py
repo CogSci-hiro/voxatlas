@@ -15,24 +15,33 @@ def _parse_quoted_value(line: str) -> str:
 
 def load_textgrid(path: str | Path) -> dict[str, pd.DataFrame]:
     """
-    Load textgrid for VoxAtlas processing.
-    
-    This function supports unit construction and access across the phoneme-to-conversation hierarchy that VoxAtlas uses to align feature outputs.
-    
+    Parse a Praat TextGrid file into per-tier interval tables.
+
+    Each returned DataFrame contains interval rows with ``id``, ``start``,
+    ``end``, and ``label`` columns. Tier names are used as dictionary keys.
+
     Parameters
     ----------
     path : str | Path
-        Filesystem path pointing to an audio file, alignment file, cache file, or resource file.
-    
+        Path to a TextGrid file on disk.
+
     Returns
     -------
     dict[str, pandas.DataFrame]
-        Mapping from tier names to tabular interval annotations.
-    
+        Mapping from tier name to interval table.
+
+    Notes
+    -----
+    This parser targets interval tiers (``intervals [n]`` blocks). Point tiers
+    are not expanded into the output structure.
+
     Examples
     --------
-        value = load_textgrid(path=...)
-        print(value)
+    >>> tiers = load_textgrid("alignment.TextGrid")
+    >>> sorted(tiers.keys())  # doctest: +SKIP
+    ['phones', 'words']
+    >>> tiers["words"].columns.tolist()  # doctest: +SKIP
+    ['id', 'start', 'end', 'label']
     """
     lines = Path(path).read_text(encoding="utf-8").splitlines()
     tiers: dict[str, pd.DataFrame] = {}

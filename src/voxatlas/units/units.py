@@ -3,7 +3,18 @@ import pandas as pd
 
 class Units:
     """
-    Container for hierarchical speech units and their relations.
+    Container for hierarchical speech units (tables) for a single stream.
+
+    VoxAtlas feature extractors operate on *unit tables* (frames, tokens,
+    phonemes, syllables, words, etc.) that are time-aligned and optionally
+    linked through parent-child identifiers. ``Units`` is a lightweight,
+    backend-agnostic wrapper around those tables: it stores them, normalizes
+    unit type names (singular/plural aliases), and provides a small set of
+    convenience accessors (lookup, durations, parent/children grouping).
+
+    This class intentionally does **not** enforce a rigid schema beyond what
+    its helper methods require; extractors may expect additional columns such
+    as ``label`` or ``token`` depending on the feature.
 
     Parameters
     ----------
@@ -31,17 +42,64 @@ class Units:
     Units
         Hierarchical unit container for one stream.
 
+    Attributes
+    ----------
+    frames, tokens, phonemes, syllables, sentences, words, ipus, turns : pandas.DataFrame | None
+        Stored unit tables. Any table may be ``None`` if it is unavailable.
+    speaker : str | None
+        Speaker label associated with this stream (if known).
+
+    Unit Labels
+    -----------
+    Methods that accept a ``unit_type`` (for example :meth:`table`) understand
+    both singular and plural labels:
+
+    - ``"frame"`` / ``"frames"``
+    - ``"token"`` / ``"tokens"``
+    - ``"phoneme"`` / ``"phonemes"``
+    - ``"syllable"`` / ``"syllables"``
+    - ``"sentence"`` / ``"sentences"``
+    - ``"word"`` / ``"words"``
+    - ``"ipu"`` / ``"ipus"``
+    - ``"turn"`` / ``"turns"``
+
+    Table Conventions
+    -----------------
+    ``Units`` works best when each DataFrame follows a few simple conventions:
+
+    - ``id``: unique identifier for the unit row (typically integer-like).
+    - ``start`` and ``end``: segment boundaries on a shared timeline
+      (commonly seconds). Used by :meth:`duration` and by many extractors.
+    - Parent-child links (optional): to connect units explicitly, include an
+      ``<parent>_id`` column on the child table. For example, syllables that
+      belong to words can carry a ``word_id`` column; phonemes that belong to
+      syllables can carry a ``syllable_id`` column. :meth:`parent` and
+      :meth:`children` use this naming convention.
+
     Notes
     -----
-    VoxAtlas feature extractors use this object to retrieve aligned tables and
-    traverse parent-child relations without depending on one annotation backend.
+    - :meth:`table` returns the underlying DataFrame object. If you mutate it,
+      you are mutating the table stored on the ``Units`` instance.
+    - If a requested table is missing (``None``), :meth:`table` raises
+      ``ValueError``; callers can either catch this or check the relevant
+      attribute first.
 
     Examples
     --------
-    Usage example::
+    Minimal usage::
 
         units = Units(words=word_table, syllables=syllable_table, speaker="A")
         print(units.table("word"))
+
+    Computing durations::
+
+        word_durations = units.duration("word")  # end - start
+
+    Grouping children by explicit parent ids::
+
+        # Requires a ``word_id`` column on the phoneme table.
+        phonemes_by_word = units.children("word", "phoneme")
+        first_word_phonemes = phonemes_by_word.get_group(10)
     """
 
     _UNIT_ATTRS = {

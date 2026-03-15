@@ -1,4 +1,4 @@
-voxatlas.features.morphology.inflection
+﻿voxatlas.features.morphology.inflection
 =======================================
 
 .. currentmodule:: voxatlas.features.morphology.inflection

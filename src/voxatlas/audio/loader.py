@@ -33,26 +33,35 @@ def _load_waveform(path: str):
 
 def load_audio(path: str, channel_mode: str = "auto") -> list[Audio]:
     """
-    Load audio for VoxAtlas processing.
-    
-    This public function belongs to the audio layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.
-    
+    Load an audio/video file into one or more ``Audio`` objects.
+
+    Supported inputs are ``.wav`` and ``.mp4`` files. Multi-channel inputs can be
+    kept as separate channels or mixed down to mono based on ``channel_mode``.
+
     Parameters
     ----------
     path : str
-        Filesystem path pointing to an audio file, alignment file, cache file, or resource file.
+        Path to a ``.wav`` audio file or ``.mp4`` video file with an audio track.
     channel_mode : str
-        String argument consumed by this API.
+        Channel handling strategy:
+
+        - ``"auto"``: return mono as one item; stereo as two channel-split items;
+          reject inputs with more than 2 channels.
+        - ``"mono"``: average all channels into a single mono waveform.
+        - ``"split"``: return one ``Audio`` object per input channel.
     
     Returns
     -------
     list[Audio]
-        Return value produced by ``load_audio``.
+        Loaded audio streams as ``Audio`` objects with ``float32`` waveforms.
     
     Examples
     --------
-        value = load_audio(path=..., channel_mode=...)
-        print(value)
+    >>> from voxatlas.audio.loader import load_audio
+    >>> # Let the loader infer channel behavior (mono -> 1, stereo -> 2).
+    >>> streams = load_audio("samples/example.wav")
+    >>> # Force mono downmix.
+    >>> mono = load_audio("samples/example.wav", channel_mode="mono")
     """
     if channel_mode not in {"auto", "mono", "split"}:
         raise ValueError(

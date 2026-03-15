@@ -1,4 +1,4 @@
-voxatlas.features.phonology.articulatory
+﻿voxatlas.features.phonology.articulatory
 ========================================
 
 .. currentmodule:: voxatlas.features.phonology.articulatory

@@ -1,4 +1,4 @@
-voxatlas.features.morphology.word_formation
+﻿voxatlas.features.morphology.word_formation
 ===========================================
 
 .. currentmodule:: voxatlas.features.morphology.word_formation

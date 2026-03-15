@@ -3,29 +3,35 @@ from .units import Units
 
 def load_alignment(path: str) -> Units:
     """
-    Load a single alignment file into a :class:`Units` container.
+    Load an alignment file into a :class:`Units` container.
+
+    This is a lightweight compatibility entry point for alignment ingestion.
+    The current implementation returns an empty ``Units`` object and does not
+    parse the file content yet.
 
     Parameters
     ----------
     path : str
-        Filesystem path to an alignment file.
+        Filesystem path to an alignment file (for example, a TextGrid file).
+        The path is accepted for API consistency, even though content parsing is
+        not implemented in this helper yet.
 
     Returns
     -------
     Units
-        Unit container built from the alignment source.
+        An empty ``Units`` container.
 
     Notes
     -----
-    This helper is currently a placeholder and returns an empty ``Units``
-    object. The higher-level dataset loader is the recommended public entry
-    point for working pipelines.
+    For full data loading workflows, prefer higher-level input loading helpers
+    that combine audio, alignment, and metadata validation.
 
     Examples
     --------
-    Usage example::
-
-        units = load_alignment("alignment.TextGrid")
-        print(units)
+    >>> from voxatlas.units.alignment import load_alignment
+    >>> from voxatlas.units.units import Units
+    >>> units = load_alignment("alignment.TextGrid")
+    >>> isinstance(units, Units)
+    True
     """
     return Units()

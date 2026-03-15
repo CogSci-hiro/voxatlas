@@ -1,4 +1,4 @@
-voxatlas.features.acoustic.envelope
+﻿voxatlas.features.acoustic.envelope
 ===================================
 
 .. currentmodule:: voxatlas.features.acoustic.envelope

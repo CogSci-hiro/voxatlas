@@ -1,4 +1,4 @@
-voxatlas.features.phonology.rhythm
+﻿voxatlas.features.phonology.rhythm
 ==================================
 
 .. currentmodule:: voxatlas.features.phonology.rhythm

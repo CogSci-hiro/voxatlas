@@ -1,4 +1,4 @@
-voxatlas.features.phonology.reduction
+﻿voxatlas.features.phonology.reduction
 =====================================
 
 .. currentmodule:: voxatlas.features.phonology.reduction

@@ -1,4 +1,4 @@
-voxatlas.features.syntax.local_structure
+﻿voxatlas.features.syntax.local_structure
 ========================================
 
 .. currentmodule:: voxatlas.features.syntax.local_structure

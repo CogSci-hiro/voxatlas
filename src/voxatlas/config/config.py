@@ -10,6 +10,45 @@ def load_config(path: str) -> dict:
     """
     Load a VoxAtlas YAML configuration file.
 
+    Expected YAML Format
+    --------------------
+    VoxAtlas configuration files are YAML mappings (YAML "dicts") with a small
+    set of conventional top-level keys. The minimal valid config contains a
+    ``features`` list:
+
+    .. code-block:: yaml
+
+        features:
+          - acoustic.pitch.dummy
+
+    Optional keys supported by the pipeline and config layer include:
+
+    - ``pipeline``: pipeline runtime options (mapping)
+      - ``n_jobs``: number of worker processes per dependency layer (int)
+      - ``cache``: enable/disable on-disk feature caching (bool)
+      - ``cache_dir``: cache directory when caching is enabled (str)
+    - ``feature_config``: per-feature parameter overrides (mapping)
+      - keys are feature names from ``features``
+      - values are extractor-specific parameter mappings
+
+    Example with per-feature parameters and pipeline options:
+
+    .. code-block:: yaml
+
+        features:
+          - phonology.prosody.stressed
+          - acoustic.pitch.f0
+
+        pipeline:
+          n_jobs: 4
+          cache: true
+          cache_dir: .voxatlas_cache
+
+        feature_config:
+          phonology.prosody.stressed:
+            language: fra
+            resource_root: /path/to/resources/phonology
+
     Parameters
     ----------
     path : str
@@ -30,7 +69,8 @@ def load_config(path: str) -> dict:
     Notes
     -----
     This function parses YAML only. It does not apply defaults or schema
-    validation.
+    validation. For the recommended entry point that validates and applies
+    defaults, see :func:`load_and_prepare_config`.
 
     Examples
     --------

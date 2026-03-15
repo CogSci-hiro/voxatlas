@@ -384,25 +384,38 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="voxatlas.audio.loader.load_audio">
 <span class="sig-prename descclassname"><span class="pre">voxatlas.audio.loader.</span></span><span class="sig-name descname"><span class="pre">load_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/voxatlas/audio/loader.html#load_audio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.audio.loader.load_audio" title="Link to this definition">#</a></dt>
-<dd><p>Load audio for VoxAtlas processing.</p>
-<p>This public function belongs to the audio layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</p>
+<dd><p>Load an audio/video file into one or more <code class="docutils literal notranslate"><span class="pre">Audio</span></code> objects.</p>
+<p>Supported inputs are <code class="docutils literal notranslate"><span class="pre">.wav</span></code> and <code class="docutils literal notranslate"><span class="pre">.mp4</span></code> files. Multi-channel inputs can be
+kept as separate channels or mixed down to mono based on <code class="docutils literal notranslate"><span class="pre">channel_mode</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Filesystem path pointing to an audio file, alignment file, cache file, or resource file.</p></li>
-<li><p><strong>channel_mode</strong> (<em>str</em>) – String argument consumed by this API.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Path to a <code class="docutils literal notranslate"><span class="pre">.wav</span></code> audio file or <code class="docutils literal notranslate"><span class="pre">.mp4</span></code> video file with an audio track.</p></li>
+<li><p><strong>channel_mode</strong> (<em>str</em>) – <p>Channel handling strategy:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>: return mono as one item; stereo as two channel-split items;
+reject inputs with more than 2 channels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;mono&quot;</span></code>: average all channels into a single mono waveform.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;split&quot;</span></code>: return one <code class="docutils literal notranslate"><span class="pre">Audio</span></code> object per input channel.</p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Return value produced by <code class="docutils literal notranslate"><span class="pre">load_audio</span></code>.</p>
+<dd class="field-even"><p>Loaded audio streams as <code class="docutils literal notranslate"><span class="pre">Audio</span></code> objects with <code class="docutils literal notranslate"><span class="pre">float32</span></code> waveforms.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list[<a class="reference internal" href="voxatlas.audio.audio.Audio.html#voxatlas.audio.audio.Audio" title="voxatlas.audio.audio.Audio">Audio</a>]</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>value = load_audio(path=…, channel_mode=…)
-print(value)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.audio.loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_audio</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let the loader infer channel behavior (mono -&gt; 1, stereo -&gt; 2).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">streams</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s2">&quot;samples/example.wav&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Force mono downmix.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mono</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s2">&quot;samples/example.wav&quot;</span><span class="p">,</span> <span class="n">channel_mode</span><span class="o">=</span><span class="s2">&quot;mono&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

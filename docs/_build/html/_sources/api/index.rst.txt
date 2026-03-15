@@ -9,6 +9,11 @@ layout.
 
    data
    units
+   acoustics
+   phonology
+   morphology
+   lexical
+   syntax
    features
    registry
    pipeline

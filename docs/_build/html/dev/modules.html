@@ -592,7 +592,16 @@ recomputing upstream features.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="voxatlas.Units">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">voxatlas.</span></span><span class="sig-name descname"><span class="pre">Units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phonemes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syllables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ipus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/voxatlas/units/units.html#Units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.Units" title="Link to this definition">#</a></dt>
-<dd><p>Container for hierarchical speech units and their relations.</p>
+<dd><p>Container for hierarchical speech units (tables) for a single stream.</p>
+<p>VoxAtlas feature extractors operate on <em>unit tables</em> (frames, tokens,
+phonemes, syllables, words, etc.) that are time-aligned and optionally
+linked through parent-child identifiers. <code class="docutils literal notranslate"><span class="pre">Units</span></code> is a lightweight,
+backend-agnostic wrapper around those tables: it stores them, normalizes
+unit type names (singular/plural aliases), and provides a small set of
+convenience accessors (lookup, durations, parent/children grouping).</p>
+<p>This class intentionally does <strong>not</strong> enforce a rigid schema beyond what
+its helper methods require; extractors may expect additional columns such
+as <code class="docutils literal notranslate"><span class="pre">label</span></code> or <code class="docutils literal notranslate"><span class="pre">token</span></code> depending on the feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -614,13 +623,160 @@ recomputing upstream features.</p>
 <dd class="field-odd"><p><a class="reference internal" href="#voxatlas.Units" title="voxatlas.Units">Units</a></p>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">frames,</span> <span class="pre">tokens,</span> <span class="pre">phonemes,</span> <span class="pre">syllables,</span> <span class="pre">sentences,</span> <span class="pre">words,</span> <span class="pre">ipus,</span> <span class="pre">turns</span></span></dt>
+<dd><p>Stored unit tables. Any table may be <code class="docutils literal notranslate"><span class="pre">None</span></code> if it is unavailable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.Units.speaker">
+<span class="sig-name descname"><span class="pre">speaker</span></span><a class="headerlink" href="#voxatlas.Units.speaker" title="Link to this definition">#</a></dt>
+<dd><p>Speaker label associated with this stream (if known).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Unit</span> <span class="pre">Labels</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-----------</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Methods</span> <span class="pre">that</span> <span class="pre">accept</span> <span class="pre">a</span> <span class="pre">``unit_type``</span> <span class="pre">(for</span> <span class="pre">example</span> <span class="pre">:meth:`table`)</span> <span class="pre">understand</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">both</span> <span class="pre">singular</span> <span class="pre">and</span> <span class="pre">plural</span> <span class="pre">labels</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;frame&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;frames&quot;``</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;token&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;tokens&quot;``</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;phoneme&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;phonemes&quot;``</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;syllable&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;syllables&quot;``</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;sentence&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;sentences&quot;``</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;word&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;words&quot;``</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;ipu&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;ipus&quot;``</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;turn&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;turns&quot;``</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Table</span> <span class="pre">Conventions</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-----------------</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">``Units``</span> <span class="pre">works</span> <span class="pre">best</span> <span class="pre">when</span> <span class="pre">each</span> <span class="pre">DataFrame</span> <span class="pre">follows</span> <span class="pre">a</span> <span class="pre">few</span> <span class="pre">simple</span> <span class="pre">conventions</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``id``</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>unique identifier for the unit row (typically integer-like).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``start``</span> <span class="pre">and</span> <span class="pre">``end``</span></span></dt>
+<dd><p>(commonly seconds). Used by <a class="reference internal" href="#voxatlas.Units.duration" title="voxatlas.Units.duration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">duration()</span></code></a> and by many extractors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>segment boundaries on a shared timeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">Parent-child</span> <span class="pre">links</span> <span class="pre">(optional)</span></span></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">&lt;parent&gt;_id</span></code> column on the child table. For example, syllables that
+belong to words can carry a <code class="docutils literal notranslate"><span class="pre">word_id</span></code> column; phonemes that belong to
+syllables can carry a <code class="docutils literal notranslate"><span class="pre">syllable_id</span></code> column. <a class="reference internal" href="#voxatlas.Units.parent" title="voxatlas.Units.parent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parent()</span></code></a> and
+<a class="reference internal" href="#voxatlas.Units.children" title="voxatlas.Units.children"><code class="xref py py-meth docutils literal notranslate"><span class="pre">children()</span></code></a> use this naming convention.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>to connect units explicitly, include an</p>
+</dd>
+</dl>
+</dd></dl>
+
 <p class="rubric">Notes</p>
-<p>VoxAtlas feature extractors use this object to retrieve aligned tables and
-traverse parent-child relations without depending on one annotation backend.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#voxatlas.Units.table" title="voxatlas.Units.table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">table()</span></code></a> returns the underlying DataFrame object. If you mutate it,
+you are mutating the table stored on the <code class="docutils literal notranslate"><span class="pre">Units</span></code> instance.</p></li>
+<li><p>If a requested table is missing (<code class="docutils literal notranslate"><span class="pre">None</span></code>), <a class="reference internal" href="#voxatlas.Units.table" title="voxatlas.Units.table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">table()</span></code></a> raises
+<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>; callers can either catch this or check the relevant
+attribute first.</p></li>
+</ul>
 <p class="rubric">Examples</p>
-<p>Usage example:</p>
+<p>Minimal usage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">units</span> <span class="o">=</span> <span class="n">Units</span><span class="p">(</span><span class="n">words</span><span class="o">=</span><span class="n">word_table</span><span class="p">,</span> <span class="n">syllables</span><span class="o">=</span><span class="n">syllable_table</span><span class="p">,</span> <span class="n">speaker</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">units</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Computing durations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">word_durations</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">)</span>  <span class="c1"># end - start</span>
+</pre></div>
+</div>
+<p>Grouping children by explicit parent ids:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Requires a ``word_id`` column on the phoneme table.</span>
+<span class="n">phonemes_by_word</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">children</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">,</span> <span class="s2">&quot;phoneme&quot;</span><span class="p">)</span>
+<span class="n">first_word_phonemes</span> <span class="o">=</span> <span class="n">phonemes_by_word</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -894,26 +1050,32 @@ is scheduled for execution.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="voxatlas.load_alignment">
 <span class="sig-prename descclassname"><span class="pre">voxatlas.</span></span><span class="sig-name descname"><span class="pre">load_alignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/voxatlas/units/alignment.html#load_alignment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.load_alignment" title="Link to this definition">#</a></dt>
-<dd><p>Load a single alignment file into a <a class="reference internal" href="#voxatlas.Units" title="voxatlas.Units"><code class="xref py py-class docutils literal notranslate"><span class="pre">Units</span></code></a> container.</p>
+<dd><p>Load an alignment file into a <a class="reference internal" href="#voxatlas.Units" title="voxatlas.Units"><code class="xref py py-class docutils literal notranslate"><span class="pre">Units</span></code></a> container.</p>
+<p>This is a lightweight compatibility entry point for alignment ingestion.
+The current implementation returns an empty <code class="docutils literal notranslate"><span class="pre">Units</span></code> object and does not
+parse the file content yet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Filesystem path to an alignment file.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Filesystem path to an alignment file (for example, a TextGrid file).
+The path is accepted for API consistency, even though content parsing is
+not implemented in this helper yet.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Unit container built from the alignment source.</p>
+<dd class="field-even"><p>An empty <code class="docutils literal notranslate"><span class="pre">Units</span></code> container.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#voxatlas.Units" title="voxatlas.Units">Units</a></p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>This helper is currently a placeholder and returns an empty <code class="docutils literal notranslate"><span class="pre">Units</span></code>
-object. The higher-level dataset loader is the recommended public entry
-point for working pipelines.</p>
+<p>For full data loading workflows, prefer higher-level input loading helpers
+that combine audio, alignment, and metadata validation.</p>
 <p class="rubric">Examples</p>
-<p>Usage example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">units</span> <span class="o">=</span> <span class="n">load_alignment</span><span class="p">(</span><span class="s2">&quot;alignment.TextGrid&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_alignment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">units</span> <span class="o">=</span> <span class="n">load_alignment</span><span class="p">(</span><span class="s2">&quot;alignment.TextGrid&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">Units</span><span class="p">)</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1016,22 +1178,31 @@ examples and tests.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="voxatlas.load_textgrid">
 <span class="sig-prename descclassname"><span class="pre">voxatlas.</span></span><span class="sig-name descname"><span class="pre">load_textgrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/voxatlas/units/alignment_loader.html#load_textgrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.load_textgrid" title="Link to this definition">#</a></dt>
-<dd><p>Load textgrid for VoxAtlas processing.</p>
-<p>This function supports unit construction and access across the phoneme-to-conversation hierarchy that VoxAtlas uses to align feature outputs.</p>
+<dd><p>Parse a Praat TextGrid file into per-tier interval tables.</p>
+<p>Each returned DataFrame contains interval rows with <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">start</span></code>,
+<code class="docutils literal notranslate"><span class="pre">end</span></code>, and <code class="docutils literal notranslate"><span class="pre">label</span></code> columns. Tier names are used as dictionary keys.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> | </em><em>Path</em>) – Filesystem path pointing to an audio file, alignment file, cache file, or resource file.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> | </em><em>Path</em>) – Path to a TextGrid file on disk.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Mapping from tier names to tabular interval annotations.</p>
+<dd class="field-even"><p>Mapping from tier name to interval table.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict[str, pandas.DataFrame]</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This parser targets interval tiers (<code class="docutils literal notranslate"><span class="pre">intervals</span> <span class="pre">[n]</span></code> blocks). Point tiers
+are not expanded into the output structure.</p>
 <p class="rubric">Examples</p>
-<p>value = load_textgrid(path=…)
-print(value)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tiers</span> <span class="o">=</span> <span class="n">load_textgrid</span><span class="p">(</span><span class="s2">&quot;alignment.TextGrid&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">tiers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="go">[&#39;phones&#39;, &#39;words&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tiers</span><span class="p">[</span><span class="s2">&quot;words&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="go">[&#39;id&#39;, &#39;start&#39;, &#39;end&#39;, &#39;label&#39;]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -1085,6 +1256,7 @@ print(value)</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.Pipeline"><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.Units"><code class="docutils literal notranslate"><span class="pre">Units</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.Units.speaker"><code class="docutils literal notranslate"><span class="pre">Units.speaker</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.Units.table"><code class="docutils literal notranslate"><span class="pre">Units.table()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.Units.get"><code class="docutils literal notranslate"><span class="pre">Units.get()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.Units.duration"><code class="docutils literal notranslate"><span class="pre">Units.duration()</span></code></a></li>
