@@ -37,8 +37,13 @@ def validate_feature_name(name):
     
     Examples
     --------
-        value = validate_feature_name(name=...)
-        print(value)
+    >>> from voxatlas.registry.validator import validate_feature_name
+    >>> validate_feature_name("acoustic.pitch.dummy") is None
+    True
+    >>> validate_feature_name("NotAFeature")
+    Traceback (most recent call last):
+    ...
+    ValueError: Feature name must follow the format 'domain.feature' with optional additional suffix segments
     """
     if not isinstance(name, str) or not FEATURE_NAME_PATTERN.match(name):
         raise ValueError(
@@ -67,8 +72,13 @@ def validate_units(input_units, output_units):
     
     Examples
     --------
-        value = validate_units(input_units=..., output_units=...)
-        print(value)
+    >>> from voxatlas.registry.validator import validate_units
+    >>> validate_units(None, "conversation") is None
+    True
+    >>> validate_units("banana", "conversation")
+    Traceback (most recent call last):
+    ...
+    ValueError: input_units must be one of ['conversation', 'frame', 'ipu', 'phoneme', 'sentence', 'syllable', 'token', 'turn', 'word'] or None
     """
     for label, value in {
         "input_units": input_units,
@@ -98,8 +108,9 @@ def validate_dependencies(dependencies):
     
     Examples
     --------
-        value = validate_dependencies(dependencies=...)
-        print(value)
+    >>> from voxatlas.registry.validator import validate_dependencies
+    >>> validate_dependencies(["acoustic.pitch.dummy"]) is None
+    True
     """
     if not isinstance(dependencies, list):
         raise ValueError("dependencies must be a list")
@@ -126,8 +137,10 @@ def validate_extractor_contract(extractor_cls):
     
     Examples
     --------
-        value = validate_extractor_contract(extractor_cls=...)
-        print(value)
+    >>> from voxatlas.features.example_pitch import DummyPitchExtractor
+    >>> from voxatlas.registry.validator import validate_extractor_contract
+    >>> validate_extractor_contract(DummyPitchExtractor) is None
+    True
     """
     if not isinstance(extractor_cls, type) or not issubclass(extractor_cls, BaseExtractor):
         raise ValueError("extractor_cls must be a subclass of BaseExtractor")

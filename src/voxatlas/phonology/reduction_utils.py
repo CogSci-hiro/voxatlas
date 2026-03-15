@@ -40,8 +40,11 @@ def get_expected_pronunciation(word_row, pronunciation_dictionary):
     
     Examples
     --------
-        value = get_expected_pronunciation(word_row=..., pronunciation_dictionary=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.phonology.reduction_utils import get_expected_pronunciation
+    >>> word_row = pd.Series({"label": "hello"})
+    >>> get_expected_pronunciation(word_row, {"hello": "h ə l oʊ"})
+    ['h', 'ə', 'l', 'oʊ']
     """
     if pronunciation_dictionary is None:
         raise ValueError("Pronunciation dictionary is required for reduction features")
@@ -94,8 +97,12 @@ def get_observed_pronunciation(phonemes, word_row):
     
     Examples
     --------
-        value = get_observed_pronunciation(phonemes=..., word_row=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.phonology.reduction_utils import get_observed_pronunciation
+    >>> phonemes = pd.DataFrame([{"word_id": 1, "label": "h"}, {"word_id": 1, "label": "i"}])
+    >>> word_row = pd.Series({"id": 1})
+    >>> get_observed_pronunciation(phonemes, word_row)
+    ['h', 'i']
     """
     if phonemes is None:
         raise ValueError("Observed phoneme alignment is required for reduction features")
@@ -143,8 +150,9 @@ def align_phoneme_sequences(expected, observed):
     
     Examples
     --------
-        value = align_phoneme_sequences(expected=..., observed=...)
-        print(value)
+    >>> from voxatlas.phonology.reduction_utils import align_phoneme_sequences
+    >>> align_phoneme_sequences(["a", "b"], ["a"])
+    [('a', 'a'), ('b', None)]
     """
     expected = list(expected)
     observed = list(observed)
@@ -216,8 +224,9 @@ def detect_schwa_deletion(alignment, schwa_symbols=None):
     
     Examples
     --------
-        value = detect_schwa_deletion(alignment=..., schwa_symbols=...)
-        print(value)
+    >>> from voxatlas.phonology.reduction_utils import detect_schwa_deletion
+    >>> detect_schwa_deletion([("ə", None)])
+    1.0
     """
     schwa_symbols = schwa_symbols or ["ə", "@", "schwa"]
     schwa_symbols = {str(symbol) for symbol in schwa_symbols}
@@ -251,8 +260,9 @@ def detect_vowel_reduction(alignment, central_vowels=None, schwa_symbols=None):
     
     Examples
     --------
-        value = detect_vowel_reduction(alignment=..., central_vowels=..., schwa_symbols=...)
-        print(value)
+    >>> from voxatlas.phonology.reduction_utils import detect_vowel_reduction
+    >>> detect_vowel_reduction([("i", "ə")])
+    1.0
     """
     central_vowels = central_vowels or ["ə", "ɘ", "ɜ", "ɐ"]
     schwa_symbols = schwa_symbols or ["ə", "@", "schwa"]

@@ -576,11 +576,31 @@
 <p>This parser targets interval tiers (<code class="docutils literal notranslate"><span class="pre">intervals</span> <span class="pre">[n]</span></code> blocks). Point tiers
 are not expanded into the output structure.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tiers</span> <span class="o">=</span> <span class="n">load_textgrid</span><span class="p">(</span><span class="s2">&quot;alignment.TextGrid&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">tiers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="go">[&#39;phones&#39;, &#39;words&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tiers</span><span class="p">[</span><span class="s2">&quot;words&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="go">[&#39;id&#39;, &#39;start&#39;, &#39;end&#39;, &#39;label&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units.alignment_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_textgrid</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">textgrid</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;item [1]:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;    name = &quot;words&quot;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;    intervals [1]:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;        xmin = 0&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;        xmax = 0.5&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;        text = &quot;hello&quot;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;item [2]:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;    name = &quot;phones&quot;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;    intervals [1]:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;        xmin = 0&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;        xmax = 0.5&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;        text = &quot;h&quot;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;alignment.TextGrid&quot;</span>
+<span class="gp">... </span>    <span class="n">_</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">textgrid</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">tiers</span> <span class="o">=</span> <span class="n">load_textgrid</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tiers</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">tiers</span><span class="p">[</span><span class="s2">&quot;words&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="go">([&#39;phones&#39;, &#39;words&#39;], [&#39;id&#39;, &#39;start&#39;, &#39;end&#39;, &#39;label&#39;])</span>
 </pre></div>
 </div>
 </dd></dl>

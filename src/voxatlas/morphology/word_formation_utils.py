@@ -27,8 +27,9 @@ def load_clitic_list(language=None, resource_root=None, clitic_list=None):
     
     Examples
     --------
-        value = load_clitic_list(language=..., resource_root=..., clitic_list=...)
-        print(value)
+    >>> from voxatlas.morphology.word_formation_utils import load_clitic_list
+    >>> load_clitic_list(clitic_list=["l", "d"]) == {"l", "d"}
+    True
     """
     if clitic_list is not None:
         return {str(item).strip() for item in clitic_list}
@@ -97,8 +98,11 @@ def detect_compound(token_row, lexicon_lookup=None, segmentation_lookup=None):
     
     Examples
     --------
-        value = detect_compound(token_row=..., lexicon_lookup=..., segmentation_lookup=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.morphology.word_formation_utils import detect_compound
+    >>> token_row = pd.Series({"text": "ice-cream"})
+    >>> detect_compound(token_row, lexicon_lookup={"ice", "cream"})
+    1.0
     """
     lexicon_lookup = lexicon_lookup or set()
     token_text = _get_token_text(token_row)
@@ -146,8 +150,11 @@ def detect_clitic(token_row, clitic_list=None):
     
     Examples
     --------
-        value = detect_clitic(token_row=..., clitic_list=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.morphology.word_formation_utils import detect_clitic
+    >>> token_row = pd.Series({"text": "l'amour"})
+    >>> detect_clitic(token_row, clitic_list={"l"})
+    1.0
     """
     clitic_list = clitic_list or set()
     token_text = _get_token_text(token_row)
@@ -216,8 +223,12 @@ def extract_word_formation_features(
     
     Examples
     --------
-        value = extract_word_formation_features(tokens=..., language=..., resource_root=..., clitic_list=..., lexicon_lookup=..., segmentation_lookup=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.morphology.word_formation_utils import extract_word_formation_features
+    >>> tokens = pd.DataFrame([{"id": 1, "text": "ice-cream"}])
+    >>> out = extract_word_formation_features(tokens, clitic_list=["l"], lexicon_lookup=["ice", "cream"])
+    >>> out.loc[0, ["Compound", "Clitic"]].to_dict()
+    {'Compound': 1.0, 'Clitic': 0.0}
     """
     if tokens is None:
         raise ValueError("Word formation features require token units")

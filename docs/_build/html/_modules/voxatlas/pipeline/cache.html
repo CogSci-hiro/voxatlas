@@ -379,10 +379,12 @@
 <span class="sd">    </span>
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">        from voxatlas.pipeline.cache import DiskCache</span>
-<span class="sd">    </span>
-<span class="sd">        obj = DiskCache(... )</span>
-<span class="sd">        print(obj)</span>
+<span class="sd">    &gt;&gt;&gt; import tempfile</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.pipeline.cache import DiskCache</span>
+<span class="sd">    &gt;&gt;&gt; with tempfile.TemporaryDirectory() as tmp:</span>
+<span class="sd">    ...     cache = DiskCache(tmp)</span>
+<span class="sd">    ...     cache.cache_dir.name != &quot;&quot;</span>
+<span class="sd">    True</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
@@ -411,9 +413,13 @@
 <span class="sd">        </span>
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">            obj = DiskCache(... )</span>
-<span class="sd">            value = obj.compute_key(feature_name=..., audio_hash=..., config_hash=...)</span>
-<span class="sd">            print(value)</span>
+<span class="sd">        &gt;&gt;&gt; import tempfile</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.pipeline.cache import DiskCache</span>
+<span class="sd">        &gt;&gt;&gt; with tempfile.TemporaryDirectory() as tmp:</span>
+<span class="sd">        ...     cache = DiskCache(tmp)</span>
+<span class="sd">        ...     key = cache.compute_key(&quot;acoustic.pitch.dummy&quot;, &quot;a&quot; * 64, &quot;b&quot; * 64)</span>
+<span class="sd">        ...     len(key)</span>
+<span class="sd">        64</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">key_input</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">feature_name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">audio_hash</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">config_hash</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">key_input</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
@@ -444,9 +450,12 @@
 <span class="sd">        </span>
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">            obj = DiskCache(... )</span>
-<span class="sd">            value = obj.exists(feature_name=..., key=...)</span>
-<span class="sd">            print(value)</span>
+<span class="sd">        &gt;&gt;&gt; import tempfile</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.pipeline.cache import DiskCache</span>
+<span class="sd">        &gt;&gt;&gt; with tempfile.TemporaryDirectory() as tmp:</span>
+<span class="sd">        ...     cache = DiskCache(tmp)</span>
+<span class="sd">        ...     cache.exists(&quot;acoustic.pitch.dummy&quot;, &quot;missing&quot;)</span>
+<span class="sd">        False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_path</span><span class="p">(</span><span class="n">feature_name</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span></div>
 
@@ -473,9 +482,14 @@
 <span class="sd">        </span>
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">            obj = DiskCache(... )</span>
-<span class="sd">            value = obj.load(feature_name=..., key=...)</span>
-<span class="sd">            print(value)</span>
+<span class="sd">        &gt;&gt;&gt; import tempfile</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.pipeline.cache import DiskCache</span>
+<span class="sd">        &gt;&gt;&gt; with tempfile.TemporaryDirectory() as tmp:</span>
+<span class="sd">        ...     cache = DiskCache(tmp)</span>
+<span class="sd">        ...     key = cache.compute_key(&quot;acoustic.pitch.dummy&quot;, &quot;a&quot; * 64, &quot;b&quot; * 64)</span>
+<span class="sd">        ...     cache.save(&quot;acoustic.pitch.dummy&quot;, key, {&quot;value&quot;: 1})</span>
+<span class="sd">        ...     cache.load(&quot;acoustic.pitch.dummy&quot;, key)</span>
+<span class="sd">        {&#39;value&#39;: 1}</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_path</span><span class="p">(</span><span class="n">feature_name</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
@@ -505,9 +519,19 @@
 <span class="sd">        </span>
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">            obj = DiskCache(... )</span>
-<span class="sd">            value = obj.save(feature_name=..., key=..., result=...)</span>
-<span class="sd">            print(value)</span>
+<span class="sd">        &gt;&gt;&gt; import tempfile</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.pipeline.cache import DiskCache</span>
+<span class="sd">        &gt;&gt;&gt; with tempfile.TemporaryDirectory() as tmp:</span>
+<span class="sd">        ...     cache = DiskCache(tmp)</span>
+<span class="sd">        ...     key = cache.compute_key(&quot;acoustic.pitch.dummy&quot;, &quot;a&quot; * 64, &quot;b&quot; * 64)</span>
+<span class="sd">        ...     cache.save(&quot;acoustic.pitch.dummy&quot;, key, {&quot;value&quot;: 1}) is None</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; with tempfile.TemporaryDirectory() as tmp:</span>
+<span class="sd">        ...     cache = DiskCache(tmp)</span>
+<span class="sd">        ...     key = &quot;k&quot;</span>
+<span class="sd">        ...     cache.save(&quot;acoustic.pitch.dummy&quot;, key, 123)</span>
+<span class="sd">        ...     cache.exists(&quot;acoustic.pitch.dummy&quot;, key)</span>
+<span class="sd">        True</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cache_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_path</span><span class="p">(</span><span class="n">feature_name</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
         <span class="n">cache_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

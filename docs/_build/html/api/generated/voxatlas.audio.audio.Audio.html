@@ -389,9 +389,11 @@ recording.</p></li>
 <p>The pipeline treats <code class="docutils literal notranslate"><span class="pre">Audio</span></code> as the canonical acoustic input object for
 feature extractors.</p>
 <p class="rubric">Examples</p>
-<p>Usage example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">audio</span> <span class="o">=</span> <span class="n">Audio</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="n">waveform</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">16000</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;conversation.wav&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">audio</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.audio.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Audio</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">audio</span> <span class="o">=</span> <span class="n">Audio</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16000</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">16000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">audio</span><span class="o">.</span><span class="n">duration</span>
+<span class="go">1.0</span>
 </pre></div>
 </div>
 <dl class="py attribute">
@@ -429,8 +431,11 @@ feature extractors.</p>
 <p class="rubric">Notes</p>
 <p>Duration is computed directly from waveform length and sample rate.</p>
 <p class="rubric">Examples</p>
-<p>Usage example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">audio</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.audio.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Audio</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">audio</span> <span class="o">=</span> <span class="n">Audio</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8000</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">16000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">audio</span><span class="o">.</span><span class="n">duration</span>
+<span class="go">0.5</span>
 </pre></div>
 </div>
 </dd></dl>

@@ -372,33 +372,58 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">LogEnergyEnvelope</span><span class="p">(</span><span class="n">BaseExtractor</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract the ``acoustic.envelope.log_energy`` feature within the VoxAtlas pipeline.</span>
-<span class="sd">    </span>
-<span class="sd">    This public extractor defines the reusable API for computing ``acoustic.envelope.log_energy`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.</span>
-<span class="sd">    </span>
+
+<span class="sd">    Computes a smoothed, frame-aligned log-energy contour from the waveform by</span>
+<span class="sd">    applying a logarithmic transform to a non-negative RMS amplitude envelope.</span>
+
 <span class="sd">    Algorithm</span>
 <span class="sd">    ---------</span>
-<span class="sd">    The extractor transforms the RMS envelope into a log-amplitude representation that compresses large dynamic-range differences.</span>
-<span class="sd">    </span>
-<span class="sd">    1. RMS dependency</span>
-<span class="sd">       The upstream RMS contour supplies a non-negative amplitude :math:`r_t` at each frame.</span>
-<span class="sd">    </span>
+<span class="sd">    The implementation mirrors the code path.</span>
+
+<span class="sd">    1. RMS amplitude</span>
+<span class="sd">       The waveform is framed and converted to RMS values :math:`r_t \ge 0`.</span>
+
 <span class="sd">    2. Log transform</span>
-<span class="sd">       The implementation computes</span>
-<span class="sd">    </span>
+<span class="sd">       VoxAtlas computes</span>
+
 <span class="sd">       .. math::</span>
-<span class="sd">    </span>
+
 <span class="sd">          e_t = \log(\max(r_t, \varepsilon)),</span>
-<span class="sd">    </span>
-<span class="sd">       where :math:`\varepsilon` is a small numerical floor to avoid taking the logarithm of zero.</span>
-<span class="sd">    </span>
-<span class="sd">    3. Packaging</span>
-<span class="sd">       The transformed contour remains frame-aligned and can be quoted directly as a log-energy envelope in downstream analyses.</span>
-<span class="sd">    </span>
+
+<span class="sd">       where :math:`\varepsilon` is a small numerical floor.</span>
+
+<span class="sd">    3. Smoothing</span>
+<span class="sd">       The resulting contour is optionally smoothed with a moving-average window</span>
+<span class="sd">       of length ``smoothing`` frames.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str</span>
+<span class="sd">        Registry key for this extractor (``&quot;acoustic.envelope.log_energy&quot;``).</span>
+<span class="sd">    input_units : str | None</span>
+<span class="sd">        Required input unit level. ``None`` means this extractor operates</span>
+<span class="sd">        directly on waveform audio.</span>
+<span class="sd">    output_units : str | None</span>
+<span class="sd">        Output alignment unit (``&quot;frame&quot;``).</span>
+<span class="sd">    dependencies : list[str]</span>
+<span class="sd">        Upstream features required before execution. Empty for this extractor.</span>
+<span class="sd">    default_config : dict</span>
+<span class="sd">        Default runtime parameters:</span>
+<span class="sd">        ``frame_length=0.025``, ``frame_step=0.01``,</span>
+<span class="sd">        ``peak_threshold=0.1``, ``smoothing=1``.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Davis, S. B., &amp; Mermelstein, P. (1980). Comparison of parametric</span>
+<span class="sd">    representations for monosyllabic word recognition in continuously spoken</span>
+<span class="sd">    sentences. *IEEE Transactions on Acoustics, Speech, and Signal Processing,</span>
+<span class="sd">    28*(4), 357–366. https://doi.org/10.1109/TASSP.1980.1163420</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">        from voxatlas.features.acoustic.envelope.log_energy import LogEnergyEnvelope</span>
 <span class="sd">        from voxatlas.features.feature_input import FeatureInput</span>
-<span class="sd">    </span>
+
 <span class="sd">        extractor = LogEnergyEnvelope()</span>
 <span class="sd">        feature_input = FeatureInput(audio=audio, units=units, context={})</span>
 <span class="sd">        output = extractor.compute(feature_input, {})</span>

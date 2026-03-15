@@ -34,8 +34,14 @@ def generate_suspect_report(tokens):
     
     Examples
     --------
-        value = generate_suspect_report(tokens=...)
-        print(value)
+    >>> from voxatlas.nlp.suspect_report import generate_suspect_report
+    >>> tokens = [
+    ...     {"token_surface": "???", "token_type": "unknown", "source": "unknown", "confidence": 0.0, "found_in_vocab": False},
+    ...     {"token_surface": "hello", "token_type": "word", "source": "canonical_vocab:example", "confidence": 1.0, "found_in_vocab": True},
+    ... ]
+    >>> report = generate_suspect_report(tokens)
+    >>> report[0]["token_surface"]
+    '???'
     """
     report = []
 

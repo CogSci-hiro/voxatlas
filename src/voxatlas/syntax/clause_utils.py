@@ -30,8 +30,10 @@ def ensure_clause_columns(table):
     
     Examples
     --------
-        value = ensure_clause_columns(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.clause_utils import ensure_clause_columns
+    >>> ensure_clause_columns(pd.DataFrame({"id": [1], "deprel": ["root"]})) is None
+    True
     """
     missing = [column for column in REQUIRED_CLAUSE_COLUMNS if column not in table.columns]
     if missing:
@@ -67,8 +69,11 @@ def compute_clause_membership(table, labels):
     
     Examples
     --------
-        value = compute_clause_membership(table=..., labels=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.clause_utils import compute_clause_membership
+    >>> table = pd.DataFrame({"id": [1, 2], "deprel": ["advcl", "root"]})
+    >>> compute_clause_membership(table, labels={"advcl"}).to_dict()
+    {1: 1, 2: 0}
     """
     ensure_clause_columns(table)
 

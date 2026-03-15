@@ -84,8 +84,9 @@ def discover_features() -> None:
     
     Examples
     --------
-        value = discover_features()
-        print(value)
+    >>> from voxatlas.core.discovery import discover_features
+    >>> discover_features() is None
+    True
     """
     global _DISCOVERED
 

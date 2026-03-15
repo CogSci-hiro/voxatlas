@@ -93,8 +93,12 @@ def load_phonology_resources(
     
     Examples
     --------
-        value = load_phonology_resources(language=..., resource_root=...)
-        print(value)
+    >>> import tempfile
+    >>> from voxatlas.phonology.articulatory_utils import load_phonology_resources
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     resources = load_phonology_resources(language="", resource_root=tmp)
+    ...     sorted(resources.keys())[:3]
+    ['inventory', 'language', 'overrides']
     """
     language = (language or "").strip()
     root = Path(resource_root) if resource_root is not None else _default_resource_root()
@@ -156,8 +160,10 @@ def normalize_phoneme_to_ipa(phoneme: object, resources: dict[str, object]) -> s
     
     Examples
     --------
-        value = normalize_phoneme_to_ipa(phoneme=..., resources=...)
-        print(value)
+    >>> from voxatlas.phonology.articulatory_utils import normalize_phoneme_to_ipa
+    >>> resources = {"inventory": {"AA": "a"}, "xsampa_to_ipa": {}}
+    >>> normalize_phoneme_to_ipa("AA", resources)
+    'a'
     """
     if phoneme is None or (isinstance(phoneme, float) and np.isnan(phoneme)):
         return None
@@ -196,8 +202,10 @@ def derive_articulatory_flags(entry: dict[str, object]) -> dict[str, object]:
     
     Examples
     --------
-        value = derive_articulatory_flags(entry=...)
-        print(value)
+    >>> from voxatlas.phonology.articulatory_utils import derive_articulatory_flags
+    >>> flags = derive_articulatory_flags({"ipa": "m", "category": "consonant", "manner": "nasal", "voice": "voiced"})
+    >>> (int(flags["consonant"]), int(flags["nasal"]), int(flags["voiced"]))
+    (1, 1, 1)
     """
     category = str(entry.get("category", "")).strip().lower()
     manner = str(entry.get("manner", "")).strip().lower()
@@ -243,8 +251,16 @@ def lookup_articulatory_features(
     
     Examples
     --------
-        value = lookup_articulatory_features(phoneme=..., resources=...)
-        print(value)
+    >>> from voxatlas.phonology.articulatory_utils import derive_articulatory_flags, lookup_articulatory_features
+    >>> resources = {
+    ...     "inventory": {},
+    ...     "xsampa_to_ipa": {},
+    ...     "overrides": {},
+    ...     "universal": {"a": derive_articulatory_flags({"ipa": "a", "category": "vowel"})},
+    ... }
+    >>> ipa, flags = lookup_articulatory_features("a", resources)
+    >>> (ipa, int(flags["vowel"]))
+    ('a', 1)
     """
     ipa = normalize_phoneme_to_ipa(phoneme, resources)
     if ipa is None:
@@ -291,8 +307,12 @@ def log_unknown_phoneme(
     
     Examples
     --------
-        value = log_unknown_phoneme(phoneme=..., ipa=..., language=..., context=...)
-        print(value)
+    >>> from voxatlas.phonology.articulatory_utils import log_unknown_phoneme
+    >>> context = {}
+    >>> log_unknown_phoneme(phoneme="?", ipa=None, language="en", context=context) is None
+    True
+    >>> len(context["suspect_phonemes"])
+    1
     """
     suspect_entry = {
         "phoneme": phoneme,

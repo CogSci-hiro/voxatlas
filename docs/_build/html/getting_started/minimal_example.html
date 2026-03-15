@@ -373,12 +373,40 @@ coordinates them.</p>
 </ol>
 <section id="example-outline">
 <h2>Example outline<a class="headerlink" href="#example-outline" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">VoxAtlasPipeline</span>
+<p>The snippet below is fully runnable and uses the built-in
+<code class="docutils literal notranslate"><span class="pre">acoustic.pitch.dummy</span></code> extractor to verify the pipeline path end-to-end.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">VoxAtlasPipeline</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.audio.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Audio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="n">audio</span> <span class="o">=</span> <span class="n">Audio</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16000</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">16000</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;acoustic.pitch.dummy&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;pipeline&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;n_jobs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;cache&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="n">audio</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;acoustic.pitch.dummy&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">feature</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>To run it from a repository checkout without installing the package, execute
+this from the repository root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONPATH</span><span class="o">=</span>src<span class="w"> </span>python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;PY&#39;</span>
+<span class="s">import numpy as np</span>
+
+<span class="s">from voxatlas.audio.audio import Audio</span>
+<span class="s">from voxatlas.pipeline import Pipeline</span>
+
+<span class="s">audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)</span>
+<span class="s">config = {&quot;features&quot;: [&quot;acoustic.pitch.dummy&quot;], &quot;pipeline&quot;: {&quot;n_jobs&quot;: 1, &quot;cache&quot;: False}}</span>
+
+<span class="s">results = Pipeline(audio=audio, units=None, config=config).run()</span>
+<span class="s">output = results.get(&quot;acoustic.pitch.dummy&quot;)</span>
+<span class="s">print(output.feature, output.unit, float(output.values.iloc[0]))</span>
+<span class="s">PY</span>
 </pre></div>
 </div>
 </section>

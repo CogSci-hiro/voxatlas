@@ -9,31 +9,53 @@ from voxatlas.registry.feature_registry import registry
 class RMSEnvelope(BaseExtractor):
     r"""
     Extract the ``acoustic.envelope.rms`` feature within the VoxAtlas pipeline.
-    
-    This public extractor defines the reusable API for computing ``acoustic.envelope.rms`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.
-    
+
+    Computes a smoothed, frame-aligned root-mean-square (RMS) amplitude envelope
+    from the raw waveform.
+
     Algorithm
     ---------
     The extractor computes a frame-level root-mean-square amplitude envelope from the waveform.
-    
+
     1. Frame extraction
        The signal is segmented into overlapping windows determined by ``frame_length`` and ``frame_step``.
-    
+
     2. Energy accumulation
        For each frame :math:`x_t[n]`, the envelope value is
-    
+
        .. math::
-    
+
           \mathrm{RMS}_t = \sqrt{\frac{1}{N}\sum_{n=1}^{N} x_t[n]^2}.
-    
+
     3. Output alignment
        RMS values are returned with frame midpoints so that derived features such as derivatives, onsets, and peak rate can reuse the same temporal grid.
-    
+
+    Attributes
+    ----------
+    name : str
+        Registry key for this extractor (``"acoustic.envelope.rms"``).
+    input_units : str | None
+        Required input unit level. ``None`` means this extractor operates
+        directly on waveform audio.
+    output_units : str | None
+        Output alignment unit (``"frame"``).
+    dependencies : list[str]
+        Upstream features required before execution. Empty for this extractor.
+    default_config : dict
+        Default runtime parameters:
+        ``frame_length=0.025``, ``frame_step=0.01``,
+        ``peak_threshold=0.1``, ``smoothing=1``.
+
+    References
+    ----------
+    Rabiner, L., & Schafer, R. (2011). *Theory and Applications of Digital
+    Speech Processing*. Pearson.
+
     Examples
     --------
         from voxatlas.features.acoustic.envelope.rms import RMSEnvelope
         from voxatlas.features.feature_input import FeatureInput
-    
+
         extractor = RMSEnvelope()
         feature_input = FeatureInput(audio=audio, units=units, context={})
         output = extractor.compute(feature_input, {})

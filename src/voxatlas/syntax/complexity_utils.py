@@ -49,10 +49,10 @@ class DependencyNode:
     
     Examples
     --------
-        from voxatlas.syntax.complexity_utils import DependencyNode
-    
-        obj = DependencyNode(... )
-        print(obj)
+    >>> from voxatlas.syntax.complexity_utils import DependencyNode
+    >>> node = DependencyNode(token_id=1, head_id=2, dependency_label="nsubj")
+    >>> (node.token_id, node.head_id, node.dependency_label, node.children)
+    (1, 2, 'nsubj', [])
     """
     token_id: int
     head_id: int | None
@@ -76,10 +76,11 @@ class DependencyTree:
     
     Examples
     --------
-        from voxatlas.syntax.complexity_utils import DependencyTree
-    
-        obj = DependencyTree(... )
-        print(obj)
+    >>> from voxatlas.syntax.complexity_utils import DependencyNode, DependencyTree
+    >>> root = DependencyNode(token_id=2, head_id=0, dependency_label="root")
+    >>> tree = DependencyTree(roots=[root], nodes={2: root})
+    >>> len(tree.roots)
+    1
     """
     roots: list[DependencyNode]
     nodes: dict[int, DependencyNode]
@@ -145,8 +146,13 @@ def iter_sentence_tables(table: pd.DataFrame):
     
     Examples
     --------
-        value = iter_sentence_tables(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import iter_sentence_tables
+    >>> table = pd.DataFrame(
+    ...     {"token_id": [1, 2, 3], "head_id": [2, 0, 0], "dependency_label": ["nsubj", "root", "root"], "sentence_id": [0, 0, 1]}
+    ... )
+    >>> [(sid, len(st)) for sid, st in iter_sentence_tables(table)]
+    [(0, 2), (1, 1)]
     """
     normalized = _normalize_dependency_table(table)
 
@@ -184,8 +190,12 @@ def build_dependency_tree(table: pd.DataFrame) -> DependencyTree:
     
     Examples
     --------
-        value = build_dependency_tree(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import build_dependency_tree
+    >>> table = pd.DataFrame({"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"]})
+    >>> tree = build_dependency_tree(table)
+    >>> (tree.roots[0].token_id, [child.token_id for child in tree.roots[0].children])
+    (2, [1])
     """
     normalized = _normalize_dependency_table(table)
 
@@ -239,8 +249,11 @@ def mean_dependency_length(table: pd.DataFrame) -> float:
     
     Examples
     --------
-        value = mean_dependency_length(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import mean_dependency_length
+    >>> table = pd.DataFrame({"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"]})
+    >>> mean_dependency_length(table)
+    1.0
     """
     normalized = _normalize_dependency_table(table)
 
@@ -283,8 +296,11 @@ def parse_tree_depth(tree: DependencyTree) -> int:
     
     Examples
     --------
-        value = parse_tree_depth(tree=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import build_dependency_tree, parse_tree_depth
+    >>> table = pd.DataFrame({"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"]})
+    >>> parse_tree_depth(build_dependency_tree(table))
+    2
     """
     if not tree.roots:
         return 0
@@ -318,8 +334,11 @@ def clause_depth(tree: DependencyTree) -> int:
     
     Examples
     --------
-        value = clause_depth(tree=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import build_dependency_tree, clause_depth
+    >>> table = pd.DataFrame({"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"]})
+    >>> clause_depth(build_dependency_tree(table))
+    0
     """
     if not tree.roots:
         return 0
@@ -344,8 +363,11 @@ def branching_factor(tree: DependencyTree) -> float:
     
     Examples
     --------
-        value = branching_factor(tree=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import build_dependency_tree, branching_factor
+    >>> table = pd.DataFrame({"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"]})
+    >>> branching_factor(build_dependency_tree(table))
+    1.0
     """
     branching_nodes = [len(node.children) for node in tree.nodes.values() if node.children]
 
@@ -379,8 +401,13 @@ def compute_mean_dependency_length_by_sentence(table: pd.DataFrame) -> pd.Series
     
     Examples
     --------
-        value = compute_mean_dependency_length_by_sentence(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import compute_mean_dependency_length_by_sentence
+    >>> table = pd.DataFrame(
+    ...     {"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"], "sentence_id": [0, 0]}
+    ... )
+    >>> compute_mean_dependency_length_by_sentence(table).to_dict()
+    {0: 1.0}
     """
     return pd.Series(
         {
@@ -415,8 +442,13 @@ def compute_clause_depth_by_sentence(table: pd.DataFrame) -> pd.Series:
     
     Examples
     --------
-        value = compute_clause_depth_by_sentence(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import compute_clause_depth_by_sentence
+    >>> table = pd.DataFrame(
+    ...     {"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"], "sentence_id": [0, 0]}
+    ... )
+    >>> compute_clause_depth_by_sentence(table).to_dict()
+    {0: 0.0}
     """
     return pd.Series(
         {
@@ -451,8 +483,13 @@ def compute_parse_tree_depth_by_sentence(table: pd.DataFrame) -> pd.Series:
     
     Examples
     --------
-        value = compute_parse_tree_depth_by_sentence(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import compute_parse_tree_depth_by_sentence
+    >>> table = pd.DataFrame(
+    ...     {"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"], "sentence_id": [0, 0]}
+    ... )
+    >>> compute_parse_tree_depth_by_sentence(table).to_dict()
+    {0: 2.0}
     """
     return pd.Series(
         {
@@ -487,8 +524,13 @@ def compute_branching_factor_by_sentence(table: pd.DataFrame) -> pd.Series:
     
     Examples
     --------
-        value = compute_branching_factor_by_sentence(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.complexity_utils import compute_branching_factor_by_sentence
+    >>> table = pd.DataFrame(
+    ...     {"token_id": [1, 2], "head_id": [2, 0], "dependency_label": ["nsubj", "root"], "sentence_id": [0, 0]}
+    ... )
+    >>> compute_branching_factor_by_sentence(table).to_dict()
+    {0: 1.0}
     """
     return pd.Series(
         {

@@ -50,10 +50,35 @@ def _make_peak_rate_extractor(base_key, dependency_name):
         -----
         This extractor depends on a single upstream envelope contour and returns a ``VectorFeatureOutput`` aligned to ``frame`` units.
 
+        Attributes
+        ----------
+        name : str
+            Registry key for this extractor. This is derived from the chosen
+            dependency and has the form ``"{dependency}.peak_rate"`` (for
+            example, ``"acoustic.envelope.oganian.peak_rate"``).
+        input_units : str | None
+            Required input unit level. ``None`` means this extractor does not
+            require linguistic units and instead consumes dependency outputs
+            from the feature store.
+        output_units : str | None
+            Output alignment unit (``"frame"``).
+        dependencies : list[str]
+            Exactly one upstream contour (``[dependency_name]``), such as
+            ``"acoustic.envelope.oganian"`` for ``OganianPeakRate``.
+        default_config : dict
+            Default runtime parameters:
+            ``frame_length=0.025``, ``frame_step=0.01``,
+            ``peak_threshold=0.1``, ``smoothing=1``.
+
         Examples
         --------
-            extractor = PeakRateExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
+            from voxatlas.features.acoustic.envelope.peak_rate import OganianPeakRate
+            from voxatlas.features.feature_input import FeatureInput
+
+            # Assumes the upstream dependency (``acoustic.envelope.oganian``)
+            # has already been computed and is available in the feature store.
+            extractor = OganianPeakRate()
+            feature_input = FeatureInput(audio=audio, units=units, context={"feature_store": feature_store})
             output = extractor.compute(feature_input, {})
             print(output)
         """

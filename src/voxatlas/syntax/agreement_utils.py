@@ -61,8 +61,18 @@ def identify_agreement_relations(tokens):
     
     Examples
     --------
-        value = identify_agreement_relations(tokens=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.agreement_utils import identify_agreement_relations
+    >>> tokens = pd.DataFrame(
+    ...     [
+    ...         {"id": 1, "head": 2, "dep_rel": "nsubj"},
+    ...         {"id": 2, "head": 0, "dep_rel": "root"},
+    ...         {"id": 3, "head": 2, "dep_rel": "det"},
+    ...     ]
+    ... )
+    >>> rels = identify_agreement_relations(tokens)
+    >>> (len(rels["subject_verb"]), len(rels["gender"]))
+    (1, 1)
     """
     id_col = _id_column(tokens)
     head_col = _head_column(tokens)
@@ -124,8 +134,16 @@ def detect_subject_verb_agreement(tokens):
     
     Examples
     --------
-        value = detect_subject_verb_agreement(tokens=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.agreement_utils import detect_subject_verb_agreement
+    >>> tokens = pd.DataFrame(
+    ...     [
+    ...         {"id": 1, "head": 2, "dep_rel": "nsubj", "Person": 3, "Number": "Sing"},
+    ...         {"id": 2, "head": 0, "dep_rel": "root", "Person": 3, "Number": "Sing"},
+    ...     ]
+    ... )
+    >>> detect_subject_verb_agreement(tokens).to_dict()
+    {1: 1.0, 2: 1.0}
     """
     agreement = pd.Series(0.0, index=tokens["id"], dtype="float32")
     relations = identify_agreement_relations(tokens)["subject_verb"]
@@ -177,8 +195,16 @@ def detect_gender_agreement(tokens):
     
     Examples
     --------
-        value = detect_gender_agreement(tokens=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.agreement_utils import detect_gender_agreement
+    >>> tokens = pd.DataFrame(
+    ...     [
+    ...         {"id": 1, "head": 2, "dep_rel": "det", "Gender": "Fem"},
+    ...         {"id": 2, "head": 0, "dep_rel": "root", "Gender": "Fem"},
+    ...     ]
+    ... )
+    >>> detect_gender_agreement(tokens).to_dict()
+    {1: 1.0, 2: 1.0}
     """
     agreement = pd.Series(0.0, index=tokens["id"], dtype="float32")
     relations = identify_agreement_relations(tokens)["gender"]
@@ -227,8 +253,17 @@ def extract_agreement_features(tokens):
     
     Examples
     --------
-        value = extract_agreement_features(tokens=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.agreement_utils import extract_agreement_features
+    >>> tokens = pd.DataFrame(
+    ...     [
+    ...         {"id": 1, "head": 2, "dep_rel": "nsubj", "Person": 3, "Number": "Sing"},
+    ...         {"id": 2, "head": 0, "dep_rel": "root", "Person": 3, "Number": "Sing"},
+    ...     ]
+    ... )
+    >>> out = extract_agreement_features(tokens)
+    >>> out.columns.tolist()
+    ['id', 'SubjectVerbAgreement', 'GenderAgreement']
     """
     if tokens is None:
         raise ValueError("Agreement features require token units with dependency annotations")

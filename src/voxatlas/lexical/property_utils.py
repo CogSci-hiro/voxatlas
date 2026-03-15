@@ -76,8 +76,10 @@ def load_lexical_property_resources(language=None, resource_root=None):
     
     Examples
     --------
-        value = load_lexical_property_resources(language=..., resource_root=...)
-        print(value)
+    >>> from voxatlas.lexical.property_utils import load_lexical_property_resources
+    >>> resources = load_lexical_property_resources(language="")
+    >>> sorted(resources.keys())
+    ['animacy', 'concreteness']
     """
     language = (language or "").strip()
     root = Path(resource_root) if resource_root is not None else _default_resource_root()
@@ -133,8 +135,9 @@ def classify_function_word(pos_tag):
     
     Examples
     --------
-        value = classify_function_word(pos_tag=...)
-        print(value)
+    >>> from voxatlas.lexical.property_utils import classify_function_word
+    >>> float(classify_function_word("DET"))
+    1.0
     """
     if pos_tag is None:
         return np.float32(np.nan)
@@ -173,8 +176,13 @@ def lookup_lexical_properties(tokens, resources):
     
     Examples
     --------
-        value = lookup_lexical_properties(tokens=..., resources=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.lexical.property_utils import lookup_lexical_properties
+    >>> tokens = pd.DataFrame([{"id": 1, "lemma": "dog", "upos": "NOUN"}])
+    >>> resources = {"animacy": {"dog": 1.0}, "concreteness": {"dog": 4.5}}
+    >>> out = lookup_lexical_properties(tokens, resources)
+    >>> out.loc[0, ["id", "animacy", "concreteness"]].to_dict()
+    {'id': 1, 'animacy': 1.0, 'concreteness': 4.5}
     """
     if tokens is None:
         raise ValueError("Lexical property features require token units")

@@ -30,8 +30,16 @@ def load_mapping_table(path):
     
     Examples
     --------
-        value = load_mapping_table(path=...)
-        print(value)
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> from voxatlas.nlp.mapping_loader import load_mapping_table
+    >>> csv_text = "mapping_id,surface,canonical,rule,confidence\\n1,hi,hello,rule1,0.9\\n"
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     path = Path(tmp) / "mapping.csv"
+    ...     _ = path.write_text(csv_text, encoding="utf-8")
+    ...     table = load_mapping_table(path)
+    ...     table.columns.tolist()
+    ['mapping_id', 'surface', 'canonical', 'rule', 'confidence']
     """
     mapping = pd.read_csv(Path(path))
     missing_columns = REQUIRED_MAPPING_COLUMNS - set(mapping.columns)

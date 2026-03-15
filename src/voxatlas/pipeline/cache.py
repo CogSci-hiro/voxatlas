@@ -16,10 +16,12 @@ class DiskCache:
     
     Examples
     --------
-        from voxatlas.pipeline.cache import DiskCache
-    
-        obj = DiskCache(... )
-        print(obj)
+    >>> import tempfile
+    >>> from voxatlas.pipeline.cache import DiskCache
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     cache = DiskCache(tmp)
+    ...     cache.cache_dir.name != ""
+    True
     """
     def __init__(self, cache_dir):
         self.cache_dir = Path(cache_dir)
@@ -46,9 +48,13 @@ class DiskCache:
         
         Examples
         --------
-            obj = DiskCache(... )
-            value = obj.compute_key(feature_name=..., audio_hash=..., config_hash=...)
-            print(value)
+        >>> import tempfile
+        >>> from voxatlas.pipeline.cache import DiskCache
+        >>> with tempfile.TemporaryDirectory() as tmp:
+        ...     cache = DiskCache(tmp)
+        ...     key = cache.compute_key("acoustic.pitch.dummy", "a" * 64, "b" * 64)
+        ...     len(key)
+        64
         """
         key_input = f"{feature_name}:{audio_hash}:{config_hash}"
         return hashlib.sha256(key_input.encode("utf-8")).hexdigest()
@@ -76,9 +82,12 @@ class DiskCache:
         
         Examples
         --------
-            obj = DiskCache(... )
-            value = obj.exists(feature_name=..., key=...)
-            print(value)
+        >>> import tempfile
+        >>> from voxatlas.pipeline.cache import DiskCache
+        >>> with tempfile.TemporaryDirectory() as tmp:
+        ...     cache = DiskCache(tmp)
+        ...     cache.exists("acoustic.pitch.dummy", "missing")
+        False
         """
         return self._cache_path(feature_name, key).exists()
 
@@ -102,9 +111,14 @@ class DiskCache:
         
         Examples
         --------
-            obj = DiskCache(... )
-            value = obj.load(feature_name=..., key=...)
-            print(value)
+        >>> import tempfile
+        >>> from voxatlas.pipeline.cache import DiskCache
+        >>> with tempfile.TemporaryDirectory() as tmp:
+        ...     cache = DiskCache(tmp)
+        ...     key = cache.compute_key("acoustic.pitch.dummy", "a" * 64, "b" * 64)
+        ...     cache.save("acoustic.pitch.dummy", key, {"value": 1})
+        ...     cache.load("acoustic.pitch.dummy", key)
+        {'value': 1}
         """
         with self._cache_path(feature_name, key).open("rb") as f:
             return pickle.load(f)
@@ -131,9 +145,19 @@ class DiskCache:
         
         Examples
         --------
-            obj = DiskCache(... )
-            value = obj.save(feature_name=..., key=..., result=...)
-            print(value)
+        >>> import tempfile
+        >>> from voxatlas.pipeline.cache import DiskCache
+        >>> with tempfile.TemporaryDirectory() as tmp:
+        ...     cache = DiskCache(tmp)
+        ...     key = cache.compute_key("acoustic.pitch.dummy", "a" * 64, "b" * 64)
+        ...     cache.save("acoustic.pitch.dummy", key, {"value": 1}) is None
+        True
+        >>> with tempfile.TemporaryDirectory() as tmp:
+        ...     cache = DiskCache(tmp)
+        ...     key = "k"
+        ...     cache.save("acoustic.pitch.dummy", key, 123)
+        ...     cache.exists("acoustic.pitch.dummy", key)
+        True
         """
         cache_path = self._cache_path(feature_name, key)
         cache_path.parent.mkdir(parents=True, exist_ok=True)

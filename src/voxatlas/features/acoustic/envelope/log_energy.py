@@ -9,33 +9,58 @@ from voxatlas.registry.feature_registry import registry
 class LogEnergyEnvelope(BaseExtractor):
     r"""
     Extract the ``acoustic.envelope.log_energy`` feature within the VoxAtlas pipeline.
-    
-    This public extractor defines the reusable API for computing ``acoustic.envelope.log_energy`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.
-    
+
+    Computes a smoothed, frame-aligned log-energy contour from the waveform by
+    applying a logarithmic transform to a non-negative RMS amplitude envelope.
+
     Algorithm
     ---------
-    The extractor transforms the RMS envelope into a log-amplitude representation that compresses large dynamic-range differences.
-    
-    1. RMS dependency
-       The upstream RMS contour supplies a non-negative amplitude :math:`r_t` at each frame.
-    
+    The implementation mirrors the code path.
+
+    1. RMS amplitude
+       The waveform is framed and converted to RMS values :math:`r_t \ge 0`.
+
     2. Log transform
-       The implementation computes
-    
+       VoxAtlas computes
+
        .. math::
-    
+
           e_t = \log(\max(r_t, \varepsilon)),
-    
-       where :math:`\varepsilon` is a small numerical floor to avoid taking the logarithm of zero.
-    
-    3. Packaging
-       The transformed contour remains frame-aligned and can be quoted directly as a log-energy envelope in downstream analyses.
-    
+
+       where :math:`\varepsilon` is a small numerical floor.
+
+    3. Smoothing
+       The resulting contour is optionally smoothed with a moving-average window
+       of length ``smoothing`` frames.
+
+    Attributes
+    ----------
+    name : str
+        Registry key for this extractor (``"acoustic.envelope.log_energy"``).
+    input_units : str | None
+        Required input unit level. ``None`` means this extractor operates
+        directly on waveform audio.
+    output_units : str | None
+        Output alignment unit (``"frame"``).
+    dependencies : list[str]
+        Upstream features required before execution. Empty for this extractor.
+    default_config : dict
+        Default runtime parameters:
+        ``frame_length=0.025``, ``frame_step=0.01``,
+        ``peak_threshold=0.1``, ``smoothing=1``.
+
+    References
+    ----------
+    Davis, S. B., & Mermelstein, P. (1980). Comparison of parametric
+    representations for monosyllabic word recognition in continuously spoken
+    sentences. *IEEE Transactions on Acoustics, Speech, and Signal Processing,
+    28*(4), 357–366. https://doi.org/10.1109/TASSP.1980.1163420
+
     Examples
     --------
         from voxatlas.features.acoustic.envelope.log_energy import LogEnergyEnvelope
         from voxatlas.features.feature_input import FeatureInput
-    
+
         extractor = LogEnergyEnvelope()
         feature_input = FeatureInput(audio=audio, units=units, context={})
         output = extractor.compute(feature_input, {})

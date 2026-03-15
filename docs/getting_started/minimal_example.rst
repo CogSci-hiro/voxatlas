@@ -14,14 +14,45 @@ This minimal example shows the intended workflow at a high level:
 Example outline
 ---------------
 
+The snippet below is fully runnable and uses the built-in
+``acoustic.pitch.dummy`` extractor to verify the pipeline path end-to-end.
+
 .. code-block:: python
 
-   from voxatlas.pipeline.pipeline import VoxAtlasPipeline
+   import numpy as np
 
-   pipeline = VoxAtlasPipeline(...)
-   results = pipeline.run(...)
+   from voxatlas.audio.audio import Audio
+   from voxatlas.pipeline import Pipeline
 
-   print(results)
+   audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)
+   config = {
+       "features": ["acoustic.pitch.dummy"],
+       "pipeline": {"n_jobs": 1, "cache": False},
+   }
+
+   results = Pipeline(audio=audio, units=None, config=config).run()
+   output = results.get("acoustic.pitch.dummy")
+
+   print(output.feature, output.unit, float(output.values.iloc[0]))
+
+To run it from a repository checkout without installing the package, execute
+this from the repository root:
+
+.. code-block:: bash
+
+   PYTHONPATH=src python - <<'PY'
+   import numpy as np
+
+   from voxatlas.audio.audio import Audio
+   from voxatlas.pipeline import Pipeline
+
+   audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)
+   config = {"features": ["acoustic.pitch.dummy"], "pipeline": {"n_jobs": 1, "cache": False}}
+
+   results = Pipeline(audio=audio, units=None, config=config).run()
+   output = results.get("acoustic.pitch.dummy")
+   print(output.feature, output.unit, float(output.values.iloc[0]))
+   PY
 
 Where to go next
 ----------------

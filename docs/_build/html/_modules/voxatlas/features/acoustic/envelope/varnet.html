@@ -372,27 +372,52 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">VarnetEnvelope</span><span class="p">(</span><span class="n">BaseExtractor</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract the ``acoustic.envelope.varnet`` feature within the VoxAtlas pipeline.</span>
-<span class="sd">    </span>
-<span class="sd">    This public extractor defines the reusable API for computing ``acoustic.envelope.varnet`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.</span>
-<span class="sd">    </span>
+
+<span class="sd">    Computes a smoothed, frame-aligned RMS amplitude envelope using a longer</span>
+<span class="sd">    analysis window (by default, 50 ms). This slower-timescale contour is</span>
+<span class="sd">    useful for characterizing modulation patterns in the amplitude envelope as</span>
+<span class="sd">    described by Varnet and colleagues.</span>
+
 <span class="sd">    Algorithm</span>
 <span class="sd">    ---------</span>
-<span class="sd">    The extractor follows the standard VoxAtlas feature-computation pattern.</span>
-<span class="sd">    </span>
-<span class="sd">    1. Input preparation</span>
-<span class="sd">       Structured audio, unit tables, and dependency outputs are gathered from ``feature_input``.</span>
-<span class="sd">    </span>
-<span class="sd">    2. Feature-specific computation</span>
-<span class="sd">       The implementation applies the domain-specific transformation required by this extractor.</span>
-<span class="sd">    </span>
-<span class="sd">    3. Packaging</span>
-<span class="sd">       Results are aligned to ``frame`` units and returned as a ``FeatureOutput`` object.</span>
-<span class="sd">    </span>
+<span class="sd">    The implementation mirrors the code path.</span>
+
+<span class="sd">    1. RMS amplitude</span>
+<span class="sd">       The waveform is framed (typically with a longer window than</span>
+<span class="sd">       ``acoustic.envelope.rms``) and converted to RMS values :math:`r_t`.</span>
+
+<span class="sd">    2. Smoothing</span>
+<span class="sd">       The RMS contour is smoothed with a moving-average window of length</span>
+<span class="sd">       ``smoothing`` frames.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str</span>
+<span class="sd">        Registry key for this extractor (``&quot;acoustic.envelope.varnet&quot;``).</span>
+<span class="sd">    input_units : str | None</span>
+<span class="sd">        Required input unit level. ``None`` means this extractor operates</span>
+<span class="sd">        directly on waveform audio.</span>
+<span class="sd">    output_units : str | None</span>
+<span class="sd">        Output alignment unit (``&quot;frame&quot;``).</span>
+<span class="sd">    dependencies : list[str]</span>
+<span class="sd">        Upstream features required before execution. Empty for this extractor.</span>
+<span class="sd">    default_config : dict</span>
+<span class="sd">        Default runtime parameters:</span>
+<span class="sd">        ``frame_length=0.05``, ``frame_step=0.01``,</span>
+<span class="sd">        ``peak_threshold=0.1``, ``smoothing=9``.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Varnet, L., Ortiz-Barajas, M.-C., Erra, R. G., Gervain, J., &amp; Lorenzi, C.</span>
+<span class="sd">    (2017). A cross-linguistic study of speech modulation spectra. *The Journal</span>
+<span class="sd">    of the Acoustical Society of America, 142*(4), 1976–1989.</span>
+<span class="sd">    https://doi.org/10.1121/1.5006179</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">        from voxatlas.features.acoustic.envelope.varnet import VarnetEnvelope</span>
 <span class="sd">        from voxatlas.features.feature_input import FeatureInput</span>
-<span class="sd">    </span>
+
 <span class="sd">        extractor = VarnetEnvelope()</span>
 <span class="sd">        feature_input = FeatureInput(audio=audio, units=units, context={})</span>
 <span class="sd">        output = extractor.compute(feature_input, {})</span>

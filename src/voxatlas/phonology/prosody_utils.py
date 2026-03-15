@@ -83,8 +83,13 @@ def compute_word_positions(
     
     Examples
     --------
-        value = compute_word_positions(syllables=..., words=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.phonology.prosody_utils import compute_word_positions
+    >>> syllables = pd.DataFrame({"id": [10, 11], "start": [0.0, 0.5], "end": [0.5, 1.0]})
+    >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0]})
+    >>> out = compute_word_positions(syllables, words)
+    >>> out["position_in_word"].tolist()
+    [1, 2]
     """
     if syllables is None or words is None:
         return pd.DataFrame(columns=["word_id", "position_in_word"])
@@ -146,8 +151,13 @@ def compute_ipu_positions(
     
     Examples
     --------
-        value = compute_ipu_positions(syllables=..., ipus=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.phonology.prosody_utils import compute_ipu_positions
+    >>> syllables = pd.DataFrame({"id": [10, 11], "start": [0.0, 0.5], "end": [0.5, 1.0]})
+    >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+    >>> out = compute_ipu_positions(syllables, ipus)
+    >>> out["position_in_ipu"].tolist()
+    [1, 2]
     """
     if syllables is None or ipus is None:
         return pd.DataFrame(columns=["ipu_id", "position_in_ipu"])
@@ -192,8 +202,11 @@ def load_stress_rules(
     
     Examples
     --------
-        value = load_stress_rules(language=..., resource_root=...)
-        print(value)
+    >>> import tempfile
+    >>> from voxatlas.phonology.prosody_utils import load_stress_rules
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     load_stress_rules(language="", resource_root=tmp)
+    {'domain': 'word', 'position': 'final'}
     """
     language = (language or "").strip()
     root = Path(resource_root) if resource_root is not None else _default_resource_root()
@@ -261,8 +274,14 @@ def detect_stress(
     
     Examples
     --------
-        value = detect_stress(syllables=..., words=..., ipus=..., language=..., resource_root=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.phonology.prosody_utils import detect_stress
+    >>> syllables = pd.DataFrame({"id": [10, 11], "start": [0.0, 0.5], "end": [0.5, 1.0]})
+    >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0]})
+    >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+    >>> stressed = detect_stress(syllables, words, ipus, language="")
+    >>> stressed.tolist()
+    [0.0, 1.0]
     """
     stress = pd.Series(np.zeros(len(syllables), dtype=np.float32), index=syllables.index, name="stressed")
     if syllables is None or len(syllables) == 0:

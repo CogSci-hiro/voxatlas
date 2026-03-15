@@ -30,10 +30,10 @@ class DatasetStream:
 
     Examples
     --------
-    Usage example::
-
-        stream = dataset.streams()[0]
-        print(stream.audio is not None, stream.units is not None)
+    >>> from voxatlas.io import DatasetStream
+    >>> stream = DatasetStream(audio=None, units=None)
+    >>> (stream.audio is None, stream.units is None)
+    (True, True)
     """
 
     audio: Audio | None
@@ -64,10 +64,10 @@ class DatasetInput:
 
     Examples
     --------
-    Usage example::
-
-        dataset = load_dataset("/path/to/dataset", "conversation01")
-        print(len(dataset.streams()))
+    >>> from voxatlas.io import DatasetInput
+    >>> dataset = DatasetInput(audio_streams=None, units_streams=None)
+    >>> dataset.streams()
+    []
     """
 
     audio_streams: list[Audio] | None
@@ -93,10 +93,16 @@ class DatasetInput:
 
         Examples
         --------
-        Usage example::
-
-            for stream in dataset.streams():
-                print(stream.units)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.io import DatasetInput
+        >>> audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)
+        >>> dataset = DatasetInput(audio_streams=[audio], units_streams=None)
+        >>> streams = dataset.streams()
+        >>> len(streams)
+        1
+        >>> (streams[0].audio is not None, streams[0].units is None)
+        (True, True)
         """
         if self.audio_streams is not None and self.units_streams is not None:
             if len(self.audio_streams) != len(self.units_streams):
@@ -311,11 +317,48 @@ def load_dataset(dataset_root: str, conversation_id: str) -> DatasetInput:
 
     Examples
     --------
-    Usage example::
-
-        dataset = load_dataset("/path/to/dataset", "conversation01")
-        stream = dataset.streams()[0]
-        print(stream.audio, stream.units)
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> from voxatlas.io import load_dataset
+    >>>
+    >>> def _write_textgrid(path: Path, tier_names: list[str]) -> None:
+    ...     items = []
+    ...     for idx, name in enumerate(tier_names, start=1):
+    ...         items.extend(
+    ...             [
+    ...                 f"item [{idx}]:",
+    ...                 f'    name = "{name}"',
+    ...                 "    intervals [1]:",
+    ...                 "        xmin = 0",
+    ...                 "        xmax = 0.5",
+    ...                 '        text = "x"',
+    ...             ]
+    ...         )
+    ...     path.write_text("\\n".join(items) + "\\n", encoding="utf-8")
+    >>>
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     root = Path(tmp)
+    ...     (root / "alignment" / "palign").mkdir(parents=True)
+    ...     (root / "alignment" / "syll").mkdir(parents=True)
+    ...     (root / "alignment" / "ipu").mkdir(parents=True)
+    ...     conv = "conversation01"
+    ...     for ch in ("ch1", "ch2"):
+    ...         _write_textgrid(
+    ...             root / "alignment" / "palign" / f"{conv}_{ch}.TextGrid",
+    ...             ["TokensAlign", "PhonAlign"],
+    ...         )
+    ...         _write_textgrid(
+    ...             root / "alignment" / "syll" / f"{conv}_{ch}.TextGrid",
+    ...             ["SyllAlign", "SyllClassAlign"],
+    ...         )
+    ...         _write_textgrid(
+    ...             root / "alignment" / "ipu" / f"{conv}_{ch}.TextGrid",
+    ...             ["IPU"],
+    ...         )
+    ...     dataset = load_dataset(str(root), conv)
+    ...     streams = dataset.streams()
+    ...     (len(streams), streams[0].units.speaker, streams[1].units.speaker)
+    (2, 'A', 'B')
     """
     dataset_root_path = Path(dataset_root)
     validated = _validate_structure(dataset_root_path, conversation_id)

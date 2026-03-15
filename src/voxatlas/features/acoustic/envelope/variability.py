@@ -44,10 +44,35 @@ def _make_variability_extractor(base_key, dependency_name):
         -----
         This extractor depends on one upstream envelope representation and returns a ``VectorFeatureOutput`` on ``frame`` units.
 
+        Attributes
+        ----------
+        name : str
+            Registry key for this extractor. This is derived from the chosen
+            dependency and has the form ``"{dependency}.variability"`` (for
+            example, ``"acoustic.envelope.oganian.variability"``).
+        input_units : str | None
+            Required input unit level. ``None`` means this extractor does not
+            require linguistic units and instead consumes dependency outputs
+            from the feature store.
+        output_units : str | None
+            Output alignment unit (``"frame"``).
+        dependencies : list[str]
+            Exactly one upstream contour (``[dependency_name]``), such as
+            ``"acoustic.envelope.oganian"`` for ``OganianVariability``.
+        default_config : dict
+            Default runtime parameters:
+            ``frame_length=0.025``, ``frame_step=0.01``,
+            ``peak_threshold=0.1``, ``smoothing=1``.
+
         Examples
         --------
-            extractor = VariabilityExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
+            from voxatlas.features.acoustic.envelope.variability import OganianVariability
+            from voxatlas.features.feature_input import FeatureInput
+
+            # Assumes the upstream dependency (``acoustic.envelope.oganian``)
+            # has already been computed and is available in the feature store.
+            extractor = OganianVariability()
+            feature_input = FeatureInput(audio=audio, units=units, context={"feature_store": feature_store})
             output = extractor.compute(feature_input, {})
             print(output)
         """

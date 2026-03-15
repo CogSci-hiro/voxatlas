@@ -19,8 +19,12 @@ def configure_logging(level="INFO"):
     
     Examples
     --------
-        value = configure_logging(level=...)
-        print(value)
+    >>> import logging
+    >>> from voxatlas.logging.logging_config import configure_logging
+    >>> configure_logging(level="WARNING") is None
+    True
+    >>> logging.getLevelName(logging.getLogger().level)
+    'WARNING'
     """
     root_logger = logging.getLogger()
 
@@ -57,7 +61,9 @@ def get_logger(name):
     
     Examples
     --------
-        value = get_logger(name=...)
-        print(value)
+    >>> from voxatlas.logging.logging_config import get_logger
+    >>> logger = get_logger("voxatlas.example")
+    >>> logger.name
+    'voxatlas.example'
     """
     return logging.getLogger(name)

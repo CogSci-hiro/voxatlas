@@ -395,10 +395,11 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    Usage example::</span>
-
-<span class="sd">        audio = Audio(waveform=waveform, sample_rate=16000, path=&quot;conversation.wav&quot;)</span>
-<span class="sd">        print(audio.duration)</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.audio.audio import Audio</span>
+<span class="sd">    &gt;&gt;&gt; audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)</span>
+<span class="sd">    &gt;&gt;&gt; audio.duration</span>
+<span class="sd">    1.0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">waveform</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
@@ -422,9 +423,11 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        Usage example::</span>
-
-<span class="sd">            print(audio.duration)</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.audio.audio import Audio</span>
+<span class="sd">        &gt;&gt;&gt; audio = Audio(waveform=np.zeros(8000, dtype=np.float32), sample_rate=16000)</span>
+<span class="sd">        &gt;&gt;&gt; audio.duration</span>
+<span class="sd">        0.5</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waveform</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span></div>
 

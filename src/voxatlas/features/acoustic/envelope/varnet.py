@@ -9,27 +9,52 @@ from voxatlas.registry.feature_registry import registry
 class VarnetEnvelope(BaseExtractor):
     r"""
     Extract the ``acoustic.envelope.varnet`` feature within the VoxAtlas pipeline.
-    
-    This public extractor defines the reusable API for computing ``acoustic.envelope.varnet`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.
-    
+
+    Computes a smoothed, frame-aligned RMS amplitude envelope using a longer
+    analysis window (by default, 50 ms). This slower-timescale contour is
+    useful for characterizing modulation patterns in the amplitude envelope as
+    described by Varnet and colleagues.
+
     Algorithm
     ---------
-    The extractor follows the standard VoxAtlas feature-computation pattern.
-    
-    1. Input preparation
-       Structured audio, unit tables, and dependency outputs are gathered from ``feature_input``.
-    
-    2. Feature-specific computation
-       The implementation applies the domain-specific transformation required by this extractor.
-    
-    3. Packaging
-       Results are aligned to ``frame`` units and returned as a ``FeatureOutput`` object.
-    
+    The implementation mirrors the code path.
+
+    1. RMS amplitude
+       The waveform is framed (typically with a longer window than
+       ``acoustic.envelope.rms``) and converted to RMS values :math:`r_t`.
+
+    2. Smoothing
+       The RMS contour is smoothed with a moving-average window of length
+       ``smoothing`` frames.
+
+    Attributes
+    ----------
+    name : str
+        Registry key for this extractor (``"acoustic.envelope.varnet"``).
+    input_units : str | None
+        Required input unit level. ``None`` means this extractor operates
+        directly on waveform audio.
+    output_units : str | None
+        Output alignment unit (``"frame"``).
+    dependencies : list[str]
+        Upstream features required before execution. Empty for this extractor.
+    default_config : dict
+        Default runtime parameters:
+        ``frame_length=0.05``, ``frame_step=0.01``,
+        ``peak_threshold=0.1``, ``smoothing=9``.
+
+    References
+    ----------
+    Varnet, L., Ortiz-Barajas, M.-C., Erra, R. G., Gervain, J., & Lorenzi, C.
+    (2017). A cross-linguistic study of speech modulation spectra. *The Journal
+    of the Acoustical Society of America, 142*(4), 1976–1989.
+    https://doi.org/10.1121/1.5006179
+
     Examples
     --------
         from voxatlas.features.acoustic.envelope.varnet import VarnetEnvelope
         from voxatlas.features.feature_input import FeatureInput
-    
+
         extractor = VarnetEnvelope()
         feature_input = FeatureInput(audio=audio, units=units, context={})
         output = extractor.compute(feature_input, {})

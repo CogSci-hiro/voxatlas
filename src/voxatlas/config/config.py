@@ -74,10 +74,16 @@ def load_config(path: str) -> dict:
 
     Examples
     --------
-    Usage example::
-
-        cfg = load_config("config.yaml")
-        print(cfg["features"])
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> from voxatlas.config import load_config
+    >>> yaml_text = "features:\\n  - acoustic.pitch.dummy\\n"
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     path = Path(tmp) / "config.yaml"
+    ...     _ = path.write_text(yaml_text, encoding="utf-8")
+    ...     cfg = load_config(str(path))
+    ...     cfg["features"]
+    ['acoustic.pitch.dummy']
     """
     with open(path) as f:
         cfg = yaml.safe_load(f)
@@ -144,10 +150,12 @@ def expand_defaults(cfg: dict) -> dict:
 
     Examples
     --------
-    Usage example::
-
-        cfg = expand_defaults({"features": ["acoustic.pitch.f0"]})
-        print(cfg["pipeline"])
+    >>> from voxatlas.config import expand_defaults
+    >>> cfg = expand_defaults({"features": ["acoustic.pitch.dummy"]})
+    >>> cfg["features"]
+    ['acoustic.pitch.dummy']
+    >>> sorted(cfg["pipeline"].keys())
+    ['cache']
     """
     final = deepcopy(DEFAULT_CONFIG)
     final.update(cfg)
@@ -180,10 +188,16 @@ def load_and_prepare_config(path: str) -> dict:
 
     Examples
     --------
-    Usage example::
-
-        config = load_and_prepare_config("config.yaml")
-        print(config["features"])
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> from voxatlas.config import load_and_prepare_config
+    >>> yaml_text = "features:\\n  - acoustic.pitch.dummy\\n"
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     path = Path(tmp) / "config.yaml"
+    ...     _ = path.write_text(yaml_text, encoding="utf-8")
+    ...     cfg = load_and_prepare_config(str(path))
+    ...     cfg["features"]
+    ['acoustic.pitch.dummy']
     """
     cfg = load_config(path)
     validate_config(cfg)

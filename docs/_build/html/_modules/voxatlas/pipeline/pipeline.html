@@ -408,23 +408,18 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    Usage example::</span>
-
-<span class="sd">        from voxatlas.io import load_dataset</span>
-<span class="sd">        from voxatlas.pipeline import Pipeline</span>
-
-<span class="sd">        dataset = load_dataset(&quot;/path/to/dataset&quot;, &quot;conversation01&quot;)</span>
-<span class="sd">        stream = dataset.streams()[0]</span>
-<span class="sd">        pipeline = Pipeline(</span>
-<span class="sd">            audio=stream.audio,</span>
-<span class="sd">            units=stream.units,</span>
-<span class="sd">            config={</span>
-<span class="sd">                &quot;features&quot;: [&quot;acoustic.pitch.f0&quot;],</span>
-<span class="sd">                &quot;pipeline&quot;: {&quot;n_jobs&quot;: 1, &quot;cache&quot;: False},</span>
-<span class="sd">            },</span>
-<span class="sd">        )</span>
-<span class="sd">        results = pipeline.run()</span>
-<span class="sd">        print(results.get(&quot;acoustic.pitch.f0&quot;))</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.audio.audio import Audio</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.pipeline import Pipeline</span>
+<span class="sd">    &gt;&gt;&gt; audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)</span>
+<span class="sd">    &gt;&gt;&gt; pipeline = Pipeline(</span>
+<span class="sd">    ...     audio=audio,</span>
+<span class="sd">    ...     units=None,</span>
+<span class="sd">    ...     config={&quot;features&quot;: [&quot;acoustic.pitch.dummy&quot;], &quot;pipeline&quot;: {&quot;n_jobs&quot;: 1, &quot;cache&quot;: False}},</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &gt;&gt;&gt; results = pipeline.run()</span>
+<span class="sd">    &gt;&gt;&gt; results.exists(&quot;acoustic.pitch.dummy&quot;)</span>
+<span class="sd">    True</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">audio</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
@@ -571,10 +566,18 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        Usage example::</span>
-
-<span class="sd">            results = pipeline.run()</span>
-<span class="sd">            print(results.exists(&quot;acoustic.pitch.f0&quot;))</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.audio.audio import Audio</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.pipeline import Pipeline</span>
+<span class="sd">        &gt;&gt;&gt; audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)</span>
+<span class="sd">        &gt;&gt;&gt; pipeline = Pipeline(</span>
+<span class="sd">        ...     audio=audio,</span>
+<span class="sd">        ...     units=None,</span>
+<span class="sd">        ...     config={&quot;features&quot;: [&quot;acoustic.pitch.dummy&quot;], &quot;pipeline&quot;: {&quot;n_jobs&quot;: 1, &quot;cache&quot;: False}},</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; results = pipeline.run()</span>
+<span class="sd">        &gt;&gt;&gt; results.exists(&quot;acoustic.pitch.dummy&quot;)</span>
+<span class="sd">        True</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_features</span><span class="p">()</span>
         <span class="n">execution_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_execution_plan</span><span class="p">()</span>

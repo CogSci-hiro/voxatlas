@@ -383,8 +383,15 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>value = validate_units(input_units=…, output_units=…)
-print(value)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.registry.validator</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate_units</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">validate_units</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;conversation&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">validate_units</span><span class="p">(</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;conversation&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">input_units must be one of [&#39;conversation&#39;, &#39;frame&#39;, &#39;ipu&#39;, &#39;phoneme&#39;, &#39;sentence&#39;, &#39;syllable&#39;, &#39;token&#39;, &#39;turn&#39;, &#39;word&#39;] or None</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

@@ -22,8 +22,20 @@ def load_token_rules(path):
     
     Examples
     --------
-        value = load_token_rules(path=...)
-        print(value)
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> from voxatlas.nlp.rule_engine import load_token_rules
+    >>> yaml_text = \"\"\"rules:
+    ...   - name: greeting
+    ...     token_type: interjection
+    ...     pattern: [hi, hello]
+    ... \"\"\"
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     path = Path(tmp) / "rules.yaml"
+    ...     _ = path.write_text(yaml_text, encoding="utf-8")
+    ...     rules = load_token_rules(path)
+    ...     rules[0]["token_type"]
+    'interjection'
     """
     data = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     rules = data.get("rules", [])
@@ -77,8 +89,10 @@ def apply_token_rules(token, rules):
     
     Examples
     --------
-        value = apply_token_rules(token=..., rules=...)
-        print(value)
+    >>> from voxatlas.nlp.rule_engine import apply_token_rules
+    >>> rules = [{"name": "greeting", "token_type": "interjection", "pattern": ["hi", "hello"]}]
+    >>> apply_token_rules("Hi", rules)["token_type"]
+    'interjection'
     """
     normalized = token.strip().lower()
 

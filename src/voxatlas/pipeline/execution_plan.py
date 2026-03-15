@@ -19,10 +19,10 @@ class ExecutionPlan:
 
     Examples
     --------
-    Usage example::
-
-        plan = ExecutionPlan([["syntax.dependencies"], ["syntax.complexity.clause_depth"]])
-        print(plan.features)
+    >>> from voxatlas.pipeline.execution_plan import ExecutionPlan
+    >>> plan = ExecutionPlan([["a"], ["b", "c"]])
+    >>> plan.features
+    ['a', 'b', 'c']
     """
 
     def __init__(self, layers):

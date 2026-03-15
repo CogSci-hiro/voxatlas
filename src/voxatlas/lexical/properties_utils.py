@@ -86,8 +86,14 @@ def compute_lexical_properties(
     
     Examples
     --------
-        value = compute_lexical_properties(tokens=..., syllables=..., phonemes=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.lexical.properties_utils import compute_lexical_properties
+    >>> tokens = pd.DataFrame([{"id": 1, "token": "hello"}])
+    >>> syllables = pd.DataFrame([{"id": 10, "word_id": 1}, {"id": 11, "word_id": 1}])
+    >>> phonemes = pd.DataFrame([{"id": 20, "word_id": 1}, {"id": 21, "word_id": 1}, {"id": 22, "word_id": 1}])
+    >>> out = compute_lexical_properties(tokens=tokens, syllables=syllables, phonemes=phonemes)
+    >>> out.loc[0, ["word_length", "syllable_count", "phoneme_count"]].to_dict()
+    {'word_length': 5, 'syllable_count': 2, 'phoneme_count': 3}
     """
     if tokens is None:
         raise ValueError("Lexical property features require token units")

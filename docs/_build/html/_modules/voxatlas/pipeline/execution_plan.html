@@ -382,10 +382,10 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    Usage example::</span>
-
-<span class="sd">        plan = ExecutionPlan([[&quot;syntax.dependencies&quot;], [&quot;syntax.complexity.clause_depth&quot;]])</span>
-<span class="sd">        print(plan.features)</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.pipeline.execution_plan import ExecutionPlan</span>
+<span class="sd">    &gt;&gt;&gt; plan = ExecutionPlan([[&quot;a&quot;], [&quot;b&quot;, &quot;c&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; plan.features</span>
+<span class="sd">    [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>

@@ -102,8 +102,13 @@ def extract_inflection_features(tokens, resources=None):
     
     Examples
     --------
-        value = extract_inflection_features(tokens=..., resources=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.morphology.inflection_utils import extract_inflection_features
+    >>> tokens = pd.DataFrame([{"id": 1, "lemma": "be"}])
+    >>> resources = {"morphological_analysis": {"be": "VerbForm=Fin|Tense=Pres"}}
+    >>> out = extract_inflection_features(tokens, resources=resources)
+    >>> out.loc[0, ["VerbForm", "Tense"]].to_dict()
+    {'VerbForm': 'Fin', 'Tense': 'Pres'}
     """
     if tokens is None:
         raise ValueError("Inflection features require token units")

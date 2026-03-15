@@ -449,20 +449,17 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    Minimal usage::</span>
-
-<span class="sd">        units = Units(words=word_table, syllables=syllable_table, speaker=&quot;A&quot;)</span>
-<span class="sd">        print(units.table(&quot;word&quot;))</span>
-
-<span class="sd">    Computing durations::</span>
-
-<span class="sd">        word_durations = units.duration(&quot;word&quot;)  # end - start</span>
-
-<span class="sd">    Grouping children by explicit parent ids::</span>
-
-<span class="sd">        # Requires a ``word_id`` column on the phoneme table.</span>
-<span class="sd">        phonemes_by_word = units.children(&quot;word&quot;, &quot;phoneme&quot;)</span>
-<span class="sd">        first_word_phonemes = phonemes_by_word.get_group(10)</span>
+<span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.units import Units</span>
+<span class="sd">    &gt;&gt;&gt; words = pd.DataFrame({&quot;id&quot;: [1], &quot;start&quot;: [0.0], &quot;end&quot;: [1.0], &quot;label&quot;: [&quot;hello&quot;]})</span>
+<span class="sd">    &gt;&gt;&gt; syllables = pd.DataFrame(</span>
+<span class="sd">    ...     {&quot;id&quot;: [10], &quot;word_id&quot;: [1], &quot;start&quot;: [0.0], &quot;end&quot;: [0.5], &quot;label&quot;: [&quot;he&quot;]}</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &gt;&gt;&gt; units = Units(words=words, syllables=syllables, speaker=&quot;A&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; units.table(&quot;word&quot;).shape</span>
+<span class="sd">    (1, 4)</span>
+<span class="sd">    &gt;&gt;&gt; units.duration(&quot;word&quot;).iloc[0]</span>
+<span class="sd">    1.0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_UNIT_ATTRS</span> <span class="o">=</span> <span class="p">{</span>
@@ -536,10 +533,12 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        Usage example::</span>
-
-<span class="sd">            token_table = units.table(&quot;token&quot;)</span>
-<span class="sd">            print(token_table.head())</span>
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.units import Units</span>
+<span class="sd">        &gt;&gt;&gt; tokens = pd.DataFrame({&quot;id&quot;: [1], &quot;start&quot;: [0.0], &quot;end&quot;: [0.2], &quot;label&quot;: [&quot;hi&quot;]})</span>
+<span class="sd">        &gt;&gt;&gt; units = Units(tokens=tokens)</span>
+<span class="sd">        &gt;&gt;&gt; units.table(&quot;token&quot;).columns.tolist()</span>
+<span class="sd">        [&#39;id&#39;, &#39;start&#39;, &#39;end&#39;, &#39;label&#39;]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">table_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_unit_type</span><span class="p">(</span><span class="n">unit_type</span><span class="p">)</span>
         <span class="n">table</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span>
@@ -568,10 +567,12 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        Usage example::</span>
-
-<span class="sd">            words = units.get(&quot;word&quot;)</span>
-<span class="sd">            print(words.columns)</span>
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.units import Units</span>
+<span class="sd">        &gt;&gt;&gt; words = pd.DataFrame({&quot;id&quot;: [1], &quot;start&quot;: [0.0], &quot;end&quot;: [1.0], &quot;label&quot;: [&quot;hello&quot;]})</span>
+<span class="sd">        &gt;&gt;&gt; units = Units(words=words)</span>
+<span class="sd">        &gt;&gt;&gt; units.get(&quot;word&quot;).shape[0]</span>
+<span class="sd">        1</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">unit_type</span><span class="p">)</span></div>
 
@@ -594,10 +595,12 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        Usage example::</span>
-
-<span class="sd">            durations = units.duration(&quot;word&quot;)</span>
-<span class="sd">            print(durations.head())</span>
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.units import Units</span>
+<span class="sd">        &gt;&gt;&gt; words = pd.DataFrame({&quot;id&quot;: [1], &quot;start&quot;: [0.25], &quot;end&quot;: [1.00], &quot;label&quot;: [&quot;hello&quot;]})</span>
+<span class="sd">        &gt;&gt;&gt; units = Units(words=words)</span>
+<span class="sd">        &gt;&gt;&gt; float(units.duration(&quot;word&quot;).iloc[0])</span>
+<span class="sd">        0.75</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">unit_type</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span></div>
@@ -628,10 +631,15 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        Usage example::</span>
-
-<span class="sd">            word_ids = units.parent(&quot;syllable&quot;, &quot;word&quot;)</span>
-<span class="sd">            print(word_ids.head())</span>
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.units import Units</span>
+<span class="sd">        &gt;&gt;&gt; words = pd.DataFrame({&quot;id&quot;: [1], &quot;start&quot;: [0.0], &quot;end&quot;: [1.0], &quot;label&quot;: [&quot;hello&quot;]})</span>
+<span class="sd">        &gt;&gt;&gt; syllables = pd.DataFrame(</span>
+<span class="sd">        ...     {&quot;id&quot;: [10, 11], &quot;word_id&quot;: [1, 1], &quot;start&quot;: [0.0, 0.5], &quot;end&quot;: [0.5, 1.0], &quot;label&quot;: [&quot;he&quot;, &quot;llo&quot;]}</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; units = Units(words=words, syllables=syllables)</span>
+<span class="sd">        &gt;&gt;&gt; units.parent(&quot;syllable&quot;, &quot;word&quot;).tolist()</span>
+<span class="sd">        [1, 1]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">child_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">child_type</span><span class="p">)</span>
         <span class="n">parent_column</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_normalize_unit_type</span><span class="p">(</span><span class="n">parent_type</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">_id&quot;</span>
@@ -669,10 +677,15 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        Usage example::</span>
-
-<span class="sd">            grouped = units.children(&quot;word&quot;, &quot;phoneme&quot;)</span>
-<span class="sd">            print(grouped.ngroups)</span>
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.units import Units</span>
+<span class="sd">        &gt;&gt;&gt; words = pd.DataFrame({&quot;id&quot;: [1], &quot;start&quot;: [0.0], &quot;end&quot;: [1.0], &quot;label&quot;: [&quot;hello&quot;]})</span>
+<span class="sd">        &gt;&gt;&gt; phonemes = pd.DataFrame(</span>
+<span class="sd">        ...     {&quot;id&quot;: [100, 101], &quot;word_id&quot;: [1, 1], &quot;start&quot;: [0.0, 0.5], &quot;end&quot;: [0.5, 1.0], &quot;label&quot;: [&quot;h&quot;, &quot;i&quot;]}</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; units = Units(words=words, phonemes=phonemes)</span>
+<span class="sd">        &gt;&gt;&gt; units.children(&quot;word&quot;, &quot;phoneme&quot;).ngroups</span>
+<span class="sd">        1</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">child_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">child_type</span><span class="p">)</span>
         <span class="n">parent_column</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_normalize_unit_type</span><span class="p">(</span><span class="n">parent_type</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">_id&quot;</span>
@@ -705,10 +718,15 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        Usage example::</span>
-
-<span class="sd">            grouped = units.group(&quot;phoneme&quot;, by=&quot;word&quot;)</span>
-<span class="sd">            print(grouped.ngroups)</span>
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.units import Units</span>
+<span class="sd">        &gt;&gt;&gt; words = pd.DataFrame({&quot;id&quot;: [1], &quot;start&quot;: [0.0], &quot;end&quot;: [1.0], &quot;label&quot;: [&quot;hello&quot;]})</span>
+<span class="sd">        &gt;&gt;&gt; phonemes = pd.DataFrame(</span>
+<span class="sd">        ...     {&quot;id&quot;: [100, 101], &quot;word_id&quot;: [1, 1], &quot;start&quot;: [0.0, 0.5], &quot;end&quot;: [0.5, 1.0], &quot;label&quot;: [&quot;h&quot;, &quot;i&quot;]}</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; units = Units(words=words, phonemes=phonemes)</span>
+<span class="sd">        &gt;&gt;&gt; units.group(&quot;phoneme&quot;, by=&quot;word&quot;).ngroups</span>
+<span class="sd">        1</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">(</span><span class="n">by</span><span class="p">,</span> <span class="n">child_type</span><span class="p">)</span></div>
 </div>

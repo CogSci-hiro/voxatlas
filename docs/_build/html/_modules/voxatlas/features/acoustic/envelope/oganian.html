@@ -372,27 +372,61 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">OganianEnvelope</span><span class="p">(</span><span class="n">BaseExtractor</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract the ``acoustic.envelope.oganian`` feature within the VoxAtlas pipeline.</span>
-<span class="sd">    </span>
-<span class="sd">    This public extractor defines the reusable API for computing ``acoustic.envelope.oganian`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.</span>
-<span class="sd">    </span>
+
+<span class="sd">    Computes a smoothed, frame-aligned amplitude envelope derived from the</span>
+<span class="sd">    Hilbert analytic signal. This envelope is the precursor contour used by</span>
+<span class="sd">    Oganian &amp; Chang (2019) to define speech envelope landmarks, and is intended</span>
+<span class="sd">    as a base contour for downstream onset/peak-rate style features.</span>
+
 <span class="sd">    Algorithm</span>
 <span class="sd">    ---------</span>
-<span class="sd">    The extractor follows the standard VoxAtlas feature-computation pattern.</span>
-<span class="sd">    </span>
-<span class="sd">    1. Input preparation</span>
-<span class="sd">       Structured audio, unit tables, and dependency outputs are gathered from ``feature_input``.</span>
-<span class="sd">    </span>
-<span class="sd">    2. Feature-specific computation</span>
-<span class="sd">       The implementation applies the domain-specific transformation required by this extractor.</span>
-<span class="sd">    </span>
-<span class="sd">    3. Packaging</span>
-<span class="sd">       Results are aligned to ``frame`` units and returned as a ``FeatureOutput`` object.</span>
-<span class="sd">    </span>
+<span class="sd">    The implementation mirrors the code path.</span>
+
+<span class="sd">    1. Analytic-signal envelope</span>
+<span class="sd">       Given waveform :math:`x[n]`, the extractor forms</span>
+
+<span class="sd">       .. math::</span>
+
+<span class="sd">          z[n] = x[n] + j\,\mathcal{H}\{x[n]\},</span>
+
+<span class="sd">       where :math:`\mathcal{H}` is the Hilbert transform, and computes the</span>
+<span class="sd">       magnitude envelope :math:`a[n] = |z[n]|`.</span>
+
+<span class="sd">    2. Frame pooling</span>
+<span class="sd">       :math:`a[n]` is segmented into overlapping analysis frames and converted</span>
+<span class="sd">       into a frame-level contour by taking the mean amplitude per frame.</span>
+
+<span class="sd">    3. Smoothing</span>
+<span class="sd">       The resulting frame contour is smoothed with a short moving-average</span>
+<span class="sd">       window of length ``smoothing`` frames.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str</span>
+<span class="sd">        Registry key for this extractor (``&quot;acoustic.envelope.oganian&quot;``).</span>
+<span class="sd">    input_units : str | None</span>
+<span class="sd">        Required input unit level. ``None`` means this extractor operates</span>
+<span class="sd">        directly on waveform audio.</span>
+<span class="sd">    output_units : str | None</span>
+<span class="sd">        Output alignment unit (``&quot;frame&quot;``).</span>
+<span class="sd">    dependencies : list[str]</span>
+<span class="sd">        Upstream features required before execution. Empty for this extractor.</span>
+<span class="sd">    default_config : dict</span>
+<span class="sd">        Default runtime parameters:</span>
+<span class="sd">        ``frame_length=0.025``, ``frame_step=0.01``,</span>
+<span class="sd">        ``peak_threshold=0.1``, ``smoothing=7``.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Oganian, Y., &amp; Chang, E. F. (2019). A speech envelope landmark for syllable</span>
+<span class="sd">        encoding in human superior temporal gyrus. *Science Advances, 5*(11),</span>
+<span class="sd">        eaay6279. https://doi.org/10.1126/sciadv.aay6279</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">        from voxatlas.features.acoustic.envelope.oganian import OganianEnvelope</span>
 <span class="sd">        from voxatlas.features.feature_input import FeatureInput</span>
-<span class="sd">    </span>
+
 <span class="sd">        extractor = OganianEnvelope()</span>
 <span class="sd">        feature_input = FeatureInput(audio=audio, units=units, context={})</span>
 <span class="sd">        output = extractor.compute(feature_input, {})</span>

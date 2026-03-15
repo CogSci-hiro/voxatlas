@@ -31,8 +31,16 @@ def load_canonical_vocab(path):
     
     Examples
     --------
-        value = load_canonical_vocab(path=...)
-        print(value)
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> from voxatlas.nlp.vocab_loader import load_canonical_vocab
+    >>> csv_text = "token_id,canonical,lemma,pos,token_type,source\\n1,hello,hello,INTJ,word,example\\n"
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     path = Path(tmp) / "vocab.csv"
+    ...     _ = path.write_text(csv_text, encoding="utf-8")
+    ...     vocab = load_canonical_vocab(path)
+    ...     vocab.loc[0, \"canonical\"]
+    'hello'
     """
     vocab = pd.read_csv(Path(path))
     missing_columns = REQUIRED_VOCAB_COLUMNS - set(vocab.columns)

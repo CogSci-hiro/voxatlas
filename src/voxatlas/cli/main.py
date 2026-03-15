@@ -24,10 +24,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     Examples
     --------
-    Usage example::
-
-        parser = build_parser()
-        print(parser.prog)
+    >>> import argparse
+    >>> from voxatlas.cli.main import build_parser
+    >>> parser = build_parser()
+    >>> isinstance(parser, argparse.ArgumentParser)
+    True
     """
     parser = argparse.ArgumentParser(
         prog="voxatlas",
@@ -64,9 +65,10 @@ def main() -> None:
 
     Examples
     --------
-    Usage example::
-
-        main()
+    >>> from voxatlas.cli.main import build_parser
+    >>> parser = build_parser()
+    >>> "VoxAtlas" in parser.format_help()
+    True
     """
     configure_logging()
     parser = build_parser()

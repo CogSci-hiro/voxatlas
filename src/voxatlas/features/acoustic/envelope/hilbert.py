@@ -47,6 +47,10 @@ class HilbertEnvelope(BaseExtractor):
         ``frame_length=0.025``, ``frame_step=0.01``,
         ``peak_threshold=0.1``, ``smoothing=1``.
 
+    References
+    ----------
+    Cohen, L. (1995). *Time-Frequency Analysis*. Prentice Hall.
+
     Examples
     --------
         from voxatlas.features.acoustic.envelope.hilbert import HilbertEnvelope

@@ -38,8 +38,11 @@ def require_column(table: pd.DataFrame, column: str) -> str:
     
     Examples
     --------
-        value = require_column(table=..., column=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import require_column
+    >>> table = pd.DataFrame({"id": [1, 2], "token": ["hello", "world"]})
+    >>> require_column(table, "token")
+    'token'
     """
     if column not in table.columns:
         raise ValueError(f"Dependency features require a '{column}' column")
@@ -72,8 +75,11 @@ def find_first_column(table: pd.DataFrame, columns: Iterable[str]) -> str | None
     
     Examples
     --------
-        value = find_first_column(table=..., columns=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import find_first_column
+    >>> table = pd.DataFrame({"upos": ["NOUN"]})
+    >>> find_first_column(table, ["pos", "upos"])
+    'upos'
     """
     for column in columns:
         if column in table.columns:
@@ -105,8 +111,11 @@ def sentence_slices(tokens: pd.DataFrame) -> list[pd.DataFrame]:
     
     Examples
     --------
-        value = sentence_slices(tokens=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import sentence_slices
+    >>> tokens = pd.DataFrame({"id": [1, 2, 3], "sentence_id": [0, 0, 1], "token": ["a", "b", "c"]})
+    >>> [len(s) for s in sentence_slices(tokens)]
+    [2, 1]
     """
     sentence_id_col = find_first_column(tokens, SENTENCE_ID_COLUMNS)
     if sentence_id_col is not None:
@@ -159,8 +168,11 @@ def sentence_identifier(sentence: pd.DataFrame, fallback: int) -> int:
     
     Examples
     --------
-        value = sentence_identifier(sentence=..., fallback=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import sentence_identifier
+    >>> sentence = pd.DataFrame({"sentence_id": [3], "token": ["x"]})
+    >>> sentence_identifier(sentence, fallback=0)
+    3
     """
     sentence_id_col = find_first_column(sentence, SENTENCE_ID_COLUMNS)
     if sentence_id_col is None or sentence.empty:
@@ -203,8 +215,20 @@ def build_dependency_table_from_annotations(tokens: pd.DataFrame) -> pd.DataFram
     
     Examples
     --------
-        value = build_dependency_table_from_annotations(tokens=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import build_dependency_table_from_annotations
+    >>> tokens = pd.DataFrame(
+    ...     {
+    ...         "id": [1, 2],
+    ...         "token": ["hello", "world"],
+    ...         "head": [2, 0],
+    ...         "dep_rel": ["nsubj", "root"],
+    ...         "pos": ["INTJ", "NOUN"],
+    ...     }
+    ... )
+    >>> table = build_dependency_table_from_annotations(tokens)
+    >>> table.loc[:, ["token_id", "head_id", "dep_label", "pos"]].to_dict(orient="list")
+    {'token_id': [1, 2], 'head_id': [2, 0], 'dep_label': ['nsubj', 'root'], 'pos': ['INTJ', 'NOUN']}
     """
     id_col = require_column(tokens, "id")
     head_col = find_first_column(tokens, HEAD_COLUMNS)
@@ -262,8 +286,11 @@ def has_dependency_annotations(tokens: pd.DataFrame) -> bool:
     
     Examples
     --------
-        value = has_dependency_annotations(tokens=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import has_dependency_annotations
+    >>> tokens = pd.DataFrame({"id": [1], "head": [0], "dep_rel": ["root"], "pos": ["X"]})
+    >>> has_dependency_annotations(tokens)
+    True
     """
     return (
         "id" in tokens.columns
@@ -322,8 +349,12 @@ def finalize_dependency_table(table: pd.DataFrame) -> pd.DataFrame:
     
     Examples
     --------
-        value = finalize_dependency_table(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import finalize_dependency_table
+    >>> raw = pd.DataFrame({"token_id": [1], "head_id": [pd.NA], "dep_label": ["root"], "pos": ["X"]})
+    >>> finalized = finalize_dependency_table(raw)
+    >>> sorted({"id", "token_id", "head_id", "dep_label", "upos"} - set(finalized.columns))
+    []
     """
     normalized = table.copy()
     normalized["token_id"] = pd.to_numeric(normalized["token_id"], errors="coerce").astype(
@@ -508,8 +539,18 @@ def parse_dependency_annotations(tokens: pd.DataFrame, params: dict | None = Non
     
     Examples
     --------
-        value = parse_dependency_annotations(tokens=..., params=..., context=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import parse_dependency_annotations
+    >>> tokens = pd.DataFrame({"id": [1, 2], "token": ["hello", "world"], "sentence_id": [0, 0]})
+    >>> def parser(sentences):
+    ...     rows = []
+    ...     for sentence in sentences:
+    ...         for token_id in sentence["id"].tolist():
+    ...             rows.append({"token_id": token_id, "head_id": pd.NA, "dep_label": "root", "pos": "X", "sentence_id": 0})
+    ...     return pd.DataFrame(rows)
+    >>> parsed = parse_dependency_annotations(tokens, params={"parser": parser})
+    >>> parsed.loc[:, ["token_id", "dep_label"]].to_dict(orient="list")
+    {'token_id': [1, 2], 'dep_label': ['root', 'root']}
     """
     params = params or {}
     context = context or {}
@@ -567,8 +608,14 @@ def extract_dependency_features(tokens: pd.DataFrame, params: dict | None = None
     
     Examples
     --------
-        value = extract_dependency_features(tokens=..., params=..., context=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import extract_dependency_features
+    >>> tokens = pd.DataFrame(
+    ...     {"id": [1, 2], "token": ["hello", "world"], "head": [2, 0], "dep_rel": ["nsubj", "root"], "pos": ["INTJ", "NOUN"]}
+    ... )
+    >>> out = extract_dependency_features(tokens)
+    >>> out.loc[:, ["token_id", "head_id"]].to_dict(orient="list")
+    {'token_id': [1, 2], 'head_id': [2, 0]}
     """
     if tokens is None:
         raise ValueError("syntax.dependencies requires token units")
@@ -604,8 +651,11 @@ def signed_head_distance(table: pd.DataFrame) -> pd.Series:
     
     Examples
     --------
-        value = signed_head_distance(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import signed_head_distance
+    >>> table = pd.DataFrame({"token_id": [1, 2], "head_id": [2, pd.NA]})
+    >>> signed_head_distance(table).to_dict()
+    {1: 1.0, 2: 0.0}
     """
     distances = []
     for row in table.itertuples(index=False):
@@ -640,7 +690,10 @@ def absolute_dependency_distance(table: pd.DataFrame) -> pd.Series:
     
     Examples
     --------
-        value = absolute_dependency_distance(table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.syntax.dependency_utils import absolute_dependency_distance
+    >>> table = pd.DataFrame({"token_id": [1, 2], "head_id": [2, pd.NA]})
+    >>> absolute_dependency_distance(table).to_dict()
+    {1: 1.0, 2: 0.0}
     """
     return signed_head_distance(table).abs().astype("float32")

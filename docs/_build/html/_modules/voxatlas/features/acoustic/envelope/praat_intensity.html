@@ -372,27 +372,53 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">PraatIntensityEnvelope</span><span class="p">(</span><span class="n">BaseExtractor</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract the ``acoustic.envelope.praat_intensity`` feature within the VoxAtlas pipeline.</span>
-<span class="sd">    </span>
-<span class="sd">    This public extractor defines the reusable API for computing ``acoustic.envelope.praat_intensity`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.</span>
-<span class="sd">    </span>
+
+<span class="sd">    Computes a smoothed, frame-aligned intensity-like contour intended to serve</span>
+<span class="sd">    as a lightweight proxy for Praat-style intensity tracking.</span>
+
 <span class="sd">    Algorithm</span>
 <span class="sd">    ---------</span>
-<span class="sd">    The extractor follows the standard VoxAtlas feature-computation pattern.</span>
-<span class="sd">    </span>
-<span class="sd">    1. Input preparation</span>
-<span class="sd">       Structured audio, unit tables, and dependency outputs are gathered from ``feature_input``.</span>
-<span class="sd">    </span>
-<span class="sd">    2. Feature-specific computation</span>
-<span class="sd">       The implementation applies the domain-specific transformation required by this extractor.</span>
-<span class="sd">    </span>
-<span class="sd">    3. Packaging</span>
-<span class="sd">       Results are aligned to ``frame`` units and returned as a ``FeatureOutput`` object.</span>
-<span class="sd">    </span>
+<span class="sd">    The implementation mirrors the code path.</span>
+
+<span class="sd">    1. RMS amplitude</span>
+<span class="sd">       The waveform is framed and converted to RMS values :math:`r_t`.</span>
+
+<span class="sd">    2. Smoothing</span>
+<span class="sd">       The RMS contour is smoothed with a moving-average window of length</span>
+<span class="sd">       ``smoothing`` frames.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This extractor does not attempt to reproduce Praat&#39;s full intensity</span>
+<span class="sd">    computation (e.g., frequency weighting and dB scaling). It provides a</span>
+<span class="sd">    consistent, frame-aligned contour suitable for downstream transforms.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str</span>
+<span class="sd">        Registry key for this extractor (``&quot;acoustic.envelope.praat_intensity&quot;``).</span>
+<span class="sd">    input_units : str | None</span>
+<span class="sd">        Required input unit level. ``None`` means this extractor operates</span>
+<span class="sd">        directly on waveform audio.</span>
+<span class="sd">    output_units : str | None</span>
+<span class="sd">        Output alignment unit (``&quot;frame&quot;``).</span>
+<span class="sd">    dependencies : list[str]</span>
+<span class="sd">        Upstream features required before execution. Empty for this extractor.</span>
+<span class="sd">    default_config : dict</span>
+<span class="sd">        Default runtime parameters:</span>
+<span class="sd">        ``frame_length=0.025``, ``frame_step=0.01``,</span>
+<span class="sd">        ``peak_threshold=0.1``, ``smoothing=5``.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Boersma, P. (2001). Praat, a system for doing phonetics by computer.</span>
+<span class="sd">    *Glot International, 5*(9/10), 341–345.</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">        from voxatlas.features.acoustic.envelope.praat_intensity import PraatIntensityEnvelope</span>
 <span class="sd">        from voxatlas.features.feature_input import FeatureInput</span>
-<span class="sd">    </span>
+
 <span class="sd">        extractor = PraatIntensityEnvelope()</span>
 <span class="sd">        feature_input = FeatureInput(audio=audio, units=units, context={})</span>
 <span class="sd">        output = extractor.compute(feature_input, {})</span>

@@ -41,8 +41,9 @@ def load_derivational_resources(
     
     Examples
     --------
-        value = load_derivational_resources(language=..., resource_root=...)
-        print(value)
+    >>> from voxatlas.morphology.derivation_utils import load_derivational_resources
+    >>> load_derivational_resources(language="")  # no language resources
+    {'prefixes': [], 'suffixes': []}
     """
     language = (language or "").strip()
     root = Path(resource_root) if resource_root is not None else _default_resource_root()
@@ -114,8 +115,12 @@ def segment_token(token_row: pd.Series, resources: dict[str, list[str]]) -> dict
     
     Examples
     --------
-        value = segment_token(token_row=..., resources=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.morphology.derivation_utils import segment_token
+    >>> token_row = pd.Series({"id": 1, "token": "unhappy"})
+    >>> resources = {"prefixes": ["un"], "suffixes": []}
+    >>> segment_token(token_row, resources)["morphemes"]
+    ['un', 'happy']
     """
     token_form = _normalized_form(token_row)
     lemma_form = _lemma_form(token_row)
@@ -188,8 +193,13 @@ def segment_tokens(tokens: pd.DataFrame, resources: dict[str, list[str]]) -> pd.
     
     Examples
     --------
-        value = segment_tokens(tokens=..., resources=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.morphology.derivation_utils import segment_tokens
+    >>> tokens = pd.DataFrame([{"id": 1, "token": "unhappy"}])
+    >>> resources = {"prefixes": ["un"], "suffixes": []}
+    >>> out = segment_tokens(tokens, resources)
+    >>> out.loc[0, "stem"]
+    'happy'
     """
     if tokens is None:
         raise ValueError("Derivational segmentation requires token units")

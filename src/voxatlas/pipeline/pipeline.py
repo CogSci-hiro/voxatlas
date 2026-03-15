@@ -45,23 +45,18 @@ class VoxAtlasPipeline:
 
     Examples
     --------
-    Usage example::
-
-        from voxatlas.io import load_dataset
-        from voxatlas.pipeline import Pipeline
-
-        dataset = load_dataset("/path/to/dataset", "conversation01")
-        stream = dataset.streams()[0]
-        pipeline = Pipeline(
-            audio=stream.audio,
-            units=stream.units,
-            config={
-                "features": ["acoustic.pitch.f0"],
-                "pipeline": {"n_jobs": 1, "cache": False},
-            },
-        )
-        results = pipeline.run()
-        print(results.get("acoustic.pitch.f0"))
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.pipeline import Pipeline
+    >>> audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)
+    >>> pipeline = Pipeline(
+    ...     audio=audio,
+    ...     units=None,
+    ...     config={"features": ["acoustic.pitch.dummy"], "pipeline": {"n_jobs": 1, "cache": False}},
+    ... )
+    >>> results = pipeline.run()
+    >>> results.exists("acoustic.pitch.dummy")
+    True
     """
 
     def __init__(self, audio, units, config):
@@ -206,10 +201,18 @@ class VoxAtlasPipeline:
 
         Examples
         --------
-        Usage example::
-
-            results = pipeline.run()
-            print(results.exists("acoustic.pitch.f0"))
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.pipeline import Pipeline
+        >>> audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)
+        >>> pipeline = Pipeline(
+        ...     audio=audio,
+        ...     units=None,
+        ...     config={"features": ["acoustic.pitch.dummy"], "pipeline": {"n_jobs": 1, "cache": False}},
+        ... )
+        >>> results = pipeline.run()
+        >>> results.exists("acoustic.pitch.dummy")
+        True
         """
         self._validate_features()
         execution_plan = self._build_execution_plan()

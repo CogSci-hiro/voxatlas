@@ -42,8 +42,16 @@ def compute_stft(signal, sr, frame_length, frame_step):
     
     Examples
     --------
-        value = compute_stft(signal=..., sr=..., frame_length=..., frame_step=...)
-        print(value)
+    >>> import numpy as np
+    >>> from voxatlas.acoustic.spectrogram_utils import compute_stft
+    >>> times, freqs, stft_matrix = compute_stft(
+    ...     signal=np.zeros(1600, dtype=np.float32),
+    ...     sr=16000,
+    ...     frame_length=0.02,
+    ...     frame_step=0.01,
+    ... )
+    >>> (times.ndim, freqs.ndim, stft_matrix.ndim)
+    (1, 1, 2)
     """
     signal = np.asarray(signal, dtype=np.float32)
 
@@ -106,8 +114,10 @@ def compute_mel_filterbank(sr, n_fft, n_mels, fmin, fmax):
     
     Examples
     --------
-        value = compute_mel_filterbank(sr=..., n_fft=..., n_mels=..., fmin=..., fmax=...)
-        print(value)
+    >>> from voxatlas.acoustic.spectrogram_utils import compute_mel_filterbank
+    >>> fb, centers = compute_mel_filterbank(sr=16000, n_fft=512, n_mels=10, fmin=0.0, fmax=8000.0)
+    >>> (fb.shape[0], len(centers))
+    (10, 10)
     """
     if fmax is None:
         fmax = sr / 2.0
@@ -162,8 +172,13 @@ def compute_mel_spectrogram(stft_matrix, mel_filterbank):
     
     Examples
     --------
-        value = compute_mel_spectrogram(stft_matrix=..., mel_filterbank=...)
-        print(value)
+    >>> import numpy as np
+    >>> from voxatlas.acoustic.spectrogram_utils import compute_mel_filterbank, compute_mel_spectrogram, compute_stft
+    >>> _, _, stft_matrix = compute_stft(np.zeros(1600, dtype=np.float32), 16000, 0.02, 0.01)
+    >>> fb, _ = compute_mel_filterbank(sr=16000, n_fft=512, n_mels=10, fmin=0.0, fmax=8000.0)
+    >>> mel = compute_mel_spectrogram(stft_matrix, fb)
+    >>> mel.shape[1]
+    10
     """
     stft_matrix = np.asarray(stft_matrix, dtype=np.float32)
     mel_filterbank = np.asarray(mel_filterbank, dtype=np.float32)

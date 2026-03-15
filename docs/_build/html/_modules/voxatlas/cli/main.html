@@ -385,10 +385,11 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    Usage example::</span>
-
-<span class="sd">        parser = build_parser()</span>
-<span class="sd">        print(parser.prog)</span>
+<span class="sd">    &gt;&gt;&gt; import argparse</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.cli.main import build_parser</span>
+<span class="sd">    &gt;&gt;&gt; parser = build_parser()</span>
+<span class="sd">    &gt;&gt;&gt; isinstance(parser, argparse.ArgumentParser)</span>
+<span class="sd">    True</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
         <span class="n">prog</span><span class="o">=</span><span class="s2">&quot;voxatlas&quot;</span><span class="p">,</span>
@@ -427,9 +428,10 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    Usage example::</span>
-
-<span class="sd">        main()</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.cli.main import build_parser</span>
+<span class="sd">    &gt;&gt;&gt; parser = build_parser()</span>
+<span class="sd">    &gt;&gt;&gt; &quot;VoxAtlas&quot; in parser.format_help()</span>
+<span class="sd">    True</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">configure_logging</span><span class="p">()</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">build_parser</span><span class="p">()</span>

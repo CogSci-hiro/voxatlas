@@ -86,20 +86,17 @@ class Units:
 
     Examples
     --------
-    Minimal usage::
-
-        units = Units(words=word_table, syllables=syllable_table, speaker="A")
-        print(units.table("word"))
-
-    Computing durations::
-
-        word_durations = units.duration("word")  # end - start
-
-    Grouping children by explicit parent ids::
-
-        # Requires a ``word_id`` column on the phoneme table.
-        phonemes_by_word = units.children("word", "phoneme")
-        first_word_phonemes = phonemes_by_word.get_group(10)
+    >>> import pandas as pd
+    >>> from voxatlas.units import Units
+    >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0], "label": ["hello"]})
+    >>> syllables = pd.DataFrame(
+    ...     {"id": [10], "word_id": [1], "start": [0.0], "end": [0.5], "label": ["he"]}
+    ... )
+    >>> units = Units(words=words, syllables=syllables, speaker="A")
+    >>> units.table("word").shape
+    (1, 4)
+    >>> units.duration("word").iloc[0]
+    1.0
     """
 
     _UNIT_ATTRS = {
@@ -171,10 +168,12 @@ class Units:
 
         Examples
         --------
-        Usage example::
-
-            token_table = units.table("token")
-            print(token_table.head())
+        >>> import pandas as pd
+        >>> from voxatlas.units import Units
+        >>> tokens = pd.DataFrame({"id": [1], "start": [0.0], "end": [0.2], "label": ["hi"]})
+        >>> units = Units(tokens=tokens)
+        >>> units.table("token").columns.tolist()
+        ['id', 'start', 'end', 'label']
         """
         table_name = self._normalize_unit_type(unit_type)
         table = getattr(self, table_name)
@@ -200,10 +199,12 @@ class Units:
 
         Examples
         --------
-        Usage example::
-
-            words = units.get("word")
-            print(words.columns)
+        >>> import pandas as pd
+        >>> from voxatlas.units import Units
+        >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0], "label": ["hello"]})
+        >>> units = Units(words=words)
+        >>> units.get("word").shape[0]
+        1
         """
         return self.table(unit_type)
 
@@ -223,10 +224,12 @@ class Units:
 
         Examples
         --------
-        Usage example::
-
-            durations = units.duration("word")
-            print(durations.head())
+        >>> import pandas as pd
+        >>> from voxatlas.units import Units
+        >>> words = pd.DataFrame({"id": [1], "start": [0.25], "end": [1.00], "label": ["hello"]})
+        >>> units = Units(words=words)
+        >>> float(units.duration("word").iloc[0])
+        0.75
         """
         table = self.table(unit_type)
         return table["end"] - table["start"]
@@ -254,10 +257,15 @@ class Units:
 
         Examples
         --------
-        Usage example::
-
-            word_ids = units.parent("syllable", "word")
-            print(word_ids.head())
+        >>> import pandas as pd
+        >>> from voxatlas.units import Units
+        >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0], "label": ["hello"]})
+        >>> syllables = pd.DataFrame(
+        ...     {"id": [10, 11], "word_id": [1, 1], "start": [0.0, 0.5], "end": [0.5, 1.0], "label": ["he", "llo"]}
+        ... )
+        >>> units = Units(words=words, syllables=syllables)
+        >>> units.parent("syllable", "word").tolist()
+        [1, 1]
         """
         child_table = self.table(child_type)
         parent_column = f"{self._normalize_unit_type(parent_type)[:-1]}_id"
@@ -292,10 +300,15 @@ class Units:
 
         Examples
         --------
-        Usage example::
-
-            grouped = units.children("word", "phoneme")
-            print(grouped.ngroups)
+        >>> import pandas as pd
+        >>> from voxatlas.units import Units
+        >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0], "label": ["hello"]})
+        >>> phonemes = pd.DataFrame(
+        ...     {"id": [100, 101], "word_id": [1, 1], "start": [0.0, 0.5], "end": [0.5, 1.0], "label": ["h", "i"]}
+        ... )
+        >>> units = Units(words=words, phonemes=phonemes)
+        >>> units.children("word", "phoneme").ngroups
+        1
         """
         child_table = self.table(child_type)
         parent_column = f"{self._normalize_unit_type(parent_type)[:-1]}_id"
@@ -325,9 +338,14 @@ class Units:
 
         Examples
         --------
-        Usage example::
-
-            grouped = units.group("phoneme", by="word")
-            print(grouped.ngroups)
+        >>> import pandas as pd
+        >>> from voxatlas.units import Units
+        >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0], "label": ["hello"]})
+        >>> phonemes = pd.DataFrame(
+        ...     {"id": [100, 101], "word_id": [1, 1], "start": [0.0, 0.5], "end": [0.5, 1.0], "label": ["h", "i"]}
+        ... )
+        >>> units = Units(words=words, phonemes=phonemes)
+        >>> units.group("phoneme", by="word").ngroups
+        1
         """
         return self.children(by, child_type)

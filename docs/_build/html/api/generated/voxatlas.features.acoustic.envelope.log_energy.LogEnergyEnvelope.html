@@ -561,22 +561,87 @@
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">voxatlas.features.acoustic.envelope.log_energy.</span></span><span class="sig-name descname"><span class="pre">LogEnergyEnvelope</span></span><a class="reference internal" href="../../_modules/voxatlas/features/acoustic/envelope/log_energy.html#LogEnergyEnvelope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="voxatlas.features.base_extractor.BaseExtractor.html#voxatlas.features.base_extractor.BaseExtractor" title="voxatlas.features.base_extractor.BaseExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExtractor</span></code></a></p>
 <p>Extract the <code class="docutils literal notranslate"><span class="pre">acoustic.envelope.log_energy</span></code> feature within the VoxAtlas pipeline.</p>
-<p>This public extractor defines the reusable API for computing <code class="docutils literal notranslate"><span class="pre">acoustic.envelope.log_energy</span></code> from VoxAtlas structured inputs. It consumes <code class="docutils literal notranslate"><span class="pre">None</span></code> units and produces values aligned to <code class="docutils literal notranslate"><span class="pre">frame</span></code> units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.</p>
+<p>Computes a smoothed, frame-aligned log-energy contour from the waveform by
+applying a logarithmic transform to a non-negative RMS amplitude envelope.</p>
 <section id="algorithm">
 <h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h2>
-<p>The extractor transforms the RMS envelope into a log-amplitude representation that compresses large dynamic-range differences.</p>
+<p>The implementation mirrors the code path.</p>
 <ol class="arabic">
-<li><p>RMS dependency
-The upstream RMS contour supplies a non-negative amplitude <span class="math notranslate nohighlight">\(r_t\)</span> at each frame.</p></li>
+<li><p>RMS amplitude
+The waveform is framed and converted to RMS values <span class="math notranslate nohighlight">\(r_t \ge 0\)</span>.</p></li>
 <li><p>Log transform
-The implementation computes</p>
+VoxAtlas computes</p>
 <div class="math notranslate nohighlight">
 \[e_t = \log(\max(r_t, \varepsilon)),\]</div>
-<p>where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a small numerical floor to avoid taking the logarithm of zero.</p>
+<p>where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a small numerical floor.</p>
 </li>
-<li><p>Packaging
-The transformed contour remains frame-aligned and can be quoted directly as a log-energy envelope in downstream analyses.</p></li>
+<li><p>Smoothing
+The resulting contour is optionally smoothed with a moving-average window
+of length <code class="docutils literal notranslate"><span class="pre">smoothing</span></code> frames.</p></li>
 </ol>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.name" title="Link to this definition">#</a></dt>
+<dd><p>Registry key for this extractor (<code class="docutils literal notranslate"><span class="pre">&quot;acoustic.envelope.log_energy&quot;</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.input_units">
+<span class="sig-name descname"><span class="pre">input_units</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.input_units" title="Link to this definition">#</a></dt>
+<dd><p>Required input unit level. <code class="docutils literal notranslate"><span class="pre">None</span></code> means this extractor operates
+directly on waveform audio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.output_units">
+<span class="sig-name descname"><span class="pre">output_units</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.output_units" title="Link to this definition">#</a></dt>
+<dd><p>Output alignment unit (<code class="docutils literal notranslate"><span class="pre">&quot;frame&quot;</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.dependencies" title="Link to this definition">#</a></dt>
+<dd><p>Upstream features required before execution. Empty for this extractor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.default_config">
+<span class="sig-name descname"><span class="pre">default_config</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.default_config" title="Link to this definition">#</a></dt>
+<dd><p>Default runtime parameters:
+<code class="docutils literal notranslate"><span class="pre">frame_length=0.025</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_step=0.01</span></code>,
+<code class="docutils literal notranslate"><span class="pre">peak_threshold=0.1</span></code>, <code class="docutils literal notranslate"><span class="pre">smoothing=1</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">References</p>
+<p>Davis, S. B., &amp; Mermelstein, P. (1980). Comparison of parametric
+representations for monosyllabic word recognition in continuously spoken
+sentences. <a href="#id1"><span class="problematic" id="id2">*</span></a>IEEE Transactions on Acoustics, Speech, and Signal Processing,
+28*(4), 357–366. <a class="reference external" href="https://doi.org/10.1109/TASSP.1980.1163420">https://doi.org/10.1109/TASSP.1980.1163420</a></p>
 <p class="rubric">Examples</p>
 <p>from voxatlas.features.acoustic.envelope.log_energy import LogEnergyEnvelope
 from voxatlas.features.feature_input import FeatureInput</p>
@@ -585,28 +650,28 @@ feature_input = FeatureInput(audio=audio, units=units, context={})
 output = extractor.compute(feature_input, {})
 print(output)</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'acoustic.envelope.log_energy'</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.name" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'acoustic.envelope.log_energy'</span></span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.input_units">
-<span class="sig-name descname"><span class="pre">input_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.input_units" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">input_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.output_units">
-<span class="sig-name descname"><span class="pre">output_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frame'</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.output_units" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">output_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frame'</span></span><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.dependencies">
-<span class="sig-name descname"><span class="pre">dependencies</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.dependencies" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#id5" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.default_config">
-<span class="sig-name descname"><span class="pre">default_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'frame_length':</span> <span class="pre">0.025,</span> <span class="pre">'frame_step':</span> <span class="pre">0.01,</span> <span class="pre">'peak_threshold':</span> <span class="pre">0.1,</span> <span class="pre">'smoothing':</span> <span class="pre">1}</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.default_config" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">default_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'frame_length':</span> <span class="pre">0.025,</span> <span class="pre">'frame_step':</span> <span class="pre">0.01,</span> <span class="pre">'peak_threshold':</span> <span class="pre">0.1,</span> <span class="pre">'smoothing':</span> <span class="pre">1}</span></span><a class="headerlink" href="#id6" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -698,6 +763,11 @@ print(output)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.output_units"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.output_units</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.dependencies"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.dependencies</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.default_config"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.default_config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.input_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.output_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.dependencies</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.default_config</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.compute"><code class="docutils literal notranslate"><span class="pre">LogEnergyEnvelope.compute()</span></code></a></li>
 </ul>
 </li>

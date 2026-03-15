@@ -26,13 +26,16 @@ class DummyPitchExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.example_pitch import DummyPitchExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = DummyPitchExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.example_pitch import DummyPitchExtractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)
+    >>> extractor = DummyPitchExtractor()
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+    >>> output = extractor.compute(feature_input, {})
+    >>> output.feature
+    'acoustic.pitch.dummy'
     """
     name = "acoustic.pitch.dummy"
     output_units = "conversation"
@@ -57,10 +60,16 @@ class DummyPitchExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = DummyPitchExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.example_pitch import DummyPitchExtractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)
+        >>> extractor = DummyPitchExtractor()
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+        >>> result = extractor.compute(feature_input, {})
+        >>> float(result.values.iloc[0])
+        0.0
         """
         if feature_input.audio is None and feature_input.units is None:
             raise ValueError(

@@ -561,7 +561,8 @@
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">voxatlas.features.acoustic.envelope.rms.</span></span><span class="sig-name descname"><span class="pre">RMSEnvelope</span></span><a class="reference internal" href="../../_modules/voxatlas/features/acoustic/envelope/rms.html#RMSEnvelope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="voxatlas.features.base_extractor.BaseExtractor.html#voxatlas.features.base_extractor.BaseExtractor" title="voxatlas.features.base_extractor.BaseExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExtractor</span></code></a></p>
 <p>Extract the <code class="docutils literal notranslate"><span class="pre">acoustic.envelope.rms</span></code> feature within the VoxAtlas pipeline.</p>
-<p>This public extractor defines the reusable API for computing <code class="docutils literal notranslate"><span class="pre">acoustic.envelope.rms</span></code> from VoxAtlas structured inputs. It consumes <code class="docutils literal notranslate"><span class="pre">None</span></code> units and produces values aligned to <code class="docutils literal notranslate"><span class="pre">frame</span></code> units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.</p>
+<p>Computes a smoothed, frame-aligned root-mean-square (RMS) amplitude envelope
+from the raw waveform.</p>
 <section id="algorithm">
 <h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h2>
 <p>The extractor computes a frame-level root-mean-square amplitude envelope from the waveform.</p>
@@ -576,6 +577,67 @@ For each frame <span class="math notranslate nohighlight">\(x_t[n]\)</span>, the
 <li><p>Output alignment
 RMS values are returned with frame midpoints so that derived features such as derivatives, onsets, and peak rate can reuse the same temporal grid.</p></li>
 </ol>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.name" title="Link to this definition">#</a></dt>
+<dd><p>Registry key for this extractor (<code class="docutils literal notranslate"><span class="pre">&quot;acoustic.envelope.rms&quot;</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.input_units">
+<span class="sig-name descname"><span class="pre">input_units</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.input_units" title="Link to this definition">#</a></dt>
+<dd><p>Required input unit level. <code class="docutils literal notranslate"><span class="pre">None</span></code> means this extractor operates
+directly on waveform audio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.output_units">
+<span class="sig-name descname"><span class="pre">output_units</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.output_units" title="Link to this definition">#</a></dt>
+<dd><p>Output alignment unit (<code class="docutils literal notranslate"><span class="pre">&quot;frame&quot;</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.dependencies" title="Link to this definition">#</a></dt>
+<dd><p>Upstream features required before execution. Empty for this extractor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.default_config">
+<span class="sig-name descname"><span class="pre">default_config</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.default_config" title="Link to this definition">#</a></dt>
+<dd><p>Default runtime parameters:
+<code class="docutils literal notranslate"><span class="pre">frame_length=0.025</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_step=0.01</span></code>,
+<code class="docutils literal notranslate"><span class="pre">peak_threshold=0.1</span></code>, <code class="docutils literal notranslate"><span class="pre">smoothing=1</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">References</p>
+<p>Rabiner, L., &amp; Schafer, R. (2011). <em>Theory and Applications of Digital
+Speech Processing</em>. Pearson.</p>
 <p class="rubric">Examples</p>
 <p>from voxatlas.features.acoustic.envelope.rms import RMSEnvelope
 from voxatlas.features.feature_input import FeatureInput</p>
@@ -584,28 +646,28 @@ feature_input = FeatureInput(audio=audio, units=units, context={})
 output = extractor.compute(feature_input, {})
 print(output)</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'acoustic.envelope.rms'</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.name" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'acoustic.envelope.rms'</span></span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.input_units">
-<span class="sig-name descname"><span class="pre">input_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.input_units" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">input_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.output_units">
-<span class="sig-name descname"><span class="pre">output_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frame'</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.output_units" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">output_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frame'</span></span><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.dependencies">
-<span class="sig-name descname"><span class="pre">dependencies</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.dependencies" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.default_config">
-<span class="sig-name descname"><span class="pre">default_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'frame_length':</span> <span class="pre">0.025,</span> <span class="pre">'frame_step':</span> <span class="pre">0.01,</span> <span class="pre">'peak_threshold':</span> <span class="pre">0.1,</span> <span class="pre">'smoothing':</span> <span class="pre">1}</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.default_config" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">default_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'frame_length':</span> <span class="pre">0.025,</span> <span class="pre">'frame_step':</span> <span class="pre">0.01,</span> <span class="pre">'peak_threshold':</span> <span class="pre">0.1,</span> <span class="pre">'smoothing':</span> <span class="pre">1}</span></span><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -692,6 +754,11 @@ print(result)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.output_units"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.output_units</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.dependencies"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.dependencies</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.default_config"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.default_config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.input_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.output_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.dependencies</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.default_config</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.compute"><code class="docutils literal notranslate"><span class="pre">RMSEnvelope.compute()</span></code></a></li>
 </ul>
 </li>

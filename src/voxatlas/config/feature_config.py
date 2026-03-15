@@ -23,8 +23,14 @@ def resolve_feature_config(feature_name, extractor_cls, config):
     
     Examples
     --------
-        value = resolve_feature_config(feature_name=..., extractor_cls=..., config=...)
-        print(value)
+    >>> from voxatlas.config.feature_config import resolve_feature_config
+    >>> from voxatlas.features.example_pitch import DummyPitchExtractor
+    >>> resolve_feature_config(
+    ...     "acoustic.pitch.dummy",
+    ...     DummyPitchExtractor,
+    ...     {"feature_config": {"acoustic.pitch.dummy": {"example_param": 1}}},
+    ... )
+    {'example_param': 1}
     """
     params = deepcopy(getattr(extractor_cls, "default_config", {}))
     user_params = config.get("feature_config", {}).get(feature_name, {})

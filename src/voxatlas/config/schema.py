@@ -19,8 +19,13 @@ def validate_config(cfg: dict) -> None:
     
     Examples
     --------
-        value = validate_config(cfg=...)
-        print(value)
+    >>> from voxatlas.config.schema import validate_config
+    >>> validate_config({"features": []}) is None
+    True
+    >>> validate_config({"features": [], "feature_config": {"x": {}}})
+    Traceback (most recent call last):
+    ...
+    voxatlas.config.exceptions.ConfigValidationError: 'feature_config' keys must be a subset of 'features'
     """
 
     if "features" not in cfg:

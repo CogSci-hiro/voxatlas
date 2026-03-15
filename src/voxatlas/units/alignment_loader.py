@@ -37,11 +37,31 @@ def load_textgrid(path: str | Path) -> dict[str, pd.DataFrame]:
 
     Examples
     --------
-    >>> tiers = load_textgrid("alignment.TextGrid")
-    >>> sorted(tiers.keys())  # doctest: +SKIP
-    ['phones', 'words']
-    >>> tiers["words"].columns.tolist()  # doctest: +SKIP
-    ['id', 'start', 'end', 'label']
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> from voxatlas.units.alignment_loader import load_textgrid
+    >>> textgrid = "\\n".join(
+    ...     [
+    ...         "item [1]:",
+    ...         '    name = "words"',
+    ...         "    intervals [1]:",
+    ...         "        xmin = 0",
+    ...         "        xmax = 0.5",
+    ...         '        text = "hello"',
+    ...         "item [2]:",
+    ...         '    name = "phones"',
+    ...         "    intervals [1]:",
+    ...         "        xmin = 0",
+    ...         "        xmax = 0.5",
+    ...         '        text = "h"',
+    ...     ]
+    ... ) + "\\n"
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     path = Path(tmp) / "alignment.TextGrid"
+    ...     _ = path.write_text(textgrid, encoding="utf-8")
+    ...     tiers = load_textgrid(path)
+    ...     (sorted(tiers.keys()), tiers["words"].columns.tolist())
+    (['phones', 'words'], ['id', 'start', 'end', 'label'])
     """
     lines = Path(path).read_text(encoding="utf-8").splitlines()
     tiers: dict[str, pd.DataFrame] = {}

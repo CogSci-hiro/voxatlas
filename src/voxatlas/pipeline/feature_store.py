@@ -8,11 +8,11 @@ class FeatureStore:
 
     Examples
     --------
-    Usage example::
-
-        store = FeatureStore()
-        store.add("acoustic.pitch.f0", output)
-        print(store.exists("acoustic.pitch.f0"))
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> store = FeatureStore()
+    >>> store.add("acoustic.pitch.f0", {"value": 123})
+    >>> store.exists("acoustic.pitch.f0")
+    True
     """
 
     def __init__(self):
@@ -40,9 +40,9 @@ class FeatureStore:
 
         Examples
         --------
-        Usage example::
-
-            store.add("syntax.dependencies", output)
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> store = FeatureStore()
+        >>> store.add("syntax.dependencies", {"edges": []})
         """
         self._results[feature_name] = result
 
@@ -67,10 +67,11 @@ class FeatureStore:
 
         Examples
         --------
-        Usage example::
-
-            output = store.get("syntax.dependencies")
-            print(output)
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> store = FeatureStore()
+        >>> store.add("syntax.dependencies", {"edges": []})
+        >>> store.get("syntax.dependencies")
+        {'edges': []}
         """
         return self._results[feature_name]
 
@@ -90,8 +91,9 @@ class FeatureStore:
 
         Examples
         --------
-        Usage example::
-
-            print(store.exists("lexical.frequency.lookup"))
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> store = FeatureStore()
+        >>> store.exists("lexical.frequency.lookup")
+        False
         """
         return feature_name in self._results

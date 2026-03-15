@@ -372,10 +372,11 @@
 resolution. Extractors read dependency outputs from this object instead of
 recomputing upstream features.</p>
 <p class="rubric">Examples</p>
-<p>Usage example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">FeatureStore</span><span class="p">()</span>
-<span class="n">store</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;acoustic.pitch.f0&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;acoustic.pitch.f0&quot;</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline.feature_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureStore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">FeatureStore</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;acoustic.pitch.f0&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;acoustic.pitch.f0&quot;</span><span class="p">)</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -399,8 +400,9 @@ recomputing upstream features.</p>
 <p class="rubric">Notes</p>
 <p>Adding the same feature name again overwrites the previous value.</p>
 <p class="rubric">Examples</p>
-<p>Usage example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">store</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;syntax.dependencies&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline.feature_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureStore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">FeatureStore</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;syntax.dependencies&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;edges&quot;</span><span class="p">:</span> <span class="p">[]})</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -424,9 +426,11 @@ recomputing upstream features.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>Usage example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;syntax.dependencies&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline.feature_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureStore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">FeatureStore</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;syntax.dependencies&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;edges&quot;</span><span class="p">:</span> <span class="p">[]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;syntax.dependencies&quot;</span><span class="p">)</span>
+<span class="go">{&#39;edges&#39;: []}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -447,8 +451,10 @@ recomputing upstream features.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>Usage example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;lexical.frequency.lookup&quot;</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline.feature_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureStore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">FeatureStore</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;lexical.frequency.lookup&quot;</span><span class="p">)</span>
+<span class="go">False</span>
 </pre></div>
 </div>
 </dd></dl>

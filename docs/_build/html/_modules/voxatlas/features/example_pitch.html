@@ -389,13 +389,16 @@
 <span class="sd">    </span>
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">        from voxatlas.features.example_pitch import DummyPitchExtractor</span>
-<span class="sd">        from voxatlas.features.feature_input import FeatureInput</span>
-<span class="sd">    </span>
-<span class="sd">        extractor = DummyPitchExtractor()</span>
-<span class="sd">        feature_input = FeatureInput(audio=audio, units=units, context={})</span>
-<span class="sd">        output = extractor.compute(feature_input, {})</span>
-<span class="sd">        print(output)</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.audio.audio import Audio</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.features.example_pitch import DummyPitchExtractor</span>
+<span class="sd">    &gt;&gt;&gt; from voxatlas.features.feature_input import FeatureInput</span>
+<span class="sd">    &gt;&gt;&gt; audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)</span>
+<span class="sd">    &gt;&gt;&gt; extractor = DummyPitchExtractor()</span>
+<span class="sd">    &gt;&gt;&gt; feature_input = FeatureInput(audio=audio, units=None, context={})</span>
+<span class="sd">    &gt;&gt;&gt; output = extractor.compute(feature_input, {})</span>
+<span class="sd">    &gt;&gt;&gt; output.feature</span>
+<span class="sd">    &#39;acoustic.pitch.dummy&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;acoustic.pitch.dummy&quot;</span>
     <span class="n">output_units</span> <span class="o">=</span> <span class="s2">&quot;conversation&quot;</span>
@@ -422,10 +425,16 @@
 <span class="sd">        </span>
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">            extractor = DummyPitchExtractor()</span>
-<span class="sd">            feature_input = FeatureInput(audio=audio, units=units, context={})</span>
-<span class="sd">            result = extractor.compute(feature_input, {})</span>
-<span class="sd">            print(result)</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.audio.audio import Audio</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.features.example_pitch import DummyPitchExtractor</span>
+<span class="sd">        &gt;&gt;&gt; from voxatlas.features.feature_input import FeatureInput</span>
+<span class="sd">        &gt;&gt;&gt; audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)</span>
+<span class="sd">        &gt;&gt;&gt; extractor = DummyPitchExtractor()</span>
+<span class="sd">        &gt;&gt;&gt; feature_input = FeatureInput(audio=audio, units=None, context={})</span>
+<span class="sd">        &gt;&gt;&gt; result = extractor.compute(feature_input, {})</span>
+<span class="sd">        &gt;&gt;&gt; float(result.values.iloc[0])</span>
+<span class="sd">        0.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">feature_input</span><span class="o">.</span><span class="n">audio</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">feature_input</span><span class="o">.</span><span class="n">units</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>

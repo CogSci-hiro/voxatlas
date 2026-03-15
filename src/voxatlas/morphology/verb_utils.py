@@ -25,8 +25,12 @@ def extract_verb_morphology_features(inflection_table):
     
     Examples
     --------
-        value = extract_verb_morphology_features(inflection_table=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.morphology.verb_utils import extract_verb_morphology_features
+    >>> inflection = pd.DataFrame([{"id": 1, "upos": "VERB", "VerbForm": "Fin"}])
+    >>> out = extract_verb_morphology_features(inflection)
+    >>> out.loc[0, ["Finite", "Participle", "Infinitive"]].to_dict()
+    {'Finite': 1.0, 'Participle': 0.0, 'Infinitive': 0.0}
     """
     if inflection_table is None:
         raise ValueError("Verb morphology features require inflection features")

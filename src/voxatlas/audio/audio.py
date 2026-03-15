@@ -32,10 +32,11 @@ class Audio:
 
     Examples
     --------
-    Usage example::
-
-        audio = Audio(waveform=waveform, sample_rate=16000, path="conversation.wav")
-        print(audio.duration)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> audio = Audio(waveform=np.zeros(16000, dtype=np.float32), sample_rate=16000)
+    >>> audio.duration
+    1.0
     """
 
     waveform: np.ndarray
@@ -59,8 +60,10 @@ class Audio:
 
         Examples
         --------
-        Usage example::
-
-            print(audio.duration)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> audio = Audio(waveform=np.zeros(8000, dtype=np.float32), sample_rate=16000)
+        >>> audio.duration
+        0.5
         """
         return len(self.waveform) / self.sample_rate

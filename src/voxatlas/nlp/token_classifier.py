@@ -148,8 +148,16 @@ def classify_tokens(tokens, language_resources):
     
     Examples
     --------
-        value = classify_tokens(tokens=..., language_resources=...)
-        print(value)
+    >>> import pandas as pd
+    >>> from voxatlas.nlp.token_classifier import classify_tokens
+    >>> vocab = pd.DataFrame(
+    ...     [{"canonical": "hello", "token_type": "word", "lemma": "hello", "pos": "INTJ", "source": "example"}]
+    ... )
+    >>> mapping = pd.DataFrame(columns=["surface", "canonical", "confidence", "rule"])
+    >>> resources = {"canonical_vocab": vocab, "mapping_table": mapping, "token_rules": []}
+    >>> out = classify_tokens(["hello"], resources)
+    >>> out[0]["token_canonical"]
+    'hello'
     """
     vocab = language_resources["canonical_vocab"]
     mapping = language_resources["mapping_table"]
