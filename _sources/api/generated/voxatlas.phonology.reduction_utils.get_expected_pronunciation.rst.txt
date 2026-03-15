@@ -1,0 +1,6 @@
+voxatlas.phonology.reduction_utils.get_expected_pronunciation
+=============================================================
+
+.. currentmodule:: voxatlas.phonology.reduction_utils
+
+.. autofunction:: get_expected_pronunciation

@@ -1,0 +1,6 @@
+voxatlas.morphology.derivation_utils.load_derivational_resources
+================================================================
+
+.. currentmodule:: voxatlas.morphology.derivation_utils
+
+.. autofunction:: load_derivational_resources

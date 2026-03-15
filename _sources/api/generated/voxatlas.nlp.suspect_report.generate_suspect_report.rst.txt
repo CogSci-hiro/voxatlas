@@ -1,0 +1,6 @@
+voxatlas.nlp.suspect_report.generate_suspect_report
+===================================================
+
+.. currentmodule:: voxatlas.nlp.suspect_report
+
+.. autofunction:: generate_suspect_report

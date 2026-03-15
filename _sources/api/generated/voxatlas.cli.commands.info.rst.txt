@@ -1,0 +1,22 @@
+voxatlas.cli.commands.info
+==========================
+
+.. currentmodule:: voxatlas.cli.commands.info
+
+.. automodule:: voxatlas.cli.commands.info
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   register
+
+   run
+
+

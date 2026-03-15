@@ -1,0 +1,6 @@
+voxatlas.acoustic.voice_quality_utils.compute_shimmer
+=====================================================
+
+.. currentmodule:: voxatlas.acoustic.voice_quality_utils
+
+.. autofunction:: compute_shimmer

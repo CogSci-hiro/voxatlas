@@ -1,0 +1,24 @@
+voxatlas.acoustic.spectrogram_utils
+===================================
+
+.. currentmodule:: voxatlas.acoustic.spectrogram_utils
+
+.. automodule:: voxatlas.acoustic.spectrogram_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   compute_mel_filterbank
+
+   compute_mel_spectrogram
+
+   compute_stft
+
+

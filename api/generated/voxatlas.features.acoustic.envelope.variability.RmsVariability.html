@@ -1,0 +1,1426 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>voxatlas.features.acoustic.envelope.variability.RmsVariability &#8212; VoxAtlas 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bdbbbe79" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/voxatlas.features.acoustic.envelope.variability.RmsVariability';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="voxatlas.features.acoustic.envelope.variability.VarnetVariability" href="voxatlas.features.acoustic.envelope.variability.VarnetVariability.html" />
+    <link rel="prev" title="voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability" href="voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">VoxAtlas 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/index.html">
+    Documentations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/index.html">
+    Documentations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.audio.html">voxatlas.audio</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.audio.audio.html">voxatlas.audio.audio</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.audio.audio.Audio.html">voxatlas.audio.audio.Audio</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.audio.loader.html">voxatlas.audio.loader</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.audio.loader.load_audio.html">voxatlas.audio.loader.load_audio</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.audio.audio.html">voxatlas.audio.audio</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.audio.audio.Audio.html">voxatlas.audio.audio.Audio</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.audio.loader.html">voxatlas.audio.loader</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.audio.loader.load_audio.html">voxatlas.audio.loader.load_audio</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.pipeline.html">voxatlas.pipeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.pipeline.cache.html">voxatlas.pipeline.cache</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.pipeline.cache.DiskCache.html">voxatlas.pipeline.cache.DiskCache</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.pipeline.execution_plan.html">voxatlas.pipeline.execution_plan</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.pipeline.execution_plan.ExecutionPlan.html">voxatlas.pipeline.execution_plan.ExecutionPlan</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.pipeline.executor.html">voxatlas.pipeline.executor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.pipeline.executor.parallel_execute_layer.html">voxatlas.pipeline.executor.parallel_execute_layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.pipeline.executor.run_feature.html">voxatlas.pipeline.executor.run_feature</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.pipeline.feature_store.html">voxatlas.pipeline.feature_store</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.pipeline.feature_store.FeatureStore.html">voxatlas.pipeline.feature_store.FeatureStore</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.pipeline.pipeline.html">voxatlas.pipeline.pipeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.pipeline.pipeline.VoxAtlasPipeline.html">voxatlas.pipeline.pipeline.VoxAtlasPipeline</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.registry.html">voxatlas.registry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.registry.discovery.html">voxatlas.registry.discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.registry.exceptions.html">voxatlas.registry.exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.registry.feature_registry.html">voxatlas.registry.feature_registry</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.registry.validator.html">voxatlas.registry.validator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.registry.validator.validate_dependencies.html">voxatlas.registry.validator.validate_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.registry.validator.validate_extractor_contract.html">voxatlas.registry.validator.validate_extractor_contract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.registry.validator.validate_feature_name.html">voxatlas.registry.validator.validate_feature_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.registry.validator.validate_units.html">voxatlas.registry.validator.validate_units</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.units.html">voxatlas.units</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.units.alignment.html">voxatlas.units.alignment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.units.alignment.load_alignment.html">voxatlas.units.alignment.load_alignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.units.alignment_loader.html">voxatlas.units.alignment_loader</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.units.alignment_loader.load_textgrid.html">voxatlas.units.alignment_loader.load_textgrid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.units.units.html">voxatlas.units.units</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.units.units.Units.html">voxatlas.units.units.Units</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="voxatlas.features.html">voxatlas.features</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="voxatlas.features.acoustic.html">voxatlas.features.acoustic</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.html">voxatlas.features.acoustic.envelope</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.html">voxatlas.features.acoustic.envelope.derivative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.hilbert.html">voxatlas.features.acoustic.envelope.hilbert</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.log_energy.html">voxatlas.features.acoustic.envelope.log_energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.oganian.html">voxatlas.features.acoustic.envelope.oganian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.onset.html">voxatlas.features.acoustic.envelope.onset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.peak_rate.html">voxatlas.features.acoustic.envelope.peak_rate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.praat_intensity.html">voxatlas.features.acoustic.envelope.praat_intensity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.rms.html">voxatlas.features.acoustic.envelope.rms</a></li>
+<li class="toctree-l4 current active"><a class="reference internal" href="voxatlas.features.acoustic.envelope.variability.html">voxatlas.features.acoustic.envelope.variability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.varnet.html">voxatlas.features.acoustic.envelope.varnet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.pitch.html">voxatlas.features.acoustic.pitch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.contour_shape.html">voxatlas.features.acoustic.pitch.contour_shape</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.derivative.html">voxatlas.features.acoustic.pitch.derivative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.f0.html">voxatlas.features.acoustic.pitch.f0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.range.html">voxatlas.features.acoustic.pitch.range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.slope.html">voxatlas.features.acoustic.pitch.slope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.variability.html">voxatlas.features.acoustic.pitch.variability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.html">voxatlas.features.acoustic.spectral</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.centroid.html">voxatlas.features.acoustic.spectral.centroid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.flatness.html">voxatlas.features.acoustic.spectral.flatness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.flux.html">voxatlas.features.acoustic.spectral.flux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.rolloff.html">voxatlas.features.acoustic.spectral.rolloff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.slope.html">voxatlas.features.acoustic.spectral.slope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.spectrum.html">voxatlas.features.acoustic.spectral.spectrum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.spread.html">voxatlas.features.acoustic.spectral.spread</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.html">voxatlas.features.acoustic.spectrogram</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.mel.html">voxatlas.features.acoustic.spectrogram.mel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.stft.html">voxatlas.features.acoustic.spectrogram.stft</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.html">voxatlas.features.acoustic.voice_quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.hnr.html">voxatlas.features.acoustic.voice_quality.hnr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.jitter.html">voxatlas.features.acoustic.voice_quality.jitter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.shimmer.html">voxatlas.features.acoustic.voice_quality.shimmer</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.base_extractor.html">voxatlas.features.base_extractor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.base_extractor.BaseExtractor.html">voxatlas.features.base_extractor.BaseExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.example_pitch.html">voxatlas.features.example_pitch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.example_pitch.DummyPitchExtractor.html">voxatlas.features.example_pitch.DummyPitchExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.feature_input.html">voxatlas.features.feature_input</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.feature_input.FeatureInput.html">voxatlas.features.feature_input.FeatureInput</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.feature_output.html">voxatlas.features.feature_output</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.feature_output.ArrayFeatureOutput.html">voxatlas.features.feature_output.ArrayFeatureOutput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.feature_output.MatrixFeatureOutput.html">voxatlas.features.feature_output.MatrixFeatureOutput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.feature_output.ScalarFeatureOutput.html">voxatlas.features.feature_output.ScalarFeatureOutput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.feature_output.TableFeatureOutput.html">voxatlas.features.feature_output.TableFeatureOutput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.feature_output.VectorFeatureOutput.html">voxatlas.features.feature_output.VectorFeatureOutput</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.lexical.html">voxatlas.features.lexical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.frequency.html">voxatlas.features.lexical.frequency</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.frequency.lookup.html">voxatlas.features.lexical.frequency.lookup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.frequency.word_frequency.html">voxatlas.features.lexical.frequency.word_frequency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.frequency.zipf_frequency.html">voxatlas.features.lexical.frequency.zipf_frequency</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.html">voxatlas.features.lexical.properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.animacy.html">voxatlas.features.lexical.properties.animacy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.concreteness.html">voxatlas.features.lexical.properties.concreteness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.features.html">voxatlas.features.lexical.properties.features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.function_word.html">voxatlas.features.lexical.properties.function_word</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.lookup.html">voxatlas.features.lexical.properties.lookup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.phoneme_count.html">voxatlas.features.lexical.properties.phoneme_count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.pos.html">voxatlas.features.lexical.properties.pos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.syllable_count.html">voxatlas.features.lexical.properties.syllable_count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.word_length.html">voxatlas.features.lexical.properties.word_length</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.morphology.html">voxatlas.features.morphology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.agreement.html">voxatlas.features.morphology.agreement</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.agreement.features.html">voxatlas.features.morphology.agreement.features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.agreement.gender.html">voxatlas.features.morphology.agreement.gender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.agreement.subject_verb.html">voxatlas.features.morphology.agreement.subject_verb</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.derivation.html">voxatlas.features.morphology.derivation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.complexity.html">voxatlas.features.morphology.derivation.complexity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.morpheme_count.html">voxatlas.features.morphology.derivation.morpheme_count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.prefix_presence.html">voxatlas.features.morphology.derivation.prefix_presence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.segmentation.html">voxatlas.features.morphology.derivation.segmentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.suffix_presence.html">voxatlas.features.morphology.derivation.suffix_presence</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.html">voxatlas.features.morphology.inflection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.aspect.html">voxatlas.features.morphology.inflection.aspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.case.html">voxatlas.features.morphology.inflection.case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.definiteness.html">voxatlas.features.morphology.inflection.definiteness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.features.html">voxatlas.features.morphology.inflection.features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.gender.html">voxatlas.features.morphology.inflection.gender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.mood.html">voxatlas.features.morphology.inflection.mood</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.number.html">voxatlas.features.morphology.inflection.number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.person.html">voxatlas.features.morphology.inflection.person</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.tense.html">voxatlas.features.morphology.inflection.tense</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.html">voxatlas.features.morphology.verb_morphology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.features.html">voxatlas.features.morphology.verb_morphology.features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.finite.html">voxatlas.features.morphology.verb_morphology.finite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.infinitive.html">voxatlas.features.morphology.verb_morphology.infinitive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.participle.html">voxatlas.features.morphology.verb_morphology.participle</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.word_formation.html">voxatlas.features.morphology.word_formation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.word_formation.clitic.html">voxatlas.features.morphology.word_formation.clitic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.word_formation.compound.html">voxatlas.features.morphology.word_formation.compound</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.word_formation.features.html">voxatlas.features.morphology.word_formation.features</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.phonology.html">voxatlas.features.phonology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.html">voxatlas.features.phonology.articulatory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.approximant.html">voxatlas.features.phonology.articulatory.approximant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.consonant.html">voxatlas.features.phonology.articulatory.consonant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.features.html">voxatlas.features.phonology.articulatory.features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.fricative.html">voxatlas.features.phonology.articulatory.fricative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.nasal.html">voxatlas.features.phonology.articulatory.nasal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.plosive.html">voxatlas.features.phonology.articulatory.plosive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.voiced.html">voxatlas.features.phonology.articulatory.voiced</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.voiceless.html">voxatlas.features.phonology.articulatory.voiceless</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.vowel.html">voxatlas.features.phonology.articulatory.vowel</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.html">voxatlas.features.phonology.formant</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.centralization.html">voxatlas.features.phonology.formant.centralization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.dct.html">voxatlas.features.phonology.formant.dct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.mean.html">voxatlas.features.phonology.formant.mean</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.median.html">voxatlas.features.phonology.formant.median</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.midpoint.html">voxatlas.features.phonology.formant.midpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.onset_mid_offset.html">voxatlas.features.phonology.formant.onset_mid_offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.polynomial.html">voxatlas.features.phonology.formant.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.slope.html">voxatlas.features.phonology.formant.slope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.tracks.html">voxatlas.features.phonology.formant.tracks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.trajectory.html">voxatlas.features.phonology.formant.trajectory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.tvsa.html">voxatlas.features.phonology.formant.tvsa</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.vai.html">voxatlas.features.phonology.formant.vai</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.variance.html">voxatlas.features.phonology.formant.variance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.vsa.html">voxatlas.features.phonology.formant.vsa</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.prosody.html">voxatlas.features.phonology.prosody</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.prosody.position_ipu.html">voxatlas.features.phonology.prosody.position_ipu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.prosody.position_word.html">voxatlas.features.phonology.prosody.position_word</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.prosody.stress.html">voxatlas.features.phonology.prosody.stress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.prosody.unstressed.html">voxatlas.features.phonology.prosody.unstressed</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.reduction.html">voxatlas.features.phonology.reduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.reduction.schwa_deletion.html">voxatlas.features.phonology.reduction.schwa_deletion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.reduction.vowel_reduction.html">voxatlas.features.phonology.reduction.vowel_reduction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.html">voxatlas.features.phonology.rhythm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.delta_c.html">voxatlas.features.phonology.rhythm.delta_c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.delta_v.html">voxatlas.features.phonology.rhythm.delta_v</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.intervals.html">voxatlas.features.phonology.rhythm.intervals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.npvi.html">voxatlas.features.phonology.rhythm.npvi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.pause_rate.html">voxatlas.features.phonology.rhythm.pause_rate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.percent_c.html">voxatlas.features.phonology.rhythm.percent_c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.percent_v.html">voxatlas.features.phonology.rhythm.percent_v</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.syllable_duration.html">voxatlas.features.phonology.rhythm.syllable_duration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.syllable_rate.html">voxatlas.features.phonology.rhythm.syllable_rate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.varco_c.html">voxatlas.features.phonology.rhythm.varco_c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.varco_v.html">voxatlas.features.phonology.rhythm.varco_v</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.syntax.html">voxatlas.features.syntax</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.html">voxatlas.features.syntax.clause_structure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.coordination.html">voxatlas.features.syntax.clause_structure.coordination</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.relative_clause.html">voxatlas.features.syntax.clause_structure.relative_clause</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.subordinate_clause.html">voxatlas.features.syntax.clause_structure.subordinate_clause</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.complexity.html">voxatlas.features.syntax.complexity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.complexity.branching_factor.html">voxatlas.features.syntax.complexity.branching_factor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.complexity.clause_depth.html">voxatlas.features.syntax.complexity.clause_depth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.complexity.mean_dependency_length.html">voxatlas.features.syntax.complexity.mean_dependency_length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.complexity.parse_tree_depth.html">voxatlas.features.syntax.complexity.parse_tree_depth</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.dependencies.html">voxatlas.features.syntax.dependencies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor.html">voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.local_structure.html">voxatlas.features.syntax.local_structure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.local_structure.dep_label.html">voxatlas.features.syntax.local_structure.dep_label</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.local_structure.dependency_distance.html">voxatlas.features.syntax.local_structure.dependency_distance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.local_structure.head_distance.html">voxatlas.features.syntax.local_structure.head_distance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.local_structure.pos.html">voxatlas.features.syntax.local_structure.pos</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="voxatlas.features.acoustic.html">voxatlas.features.acoustic</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.html">voxatlas.features.acoustic.envelope</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.html">voxatlas.features.acoustic.envelope.derivative</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.HilbertDerivative.html">voxatlas.features.acoustic.envelope.derivative.HilbertDerivative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative.html">voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.OganianDerivative.html">voxatlas.features.acoustic.envelope.derivative.OganianDerivative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative.html">voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.RmsDerivative.html">voxatlas.features.acoustic.envelope.derivative.RmsDerivative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.VarnetDerivative.html">voxatlas.features.acoustic.envelope.derivative.VarnetDerivative</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.hilbert.html">voxatlas.features.acoustic.envelope.hilbert</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.hilbert.HilbertEnvelope.html">voxatlas.features.acoustic.envelope.hilbert.HilbertEnvelope</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.log_energy.html">voxatlas.features.acoustic.envelope.log_energy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.html">voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.oganian.html">voxatlas.features.acoustic.envelope.oganian</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.oganian.OganianEnvelope.html">voxatlas.features.acoustic.envelope.oganian.OganianEnvelope</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.onset.html">voxatlas.features.acoustic.envelope.onset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.onset.HilbertOnset.html">voxatlas.features.acoustic.envelope.onset.HilbertOnset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.onset.LogEnergyOnset.html">voxatlas.features.acoustic.envelope.onset.LogEnergyOnset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.onset.OganianOnset.html">voxatlas.features.acoustic.envelope.onset.OganianOnset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.onset.PraatIntensityOnset.html">voxatlas.features.acoustic.envelope.onset.PraatIntensityOnset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.onset.RmsOnset.html">voxatlas.features.acoustic.envelope.onset.RmsOnset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.onset.VarnetOnset.html">voxatlas.features.acoustic.envelope.onset.VarnetOnset</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.peak_rate.html">voxatlas.features.acoustic.envelope.peak_rate</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.peak_rate.HilbertPeakRate.html">voxatlas.features.acoustic.envelope.peak_rate.HilbertPeakRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.peak_rate.LogEnergyPeakRate.html">voxatlas.features.acoustic.envelope.peak_rate.LogEnergyPeakRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.peak_rate.OganianPeakRate.html">voxatlas.features.acoustic.envelope.peak_rate.OganianPeakRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.peak_rate.PraatIntensityPeakRate.html">voxatlas.features.acoustic.envelope.peak_rate.PraatIntensityPeakRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.peak_rate.RmsPeakRate.html">voxatlas.features.acoustic.envelope.peak_rate.RmsPeakRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.peak_rate.VarnetPeakRate.html">voxatlas.features.acoustic.envelope.peak_rate.VarnetPeakRate</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.praat_intensity.html">voxatlas.features.acoustic.envelope.praat_intensity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope.html">voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.rms.html">voxatlas.features.acoustic.envelope.rms</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.html">voxatlas.features.acoustic.envelope.rms.RMSEnvelope</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.variability.html">voxatlas.features.acoustic.envelope.variability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.variability.HilbertVariability.html">voxatlas.features.acoustic.envelope.variability.HilbertVariability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.variability.LogEnergyVariability.html">voxatlas.features.acoustic.envelope.variability.LogEnergyVariability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.variability.OganianVariability.html">voxatlas.features.acoustic.envelope.variability.OganianVariability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability.html">voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">voxatlas.features.acoustic.envelope.variability.RmsVariability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.variability.VarnetVariability.html">voxatlas.features.acoustic.envelope.variability.VarnetVariability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.envelope.varnet.html">voxatlas.features.acoustic.envelope.varnet</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope.html">voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.acoustic.pitch.html">voxatlas.features.acoustic.pitch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.pitch.contour_shape.html">voxatlas.features.acoustic.pitch.contour_shape</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor.html">voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.pitch.derivative.html">voxatlas.features.acoustic.pitch.derivative</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.derivative.F0DerivativeExtractor.html">voxatlas.features.acoustic.pitch.derivative.F0DerivativeExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.pitch.f0.html">voxatlas.features.acoustic.pitch.f0</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.f0.F0Extractor.html">voxatlas.features.acoustic.pitch.f0.F0Extractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.pitch.range.html">voxatlas.features.acoustic.pitch.range</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.range.F0RangeExtractor.html">voxatlas.features.acoustic.pitch.range.F0RangeExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.pitch.slope.html">voxatlas.features.acoustic.pitch.slope</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor.html">voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.pitch.variability.html">voxatlas.features.acoustic.pitch.variability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor.html">voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.html">voxatlas.features.acoustic.spectral</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.centroid.html">voxatlas.features.acoustic.spectral.centroid</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.centroid.SpectralCentroidExtractor.html">voxatlas.features.acoustic.spectral.centroid.SpectralCentroidExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.flatness.html">voxatlas.features.acoustic.spectral.flatness</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.flatness.SpectralFlatnessExtractor.html">voxatlas.features.acoustic.spectral.flatness.SpectralFlatnessExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.flux.html">voxatlas.features.acoustic.spectral.flux</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.flux.SpectralFluxExtractor.html">voxatlas.features.acoustic.spectral.flux.SpectralFluxExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.rolloff.html">voxatlas.features.acoustic.spectral.rolloff</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.rolloff.SpectralRolloffExtractor.html">voxatlas.features.acoustic.spectral.rolloff.SpectralRolloffExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.slope.html">voxatlas.features.acoustic.spectral.slope</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.slope.SpectralSlopeExtractor.html">voxatlas.features.acoustic.spectral.slope.SpectralSlopeExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.spectrum.html">voxatlas.features.acoustic.spectral.spectrum</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor.html">voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectral.spread.html">voxatlas.features.acoustic.spectral.spread</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectral.spread.SpectralSpreadExtractor.html">voxatlas.features.acoustic.spectral.spread.SpectralSpreadExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.html">voxatlas.features.acoustic.spectrogram</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.mel.html">voxatlas.features.acoustic.spectrogram.mel</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.mel.MelSpectrogramExtractor.html">voxatlas.features.acoustic.spectrogram.mel.MelSpectrogramExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.stft.html">voxatlas.features.acoustic.spectrogram.stft</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor.html">voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.html">voxatlas.features.acoustic.voice_quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.hnr.html">voxatlas.features.acoustic.voice_quality.hnr</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.hnr.HNRExtractor.html">voxatlas.features.acoustic.voice_quality.hnr.HNRExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.jitter.html">voxatlas.features.acoustic.voice_quality.jitter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.jitter.JitterExtractor.html">voxatlas.features.acoustic.voice_quality.jitter.JitterExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.shimmer.html">voxatlas.features.acoustic.voice_quality.shimmer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor.html">voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.features.lexical.html">voxatlas.features.lexical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.lexical.frequency.html">voxatlas.features.lexical.frequency</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.frequency.lookup.html">voxatlas.features.lexical.frequency.lookup</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor.html">voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.frequency.word_frequency.html">voxatlas.features.lexical.frequency.word_frequency</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor.html">voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.frequency.zipf_frequency.html">voxatlas.features.lexical.frequency.zipf_frequency</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor.html">voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.html">voxatlas.features.lexical.properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.animacy.html">voxatlas.features.lexical.properties.animacy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.animacy.AnimacyExtractor.html">voxatlas.features.lexical.properties.animacy.AnimacyExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.concreteness.html">voxatlas.features.lexical.properties.concreteness</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor.html">voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.features.html">voxatlas.features.lexical.properties.features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.features.LexicalPropertiesExtractor.html">voxatlas.features.lexical.properties.features.LexicalPropertiesExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.function_word.html">voxatlas.features.lexical.properties.function_word</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.function_word.FunctionWordExtractor.html">voxatlas.features.lexical.properties.function_word.FunctionWordExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.lookup.html">voxatlas.features.lexical.properties.lookup</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor.html">voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.phoneme_count.html">voxatlas.features.lexical.properties.phoneme_count</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.phoneme_count.PhonemeCountExtractor.html">voxatlas.features.lexical.properties.phoneme_count.PhonemeCountExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.pos.html">voxatlas.features.lexical.properties.pos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.pos.POSExtractor.html">voxatlas.features.lexical.properties.pos.POSExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.syllable_count.html">voxatlas.features.lexical.properties.syllable_count</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor.html">voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.lexical.properties.word_length.html">voxatlas.features.lexical.properties.word_length</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.lexical.properties.word_length.WordLengthExtractor.html">voxatlas.features.lexical.properties.word_length.WordLengthExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.features.morphology.html">voxatlas.features.morphology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.morphology.agreement.html">voxatlas.features.morphology.agreement</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.agreement.features.html">voxatlas.features.morphology.agreement.features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor.html">voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.agreement.gender.html">voxatlas.features.morphology.agreement.gender</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.agreement.gender.GenderAgreementExtractor.html">voxatlas.features.morphology.agreement.gender.GenderAgreementExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.agreement.subject_verb.html">voxatlas.features.morphology.agreement.subject_verb</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.agreement.subject_verb.SubjectVerbAgreementExtractor.html">voxatlas.features.morphology.agreement.subject_verb.SubjectVerbAgreementExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.morphology.derivation.html">voxatlas.features.morphology.derivation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.derivation.complexity.html">voxatlas.features.morphology.derivation.complexity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor.html">voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.derivation.morpheme_count.html">voxatlas.features.morphology.derivation.morpheme_count</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor.html">voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.derivation.prefix_presence.html">voxatlas.features.morphology.derivation.prefix_presence</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.prefix_presence.PrefixPresenceExtractor.html">voxatlas.features.morphology.derivation.prefix_presence.PrefixPresenceExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.derivation.segmentation.html">voxatlas.features.morphology.derivation.segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor.html">voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.derivation.suffix_presence.html">voxatlas.features.morphology.derivation.suffix_presence</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor.html">voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.html">voxatlas.features.morphology.inflection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.aspect.html">voxatlas.features.morphology.inflection.aspect</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.aspect.InflectionAspectExtractor.html">voxatlas.features.morphology.inflection.aspect.InflectionAspectExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.case.html">voxatlas.features.morphology.inflection.case</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.case.InflectionCaseExtractor.html">voxatlas.features.morphology.inflection.case.InflectionCaseExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.definiteness.html">voxatlas.features.morphology.inflection.definiteness</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor.html">voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.features.html">voxatlas.features.morphology.inflection.features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.features.InflectionFeaturesExtractor.html">voxatlas.features.morphology.inflection.features.InflectionFeaturesExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.gender.html">voxatlas.features.morphology.inflection.gender</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.gender.InflectionGenderExtractor.html">voxatlas.features.morphology.inflection.gender.InflectionGenderExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.mood.html">voxatlas.features.morphology.inflection.mood</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.mood.InflectionMoodExtractor.html">voxatlas.features.morphology.inflection.mood.InflectionMoodExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.number.html">voxatlas.features.morphology.inflection.number</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.number.InflectionNumberExtractor.html">voxatlas.features.morphology.inflection.number.InflectionNumberExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.person.html">voxatlas.features.morphology.inflection.person</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.person.InflectionPersonExtractor.html">voxatlas.features.morphology.inflection.person.InflectionPersonExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.inflection.tense.html">voxatlas.features.morphology.inflection.tense</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor.html">voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.html">voxatlas.features.morphology.verb_morphology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.features.html">voxatlas.features.morphology.verb_morphology.features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor.html">voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.finite.html">voxatlas.features.morphology.verb_morphology.finite</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.finite.VerbMorphologyFiniteExtractor.html">voxatlas.features.morphology.verb_morphology.finite.VerbMorphologyFiniteExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.infinitive.html">voxatlas.features.morphology.verb_morphology.infinitive</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.infinitive.VerbMorphologyInfinitiveExtractor.html">voxatlas.features.morphology.verb_morphology.infinitive.VerbMorphologyInfinitiveExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.participle.html">voxatlas.features.morphology.verb_morphology.participle</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor.html">voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.morphology.word_formation.html">voxatlas.features.morphology.word_formation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.word_formation.clitic.html">voxatlas.features.morphology.word_formation.clitic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.word_formation.clitic.CliticExtractor.html">voxatlas.features.morphology.word_formation.clitic.CliticExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.word_formation.compound.html">voxatlas.features.morphology.word_formation.compound</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.word_formation.compound.CompoundExtractor.html">voxatlas.features.morphology.word_formation.compound.CompoundExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.morphology.word_formation.features.html">voxatlas.features.morphology.word_formation.features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.morphology.word_formation.features.WordFormationFeaturesExtractor.html">voxatlas.features.morphology.word_formation.features.WordFormationFeaturesExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.features.phonology.html">voxatlas.features.phonology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.html">voxatlas.features.phonology.articulatory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.approximant.html">voxatlas.features.phonology.articulatory.approximant</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor.html">voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.consonant.html">voxatlas.features.phonology.articulatory.consonant</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.consonant.ArticulatoryConsonantExtractor.html">voxatlas.features.phonology.articulatory.consonant.ArticulatoryConsonantExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.features.html">voxatlas.features.phonology.articulatory.features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.features.ArticulatoryFeaturesExtractor.html">voxatlas.features.phonology.articulatory.features.ArticulatoryFeaturesExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.fricative.html">voxatlas.features.phonology.articulatory.fricative</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor.html">voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.nasal.html">voxatlas.features.phonology.articulatory.nasal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor.html">voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.plosive.html">voxatlas.features.phonology.articulatory.plosive</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor.html">voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.voiced.html">voxatlas.features.phonology.articulatory.voiced</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor.html">voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.voiceless.html">voxatlas.features.phonology.articulatory.voiceless</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.voiceless.ArticulatoryVoicelessExtractor.html">voxatlas.features.phonology.articulatory.voiceless.ArticulatoryVoicelessExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.articulatory.vowel.html">voxatlas.features.phonology.articulatory.vowel</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.articulatory.vowel.ArticulatoryVowelExtractor.html">voxatlas.features.phonology.articulatory.vowel.ArticulatoryVowelExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.html">voxatlas.features.phonology.formant</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.centralization.html">voxatlas.features.phonology.formant.centralization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor.html">voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.dct.html">voxatlas.features.phonology.formant.dct</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.dct.FormantDCTExtractor.html">voxatlas.features.phonology.formant.dct.FormantDCTExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.mean.html">voxatlas.features.phonology.formant.mean</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.mean.FormantMeanExtractor.html">voxatlas.features.phonology.formant.mean.FormantMeanExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.median.html">voxatlas.features.phonology.formant.median</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.median.FormantMedianExtractor.html">voxatlas.features.phonology.formant.median.FormantMedianExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.midpoint.html">voxatlas.features.phonology.formant.midpoint</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor.html">voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.onset_mid_offset.html">voxatlas.features.phonology.formant.onset_mid_offset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.onset_mid_offset.FormantOnsetMidOffsetExtractor.html">voxatlas.features.phonology.formant.onset_mid_offset.FormantOnsetMidOffsetExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.polynomial.html">voxatlas.features.phonology.formant.polynomial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.polynomial.FormantPolynomialExtractor.html">voxatlas.features.phonology.formant.polynomial.FormantPolynomialExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.slope.html">voxatlas.features.phonology.formant.slope</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.slope.FormantSlopeExtractor.html">voxatlas.features.phonology.formant.slope.FormantSlopeExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.tracks.html">voxatlas.features.phonology.formant.tracks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.tracks.FormantTracksExtractor.html">voxatlas.features.phonology.formant.tracks.FormantTracksExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.trajectory.html">voxatlas.features.phonology.formant.trajectory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor.html">voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.tvsa.html">voxatlas.features.phonology.formant.tvsa</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.tvsa.FormantTVSAExtractor.html">voxatlas.features.phonology.formant.tvsa.FormantTVSAExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.vai.html">voxatlas.features.phonology.formant.vai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.vai.FormantVAIExtractor.html">voxatlas.features.phonology.formant.vai.FormantVAIExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.variance.html">voxatlas.features.phonology.formant.variance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.variance.FormantVarianceExtractor.html">voxatlas.features.phonology.formant.variance.FormantVarianceExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.formant.vsa.html">voxatlas.features.phonology.formant.vsa</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.formant.vsa.FormantVSAExtractor.html">voxatlas.features.phonology.formant.vsa.FormantVSAExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.phonology.prosody.html">voxatlas.features.phonology.prosody</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.prosody.position_ipu.html">voxatlas.features.phonology.prosody.position_ipu</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.prosody.position_ipu.ProsodicPositionInIPUExtractor.html">voxatlas.features.phonology.prosody.position_ipu.ProsodicPositionInIPUExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.prosody.position_word.html">voxatlas.features.phonology.prosody.position_word</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.prosody.position_word.ProsodicPositionInWordExtractor.html">voxatlas.features.phonology.prosody.position_word.ProsodicPositionInWordExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.prosody.stress.html">voxatlas.features.phonology.prosody.stress</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor.html">voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.prosody.unstressed.html">voxatlas.features.phonology.prosody.unstressed</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.html">voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.phonology.reduction.html">voxatlas.features.phonology.reduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.reduction.schwa_deletion.html">voxatlas.features.phonology.reduction.schwa_deletion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor.html">voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.reduction.vowel_reduction.html">voxatlas.features.phonology.reduction.vowel_reduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.reduction.vowel_reduction.VowelReductionExtractor.html">voxatlas.features.phonology.reduction.vowel_reduction.VowelReductionExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.html">voxatlas.features.phonology.rhythm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.delta_c.html">voxatlas.features.phonology.rhythm.delta_c</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.delta_c.RhythmDeltaCExtractor.html">voxatlas.features.phonology.rhythm.delta_c.RhythmDeltaCExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.delta_v.html">voxatlas.features.phonology.rhythm.delta_v</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.delta_v.RhythmDeltaVExtractor.html">voxatlas.features.phonology.rhythm.delta_v.RhythmDeltaVExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.intervals.html">voxatlas.features.phonology.rhythm.intervals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor.html">voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.npvi.html">voxatlas.features.phonology.rhythm.npvi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor.html">voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.pause_rate.html">voxatlas.features.phonology.rhythm.pause_rate</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.pause_rate.RhythmPauseRateExtractor.html">voxatlas.features.phonology.rhythm.pause_rate.RhythmPauseRateExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.percent_c.html">voxatlas.features.phonology.rhythm.percent_c</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.percent_c.RhythmPercentCExtractor.html">voxatlas.features.phonology.rhythm.percent_c.RhythmPercentCExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.percent_v.html">voxatlas.features.phonology.rhythm.percent_v</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor.html">voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.syllable_duration.html">voxatlas.features.phonology.rhythm.syllable_duration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.syllable_duration.RhythmSyllableDurationExtractor.html">voxatlas.features.phonology.rhythm.syllable_duration.RhythmSyllableDurationExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.syllable_rate.html">voxatlas.features.phonology.rhythm.syllable_rate</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor.html">voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.varco_c.html">voxatlas.features.phonology.rhythm.varco_c</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.varco_c.RhythmVarcoCExtractor.html">voxatlas.features.phonology.rhythm.varco_c.RhythmVarcoCExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.phonology.rhythm.varco_v.html">voxatlas.features.phonology.rhythm.varco_v</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor.html">voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="voxatlas.features.syntax.html">voxatlas.features.syntax</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.html">voxatlas.features.syntax.clause_structure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.coordination.html">voxatlas.features.syntax.clause_structure.coordination</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor.html">voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.relative_clause.html">voxatlas.features.syntax.clause_structure.relative_clause</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.relative_clause.SyntaxRelativeClauseExtractor.html">voxatlas.features.syntax.clause_structure.relative_clause.SyntaxRelativeClauseExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.subordinate_clause.html">voxatlas.features.syntax.clause_structure.subordinate_clause</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.subordinate_clause.SyntaxSubordinateClauseExtractor.html">voxatlas.features.syntax.clause_structure.subordinate_clause.SyntaxSubordinateClauseExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.syntax.complexity.html">voxatlas.features.syntax.complexity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.complexity.branching_factor.html">voxatlas.features.syntax.complexity.branching_factor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.complexity.branching_factor.SyntaxComplexityBranchingFactorExtractor.html">voxatlas.features.syntax.complexity.branching_factor.SyntaxComplexityBranchingFactorExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.complexity.clause_depth.html">voxatlas.features.syntax.complexity.clause_depth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.complexity.clause_depth.SyntaxComplexityClauseDepthExtractor.html">voxatlas.features.syntax.complexity.clause_depth.SyntaxComplexityClauseDepthExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.complexity.mean_dependency_length.html">voxatlas.features.syntax.complexity.mean_dependency_length</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor.html">voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.complexity.parse_tree_depth.html">voxatlas.features.syntax.complexity.parse_tree_depth</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.complexity.parse_tree_depth.SyntaxComplexityParseTreeDepthExtractor.html">voxatlas.features.syntax.complexity.parse_tree_depth.SyntaxComplexityParseTreeDepthExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.syntax.dependencies.html">voxatlas.features.syntax.dependencies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor.html">voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="voxatlas.features.syntax.local_structure.html">voxatlas.features.syntax.local_structure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.local_structure.dep_label.html">voxatlas.features.syntax.local_structure.dep_label</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.local_structure.dep_label.SyntaxLocalStructureDependencyLabelExtractor.html">voxatlas.features.syntax.local_structure.dep_label.SyntaxLocalStructureDependencyLabelExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.local_structure.dependency_distance.html">voxatlas.features.syntax.local_structure.dependency_distance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor.html">voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.local_structure.head_distance.html">voxatlas.features.syntax.local_structure.head_distance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.local_structure.head_distance.SyntaxLocalStructureHeadDistanceExtractor.html">voxatlas.features.syntax.local_structure.head_distance.SyntaxLocalStructureHeadDistanceExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="voxatlas.features.syntax.local_structure.pos.html">voxatlas.features.syntax.local_structure.pos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="voxatlas.features.syntax.local_structure.pos.SyntaxLocalStructurePOSExtractor.html">voxatlas.features.syntax.local_structure.pos.SyntaxLocalStructurePOSExtractor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../modules.html" class="nav-link">API Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="voxatlas.features.html" class="nav-link">voxatlas.features</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="voxatlas.features.acoustic.html" class="nav-link">voxatlas.features.acoustic</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="voxatlas.features.acoustic.envelope.html" class="nav-link">voxatlas.features.acoustic.envelope</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="voxatlas.features.acoustic.envelope.variability.html" class="nav-link">voxatlas.features.acoustic.envelope.variability</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">voxatlas.features.acoustic.envelope.variability.RmsVariability</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="voxatlas-features-acoustic-envelope-variability-rmsvariability">
+<h1>voxatlas.features.acoustic.envelope.variability.RmsVariability<a class="headerlink" href="#voxatlas-features-acoustic-envelope-variability-rmsvariability" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.variability.RmsVariability">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">voxatlas.features.acoustic.envelope.variability.</span></span><span class="sig-name descname"><span class="pre">RmsVariability</span></span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.variability.RmsVariability" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="voxatlas.features.base_extractor.BaseExtractor.html#voxatlas.features.base_extractor.BaseExtractor" title="voxatlas.features.base_extractor.BaseExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExtractor</span></code></a></p>
+<p>Extract a frame-aligned variability summary from an upstream envelope contour.</p>
+<p>This public extractor turns a dependency contour into a dispersion statistic that can be attached to every frame. In VoxAtlas terms, it makes a global summary of envelope variation available as a reusable pipeline node rather than forcing each downstream feature to recompute it.</p>
+<section id="algorithm">
+<h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h2>
+<p>The variability computation is defined directly on the upstream contour.</p>
+<ol class="arabic">
+<li><p>Dependency retrieval
+The base contour <span class="math notranslate nohighlight">\(x_t\)</span> is loaded from the feature store using the configured envelope dependency.</p></li>
+<li><p>Dispersion estimate
+VoxAtlas computes the population standard deviation</p>
+<div class="math notranslate nohighlight">
+\[\sigma_x = \sqrt{\frac{1}{T}\sum_{t=1}^{T}(x_t-\bar{x})^2}.\]</div>
+</li>
+<li><p>Broadcasting and packaging
+The scalar value <span class="math notranslate nohighlight">\(\sigma_x\)</span> is repeated across the original frame grid so the feature remains directly alignable with other frame-level contours.</p></li>
+</ol>
+<p class="rubric">Notes</p>
+<p>This extractor depends on one upstream envelope representation and returns a <code class="docutils literal notranslate"><span class="pre">VectorFeatureOutput</span></code> on <code class="docutils literal notranslate"><span class="pre">frame</span></code> units.</p>
+<p class="rubric">Examples</p>
+<p>extractor = VariabilityExtractor()
+feature_input = FeatureInput(audio=audio, units=units, context={})
+output = extractor.compute(feature_input, {})
+print(output)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="voxatlas.features.acoustic.envelope.variability.RmsVariability.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxatlas.features.acoustic.envelope.variability.RmsVariability.compute" title="Link to this definition">#</a></dt>
+<dd><p>Compute the <cite>feature</cite> output for a single stream.</p>
+<p>This method is called by the pipeline after dependency resolution has completed. It receives the prepared feature input object together with the resolved feature-specific configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature_input</strong> (<a class="reference internal" href="voxatlas.features.feature_input.FeatureInput.html#voxatlas.features.feature_input.FeatureInput" title="voxatlas.features.feature_input.FeatureInput"><em>FeatureInput</em></a>) – Container with audio, unit tables, and pipeline context.</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – Resolved configuration dictionary for the extractor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Structured VoxAtlas feature output.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Raised when required inputs are unavailable for the feature.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implementations should remain side-effect free and should read dependency outputs from <code class="docutils literal notranslate"><span class="pre">feature_input.context['feature_store']</span></code> when needed.</p>
+<p class="rubric">Examples</p>
+<p>Usage example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extractor</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)()</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">extractor</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">feature_input</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="voxatlas.features.acoustic.envelope.variability.VarnetVariability.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">voxatlas.features.acoustic.envelope.variability.VarnetVariability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.variability.RmsVariability"><code class="docutils literal notranslate"><span class="pre">RmsVariability</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.acoustic.envelope.variability.RmsVariability.compute"><code class="docutils literal notranslate"><span class="pre">RmsVariability.compute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/generated/voxatlas.features.acoustic.envelope.variability.RmsVariability.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, VoxAtlas contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

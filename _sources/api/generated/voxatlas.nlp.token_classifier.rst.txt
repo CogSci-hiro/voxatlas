@@ -1,0 +1,20 @@
+voxatlas.nlp.token_classifier
+=============================
+
+.. currentmodule:: voxatlas.nlp.token_classifier
+
+.. automodule:: voxatlas.nlp.token_classifier
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   classify_tokens
+
+

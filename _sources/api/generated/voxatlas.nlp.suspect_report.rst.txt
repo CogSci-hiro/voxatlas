@@ -1,0 +1,20 @@
+voxatlas.nlp.suspect_report
+===========================
+
+.. currentmodule:: voxatlas.nlp.suspect_report
+
+.. automodule:: voxatlas.nlp.suspect_report
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   generate_suspect_report
+
+

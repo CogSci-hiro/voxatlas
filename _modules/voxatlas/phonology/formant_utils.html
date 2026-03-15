@@ -1,0 +1,1511 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>voxatlas.phonology.formant_utils &#8212; VoxAtlas 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/voxatlas/phonology/formant_utils';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">VoxAtlas 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/minimal_example.html">
+    Minimal Example
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/architecture.html">
+    Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/pipeline.html">
+    Pipeline
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/unit_hierarchy.html">
+    Unit Hierarchy
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../overview/feature_system.html">
+    Feature System
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorials/acoustic_features.html">
+    Acoustic Features Tutorial
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorials/linguistic_features.html">
+    Linguistic Features Tutorial
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorials/conversational_features.html">
+    Conversational Features Tutorial
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorials/building_features.html">
+    Building Features
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../developer/writing_extractors.html">
+    Writing Extractors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../developer/feature_registry.html">
+    Feature Registry
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../developer/pipeline_internals.html">
+    Pipeline Internals
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../api/modules.html">
+    API Reference
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/minimal_example.html">
+    Minimal Example
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/architecture.html">
+    Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/pipeline.html">
+    Pipeline
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/unit_hierarchy.html">
+    Unit Hierarchy
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/feature_system.html">
+    Feature System
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/acoustic_features.html">
+    Acoustic Features Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/linguistic_features.html">
+    Linguistic Features Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/conversational_features.html">
+    Conversational Features Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/building_features.html">
+    Building Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../developer/writing_extractors.html">
+    Writing Extractors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../developer/feature_registry.html">
+    Feature Registry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../developer/pipeline_internals.html">
+    Pipeline Internals
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">voxatlas.phonology.formant_utils</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for voxatlas.phonology.formant_utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.phonology.articulatory_utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">load_phonology_resources</span><span class="p">,</span>
+    <span class="n">lookup_articulatory_features</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="n">FORMANT_COLUMNS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;F1&quot;</span><span class="p">,</span> <span class="s2">&quot;F2&quot;</span><span class="p">,</span> <span class="s2">&quot;F3&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_to_samples</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">sr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_safe_float32</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_pre_emphasize</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">coeff</span><span class="o">=</span><span class="mf">0.97</span><span class="p">):</span>
+    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">signal</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">signal</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">signal</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_autocorrelation</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">autocorr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">)</span>
+    <span class="n">autocorr</span> <span class="o">=</span> <span class="n">autocorr</span><span class="p">[</span><span class="n">autocorr</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:]</span>
+    <span class="k">if</span> <span class="n">autocorr</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;=</span> <span class="n">order</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">autocorr</span><span class="p">[:</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_lpc_coefficients</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">autocorr</span> <span class="o">=</span> <span class="n">_autocorrelation</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">autocorr</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">autocorr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">order</span><span class="p">,</span> <span class="n">order</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">autocorr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+            <span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">autocorr</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">row</span> <span class="o">-</span> <span class="n">col</span><span class="p">)]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">coeffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mf">1.0</span><span class="p">],</span> <span class="o">-</span><span class="n">coeffs</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_estimate_formants_lpc</span><span class="p">(</span>
+    <span class="n">frame</span><span class="p">,</span>
+    <span class="n">sr</span><span class="p">,</span>
+    <span class="n">lpc_order</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">max_formant</span><span class="o">=</span><span class="mf">5500.0</span><span class="p">,</span>
+    <span class="n">min_formant</span><span class="o">=</span><span class="mf">90.0</span><span class="p">,</span>
+    <span class="n">n_formants</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">lpc_order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n_formants</span>
+
+    <span class="n">windowed</span> <span class="o">=</span> <span class="n">_pre_emphasize</span><span class="p">(</span><span class="n">frame</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">frame</span><span class="p">))</span>
+    <span class="n">windowed</span> <span class="o">=</span> <span class="n">windowed</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">hamming</span><span class="p">(</span><span class="n">windowed</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+    <span class="n">coeffs</span> <span class="o">=</span> <span class="n">_lpc_coefficients</span><span class="p">(</span><span class="n">windowed</span><span class="p">,</span> <span class="n">lpc_order</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">coeffs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n_formants</span>
+
+    <span class="n">roots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span>
+    <span class="n">roots</span> <span class="o">=</span> <span class="n">roots</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">]</span>
+
+    <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">angles</span> <span class="o">*</span> <span class="p">(</span><span class="n">sr</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+    <span class="n">bandwidths</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sr</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">roots</span><span class="p">),</span> <span class="mf">1e-8</span><span class="p">))</span>
+
+    <span class="n">valid</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">freq</span><span class="p">,</span> <span class="n">bandwidth</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">bandwidths</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">min_formant</span> <span class="o">&lt;=</span> <span class="n">freq</span> <span class="o">&lt;=</span> <span class="n">max_formant</span> <span class="ow">and</span> <span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">bandwidth</span> <span class="o">&lt;</span> <span class="mf">700.0</span><span class="p">:</span>
+            <span class="n">valid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">freq</span><span class="p">))</span>
+
+    <span class="n">valid</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">valid</span><span class="p">)[:</span><span class="n">n_formants</span><span class="p">]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n_formants</span><span class="p">:</span>
+        <span class="n">valid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">valid</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_compute_segment_tracks_lpc</span><span class="p">(</span>
+    <span class="n">segment</span><span class="p">,</span>
+    <span class="n">sr</span><span class="p">,</span>
+    <span class="n">start_time</span><span class="p">,</span>
+    <span class="n">phoneme_id</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">,</span>
+    <span class="n">ipa</span><span class="p">,</span>
+    <span class="n">is_vowel</span><span class="p">,</span>
+    <span class="n">frame_length</span><span class="p">,</span>
+    <span class="n">frame_step</span><span class="p">,</span>
+    <span class="n">lpc_order</span><span class="p">,</span>
+    <span class="n">max_formant</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">frame_length_samples</span> <span class="o">=</span> <span class="n">_to_samples</span><span class="p">(</span><span class="n">frame_length</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+    <span class="n">frame_step_samples</span> <span class="o">=</span> <span class="n">_to_samples</span><span class="p">(</span><span class="n">frame_step</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+    <span class="n">frame_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span> <span class="o">-</span> <span class="n">frame_length_samples</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">frame_step_samples</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">segment</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;</span> <span class="n">frame_length_samples</span><span class="p">:</span>
+        <span class="n">padded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame_length_samples</span> <span class="o">-</span> <span class="n">segment</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+        <span class="n">frame_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">padded</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">frames</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">segment</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span> <span class="o">+</span> <span class="n">frame_length_samples</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="n">frame_centers</span>
+        <span class="p">]</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">relative_start</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">frame_centers</span><span class="p">,</span> <span class="n">frames</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">frame_start</span> <span class="o">=</span> <span class="n">start_time</span> <span class="o">+</span> <span class="p">(</span><span class="n">relative_start</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">sr</span><span class="p">))</span>
+        <span class="n">frame_mid</span> <span class="o">=</span> <span class="n">frame_start</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_vowel</span><span class="p">:</span>
+            <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f3</span> <span class="o">=</span> <span class="n">_estimate_formants_lpc</span><span class="p">(</span>
+                <span class="n">frame</span><span class="p">,</span>
+                <span class="n">sr</span><span class="p">,</span>
+                <span class="n">lpc_order</span><span class="o">=</span><span class="n">lpc_order</span><span class="p">,</span>
+                <span class="n">max_formant</span><span class="o">=</span><span class="n">max_formant</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f1</span> <span class="o">=</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">f3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;frame_id&quot;</span><span class="p">:</span> <span class="n">index</span><span class="p">,</span>
+                <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">frame_start</span><span class="p">),</span>
+                <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">frame_start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">sr</span><span class="p">)),</span>
+                <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">frame_mid</span><span class="p">),</span>
+                <span class="s2">&quot;phoneme_id&quot;</span><span class="p">:</span> <span class="n">phoneme_id</span><span class="p">,</span>
+                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+                <span class="s2">&quot;ipa&quot;</span><span class="p">:</span> <span class="n">ipa</span><span class="p">,</span>
+                <span class="s2">&quot;is_vowel&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">is_vowel</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">),</span>
+                <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="n">_safe_float32</span><span class="p">(</span><span class="n">f1</span><span class="p">),</span>
+                <span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="n">_safe_float32</span><span class="p">(</span><span class="n">f2</span><span class="p">),</span>
+                <span class="s2">&quot;F3&quot;</span><span class="p">:</span> <span class="n">_safe_float32</span><span class="p">(</span><span class="n">f3</span><span class="p">),</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rows</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_try_parselmouth_segment_tracks</span><span class="p">(</span>
+    <span class="n">segment</span><span class="p">,</span>
+    <span class="n">sr</span><span class="p">,</span>
+    <span class="n">start_time</span><span class="p">,</span>
+    <span class="n">phoneme_id</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">,</span>
+    <span class="n">ipa</span><span class="p">,</span>
+    <span class="n">is_vowel</span><span class="p">,</span>
+    <span class="n">frame_length</span><span class="p">,</span>
+    <span class="n">frame_step</span><span class="p">,</span>
+    <span class="n">max_formant</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">parselmouth</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">segment</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">sound</span> <span class="o">=</span> <span class="n">parselmouth</span><span class="o">.</span><span class="n">Sound</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">sampling_frequency</span><span class="o">=</span><span class="n">sr</span><span class="p">)</span>
+    <span class="n">formant</span> <span class="o">=</span> <span class="n">sound</span><span class="o">.</span><span class="n">to_formant_burg</span><span class="p">(</span>
+        <span class="n">time_step</span><span class="o">=</span><span class="n">frame_step</span><span class="p">,</span>
+        <span class="n">max_number_of_formants</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">maximum_formant</span><span class="o">=</span><span class="n">max_formant</span><span class="p">,</span>
+        <span class="n">window_length</span><span class="o">=</span><span class="n">frame_length</span><span class="p">,</span>
+        <span class="n">pre_emphasis_from</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">duration</span> <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span>
+    <span class="n">sample_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">frame_length</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">frame_length</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="n">frame_step</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sample_times</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sample_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">duration</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">frame_length</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">local_time</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sample_times</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">global_time</span> <span class="o">=</span> <span class="n">start_time</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">local_time</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_vowel</span><span class="p">:</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">formant_index</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">formant</span><span class="o">.</span><span class="n">get_value_at_time</span><span class="p">(</span><span class="n">formant_index</span><span class="p">,</span> <span class="n">local_time</span><span class="p">)</span>
+                <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_safe_float32</span><span class="p">(</span><span class="n">value</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+            <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f3</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f1</span> <span class="o">=</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">f3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;frame_id&quot;</span><span class="p">:</span> <span class="n">index</span><span class="p">,</span>
+                <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">global_time</span> <span class="o">-</span> <span class="n">frame_length</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)),</span>
+                <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">start_time</span> <span class="o">+</span> <span class="n">duration</span><span class="p">,</span> <span class="n">global_time</span> <span class="o">+</span> <span class="n">frame_length</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)),</span>
+                <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">global_time</span><span class="p">),</span>
+                <span class="s2">&quot;phoneme_id&quot;</span><span class="p">:</span> <span class="n">phoneme_id</span><span class="p">,</span>
+                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+                <span class="s2">&quot;ipa&quot;</span><span class="p">:</span> <span class="n">ipa</span><span class="p">,</span>
+                <span class="s2">&quot;is_vowel&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">is_vowel</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">),</span>
+                <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="n">f1</span><span class="p">,</span>
+                <span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="n">f2</span><span class="p">,</span>
+                <span class="s2">&quot;F3&quot;</span><span class="p">:</span> <span class="n">f3</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rows</span>
+
+
+<div class="viewcode-block" id="compute_formant_tracks">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_formant_tracks.html#voxatlas.phonology.formant_utils.compute_formant_tracks">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_formant_tracks</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">sr</span><span class="p">,</span>
+    <span class="n">phonemes</span><span class="p">,</span>
+    <span class="n">language</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">resource_root</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">frame_length</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
+    <span class="n">frame_step</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+    <span class="n">lpc_order</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">max_formant</span><span class="o">=</span><span class="mf">5500.0</span><span class="p">,</span>
+    <span class="n">use_parselmouth</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute formant tracks from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    signal : object</span>
+<span class="sd">        One-dimensional waveform or contour array with shape ``(n_samples,)``.</span>
+<span class="sd">    sr : object</span>
+<span class="sd">        Sampling rate of the waveform in Hertz.</span>
+<span class="sd">    phonemes : object</span>
+<span class="sd">        Tabular annotation aligned to a VoxAtlas unit level and used as structured pipeline input.</span>
+<span class="sd">    language : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    resource_root : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    frame_length : object</span>
+<span class="sd">        Analysis window duration in seconds or samples, depending on the helper.</span>
+<span class="sd">    frame_step : object</span>
+<span class="sd">        Hop size between successive analysis frames in seconds or samples, depending on the helper.</span>
+<span class="sd">    lpc_order : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    max_formant : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    use_parselmouth : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    phonemes example</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    phoneme_id | start | end | label | word_id</span>
+<span class="sd">    0 | 0.12 | 0.18 | h | 0</span>
+<span class="sd">    1 | 0.18 | 0.25 | eh | 0</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Tabular result aligned to a VoxAtlas unit level or registry resource.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_formant_tracks(signal=..., sr=..., phonemes=..., language=..., resource_root=..., frame_length=..., frame_step=..., lpc_order=..., max_formant=..., use_parselmouth=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">phonemes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;frame_id&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;phoneme_id&quot;</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;ipa&quot;</span><span class="p">,</span> <span class="s2">&quot;is_vowel&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">FORMANT_COLUMNS</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">load_phonology_resources</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="n">language</span><span class="p">,</span> <span class="n">resource_root</span><span class="o">=</span><span class="n">resource_root</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">phoneme</span> <span class="ow">in</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">phoneme</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">])</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">phoneme</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">])</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">phoneme</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span>
+        <span class="n">ipa</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="n">lookup_articulatory_features</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">resources</span><span class="p">)</span>
+        <span class="n">is_vowel</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">features</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vowel&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">float</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s2">&quot;vowel&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">)</span>
+
+        <span class="n">start_sample</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">start</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)))</span>
+        <span class="n">end_sample</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">end</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)))</span>
+        <span class="n">segment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">signal</span><span class="p">[</span><span class="n">start_sample</span><span class="p">:</span><span class="n">end_sample</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+        <span class="n">segment_rows</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">use_parselmouth</span><span class="p">:</span>
+            <span class="n">segment_rows</span> <span class="o">=</span> <span class="n">_try_parselmouth_segment_tracks</span><span class="p">(</span>
+                <span class="n">segment</span><span class="o">=</span><span class="n">segment</span><span class="p">,</span>
+                <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span>
+                <span class="n">start_time</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+                <span class="n">phoneme_id</span><span class="o">=</span><span class="n">phoneme</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span>
+                <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+                <span class="n">ipa</span><span class="o">=</span><span class="n">ipa</span><span class="p">,</span>
+                <span class="n">is_vowel</span><span class="o">=</span><span class="n">is_vowel</span><span class="p">,</span>
+                <span class="n">frame_length</span><span class="o">=</span><span class="n">frame_length</span><span class="p">,</span>
+                <span class="n">frame_step</span><span class="o">=</span><span class="n">frame_step</span><span class="p">,</span>
+                <span class="n">max_formant</span><span class="o">=</span><span class="n">max_formant</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">segment_rows</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">segment_rows</span> <span class="o">=</span> <span class="n">_compute_segment_tracks_lpc</span><span class="p">(</span>
+                <span class="n">segment</span><span class="o">=</span><span class="n">segment</span><span class="p">,</span>
+                <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span>
+                <span class="n">start_time</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+                <span class="n">phoneme_id</span><span class="o">=</span><span class="n">phoneme</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span>
+                <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+                <span class="n">ipa</span><span class="o">=</span><span class="n">ipa</span><span class="p">,</span>
+                <span class="n">is_vowel</span><span class="o">=</span><span class="n">is_vowel</span><span class="p">,</span>
+                <span class="n">frame_length</span><span class="o">=</span><span class="n">frame_length</span><span class="p">,</span>
+                <span class="n">frame_step</span><span class="o">=</span><span class="n">frame_step</span><span class="p">,</span>
+                <span class="n">lpc_order</span><span class="o">=</span><span class="n">lpc_order</span><span class="p">,</span>
+                <span class="n">max_formant</span><span class="o">=</span><span class="n">max_formant</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">rows</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">segment_rows</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;frame_id&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;phoneme_id&quot;</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;ipa&quot;</span><span class="p">,</span> <span class="s2">&quot;is_vowel&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">FORMANT_COLUMNS</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_valid_vowel_tracks</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">tracks_df</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tracks_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;phoneme_id&quot;</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;ipa&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">FORMANT_COLUMNS</span><span class="p">])</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;is_vowel&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span><span class="p">:</span>
+        <span class="n">mask</span> <span class="o">&amp;=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_vowel_token_rows</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">,</span> <span class="n">reducer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]):</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">_valid_vowel_tracks</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">valid</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">phoneme_id</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">valid</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;phoneme_id&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;phoneme_id&quot;</span><span class="p">:</span> <span class="n">phoneme_id</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;ipa&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;ipa&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span>
+            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+            <span class="s2">&quot;n_frames&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)),</span>
+        <span class="p">}</span>
+        <span class="n">base</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">reducer</span><span class="p">(</span><span class="n">group</span><span class="p">))</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_sample_row</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">proportion</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">proportion</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="compute_vowel_midpoint">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_vowel_midpoint.html#voxatlas.phonology.formant_utils.compute_vowel_midpoint">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vowel_midpoint</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vowel midpoint from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_vowel_midpoint(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span>
+        <span class="n">tracks_df</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">column</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">_sample_row</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)[</span><span class="n">column</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span>
+        <span class="p">},</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_vowel_trajectory">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_vowel_trajectory.html#voxatlas.phonology.formant_utils.compute_vowel_trajectory">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vowel_trajectory</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vowel trajectory from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_vowel_trajectory(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span>
+        <span class="n">tracks_df</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">_sample_row</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">proportion</span><span class="p">)[</span><span class="n">column</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span>
+            <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">proportion</span> <span class="ow">in</span> <span class="p">((</span><span class="s2">&quot;20&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;50&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;80&quot;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+        <span class="p">},</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_vowel_mean">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_vowel_mean.html#voxatlas.phonology.formant_utils.compute_vowel_mean">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vowel_mean</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vowel mean from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_vowel_mean(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span>
+        <span class="n">tracks_df</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">column</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span>
+        <span class="p">},</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_vowel_median">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_vowel_median.html#voxatlas.phonology.formant_utils.compute_vowel_median">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vowel_median</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vowel median from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_vowel_median(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span>
+        <span class="n">tracks_df</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">column</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span>
+        <span class="p">},</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_vowel_variance">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_vowel_variance.html#voxatlas.phonology.formant_utils.compute_vowel_variance">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vowel_variance</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vowel variance from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_vowel_variance(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span>
+        <span class="n">tracks_df</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">column</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span>
+        <span class="p">},</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_onset_mid_offset">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_onset_mid_offset.html#voxatlas.phonology.formant_utils.compute_onset_mid_offset">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_onset_mid_offset</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute onset mid offset from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_onset_mid_offset(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span>
+        <span class="n">tracks_df</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">_sample_row</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">proportion</span><span class="p">)[</span><span class="n">column</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span>
+            <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">proportion</span> <span class="ow">in</span> <span class="p">((</span><span class="s2">&quot;onset&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;mid&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;offset&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="p">},</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_polynomial_coefficients">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_polynomial_coefficients.html#voxatlas.phonology.formant_utils.compute_polynomial_coefficients">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_polynomial_coefficients</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute polynomial coefficients from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    degree : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_polynomial_coefficients(tracks_df=..., degree=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reducer</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">degree</span><span class="p">:</span>
+                <span class="n">coeffs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">degree</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">coeffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">group</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">degree</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">coefficient</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coeffs</span><span class="p">):</span>
+                <span class="n">values</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_c</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">coefficient</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">values</span>
+
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">,</span> <span class="n">reducer</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_dct_coefficients</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">n_coeffs</span><span class="p">):</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">values</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_coeffs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">coeffs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_coeffs</span><span class="p">):</span>
+        <span class="n">basis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">indices</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">k</span><span class="p">)</span>
+        <span class="n">coeffs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">values</span> <span class="o">*</span> <span class="n">basis</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="compute_dct_coefficients">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_dct_coefficients.html#voxatlas.phonology.formant_utils.compute_dct_coefficients">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_dct_coefficients</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">,</span> <span class="n">n_coeffs</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute dct coefficients from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    n_coeffs : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_dct_coefficients(tracks_df=..., n_coeffs=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reducer</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span><span class="p">:</span>
+            <span class="n">coeffs</span> <span class="o">=</span> <span class="n">_dct_coefficients</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">n_coeffs</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">coefficient</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coeffs</span><span class="p">):</span>
+                <span class="n">values</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_dct</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">coefficient</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">values</span>
+
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">,</span> <span class="n">reducer</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_vowel_slope">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_vowel_slope.html#voxatlas.phonology.formant_utils.compute_vowel_slope">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vowel_slope</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vowel slope from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_vowel_slope(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reducer</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">FORMANT_COLUMNS</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">values</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_slope&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">slope</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">group</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">values</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_slope&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">values</span>
+
+    <span class="k">return</span> <span class="n">_vowel_token_rows</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">,</span> <span class="n">reducer</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_speaker_vowel_means</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+    <span class="n">midpoint</span> <span class="o">=</span> <span class="n">compute_vowel_midpoint</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">midpoint</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="n">means</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">ipa</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">midpoint</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;ipa&quot;</span><span class="p">):</span>
+        <span class="n">means</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ipa</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;F1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span>
+            <span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;F2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span>
+        <span class="p">}</span>
+    <span class="k">return</span> <span class="n">means</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_triangle_area</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span> <span class="o">=</span> <span class="n">points</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x1</span> <span class="o">*</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y3</span><span class="p">)</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="p">(</span><span class="n">y3</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span>
+
+
+<div class="viewcode-block" id="compute_vsa">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_vsa.html#voxatlas.phonology.formant_utils.compute_vsa">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vsa</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vsa from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_vsa(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="n">_speaker_vowel_means</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">)</span>
+    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">required</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">means</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">],</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]),</span>
+        <span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">],</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]),</span>
+        <span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">],</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]),</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">_triangle_area</span><span class="p">(</span><span class="n">points</span><span class="p">))</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_convex_hull</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">points</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">points</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">cross</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">o</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">o</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">o</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">o</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">lower</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">lower</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">cross</span><span class="p">(</span><span class="n">lower</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">lower</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">point</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">lower</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">lower</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+
+    <span class="n">upper</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">upper</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">cross</span><span class="p">(</span><span class="n">upper</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">upper</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">point</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">upper</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">upper</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">lower</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">upper</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_polygon_area</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">point</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+        <span class="n">nxt</span> <span class="o">=</span> <span class="n">points</span><span class="p">[(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span>
+        <span class="n">area</span> <span class="o">+=</span> <span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">nxt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">nxt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">area</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+
+
+<div class="viewcode-block" id="compute_tvsa">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_tvsa.html#voxatlas.phonology.formant_utils.compute_tvsa">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_tvsa</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute tvsa from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_tvsa(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">midpoint</span> <span class="o">=</span> <span class="n">compute_vowel_midpoint</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">midpoint</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;F2&quot;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;F1&quot;</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">midpoint</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;F1&quot;</span><span class="p">])</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;F2&quot;</span><span class="p">])</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">_polygon_area</span><span class="p">(</span><span class="n">_convex_hull</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span></div>
+
+
+
+<div class="viewcode-block" id="compute_vai">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_vai.html#voxatlas.phonology.formant_utils.compute_vai">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vai</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vai from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_vai(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="n">_speaker_vowel_means</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">)</span>
+    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">required</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">means</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">numerator</span> <span class="o">=</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">means</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">denominator</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_centralization">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.phonology.formant_utils.compute_centralization.html#voxatlas.phonology.formant_utils.compute_centralization">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_centralization</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute centralization from VoxAtlas inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the phonology layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracks_df : object</span>
+<span class="sd">        Argument used by the phonology API.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        Computed value or structure produced from the supplied inputs.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = compute_centralization(tracks_df=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="n">_speaker_vowel_means</span><span class="p">(</span><span class="n">tracks_df</span><span class="p">)</span>
+    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">required</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">means</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">numerator</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">means</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">][</span><span class="s2">&quot;F2&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">means</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">][</span><span class="s2">&quot;F1&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">denominator</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, VoxAtlas contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

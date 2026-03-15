@@ -1,0 +1,6 @@
+voxatlas.cli.commands.features_info.register
+============================================
+
+.. currentmodule:: voxatlas.cli.commands.features_info
+
+.. autofunction:: register

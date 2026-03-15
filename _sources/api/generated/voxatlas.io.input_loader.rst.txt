@@ -1,0 +1,31 @@
+voxatlas.io.input_loader
+========================
+
+.. currentmodule:: voxatlas.io.input_loader
+
+.. automodule:: voxatlas.io.input_loader
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   DatasetInput
+
+   DatasetStream
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   load_dataset
+
+

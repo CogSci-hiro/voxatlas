@@ -1,0 +1,6 @@
+voxatlas.phonology.articulatory_utils.normalize_phoneme_to_ipa
+==============================================================
+
+.. currentmodule:: voxatlas.phonology.articulatory_utils
+
+.. autofunction:: normalize_phoneme_to_ipa

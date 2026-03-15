@@ -1,0 +1,20 @@
+voxatlas.features.lexical.properties.function_word
+==================================================
+
+.. currentmodule:: voxatlas.features.lexical.properties.function_word
+
+.. automodule:: voxatlas.features.lexical.properties.function_word
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   FunctionWordExtractor
+
+
+
+

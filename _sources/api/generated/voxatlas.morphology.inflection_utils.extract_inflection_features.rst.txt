@@ -1,0 +1,6 @@
+voxatlas.morphology.inflection_utils.extract_inflection_features
+================================================================
+
+.. currentmodule:: voxatlas.morphology.inflection_utils
+
+.. autofunction:: extract_inflection_features

@@ -1,0 +1,6 @@
+voxatlas.config.schema.validate_config
+======================================
+
+.. currentmodule:: voxatlas.config.schema
+
+.. autofunction:: validate_config

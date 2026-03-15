@@ -1,0 +1,6 @@
+voxatlas.syntax.clause_utils.ensure_clause_columns
+==================================================
+
+.. currentmodule:: voxatlas.syntax.clause_utils
+
+.. autofunction:: ensure_clause_columns

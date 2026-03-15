@@ -1,0 +1,6 @@
+voxatlas.syntax.dependency_utils.find_first_column
+==================================================
+
+.. currentmodule:: voxatlas.syntax.dependency_utils
+
+.. autofunction:: find_first_column

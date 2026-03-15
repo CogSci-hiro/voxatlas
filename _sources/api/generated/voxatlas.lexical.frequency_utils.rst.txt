@@ -1,0 +1,24 @@
+voxatlas.lexical.frequency_utils
+================================
+
+.. currentmodule:: voxatlas.lexical.frequency_utils
+
+.. automodule:: voxatlas.lexical.frequency_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   compute_zipf_frequency
+
+   load_frequency_lexicon
+
+   lookup_word_frequency
+
+

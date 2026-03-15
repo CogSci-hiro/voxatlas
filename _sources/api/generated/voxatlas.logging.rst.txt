@@ -1,0 +1,21 @@
+voxatlas.logging
+================
+
+.. currentmodule:: voxatlas.logging
+
+.. automodule:: voxatlas.logging
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+
+   logging_config
+
+
+
+
+

@@ -1,0 +1,6 @@
+voxatlas.phonology.prosody_utils.detect_stress
+==============================================
+
+.. currentmodule:: voxatlas.phonology.prosody_utils
+
+.. autofunction:: detect_stress

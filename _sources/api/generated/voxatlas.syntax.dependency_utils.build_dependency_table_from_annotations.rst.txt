@@ -1,0 +1,6 @@
+voxatlas.syntax.dependency_utils.build_dependency_table_from_annotations
+========================================================================
+
+.. currentmodule:: voxatlas.syntax.dependency_utils
+
+.. autofunction:: build_dependency_table_from_annotations

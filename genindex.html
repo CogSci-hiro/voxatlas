@@ -1,0 +1,2705 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; VoxAtlas 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=bdbbbe79" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">VoxAtlas 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="documentation/index.html">
+    Documentations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="documentation/index.html">
+    Documentations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.pipeline.feature_store.FeatureStore.html#voxatlas.pipeline.feature_store.FeatureStore.add">add() (voxatlas.pipeline.feature_store.FeatureStore method)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor.html#voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor">AgreementFeaturesExtractor (class in voxatlas.features.morphology.agreement.features)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.animacy.AnimacyExtractor.html#voxatlas.features.lexical.properties.animacy.AnimacyExtractor">AnimacyExtractor (class in voxatlas.features.lexical.properties.animacy)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.feature_output.ArrayFeatureOutput.html#voxatlas.features.feature_output.ArrayFeatureOutput">ArrayFeatureOutput (class in voxatlas.features.feature_output)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor.html#voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor">ArticulatoryApproximantExtractor (class in voxatlas.features.phonology.articulatory.approximant)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.consonant.ArticulatoryConsonantExtractor.html#voxatlas.features.phonology.articulatory.consonant.ArticulatoryConsonantExtractor">ArticulatoryConsonantExtractor (class in voxatlas.features.phonology.articulatory.consonant)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.features.ArticulatoryFeaturesExtractor.html#voxatlas.features.phonology.articulatory.features.ArticulatoryFeaturesExtractor">ArticulatoryFeaturesExtractor (class in voxatlas.features.phonology.articulatory.features)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor.html#voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor">ArticulatoryFricativeExtractor (class in voxatlas.features.phonology.articulatory.fricative)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor.html#voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor">ArticulatoryNasalExtractor (class in voxatlas.features.phonology.articulatory.nasal)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor.html#voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor">ArticulatoryPlosiveExtractor (class in voxatlas.features.phonology.articulatory.plosive)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor.html#voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor">ArticulatoryVoicedExtractor (class in voxatlas.features.phonology.articulatory.voiced)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.voiceless.ArticulatoryVoicelessExtractor.html#voxatlas.features.phonology.articulatory.voiceless.ArticulatoryVoicelessExtractor">ArticulatoryVoicelessExtractor (class in voxatlas.features.phonology.articulatory.voiceless)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.articulatory.vowel.ArticulatoryVowelExtractor.html#voxatlas.features.phonology.articulatory.vowel.ArticulatoryVowelExtractor">ArticulatoryVowelExtractor (class in voxatlas.features.phonology.articulatory.vowel)</a>
+</li>
+      <li><a href="api/generated/voxatlas.audio.audio.Audio.html#voxatlas.audio.audio.Audio">Audio (class in voxatlas.audio.audio)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.base_extractor.BaseExtractor.html#voxatlas.features.base_extractor.BaseExtractor">BaseExtractor (class in voxatlas.features.base_extractor)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.children">children() (voxatlas.units.units.Units method)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.word_formation.clitic.CliticExtractor.html#voxatlas.features.morphology.word_formation.clitic.CliticExtractor">CliticExtractor (class in voxatlas.features.morphology.word_formation.clitic)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.word_formation.compound.CompoundExtractor.html#voxatlas.features.morphology.word_formation.compound.CompoundExtractor">CompoundExtractor (class in voxatlas.features.morphology.word_formation.compound)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.HilbertDerivative.html#voxatlas.features.acoustic.envelope.derivative.HilbertDerivative.compute">compute() (voxatlas.features.acoustic.envelope.derivative.HilbertDerivative method)</a>
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative.html#voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative.compute">(voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.OganianDerivative.html#voxatlas.features.acoustic.envelope.derivative.OganianDerivative.compute">(voxatlas.features.acoustic.envelope.derivative.OganianDerivative method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative.html#voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative.compute">(voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.RmsDerivative.html#voxatlas.features.acoustic.envelope.derivative.RmsDerivative.compute">(voxatlas.features.acoustic.envelope.derivative.RmsDerivative method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.VarnetDerivative.html#voxatlas.features.acoustic.envelope.derivative.VarnetDerivative.compute">(voxatlas.features.acoustic.envelope.derivative.VarnetDerivative method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.hilbert.HilbertEnvelope.html#voxatlas.features.acoustic.envelope.hilbert.HilbertEnvelope.compute">(voxatlas.features.acoustic.envelope.hilbert.HilbertEnvelope method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.html#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.compute">(voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.oganian.OganianEnvelope.html#voxatlas.features.acoustic.envelope.oganian.OganianEnvelope.compute">(voxatlas.features.acoustic.envelope.oganian.OganianEnvelope method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.HilbertOnset.html#voxatlas.features.acoustic.envelope.onset.HilbertOnset.compute">(voxatlas.features.acoustic.envelope.onset.HilbertOnset method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.LogEnergyOnset.html#voxatlas.features.acoustic.envelope.onset.LogEnergyOnset.compute">(voxatlas.features.acoustic.envelope.onset.LogEnergyOnset method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.OganianOnset.html#voxatlas.features.acoustic.envelope.onset.OganianOnset.compute">(voxatlas.features.acoustic.envelope.onset.OganianOnset method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.PraatIntensityOnset.html#voxatlas.features.acoustic.envelope.onset.PraatIntensityOnset.compute">(voxatlas.features.acoustic.envelope.onset.PraatIntensityOnset method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.RmsOnset.html#voxatlas.features.acoustic.envelope.onset.RmsOnset.compute">(voxatlas.features.acoustic.envelope.onset.RmsOnset method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.VarnetOnset.html#voxatlas.features.acoustic.envelope.onset.VarnetOnset.compute">(voxatlas.features.acoustic.envelope.onset.VarnetOnset method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.HilbertPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.HilbertPeakRate.compute">(voxatlas.features.acoustic.envelope.peak_rate.HilbertPeakRate method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.LogEnergyPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.LogEnergyPeakRate.compute">(voxatlas.features.acoustic.envelope.peak_rate.LogEnergyPeakRate method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.OganianPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.OganianPeakRate.compute">(voxatlas.features.acoustic.envelope.peak_rate.OganianPeakRate method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.PraatIntensityPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.PraatIntensityPeakRate.compute">(voxatlas.features.acoustic.envelope.peak_rate.PraatIntensityPeakRate method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.RmsPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.RmsPeakRate.compute">(voxatlas.features.acoustic.envelope.peak_rate.RmsPeakRate method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.VarnetPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.VarnetPeakRate.compute">(voxatlas.features.acoustic.envelope.peak_rate.VarnetPeakRate method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope.html#voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope.compute">(voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.rms.RMSEnvelope.html#voxatlas.features.acoustic.envelope.rms.RMSEnvelope.compute">(voxatlas.features.acoustic.envelope.rms.RMSEnvelope method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.HilbertVariability.html#voxatlas.features.acoustic.envelope.variability.HilbertVariability.compute">(voxatlas.features.acoustic.envelope.variability.HilbertVariability method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.LogEnergyVariability.html#voxatlas.features.acoustic.envelope.variability.LogEnergyVariability.compute">(voxatlas.features.acoustic.envelope.variability.LogEnergyVariability method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.OganianVariability.html#voxatlas.features.acoustic.envelope.variability.OganianVariability.compute">(voxatlas.features.acoustic.envelope.variability.OganianVariability method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability.html#voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability.compute">(voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.RmsVariability.html#voxatlas.features.acoustic.envelope.variability.RmsVariability.compute">(voxatlas.features.acoustic.envelope.variability.RmsVariability method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.VarnetVariability.html#voxatlas.features.acoustic.envelope.variability.VarnetVariability.compute">(voxatlas.features.acoustic.envelope.variability.VarnetVariability method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope.html#voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope.compute">(voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor.html#voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor.compute">(voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.derivative.F0DerivativeExtractor.html#voxatlas.features.acoustic.pitch.derivative.F0DerivativeExtractor.compute">(voxatlas.features.acoustic.pitch.derivative.F0DerivativeExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.f0.F0Extractor.html#voxatlas.features.acoustic.pitch.f0.F0Extractor.compute">(voxatlas.features.acoustic.pitch.f0.F0Extractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.range.F0RangeExtractor.html#voxatlas.features.acoustic.pitch.range.F0RangeExtractor.compute">(voxatlas.features.acoustic.pitch.range.F0RangeExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor.html#voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor.compute">(voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor.html#voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor.compute">(voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.centroid.SpectralCentroidExtractor.html#voxatlas.features.acoustic.spectral.centroid.SpectralCentroidExtractor.compute">(voxatlas.features.acoustic.spectral.centroid.SpectralCentroidExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.flatness.SpectralFlatnessExtractor.html#voxatlas.features.acoustic.spectral.flatness.SpectralFlatnessExtractor.compute">(voxatlas.features.acoustic.spectral.flatness.SpectralFlatnessExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.flux.SpectralFluxExtractor.html#voxatlas.features.acoustic.spectral.flux.SpectralFluxExtractor.compute">(voxatlas.features.acoustic.spectral.flux.SpectralFluxExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.rolloff.SpectralRolloffExtractor.html#voxatlas.features.acoustic.spectral.rolloff.SpectralRolloffExtractor.compute">(voxatlas.features.acoustic.spectral.rolloff.SpectralRolloffExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.slope.SpectralSlopeExtractor.html#voxatlas.features.acoustic.spectral.slope.SpectralSlopeExtractor.compute">(voxatlas.features.acoustic.spectral.slope.SpectralSlopeExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor.html#voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor.compute">(voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.spread.SpectralSpreadExtractor.html#voxatlas.features.acoustic.spectral.spread.SpectralSpreadExtractor.compute">(voxatlas.features.acoustic.spectral.spread.SpectralSpreadExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.mel.MelSpectrogramExtractor.html#voxatlas.features.acoustic.spectrogram.mel.MelSpectrogramExtractor.compute">(voxatlas.features.acoustic.spectrogram.mel.MelSpectrogramExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor.html#voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor.compute">(voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.hnr.HNRExtractor.html#voxatlas.features.acoustic.voice_quality.hnr.HNRExtractor.compute">(voxatlas.features.acoustic.voice_quality.hnr.HNRExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.jitter.JitterExtractor.html#voxatlas.features.acoustic.voice_quality.jitter.JitterExtractor.compute">(voxatlas.features.acoustic.voice_quality.jitter.JitterExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor.html#voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor.compute">(voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.base_extractor.BaseExtractor.html#voxatlas.features.base_extractor.BaseExtractor.compute">(voxatlas.features.base_extractor.BaseExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.example_pitch.DummyPitchExtractor.html#voxatlas.features.example_pitch.DummyPitchExtractor.compute">(voxatlas.features.example_pitch.DummyPitchExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor.html#voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor.compute">(voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor.html#voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor.compute">(voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor.html#voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor.compute">(voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.animacy.AnimacyExtractor.html#voxatlas.features.lexical.properties.animacy.AnimacyExtractor.compute">(voxatlas.features.lexical.properties.animacy.AnimacyExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor.html#voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor.compute">(voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.features.LexicalPropertiesExtractor.html#voxatlas.features.lexical.properties.features.LexicalPropertiesExtractor.compute">(voxatlas.features.lexical.properties.features.LexicalPropertiesExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.function_word.FunctionWordExtractor.html#voxatlas.features.lexical.properties.function_word.FunctionWordExtractor.compute">(voxatlas.features.lexical.properties.function_word.FunctionWordExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor.html#voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor.compute">(voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.phoneme_count.PhonemeCountExtractor.html#voxatlas.features.lexical.properties.phoneme_count.PhonemeCountExtractor.compute">(voxatlas.features.lexical.properties.phoneme_count.PhonemeCountExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.pos.POSExtractor.html#voxatlas.features.lexical.properties.pos.POSExtractor.compute">(voxatlas.features.lexical.properties.pos.POSExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor.html#voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor.compute">(voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.word_length.WordLengthExtractor.html#voxatlas.features.lexical.properties.word_length.WordLengthExtractor.compute">(voxatlas.features.lexical.properties.word_length.WordLengthExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor.html#voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor.compute">(voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.gender.GenderAgreementExtractor.html#voxatlas.features.morphology.agreement.gender.GenderAgreementExtractor.compute">(voxatlas.features.morphology.agreement.gender.GenderAgreementExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.subject_verb.SubjectVerbAgreementExtractor.html#voxatlas.features.morphology.agreement.subject_verb.SubjectVerbAgreementExtractor.compute">(voxatlas.features.morphology.agreement.subject_verb.SubjectVerbAgreementExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor.html#voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor.compute">(voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor.html#voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor.compute">(voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.prefix_presence.PrefixPresenceExtractor.html#voxatlas.features.morphology.derivation.prefix_presence.PrefixPresenceExtractor.compute">(voxatlas.features.morphology.derivation.prefix_presence.PrefixPresenceExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor.html#voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor.compute">(voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor.html#voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor.compute">(voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.aspect.InflectionAspectExtractor.html#voxatlas.features.morphology.inflection.aspect.InflectionAspectExtractor.compute">(voxatlas.features.morphology.inflection.aspect.InflectionAspectExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.case.InflectionCaseExtractor.html#voxatlas.features.morphology.inflection.case.InflectionCaseExtractor.compute">(voxatlas.features.morphology.inflection.case.InflectionCaseExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor.html#voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor.compute">(voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.features.InflectionFeaturesExtractor.html#voxatlas.features.morphology.inflection.features.InflectionFeaturesExtractor.compute">(voxatlas.features.morphology.inflection.features.InflectionFeaturesExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.gender.InflectionGenderExtractor.html#voxatlas.features.morphology.inflection.gender.InflectionGenderExtractor.compute">(voxatlas.features.morphology.inflection.gender.InflectionGenderExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.mood.InflectionMoodExtractor.html#voxatlas.features.morphology.inflection.mood.InflectionMoodExtractor.compute">(voxatlas.features.morphology.inflection.mood.InflectionMoodExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.number.InflectionNumberExtractor.html#voxatlas.features.morphology.inflection.number.InflectionNumberExtractor.compute">(voxatlas.features.morphology.inflection.number.InflectionNumberExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.person.InflectionPersonExtractor.html#voxatlas.features.morphology.inflection.person.InflectionPersonExtractor.compute">(voxatlas.features.morphology.inflection.person.InflectionPersonExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor.html#voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor.compute">(voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor.html#voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor.compute">(voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.finite.VerbMorphologyFiniteExtractor.html#voxatlas.features.morphology.verb_morphology.finite.VerbMorphologyFiniteExtractor.compute">(voxatlas.features.morphology.verb_morphology.finite.VerbMorphologyFiniteExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.infinitive.VerbMorphologyInfinitiveExtractor.html#voxatlas.features.morphology.verb_morphology.infinitive.VerbMorphologyInfinitiveExtractor.compute">(voxatlas.features.morphology.verb_morphology.infinitive.VerbMorphologyInfinitiveExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor.html#voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor.compute">(voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.clitic.CliticExtractor.html#voxatlas.features.morphology.word_formation.clitic.CliticExtractor.compute">(voxatlas.features.morphology.word_formation.clitic.CliticExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.compound.CompoundExtractor.html#voxatlas.features.morphology.word_formation.compound.CompoundExtractor.compute">(voxatlas.features.morphology.word_formation.compound.CompoundExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.features.WordFormationFeaturesExtractor.html#voxatlas.features.morphology.word_formation.features.WordFormationFeaturesExtractor.compute">(voxatlas.features.morphology.word_formation.features.WordFormationFeaturesExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor.html#voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor.compute">(voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.consonant.ArticulatoryConsonantExtractor.html#voxatlas.features.phonology.articulatory.consonant.ArticulatoryConsonantExtractor.compute">(voxatlas.features.phonology.articulatory.consonant.ArticulatoryConsonantExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.features.ArticulatoryFeaturesExtractor.html#voxatlas.features.phonology.articulatory.features.ArticulatoryFeaturesExtractor.compute">(voxatlas.features.phonology.articulatory.features.ArticulatoryFeaturesExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor.html#voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor.compute">(voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor.html#voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor.compute">(voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor.html#voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor.compute">(voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor.html#voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor.compute">(voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.voiceless.ArticulatoryVoicelessExtractor.html#voxatlas.features.phonology.articulatory.voiceless.ArticulatoryVoicelessExtractor.compute">(voxatlas.features.phonology.articulatory.voiceless.ArticulatoryVoicelessExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.vowel.ArticulatoryVowelExtractor.html#voxatlas.features.phonology.articulatory.vowel.ArticulatoryVowelExtractor.compute">(voxatlas.features.phonology.articulatory.vowel.ArticulatoryVowelExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor.html#voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor.compute">(voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.dct.FormantDCTExtractor.html#voxatlas.features.phonology.formant.dct.FormantDCTExtractor.compute">(voxatlas.features.phonology.formant.dct.FormantDCTExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.mean.FormantMeanExtractor.html#voxatlas.features.phonology.formant.mean.FormantMeanExtractor.compute">(voxatlas.features.phonology.formant.mean.FormantMeanExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.median.FormantMedianExtractor.html#voxatlas.features.phonology.formant.median.FormantMedianExtractor.compute">(voxatlas.features.phonology.formant.median.FormantMedianExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor.html#voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor.compute">(voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.onset_mid_offset.FormantOnsetMidOffsetExtractor.html#voxatlas.features.phonology.formant.onset_mid_offset.FormantOnsetMidOffsetExtractor.compute">(voxatlas.features.phonology.formant.onset_mid_offset.FormantOnsetMidOffsetExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.polynomial.FormantPolynomialExtractor.html#voxatlas.features.phonology.formant.polynomial.FormantPolynomialExtractor.compute">(voxatlas.features.phonology.formant.polynomial.FormantPolynomialExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.slope.FormantSlopeExtractor.html#voxatlas.features.phonology.formant.slope.FormantSlopeExtractor.compute">(voxatlas.features.phonology.formant.slope.FormantSlopeExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.tracks.FormantTracksExtractor.html#voxatlas.features.phonology.formant.tracks.FormantTracksExtractor.compute">(voxatlas.features.phonology.formant.tracks.FormantTracksExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor.html#voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor.compute">(voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.tvsa.FormantTVSAExtractor.html#voxatlas.features.phonology.formant.tvsa.FormantTVSAExtractor.compute">(voxatlas.features.phonology.formant.tvsa.FormantTVSAExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.vai.FormantVAIExtractor.html#voxatlas.features.phonology.formant.vai.FormantVAIExtractor.compute">(voxatlas.features.phonology.formant.vai.FormantVAIExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.variance.FormantVarianceExtractor.html#voxatlas.features.phonology.formant.variance.FormantVarianceExtractor.compute">(voxatlas.features.phonology.formant.variance.FormantVarianceExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.vsa.FormantVSAExtractor.html#voxatlas.features.phonology.formant.vsa.FormantVSAExtractor.compute">(voxatlas.features.phonology.formant.vsa.FormantVSAExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.position_ipu.ProsodicPositionInIPUExtractor.html#voxatlas.features.phonology.prosody.position_ipu.ProsodicPositionInIPUExtractor.compute">(voxatlas.features.phonology.prosody.position_ipu.ProsodicPositionInIPUExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.position_word.ProsodicPositionInWordExtractor.html#voxatlas.features.phonology.prosody.position_word.ProsodicPositionInWordExtractor.compute">(voxatlas.features.phonology.prosody.position_word.ProsodicPositionInWordExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor.html#voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor.compute">(voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.html#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.compute">(voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor.html#voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor.compute">(voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.reduction.vowel_reduction.VowelReductionExtractor.html#voxatlas.features.phonology.reduction.vowel_reduction.VowelReductionExtractor.compute">(voxatlas.features.phonology.reduction.vowel_reduction.VowelReductionExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.delta_c.RhythmDeltaCExtractor.html#voxatlas.features.phonology.rhythm.delta_c.RhythmDeltaCExtractor.compute">(voxatlas.features.phonology.rhythm.delta_c.RhythmDeltaCExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.delta_v.RhythmDeltaVExtractor.html#voxatlas.features.phonology.rhythm.delta_v.RhythmDeltaVExtractor.compute">(voxatlas.features.phonology.rhythm.delta_v.RhythmDeltaVExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor.html#voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor.compute">(voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor.html#voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor.compute">(voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.pause_rate.RhythmPauseRateExtractor.html#voxatlas.features.phonology.rhythm.pause_rate.RhythmPauseRateExtractor.compute">(voxatlas.features.phonology.rhythm.pause_rate.RhythmPauseRateExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.percent_c.RhythmPercentCExtractor.html#voxatlas.features.phonology.rhythm.percent_c.RhythmPercentCExtractor.compute">(voxatlas.features.phonology.rhythm.percent_c.RhythmPercentCExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor.html#voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor.compute">(voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.syllable_duration.RhythmSyllableDurationExtractor.html#voxatlas.features.phonology.rhythm.syllable_duration.RhythmSyllableDurationExtractor.compute">(voxatlas.features.phonology.rhythm.syllable_duration.RhythmSyllableDurationExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor.html#voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor.compute">(voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.varco_c.RhythmVarcoCExtractor.html#voxatlas.features.phonology.rhythm.varco_c.RhythmVarcoCExtractor.compute">(voxatlas.features.phonology.rhythm.varco_c.RhythmVarcoCExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor.html#voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor.compute">(voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor.html#voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor.compute">(voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.relative_clause.SyntaxRelativeClauseExtractor.html#voxatlas.features.syntax.clause_structure.relative_clause.SyntaxRelativeClauseExtractor.compute">(voxatlas.features.syntax.clause_structure.relative_clause.SyntaxRelativeClauseExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.subordinate_clause.SyntaxSubordinateClauseExtractor.html#voxatlas.features.syntax.clause_structure.subordinate_clause.SyntaxSubordinateClauseExtractor.compute">(voxatlas.features.syntax.clause_structure.subordinate_clause.SyntaxSubordinateClauseExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.branching_factor.SyntaxComplexityBranchingFactorExtractor.html#voxatlas.features.syntax.complexity.branching_factor.SyntaxComplexityBranchingFactorExtractor.compute">(voxatlas.features.syntax.complexity.branching_factor.SyntaxComplexityBranchingFactorExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.clause_depth.SyntaxComplexityClauseDepthExtractor.html#voxatlas.features.syntax.complexity.clause_depth.SyntaxComplexityClauseDepthExtractor.compute">(voxatlas.features.syntax.complexity.clause_depth.SyntaxComplexityClauseDepthExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor.html#voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor.compute">(voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.parse_tree_depth.SyntaxComplexityParseTreeDepthExtractor.html#voxatlas.features.syntax.complexity.parse_tree_depth.SyntaxComplexityParseTreeDepthExtractor.compute">(voxatlas.features.syntax.complexity.parse_tree_depth.SyntaxComplexityParseTreeDepthExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor.html#voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor.compute">(voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.dep_label.SyntaxLocalStructureDependencyLabelExtractor.html#voxatlas.features.syntax.local_structure.dep_label.SyntaxLocalStructureDependencyLabelExtractor.compute">(voxatlas.features.syntax.local_structure.dep_label.SyntaxLocalStructureDependencyLabelExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor.html#voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor.compute">(voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.head_distance.SyntaxLocalStructureHeadDistanceExtractor.html#voxatlas.features.syntax.local_structure.head_distance.SyntaxLocalStructureHeadDistanceExtractor.compute">(voxatlas.features.syntax.local_structure.head_distance.SyntaxLocalStructureHeadDistanceExtractor method)</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.pos.SyntaxLocalStructurePOSExtractor.html#voxatlas.features.syntax.local_structure.pos.SyntaxLocalStructurePOSExtractor.compute">(voxatlas.features.syntax.local_structure.pos.SyntaxLocalStructurePOSExtractor method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.pipeline.cache.DiskCache.html#voxatlas.pipeline.cache.DiskCache.compute_key">compute_key() (voxatlas.pipeline.cache.DiskCache method)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor.html#voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor">ConcretenessExtractor (class in voxatlas.features.lexical.properties.concreteness)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor.html#voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor">DerivationalSegmentationExtractor (class in voxatlas.features.morphology.derivation.segmentation)</a>
+</li>
+      <li><a href="api/generated/voxatlas.pipeline.cache.DiskCache.html#voxatlas.pipeline.cache.DiskCache">DiskCache (class in voxatlas.pipeline.cache)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.example_pitch.DummyPitchExtractor.html#voxatlas.features.example_pitch.DummyPitchExtractor">DummyPitchExtractor (class in voxatlas.features.example_pitch)</a>
+</li>
+      <li><a href="api/generated/voxatlas.audio.audio.Audio.html#voxatlas.audio.audio.Audio.duration">duration (voxatlas.audio.audio.Audio property)</a>
+</li>
+      <li><a href="api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.duration">duration() (voxatlas.units.units.Units method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.pipeline.execution_plan.ExecutionPlan.html#voxatlas.pipeline.execution_plan.ExecutionPlan">ExecutionPlan (class in voxatlas.pipeline.execution_plan)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.pipeline.cache.DiskCache.html#voxatlas.pipeline.cache.DiskCache.exists">exists() (voxatlas.pipeline.cache.DiskCache method)</a>
+
+      <ul>
+        <li><a href="api/generated/voxatlas.pipeline.feature_store.FeatureStore.html#voxatlas.pipeline.feature_store.FeatureStore.exists">(voxatlas.pipeline.feature_store.FeatureStore method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor.html#voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor">F0ContourShapeExtractor (class in voxatlas.features.acoustic.pitch.contour_shape)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.pitch.derivative.F0DerivativeExtractor.html#voxatlas.features.acoustic.pitch.derivative.F0DerivativeExtractor">F0DerivativeExtractor (class in voxatlas.features.acoustic.pitch.derivative)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.pitch.f0.F0Extractor.html#voxatlas.features.acoustic.pitch.f0.F0Extractor">F0Extractor (class in voxatlas.features.acoustic.pitch.f0)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.pitch.range.F0RangeExtractor.html#voxatlas.features.acoustic.pitch.range.F0RangeExtractor">F0RangeExtractor (class in voxatlas.features.acoustic.pitch.range)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor.html#voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor">F0SlopeExtractor (class in voxatlas.features.acoustic.pitch.slope)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor.html#voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor">F0VariabilityExtractor (class in voxatlas.features.acoustic.pitch.variability)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.feature_input.FeatureInput.html#voxatlas.features.feature_input.FeatureInput">FeatureInput (class in voxatlas.features.feature_input)</a>
+</li>
+      <li><a href="api/generated/voxatlas.pipeline.feature_store.FeatureStore.html#voxatlas.pipeline.feature_store.FeatureStore">FeatureStore (class in voxatlas.pipeline.feature_store)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor.html#voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor">FormantCentralizationExtractor (class in voxatlas.features.phonology.formant.centralization)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.dct.FormantDCTExtractor.html#voxatlas.features.phonology.formant.dct.FormantDCTExtractor">FormantDCTExtractor (class in voxatlas.features.phonology.formant.dct)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.mean.FormantMeanExtractor.html#voxatlas.features.phonology.formant.mean.FormantMeanExtractor">FormantMeanExtractor (class in voxatlas.features.phonology.formant.mean)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.median.FormantMedianExtractor.html#voxatlas.features.phonology.formant.median.FormantMedianExtractor">FormantMedianExtractor (class in voxatlas.features.phonology.formant.median)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor.html#voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor">FormantMidpointExtractor (class in voxatlas.features.phonology.formant.midpoint)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.onset_mid_offset.FormantOnsetMidOffsetExtractor.html#voxatlas.features.phonology.formant.onset_mid_offset.FormantOnsetMidOffsetExtractor">FormantOnsetMidOffsetExtractor (class in voxatlas.features.phonology.formant.onset_mid_offset)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.polynomial.FormantPolynomialExtractor.html#voxatlas.features.phonology.formant.polynomial.FormantPolynomialExtractor">FormantPolynomialExtractor (class in voxatlas.features.phonology.formant.polynomial)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.slope.FormantSlopeExtractor.html#voxatlas.features.phonology.formant.slope.FormantSlopeExtractor">FormantSlopeExtractor (class in voxatlas.features.phonology.formant.slope)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.tracks.FormantTracksExtractor.html#voxatlas.features.phonology.formant.tracks.FormantTracksExtractor">FormantTracksExtractor (class in voxatlas.features.phonology.formant.tracks)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor.html#voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor">FormantTrajectoryExtractor (class in voxatlas.features.phonology.formant.trajectory)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.tvsa.FormantTVSAExtractor.html#voxatlas.features.phonology.formant.tvsa.FormantTVSAExtractor">FormantTVSAExtractor (class in voxatlas.features.phonology.formant.tvsa)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.vai.FormantVAIExtractor.html#voxatlas.features.phonology.formant.vai.FormantVAIExtractor">FormantVAIExtractor (class in voxatlas.features.phonology.formant.vai)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.variance.FormantVarianceExtractor.html#voxatlas.features.phonology.formant.variance.FormantVarianceExtractor">FormantVarianceExtractor (class in voxatlas.features.phonology.formant.variance)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.formant.vsa.FormantVSAExtractor.html#voxatlas.features.phonology.formant.vsa.FormantVSAExtractor">FormantVSAExtractor (class in voxatlas.features.phonology.formant.vsa)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.function_word.FunctionWordExtractor.html#voxatlas.features.lexical.properties.function_word.FunctionWordExtractor">FunctionWordExtractor (class in voxatlas.features.lexical.properties.function_word)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.morphology.agreement.gender.GenderAgreementExtractor.html#voxatlas.features.morphology.agreement.gender.GenderAgreementExtractor">GenderAgreementExtractor (class in voxatlas.features.morphology.agreement.gender)</a>
+</li>
+      <li><a href="api/generated/voxatlas.pipeline.feature_store.FeatureStore.html#voxatlas.pipeline.feature_store.FeatureStore.get">get() (voxatlas.pipeline.feature_store.FeatureStore method)</a>
+
+      <ul>
+        <li><a href="api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.get">(voxatlas.units.units.Units method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.group">group() (voxatlas.units.units.Units method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.HilbertDerivative.html#voxatlas.features.acoustic.envelope.derivative.HilbertDerivative">HilbertDerivative (class in voxatlas.features.acoustic.envelope.derivative)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.hilbert.HilbertEnvelope.html#voxatlas.features.acoustic.envelope.hilbert.HilbertEnvelope">HilbertEnvelope (class in voxatlas.features.acoustic.envelope.hilbert)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.HilbertOnset.html#voxatlas.features.acoustic.envelope.onset.HilbertOnset">HilbertOnset (class in voxatlas.features.acoustic.envelope.onset)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.HilbertPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.HilbertPeakRate">HilbertPeakRate (class in voxatlas.features.acoustic.envelope.peak_rate)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.HilbertVariability.html#voxatlas.features.acoustic.envelope.variability.HilbertVariability">HilbertVariability (class in voxatlas.features.acoustic.envelope.variability)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.hnr.HNRExtractor.html#voxatlas.features.acoustic.voice_quality.hnr.HNRExtractor">HNRExtractor (class in voxatlas.features.acoustic.voice_quality.hnr)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.aspect.InflectionAspectExtractor.html#voxatlas.features.morphology.inflection.aspect.InflectionAspectExtractor">InflectionAspectExtractor (class in voxatlas.features.morphology.inflection.aspect)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.case.InflectionCaseExtractor.html#voxatlas.features.morphology.inflection.case.InflectionCaseExtractor">InflectionCaseExtractor (class in voxatlas.features.morphology.inflection.case)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor.html#voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor">InflectionDefinitenessExtractor (class in voxatlas.features.morphology.inflection.definiteness)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.features.InflectionFeaturesExtractor.html#voxatlas.features.morphology.inflection.features.InflectionFeaturesExtractor">InflectionFeaturesExtractor (class in voxatlas.features.morphology.inflection.features)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.gender.InflectionGenderExtractor.html#voxatlas.features.morphology.inflection.gender.InflectionGenderExtractor">InflectionGenderExtractor (class in voxatlas.features.morphology.inflection.gender)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.mood.InflectionMoodExtractor.html#voxatlas.features.morphology.inflection.mood.InflectionMoodExtractor">InflectionMoodExtractor (class in voxatlas.features.morphology.inflection.mood)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.number.InflectionNumberExtractor.html#voxatlas.features.morphology.inflection.number.InflectionNumberExtractor">InflectionNumberExtractor (class in voxatlas.features.morphology.inflection.number)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.person.InflectionPersonExtractor.html#voxatlas.features.morphology.inflection.person.InflectionPersonExtractor">InflectionPersonExtractor (class in voxatlas.features.morphology.inflection.person)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor.html#voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor">InflectionTenseExtractor (class in voxatlas.features.morphology.inflection.tense)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.jitter.JitterExtractor.html#voxatlas.features.acoustic.voice_quality.jitter.JitterExtractor">JitterExtractor (class in voxatlas.features.acoustic.voice_quality.jitter)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor.html#voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor">LexicalFrequencyLookupExtractor (class in voxatlas.features.lexical.frequency.lookup)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.features.LexicalPropertiesExtractor.html#voxatlas.features.lexical.properties.features.LexicalPropertiesExtractor">LexicalPropertiesExtractor (class in voxatlas.features.lexical.properties.features)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor.html#voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor">LexicalPropertyLookupExtractor (class in voxatlas.features.lexical.properties.lookup)</a>
+</li>
+      <li><a href="api/generated/voxatlas.pipeline.cache.DiskCache.html#voxatlas.pipeline.cache.DiskCache.load">load() (voxatlas.pipeline.cache.DiskCache method)</a>
+</li>
+      <li><a href="api/generated/voxatlas.units.alignment.load_alignment.html#voxatlas.units.alignment.load_alignment">load_alignment() (in module voxatlas.units.alignment)</a>
+</li>
+      <li><a href="api/generated/voxatlas.audio.loader.load_audio.html#voxatlas.audio.loader.load_audio">load_audio() (in module voxatlas.audio.loader)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.units.alignment_loader.load_textgrid.html#voxatlas.units.alignment_loader.load_textgrid">load_textgrid() (in module voxatlas.units.alignment_loader)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative.html#voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative">LogEnergyDerivative (class in voxatlas.features.acoustic.envelope.derivative)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.html#voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope">LogEnergyEnvelope (class in voxatlas.features.acoustic.envelope.log_energy)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.LogEnergyOnset.html#voxatlas.features.acoustic.envelope.onset.LogEnergyOnset">LogEnergyOnset (class in voxatlas.features.acoustic.envelope.onset)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.LogEnergyPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.LogEnergyPeakRate">LogEnergyPeakRate (class in voxatlas.features.acoustic.envelope.peak_rate)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.LogEnergyVariability.html#voxatlas.features.acoustic.envelope.variability.LogEnergyVariability">LogEnergyVariability (class in voxatlas.features.acoustic.envelope.variability)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.feature_output.MatrixFeatureOutput.html#voxatlas.features.feature_output.MatrixFeatureOutput">MatrixFeatureOutput (class in voxatlas.features.feature_output)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.mel.MelSpectrogramExtractor.html#voxatlas.features.acoustic.spectrogram.mel.MelSpectrogramExtractor">MelSpectrogramExtractor (class in voxatlas.features.acoustic.spectrogram.mel)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api/generated/voxatlas.audio.html#module-voxatlas.audio">voxatlas.audio</a>
+</li>
+        <li><a href="api/generated/voxatlas.audio.audio.html#module-voxatlas.audio.audio">voxatlas.audio.audio</a>
+</li>
+        <li><a href="api/generated/voxatlas.audio.loader.html#module-voxatlas.audio.loader">voxatlas.audio.loader</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.html#module-voxatlas.features">voxatlas.features</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.html#module-voxatlas.features.acoustic">voxatlas.features.acoustic</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.html#module-voxatlas.features.acoustic.envelope">voxatlas.features.acoustic.envelope</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.html#module-voxatlas.features.acoustic.envelope.derivative">voxatlas.features.acoustic.envelope.derivative</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.hilbert.html#module-voxatlas.features.acoustic.envelope.hilbert">voxatlas.features.acoustic.envelope.hilbert</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.log_energy.html#module-voxatlas.features.acoustic.envelope.log_energy">voxatlas.features.acoustic.envelope.log_energy</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.oganian.html#module-voxatlas.features.acoustic.envelope.oganian">voxatlas.features.acoustic.envelope.oganian</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.html#module-voxatlas.features.acoustic.envelope.onset">voxatlas.features.acoustic.envelope.onset</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.html#module-voxatlas.features.acoustic.envelope.peak_rate">voxatlas.features.acoustic.envelope.peak_rate</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.praat_intensity.html#module-voxatlas.features.acoustic.envelope.praat_intensity">voxatlas.features.acoustic.envelope.praat_intensity</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.rms.html#module-voxatlas.features.acoustic.envelope.rms">voxatlas.features.acoustic.envelope.rms</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.html#module-voxatlas.features.acoustic.envelope.variability">voxatlas.features.acoustic.envelope.variability</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.varnet.html#module-voxatlas.features.acoustic.envelope.varnet">voxatlas.features.acoustic.envelope.varnet</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.html#module-voxatlas.features.acoustic.pitch">voxatlas.features.acoustic.pitch</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.contour_shape.html#module-voxatlas.features.acoustic.pitch.contour_shape">voxatlas.features.acoustic.pitch.contour_shape</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.derivative.html#module-voxatlas.features.acoustic.pitch.derivative">voxatlas.features.acoustic.pitch.derivative</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.f0.html#module-voxatlas.features.acoustic.pitch.f0">voxatlas.features.acoustic.pitch.f0</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.range.html#module-voxatlas.features.acoustic.pitch.range">voxatlas.features.acoustic.pitch.range</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.slope.html#module-voxatlas.features.acoustic.pitch.slope">voxatlas.features.acoustic.pitch.slope</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.variability.html#module-voxatlas.features.acoustic.pitch.variability">voxatlas.features.acoustic.pitch.variability</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.html#module-voxatlas.features.acoustic.spectral">voxatlas.features.acoustic.spectral</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.centroid.html#module-voxatlas.features.acoustic.spectral.centroid">voxatlas.features.acoustic.spectral.centroid</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.flatness.html#module-voxatlas.features.acoustic.spectral.flatness">voxatlas.features.acoustic.spectral.flatness</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.flux.html#module-voxatlas.features.acoustic.spectral.flux">voxatlas.features.acoustic.spectral.flux</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.rolloff.html#module-voxatlas.features.acoustic.spectral.rolloff">voxatlas.features.acoustic.spectral.rolloff</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.slope.html#module-voxatlas.features.acoustic.spectral.slope">voxatlas.features.acoustic.spectral.slope</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.spectrum.html#module-voxatlas.features.acoustic.spectral.spectrum">voxatlas.features.acoustic.spectral.spectrum</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.spread.html#module-voxatlas.features.acoustic.spectral.spread">voxatlas.features.acoustic.spectral.spread</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.html#module-voxatlas.features.acoustic.spectrogram">voxatlas.features.acoustic.spectrogram</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.mel.html#module-voxatlas.features.acoustic.spectrogram.mel">voxatlas.features.acoustic.spectrogram.mel</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.stft.html#module-voxatlas.features.acoustic.spectrogram.stft">voxatlas.features.acoustic.spectrogram.stft</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.html#module-voxatlas.features.acoustic.voice_quality">voxatlas.features.acoustic.voice_quality</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.hnr.html#module-voxatlas.features.acoustic.voice_quality.hnr">voxatlas.features.acoustic.voice_quality.hnr</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.jitter.html#module-voxatlas.features.acoustic.voice_quality.jitter">voxatlas.features.acoustic.voice_quality.jitter</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.shimmer.html#module-voxatlas.features.acoustic.voice_quality.shimmer">voxatlas.features.acoustic.voice_quality.shimmer</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.base_extractor.html#module-voxatlas.features.base_extractor">voxatlas.features.base_extractor</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.example_pitch.html#module-voxatlas.features.example_pitch">voxatlas.features.example_pitch</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.feature_input.html#module-voxatlas.features.feature_input">voxatlas.features.feature_input</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.feature_output.html#module-voxatlas.features.feature_output">voxatlas.features.feature_output</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.html#module-voxatlas.features.lexical">voxatlas.features.lexical</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.html#module-voxatlas.features.lexical.frequency">voxatlas.features.lexical.frequency</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.lookup.html#module-voxatlas.features.lexical.frequency.lookup">voxatlas.features.lexical.frequency.lookup</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.word_frequency.html#module-voxatlas.features.lexical.frequency.word_frequency">voxatlas.features.lexical.frequency.word_frequency</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.zipf_frequency.html#module-voxatlas.features.lexical.frequency.zipf_frequency">voxatlas.features.lexical.frequency.zipf_frequency</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.html#module-voxatlas.features.lexical.properties">voxatlas.features.lexical.properties</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.animacy.html#module-voxatlas.features.lexical.properties.animacy">voxatlas.features.lexical.properties.animacy</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.concreteness.html#module-voxatlas.features.lexical.properties.concreteness">voxatlas.features.lexical.properties.concreteness</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.features.html#module-voxatlas.features.lexical.properties.features">voxatlas.features.lexical.properties.features</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.function_word.html#module-voxatlas.features.lexical.properties.function_word">voxatlas.features.lexical.properties.function_word</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.lookup.html#module-voxatlas.features.lexical.properties.lookup">voxatlas.features.lexical.properties.lookup</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.phoneme_count.html#module-voxatlas.features.lexical.properties.phoneme_count">voxatlas.features.lexical.properties.phoneme_count</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.pos.html#module-voxatlas.features.lexical.properties.pos">voxatlas.features.lexical.properties.pos</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.syllable_count.html#module-voxatlas.features.lexical.properties.syllable_count">voxatlas.features.lexical.properties.syllable_count</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.word_length.html#module-voxatlas.features.lexical.properties.word_length">voxatlas.features.lexical.properties.word_length</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.html#module-voxatlas.features.morphology">voxatlas.features.morphology</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.html#module-voxatlas.features.morphology.agreement">voxatlas.features.morphology.agreement</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.features.html#module-voxatlas.features.morphology.agreement.features">voxatlas.features.morphology.agreement.features</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.gender.html#module-voxatlas.features.morphology.agreement.gender">voxatlas.features.morphology.agreement.gender</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.subject_verb.html#module-voxatlas.features.morphology.agreement.subject_verb">voxatlas.features.morphology.agreement.subject_verb</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.html#module-voxatlas.features.morphology.derivation">voxatlas.features.morphology.derivation</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.complexity.html#module-voxatlas.features.morphology.derivation.complexity">voxatlas.features.morphology.derivation.complexity</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.morpheme_count.html#module-voxatlas.features.morphology.derivation.morpheme_count">voxatlas.features.morphology.derivation.morpheme_count</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.prefix_presence.html#module-voxatlas.features.morphology.derivation.prefix_presence">voxatlas.features.morphology.derivation.prefix_presence</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.segmentation.html#module-voxatlas.features.morphology.derivation.segmentation">voxatlas.features.morphology.derivation.segmentation</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.suffix_presence.html#module-voxatlas.features.morphology.derivation.suffix_presence">voxatlas.features.morphology.derivation.suffix_presence</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.html#module-voxatlas.features.morphology.inflection">voxatlas.features.morphology.inflection</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.aspect.html#module-voxatlas.features.morphology.inflection.aspect">voxatlas.features.morphology.inflection.aspect</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.case.html#module-voxatlas.features.morphology.inflection.case">voxatlas.features.morphology.inflection.case</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.definiteness.html#module-voxatlas.features.morphology.inflection.definiteness">voxatlas.features.morphology.inflection.definiteness</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.features.html#module-voxatlas.features.morphology.inflection.features">voxatlas.features.morphology.inflection.features</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.gender.html#module-voxatlas.features.morphology.inflection.gender">voxatlas.features.morphology.inflection.gender</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.mood.html#module-voxatlas.features.morphology.inflection.mood">voxatlas.features.morphology.inflection.mood</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.number.html#module-voxatlas.features.morphology.inflection.number">voxatlas.features.morphology.inflection.number</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.person.html#module-voxatlas.features.morphology.inflection.person">voxatlas.features.morphology.inflection.person</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.tense.html#module-voxatlas.features.morphology.inflection.tense">voxatlas.features.morphology.inflection.tense</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.html#module-voxatlas.features.morphology.verb_morphology">voxatlas.features.morphology.verb_morphology</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.features.html#module-voxatlas.features.morphology.verb_morphology.features">voxatlas.features.morphology.verb_morphology.features</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.finite.html#module-voxatlas.features.morphology.verb_morphology.finite">voxatlas.features.morphology.verb_morphology.finite</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.infinitive.html#module-voxatlas.features.morphology.verb_morphology.infinitive">voxatlas.features.morphology.verb_morphology.infinitive</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.participle.html#module-voxatlas.features.morphology.verb_morphology.participle">voxatlas.features.morphology.verb_morphology.participle</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.html#module-voxatlas.features.morphology.word_formation">voxatlas.features.morphology.word_formation</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.clitic.html#module-voxatlas.features.morphology.word_formation.clitic">voxatlas.features.morphology.word_formation.clitic</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.compound.html#module-voxatlas.features.morphology.word_formation.compound">voxatlas.features.morphology.word_formation.compound</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.features.html#module-voxatlas.features.morphology.word_formation.features">voxatlas.features.morphology.word_formation.features</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.html#module-voxatlas.features.phonology">voxatlas.features.phonology</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.html#module-voxatlas.features.phonology.articulatory">voxatlas.features.phonology.articulatory</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.approximant.html#module-voxatlas.features.phonology.articulatory.approximant">voxatlas.features.phonology.articulatory.approximant</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.consonant.html#module-voxatlas.features.phonology.articulatory.consonant">voxatlas.features.phonology.articulatory.consonant</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.features.html#module-voxatlas.features.phonology.articulatory.features">voxatlas.features.phonology.articulatory.features</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.fricative.html#module-voxatlas.features.phonology.articulatory.fricative">voxatlas.features.phonology.articulatory.fricative</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.nasal.html#module-voxatlas.features.phonology.articulatory.nasal">voxatlas.features.phonology.articulatory.nasal</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.plosive.html#module-voxatlas.features.phonology.articulatory.plosive">voxatlas.features.phonology.articulatory.plosive</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.voiced.html#module-voxatlas.features.phonology.articulatory.voiced">voxatlas.features.phonology.articulatory.voiced</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.voiceless.html#module-voxatlas.features.phonology.articulatory.voiceless">voxatlas.features.phonology.articulatory.voiceless</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.vowel.html#module-voxatlas.features.phonology.articulatory.vowel">voxatlas.features.phonology.articulatory.vowel</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.html#module-voxatlas.features.phonology.formant">voxatlas.features.phonology.formant</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.centralization.html#module-voxatlas.features.phonology.formant.centralization">voxatlas.features.phonology.formant.centralization</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.dct.html#module-voxatlas.features.phonology.formant.dct">voxatlas.features.phonology.formant.dct</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.mean.html#module-voxatlas.features.phonology.formant.mean">voxatlas.features.phonology.formant.mean</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.median.html#module-voxatlas.features.phonology.formant.median">voxatlas.features.phonology.formant.median</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.midpoint.html#module-voxatlas.features.phonology.formant.midpoint">voxatlas.features.phonology.formant.midpoint</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.onset_mid_offset.html#module-voxatlas.features.phonology.formant.onset_mid_offset">voxatlas.features.phonology.formant.onset_mid_offset</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.polynomial.html#module-voxatlas.features.phonology.formant.polynomial">voxatlas.features.phonology.formant.polynomial</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.slope.html#module-voxatlas.features.phonology.formant.slope">voxatlas.features.phonology.formant.slope</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.tracks.html#module-voxatlas.features.phonology.formant.tracks">voxatlas.features.phonology.formant.tracks</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.trajectory.html#module-voxatlas.features.phonology.formant.trajectory">voxatlas.features.phonology.formant.trajectory</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.tvsa.html#module-voxatlas.features.phonology.formant.tvsa">voxatlas.features.phonology.formant.tvsa</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.vai.html#module-voxatlas.features.phonology.formant.vai">voxatlas.features.phonology.formant.vai</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.variance.html#module-voxatlas.features.phonology.formant.variance">voxatlas.features.phonology.formant.variance</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.vsa.html#module-voxatlas.features.phonology.formant.vsa">voxatlas.features.phonology.formant.vsa</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.html#module-voxatlas.features.phonology.prosody">voxatlas.features.phonology.prosody</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.position_ipu.html#module-voxatlas.features.phonology.prosody.position_ipu">voxatlas.features.phonology.prosody.position_ipu</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.position_word.html#module-voxatlas.features.phonology.prosody.position_word">voxatlas.features.phonology.prosody.position_word</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.stress.html#module-voxatlas.features.phonology.prosody.stress">voxatlas.features.phonology.prosody.stress</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.unstressed.html#module-voxatlas.features.phonology.prosody.unstressed">voxatlas.features.phonology.prosody.unstressed</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.reduction.html#module-voxatlas.features.phonology.reduction">voxatlas.features.phonology.reduction</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.reduction.schwa_deletion.html#module-voxatlas.features.phonology.reduction.schwa_deletion">voxatlas.features.phonology.reduction.schwa_deletion</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.reduction.vowel_reduction.html#module-voxatlas.features.phonology.reduction.vowel_reduction">voxatlas.features.phonology.reduction.vowel_reduction</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.html#module-voxatlas.features.phonology.rhythm">voxatlas.features.phonology.rhythm</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.delta_c.html#module-voxatlas.features.phonology.rhythm.delta_c">voxatlas.features.phonology.rhythm.delta_c</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.delta_v.html#module-voxatlas.features.phonology.rhythm.delta_v">voxatlas.features.phonology.rhythm.delta_v</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.intervals.html#module-voxatlas.features.phonology.rhythm.intervals">voxatlas.features.phonology.rhythm.intervals</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.npvi.html#module-voxatlas.features.phonology.rhythm.npvi">voxatlas.features.phonology.rhythm.npvi</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.pause_rate.html#module-voxatlas.features.phonology.rhythm.pause_rate">voxatlas.features.phonology.rhythm.pause_rate</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.percent_c.html#module-voxatlas.features.phonology.rhythm.percent_c">voxatlas.features.phonology.rhythm.percent_c</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.percent_v.html#module-voxatlas.features.phonology.rhythm.percent_v">voxatlas.features.phonology.rhythm.percent_v</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.syllable_duration.html#module-voxatlas.features.phonology.rhythm.syllable_duration">voxatlas.features.phonology.rhythm.syllable_duration</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.syllable_rate.html#module-voxatlas.features.phonology.rhythm.syllable_rate">voxatlas.features.phonology.rhythm.syllable_rate</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.varco_c.html#module-voxatlas.features.phonology.rhythm.varco_c">voxatlas.features.phonology.rhythm.varco_c</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.varco_v.html#module-voxatlas.features.phonology.rhythm.varco_v">voxatlas.features.phonology.rhythm.varco_v</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.html#module-voxatlas.features.syntax">voxatlas.features.syntax</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.html#module-voxatlas.features.syntax.clause_structure">voxatlas.features.syntax.clause_structure</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.coordination.html#module-voxatlas.features.syntax.clause_structure.coordination">voxatlas.features.syntax.clause_structure.coordination</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.relative_clause.html#module-voxatlas.features.syntax.clause_structure.relative_clause">voxatlas.features.syntax.clause_structure.relative_clause</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.subordinate_clause.html#module-voxatlas.features.syntax.clause_structure.subordinate_clause">voxatlas.features.syntax.clause_structure.subordinate_clause</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.html#module-voxatlas.features.syntax.complexity">voxatlas.features.syntax.complexity</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.branching_factor.html#module-voxatlas.features.syntax.complexity.branching_factor">voxatlas.features.syntax.complexity.branching_factor</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.clause_depth.html#module-voxatlas.features.syntax.complexity.clause_depth">voxatlas.features.syntax.complexity.clause_depth</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.mean_dependency_length.html#module-voxatlas.features.syntax.complexity.mean_dependency_length">voxatlas.features.syntax.complexity.mean_dependency_length</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.parse_tree_depth.html#module-voxatlas.features.syntax.complexity.parse_tree_depth">voxatlas.features.syntax.complexity.parse_tree_depth</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.dependencies.html#module-voxatlas.features.syntax.dependencies">voxatlas.features.syntax.dependencies</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.html#module-voxatlas.features.syntax.local_structure">voxatlas.features.syntax.local_structure</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.dep_label.html#module-voxatlas.features.syntax.local_structure.dep_label">voxatlas.features.syntax.local_structure.dep_label</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.dependency_distance.html#module-voxatlas.features.syntax.local_structure.dependency_distance">voxatlas.features.syntax.local_structure.dependency_distance</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.head_distance.html#module-voxatlas.features.syntax.local_structure.head_distance">voxatlas.features.syntax.local_structure.head_distance</a>
+</li>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.pos.html#module-voxatlas.features.syntax.local_structure.pos">voxatlas.features.syntax.local_structure.pos</a>
+</li>
+        <li><a href="api/generated/voxatlas.pipeline.html#module-voxatlas.pipeline">voxatlas.pipeline</a>
+</li>
+        <li><a href="api/generated/voxatlas.pipeline.cache.html#module-voxatlas.pipeline.cache">voxatlas.pipeline.cache</a>
+</li>
+        <li><a href="api/generated/voxatlas.pipeline.execution_plan.html#module-voxatlas.pipeline.execution_plan">voxatlas.pipeline.execution_plan</a>
+</li>
+        <li><a href="api/generated/voxatlas.pipeline.executor.html#module-voxatlas.pipeline.executor">voxatlas.pipeline.executor</a>
+</li>
+        <li><a href="api/generated/voxatlas.pipeline.feature_store.html#module-voxatlas.pipeline.feature_store">voxatlas.pipeline.feature_store</a>
+</li>
+        <li><a href="api/generated/voxatlas.pipeline.pipeline.html#module-voxatlas.pipeline.pipeline">voxatlas.pipeline.pipeline</a>
+</li>
+        <li><a href="api/generated/voxatlas.registry.html#module-voxatlas.registry">voxatlas.registry</a>
+</li>
+        <li><a href="api/generated/voxatlas.registry.discovery.html#module-voxatlas.registry.discovery">voxatlas.registry.discovery</a>
+</li>
+        <li><a href="api/generated/voxatlas.registry.exceptions.html#module-voxatlas.registry.exceptions">voxatlas.registry.exceptions</a>
+</li>
+        <li><a href="api/generated/voxatlas.registry.feature_registry.html#module-voxatlas.registry.feature_registry">voxatlas.registry.feature_registry</a>
+</li>
+        <li><a href="api/generated/voxatlas.registry.validator.html#module-voxatlas.registry.validator">voxatlas.registry.validator</a>
+</li>
+        <li><a href="api/generated/voxatlas.units.html#module-voxatlas.units">voxatlas.units</a>
+</li>
+        <li><a href="api/generated/voxatlas.units.alignment.html#module-voxatlas.units.alignment">voxatlas.units.alignment</a>
+</li>
+        <li><a href="api/generated/voxatlas.units.alignment_loader.html#module-voxatlas.units.alignment_loader">voxatlas.units.alignment_loader</a>
+</li>
+        <li><a href="api/generated/voxatlas.units.units.html#module-voxatlas.units.units">voxatlas.units.units</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor.html#voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor">MorphemeCountExtractor (class in voxatlas.features.morphology.derivation.morpheme_count)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor.html#voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor">MorphologicalComplexityExtractor (class in voxatlas.features.morphology.derivation.complexity)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.OganianDerivative.html#voxatlas.features.acoustic.envelope.derivative.OganianDerivative">OganianDerivative (class in voxatlas.features.acoustic.envelope.derivative)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.oganian.OganianEnvelope.html#voxatlas.features.acoustic.envelope.oganian.OganianEnvelope">OganianEnvelope (class in voxatlas.features.acoustic.envelope.oganian)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.OganianOnset.html#voxatlas.features.acoustic.envelope.onset.OganianOnset">OganianOnset (class in voxatlas.features.acoustic.envelope.onset)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.OganianPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.OganianPeakRate">OganianPeakRate (class in voxatlas.features.acoustic.envelope.peak_rate)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.OganianVariability.html#voxatlas.features.acoustic.envelope.variability.OganianVariability">OganianVariability (class in voxatlas.features.acoustic.envelope.variability)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.pipeline.executor.parallel_execute_layer.html#voxatlas.pipeline.executor.parallel_execute_layer">parallel_execute_layer() (in module voxatlas.pipeline.executor)</a>
+</li>
+      <li><a href="api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.parent">parent() (voxatlas.units.units.Units method)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.phoneme_count.PhonemeCountExtractor.html#voxatlas.features.lexical.properties.phoneme_count.PhonemeCountExtractor">PhonemeCountExtractor (class in voxatlas.features.lexical.properties.phoneme_count)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.pos.POSExtractor.html#voxatlas.features.lexical.properties.pos.POSExtractor">POSExtractor (class in voxatlas.features.lexical.properties.pos)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative.html#voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative">PraatIntensityDerivative (class in voxatlas.features.acoustic.envelope.derivative)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope.html#voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope">PraatIntensityEnvelope (class in voxatlas.features.acoustic.envelope.praat_intensity)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.PraatIntensityOnset.html#voxatlas.features.acoustic.envelope.onset.PraatIntensityOnset">PraatIntensityOnset (class in voxatlas.features.acoustic.envelope.onset)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.PraatIntensityPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.PraatIntensityPeakRate">PraatIntensityPeakRate (class in voxatlas.features.acoustic.envelope.peak_rate)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability.html#voxatlas.features.acoustic.envelope.variability.PraatIntensityVariability">PraatIntensityVariability (class in voxatlas.features.acoustic.envelope.variability)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.derivation.prefix_presence.PrefixPresenceExtractor.html#voxatlas.features.morphology.derivation.prefix_presence.PrefixPresenceExtractor">PrefixPresenceExtractor (class in voxatlas.features.morphology.derivation.prefix_presence)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.prosody.position_ipu.ProsodicPositionInIPUExtractor.html#voxatlas.features.phonology.prosody.position_ipu.ProsodicPositionInIPUExtractor">ProsodicPositionInIPUExtractor (class in voxatlas.features.phonology.prosody.position_ipu)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.prosody.position_word.ProsodicPositionInWordExtractor.html#voxatlas.features.phonology.prosody.position_word.ProsodicPositionInWordExtractor">ProsodicPositionInWordExtractor (class in voxatlas.features.phonology.prosody.position_word)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor.html#voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor">ProsodicStressExtractor (class in voxatlas.features.phonology.prosody.stress)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.html#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor">ProsodicUnstressedExtractor (class in voxatlas.features.phonology.prosody.unstressed)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.delta_c.RhythmDeltaCExtractor.html#voxatlas.features.phonology.rhythm.delta_c.RhythmDeltaCExtractor">RhythmDeltaCExtractor (class in voxatlas.features.phonology.rhythm.delta_c)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.delta_v.RhythmDeltaVExtractor.html#voxatlas.features.phonology.rhythm.delta_v.RhythmDeltaVExtractor">RhythmDeltaVExtractor (class in voxatlas.features.phonology.rhythm.delta_v)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor.html#voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor">RhythmIntervalsExtractor (class in voxatlas.features.phonology.rhythm.intervals)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor.html#voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor">RhythmNPVIExtractor (class in voxatlas.features.phonology.rhythm.npvi)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.pause_rate.RhythmPauseRateExtractor.html#voxatlas.features.phonology.rhythm.pause_rate.RhythmPauseRateExtractor">RhythmPauseRateExtractor (class in voxatlas.features.phonology.rhythm.pause_rate)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.percent_c.RhythmPercentCExtractor.html#voxatlas.features.phonology.rhythm.percent_c.RhythmPercentCExtractor">RhythmPercentCExtractor (class in voxatlas.features.phonology.rhythm.percent_c)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor.html#voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor">RhythmPercentVExtractor (class in voxatlas.features.phonology.rhythm.percent_v)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.syllable_duration.RhythmSyllableDurationExtractor.html#voxatlas.features.phonology.rhythm.syllable_duration.RhythmSyllableDurationExtractor">RhythmSyllableDurationExtractor (class in voxatlas.features.phonology.rhythm.syllable_duration)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor.html#voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor">RhythmSyllableRateExtractor (class in voxatlas.features.phonology.rhythm.syllable_rate)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.varco_c.RhythmVarcoCExtractor.html#voxatlas.features.phonology.rhythm.varco_c.RhythmVarcoCExtractor">RhythmVarcoCExtractor (class in voxatlas.features.phonology.rhythm.varco_c)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor.html#voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor">RhythmVarcoVExtractor (class in voxatlas.features.phonology.rhythm.varco_v)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.RmsDerivative.html#voxatlas.features.acoustic.envelope.derivative.RmsDerivative">RmsDerivative (class in voxatlas.features.acoustic.envelope.derivative)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.rms.RMSEnvelope.html#voxatlas.features.acoustic.envelope.rms.RMSEnvelope">RMSEnvelope (class in voxatlas.features.acoustic.envelope.rms)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.RmsOnset.html#voxatlas.features.acoustic.envelope.onset.RmsOnset">RmsOnset (class in voxatlas.features.acoustic.envelope.onset)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.RmsPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.RmsPeakRate">RmsPeakRate (class in voxatlas.features.acoustic.envelope.peak_rate)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.RmsVariability.html#voxatlas.features.acoustic.envelope.variability.RmsVariability">RmsVariability (class in voxatlas.features.acoustic.envelope.variability)</a>
+</li>
+      <li><a href="api/generated/voxatlas.pipeline.pipeline.VoxAtlasPipeline.html#voxatlas.pipeline.pipeline.VoxAtlasPipeline.run">run() (voxatlas.pipeline.pipeline.VoxAtlasPipeline method)</a>
+</li>
+      <li><a href="api/generated/voxatlas.pipeline.executor.run_feature.html#voxatlas.pipeline.executor.run_feature">run_feature() (in module voxatlas.pipeline.executor)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.pipeline.cache.DiskCache.html#voxatlas.pipeline.cache.DiskCache.save">save() (voxatlas.pipeline.cache.DiskCache method)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.feature_output.ScalarFeatureOutput.html#voxatlas.features.feature_output.ScalarFeatureOutput">ScalarFeatureOutput (class in voxatlas.features.feature_output)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor.html#voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor">SchwaDeletionExtractor (class in voxatlas.features.phonology.reduction.schwa_deletion)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor.html#voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor">ShimmerExtractor (class in voxatlas.features.acoustic.voice_quality.shimmer)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectral.centroid.SpectralCentroidExtractor.html#voxatlas.features.acoustic.spectral.centroid.SpectralCentroidExtractor">SpectralCentroidExtractor (class in voxatlas.features.acoustic.spectral.centroid)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectral.flatness.SpectralFlatnessExtractor.html#voxatlas.features.acoustic.spectral.flatness.SpectralFlatnessExtractor">SpectralFlatnessExtractor (class in voxatlas.features.acoustic.spectral.flatness)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectral.flux.SpectralFluxExtractor.html#voxatlas.features.acoustic.spectral.flux.SpectralFluxExtractor">SpectralFluxExtractor (class in voxatlas.features.acoustic.spectral.flux)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectral.rolloff.SpectralRolloffExtractor.html#voxatlas.features.acoustic.spectral.rolloff.SpectralRolloffExtractor">SpectralRolloffExtractor (class in voxatlas.features.acoustic.spectral.rolloff)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectral.slope.SpectralSlopeExtractor.html#voxatlas.features.acoustic.spectral.slope.SpectralSlopeExtractor">SpectralSlopeExtractor (class in voxatlas.features.acoustic.spectral.slope)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectral.spread.SpectralSpreadExtractor.html#voxatlas.features.acoustic.spectral.spread.SpectralSpreadExtractor">SpectralSpreadExtractor (class in voxatlas.features.acoustic.spectral.spread)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor.html#voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor">SpectrumExtractor (class in voxatlas.features.acoustic.spectral.spectrum)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor.html#voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor">STFTSpectrogramExtractor (class in voxatlas.features.acoustic.spectrogram.stft)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.agreement.subject_verb.SubjectVerbAgreementExtractor.html#voxatlas.features.morphology.agreement.subject_verb.SubjectVerbAgreementExtractor">SubjectVerbAgreementExtractor (class in voxatlas.features.morphology.agreement.subject_verb)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor.html#voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor">SuffixPresenceExtractor (class in voxatlas.features.morphology.derivation.suffix_presence)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor.html#voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor">SyllableCountExtractor (class in voxatlas.features.lexical.properties.syllable_count)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.complexity.branching_factor.SyntaxComplexityBranchingFactorExtractor.html#voxatlas.features.syntax.complexity.branching_factor.SyntaxComplexityBranchingFactorExtractor">SyntaxComplexityBranchingFactorExtractor (class in voxatlas.features.syntax.complexity.branching_factor)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.complexity.clause_depth.SyntaxComplexityClauseDepthExtractor.html#voxatlas.features.syntax.complexity.clause_depth.SyntaxComplexityClauseDepthExtractor">SyntaxComplexityClauseDepthExtractor (class in voxatlas.features.syntax.complexity.clause_depth)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor.html#voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor">SyntaxComplexityMeanDependencyLengthExtractor (class in voxatlas.features.syntax.complexity.mean_dependency_length)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.complexity.parse_tree_depth.SyntaxComplexityParseTreeDepthExtractor.html#voxatlas.features.syntax.complexity.parse_tree_depth.SyntaxComplexityParseTreeDepthExtractor">SyntaxComplexityParseTreeDepthExtractor (class in voxatlas.features.syntax.complexity.parse_tree_depth)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor.html#voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor">SyntaxCoordinationExtractor (class in voxatlas.features.syntax.clause_structure.coordination)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor.html#voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor">SyntaxDependenciesExtractor (class in voxatlas.features.syntax.dependencies)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor.html#voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor">SyntaxLocalStructureDependencyDistanceExtractor (class in voxatlas.features.syntax.local_structure.dependency_distance)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.local_structure.dep_label.SyntaxLocalStructureDependencyLabelExtractor.html#voxatlas.features.syntax.local_structure.dep_label.SyntaxLocalStructureDependencyLabelExtractor">SyntaxLocalStructureDependencyLabelExtractor (class in voxatlas.features.syntax.local_structure.dep_label)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.local_structure.head_distance.SyntaxLocalStructureHeadDistanceExtractor.html#voxatlas.features.syntax.local_structure.head_distance.SyntaxLocalStructureHeadDistanceExtractor">SyntaxLocalStructureHeadDistanceExtractor (class in voxatlas.features.syntax.local_structure.head_distance)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.local_structure.pos.SyntaxLocalStructurePOSExtractor.html#voxatlas.features.syntax.local_structure.pos.SyntaxLocalStructurePOSExtractor">SyntaxLocalStructurePOSExtractor (class in voxatlas.features.syntax.local_structure.pos)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.clause_structure.relative_clause.SyntaxRelativeClauseExtractor.html#voxatlas.features.syntax.clause_structure.relative_clause.SyntaxRelativeClauseExtractor">SyntaxRelativeClauseExtractor (class in voxatlas.features.syntax.clause_structure.relative_clause)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.syntax.clause_structure.subordinate_clause.SyntaxSubordinateClauseExtractor.html#voxatlas.features.syntax.clause_structure.subordinate_clause.SyntaxSubordinateClauseExtractor">SyntaxSubordinateClauseExtractor (class in voxatlas.features.syntax.clause_structure.subordinate_clause)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.table">table() (voxatlas.units.units.Units method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.feature_output.TableFeatureOutput.html#voxatlas.features.feature_output.TableFeatureOutput">TableFeatureOutput (class in voxatlas.features.feature_output)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units">Units (class in voxatlas.units.units)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.registry.validator.validate_dependencies.html#voxatlas.registry.validator.validate_dependencies">validate_dependencies() (in module voxatlas.registry.validator)</a>
+</li>
+      <li><a href="api/generated/voxatlas.registry.validator.validate_extractor_contract.html#voxatlas.registry.validator.validate_extractor_contract">validate_extractor_contract() (in module voxatlas.registry.validator)</a>
+</li>
+      <li><a href="api/generated/voxatlas.registry.validator.validate_feature_name.html#voxatlas.registry.validator.validate_feature_name">validate_feature_name() (in module voxatlas.registry.validator)</a>
+</li>
+      <li><a href="api/generated/voxatlas.registry.validator.validate_units.html#voxatlas.registry.validator.validate_units">validate_units() (in module voxatlas.registry.validator)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.VarnetDerivative.html#voxatlas.features.acoustic.envelope.derivative.VarnetDerivative">VarnetDerivative (class in voxatlas.features.acoustic.envelope.derivative)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope.html#voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope">VarnetEnvelope (class in voxatlas.features.acoustic.envelope.varnet)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.VarnetOnset.html#voxatlas.features.acoustic.envelope.onset.VarnetOnset">VarnetOnset (class in voxatlas.features.acoustic.envelope.onset)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.VarnetPeakRate.html#voxatlas.features.acoustic.envelope.peak_rate.VarnetPeakRate">VarnetPeakRate (class in voxatlas.features.acoustic.envelope.peak_rate)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.VarnetVariability.html#voxatlas.features.acoustic.envelope.variability.VarnetVariability">VarnetVariability (class in voxatlas.features.acoustic.envelope.variability)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.feature_output.VectorFeatureOutput.html#voxatlas.features.feature_output.VectorFeatureOutput">VectorFeatureOutput (class in voxatlas.features.feature_output)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor.html#voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor">VerbMorphologyFeaturesExtractor (class in voxatlas.features.morphology.verb_morphology.features)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.finite.VerbMorphologyFiniteExtractor.html#voxatlas.features.morphology.verb_morphology.finite.VerbMorphologyFiniteExtractor">VerbMorphologyFiniteExtractor (class in voxatlas.features.morphology.verb_morphology.finite)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.infinitive.VerbMorphologyInfinitiveExtractor.html#voxatlas.features.morphology.verb_morphology.infinitive.VerbMorphologyInfinitiveExtractor">VerbMorphologyInfinitiveExtractor (class in voxatlas.features.morphology.verb_morphology.infinitive)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor.html#voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor">VerbMorphologyParticipleExtractor (class in voxatlas.features.morphology.verb_morphology.participle)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.phonology.reduction.vowel_reduction.VowelReductionExtractor.html#voxatlas.features.phonology.reduction.vowel_reduction.VowelReductionExtractor">VowelReductionExtractor (class in voxatlas.features.phonology.reduction.vowel_reduction)</a>
+</li>
+      <li>
+    voxatlas.audio
+
+      <ul>
+        <li><a href="api/generated/voxatlas.audio.html#module-voxatlas.audio">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.audio.audio
+
+      <ul>
+        <li><a href="api/generated/voxatlas.audio.audio.html#module-voxatlas.audio.audio">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.audio.loader
+
+      <ul>
+        <li><a href="api/generated/voxatlas.audio.loader.html#module-voxatlas.audio.loader">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.html#module-voxatlas.features">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.html#module-voxatlas.features.acoustic">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.html#module-voxatlas.features.acoustic.envelope">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.derivative
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.derivative.html#module-voxatlas.features.acoustic.envelope.derivative">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.hilbert
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.hilbert.html#module-voxatlas.features.acoustic.envelope.hilbert">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.log_energy
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.log_energy.html#module-voxatlas.features.acoustic.envelope.log_energy">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.oganian
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.oganian.html#module-voxatlas.features.acoustic.envelope.oganian">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.onset
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.onset.html#module-voxatlas.features.acoustic.envelope.onset">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.peak_rate
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.peak_rate.html#module-voxatlas.features.acoustic.envelope.peak_rate">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.praat_intensity
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.praat_intensity.html#module-voxatlas.features.acoustic.envelope.praat_intensity">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.rms
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.rms.html#module-voxatlas.features.acoustic.envelope.rms">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.variability
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.variability.html#module-voxatlas.features.acoustic.envelope.variability">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.envelope.varnet
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.envelope.varnet.html#module-voxatlas.features.acoustic.envelope.varnet">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.pitch
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.html#module-voxatlas.features.acoustic.pitch">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.pitch.contour_shape
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.contour_shape.html#module-voxatlas.features.acoustic.pitch.contour_shape">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.pitch.derivative
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.derivative.html#module-voxatlas.features.acoustic.pitch.derivative">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.pitch.f0
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.f0.html#module-voxatlas.features.acoustic.pitch.f0">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.pitch.range
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.range.html#module-voxatlas.features.acoustic.pitch.range">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.pitch.slope
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.slope.html#module-voxatlas.features.acoustic.pitch.slope">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.pitch.variability
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.pitch.variability.html#module-voxatlas.features.acoustic.pitch.variability">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectral
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.html#module-voxatlas.features.acoustic.spectral">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectral.centroid
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.centroid.html#module-voxatlas.features.acoustic.spectral.centroid">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectral.flatness
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.flatness.html#module-voxatlas.features.acoustic.spectral.flatness">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectral.flux
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.flux.html#module-voxatlas.features.acoustic.spectral.flux">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectral.rolloff
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.rolloff.html#module-voxatlas.features.acoustic.spectral.rolloff">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectral.slope
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.slope.html#module-voxatlas.features.acoustic.spectral.slope">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectral.spectrum
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.spectrum.html#module-voxatlas.features.acoustic.spectral.spectrum">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectral.spread
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectral.spread.html#module-voxatlas.features.acoustic.spectral.spread">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectrogram
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.html#module-voxatlas.features.acoustic.spectrogram">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectrogram.mel
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.mel.html#module-voxatlas.features.acoustic.spectrogram.mel">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.spectrogram.stft
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.spectrogram.stft.html#module-voxatlas.features.acoustic.spectrogram.stft">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.voice_quality
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.html#module-voxatlas.features.acoustic.voice_quality">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.voice_quality.hnr
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.hnr.html#module-voxatlas.features.acoustic.voice_quality.hnr">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.voice_quality.jitter
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.jitter.html#module-voxatlas.features.acoustic.voice_quality.jitter">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.acoustic.voice_quality.shimmer
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.acoustic.voice_quality.shimmer.html#module-voxatlas.features.acoustic.voice_quality.shimmer">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.base_extractor
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.base_extractor.html#module-voxatlas.features.base_extractor">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.example_pitch
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.example_pitch.html#module-voxatlas.features.example_pitch">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.feature_input
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.feature_input.html#module-voxatlas.features.feature_input">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.feature_output
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.feature_output.html#module-voxatlas.features.feature_output">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.html#module-voxatlas.features.lexical">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.frequency
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.html#module-voxatlas.features.lexical.frequency">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.frequency.lookup
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.lookup.html#module-voxatlas.features.lexical.frequency.lookup">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.frequency.word_frequency
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.word_frequency.html#module-voxatlas.features.lexical.frequency.word_frequency">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.frequency.zipf_frequency
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.frequency.zipf_frequency.html#module-voxatlas.features.lexical.frequency.zipf_frequency">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.html#module-voxatlas.features.lexical.properties">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.animacy
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.animacy.html#module-voxatlas.features.lexical.properties.animacy">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.concreteness
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.concreteness.html#module-voxatlas.features.lexical.properties.concreteness">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.features
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.features.html#module-voxatlas.features.lexical.properties.features">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.function_word
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.function_word.html#module-voxatlas.features.lexical.properties.function_word">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.lookup
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.lookup.html#module-voxatlas.features.lexical.properties.lookup">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.phoneme_count
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.phoneme_count.html#module-voxatlas.features.lexical.properties.phoneme_count">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.pos
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.pos.html#module-voxatlas.features.lexical.properties.pos">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.syllable_count
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.syllable_count.html#module-voxatlas.features.lexical.properties.syllable_count">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.lexical.properties.word_length
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.lexical.properties.word_length.html#module-voxatlas.features.lexical.properties.word_length">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.html#module-voxatlas.features.morphology">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.agreement
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.html#module-voxatlas.features.morphology.agreement">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.agreement.features
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.features.html#module-voxatlas.features.morphology.agreement.features">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.agreement.gender
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.gender.html#module-voxatlas.features.morphology.agreement.gender">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.agreement.subject_verb
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.agreement.subject_verb.html#module-voxatlas.features.morphology.agreement.subject_verb">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.derivation
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.html#module-voxatlas.features.morphology.derivation">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.derivation.complexity
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.complexity.html#module-voxatlas.features.morphology.derivation.complexity">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.derivation.morpheme_count
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.morpheme_count.html#module-voxatlas.features.morphology.derivation.morpheme_count">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.derivation.prefix_presence
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.prefix_presence.html#module-voxatlas.features.morphology.derivation.prefix_presence">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.derivation.segmentation
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.segmentation.html#module-voxatlas.features.morphology.derivation.segmentation">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.derivation.suffix_presence
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.derivation.suffix_presence.html#module-voxatlas.features.morphology.derivation.suffix_presence">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.html#module-voxatlas.features.morphology.inflection">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.aspect
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.aspect.html#module-voxatlas.features.morphology.inflection.aspect">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.case
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.case.html#module-voxatlas.features.morphology.inflection.case">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.definiteness
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.definiteness.html#module-voxatlas.features.morphology.inflection.definiteness">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.features
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.features.html#module-voxatlas.features.morphology.inflection.features">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.gender
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.gender.html#module-voxatlas.features.morphology.inflection.gender">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.mood
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.mood.html#module-voxatlas.features.morphology.inflection.mood">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.number
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.number.html#module-voxatlas.features.morphology.inflection.number">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.person
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.person.html#module-voxatlas.features.morphology.inflection.person">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.inflection.tense
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.inflection.tense.html#module-voxatlas.features.morphology.inflection.tense">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.verb_morphology
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.html#module-voxatlas.features.morphology.verb_morphology">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    voxatlas.features.morphology.verb_morphology.features
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.features.html#module-voxatlas.features.morphology.verb_morphology.features">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.verb_morphology.finite
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.finite.html#module-voxatlas.features.morphology.verb_morphology.finite">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.verb_morphology.infinitive
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.infinitive.html#module-voxatlas.features.morphology.verb_morphology.infinitive">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.verb_morphology.participle
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.verb_morphology.participle.html#module-voxatlas.features.morphology.verb_morphology.participle">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.word_formation
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.html#module-voxatlas.features.morphology.word_formation">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.word_formation.clitic
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.clitic.html#module-voxatlas.features.morphology.word_formation.clitic">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.word_formation.compound
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.compound.html#module-voxatlas.features.morphology.word_formation.compound">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.morphology.word_formation.features
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.morphology.word_formation.features.html#module-voxatlas.features.morphology.word_formation.features">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.html#module-voxatlas.features.phonology">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.html#module-voxatlas.features.phonology.articulatory">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.approximant
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.approximant.html#module-voxatlas.features.phonology.articulatory.approximant">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.consonant
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.consonant.html#module-voxatlas.features.phonology.articulatory.consonant">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.features
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.features.html#module-voxatlas.features.phonology.articulatory.features">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.fricative
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.fricative.html#module-voxatlas.features.phonology.articulatory.fricative">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.nasal
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.nasal.html#module-voxatlas.features.phonology.articulatory.nasal">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.plosive
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.plosive.html#module-voxatlas.features.phonology.articulatory.plosive">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.voiced
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.voiced.html#module-voxatlas.features.phonology.articulatory.voiced">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.voiceless
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.voiceless.html#module-voxatlas.features.phonology.articulatory.voiceless">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.articulatory.vowel
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.articulatory.vowel.html#module-voxatlas.features.phonology.articulatory.vowel">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.html#module-voxatlas.features.phonology.formant">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.centralization
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.centralization.html#module-voxatlas.features.phonology.formant.centralization">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.dct
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.dct.html#module-voxatlas.features.phonology.formant.dct">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.mean
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.mean.html#module-voxatlas.features.phonology.formant.mean">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.median
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.median.html#module-voxatlas.features.phonology.formant.median">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.midpoint
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.midpoint.html#module-voxatlas.features.phonology.formant.midpoint">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.onset_mid_offset
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.onset_mid_offset.html#module-voxatlas.features.phonology.formant.onset_mid_offset">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.polynomial
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.polynomial.html#module-voxatlas.features.phonology.formant.polynomial">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.slope
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.slope.html#module-voxatlas.features.phonology.formant.slope">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.tracks
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.tracks.html#module-voxatlas.features.phonology.formant.tracks">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.trajectory
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.trajectory.html#module-voxatlas.features.phonology.formant.trajectory">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.tvsa
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.tvsa.html#module-voxatlas.features.phonology.formant.tvsa">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.vai
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.vai.html#module-voxatlas.features.phonology.formant.vai">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.variance
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.variance.html#module-voxatlas.features.phonology.formant.variance">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.formant.vsa
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.formant.vsa.html#module-voxatlas.features.phonology.formant.vsa">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.prosody
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.html#module-voxatlas.features.phonology.prosody">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.prosody.position_ipu
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.position_ipu.html#module-voxatlas.features.phonology.prosody.position_ipu">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.prosody.position_word
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.position_word.html#module-voxatlas.features.phonology.prosody.position_word">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.prosody.stress
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.stress.html#module-voxatlas.features.phonology.prosody.stress">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.prosody.unstressed
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.prosody.unstressed.html#module-voxatlas.features.phonology.prosody.unstressed">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.reduction
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.reduction.html#module-voxatlas.features.phonology.reduction">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.reduction.schwa_deletion
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.reduction.schwa_deletion.html#module-voxatlas.features.phonology.reduction.schwa_deletion">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.reduction.vowel_reduction
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.reduction.vowel_reduction.html#module-voxatlas.features.phonology.reduction.vowel_reduction">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.html#module-voxatlas.features.phonology.rhythm">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.delta_c
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.delta_c.html#module-voxatlas.features.phonology.rhythm.delta_c">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.delta_v
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.delta_v.html#module-voxatlas.features.phonology.rhythm.delta_v">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.intervals
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.intervals.html#module-voxatlas.features.phonology.rhythm.intervals">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.npvi
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.npvi.html#module-voxatlas.features.phonology.rhythm.npvi">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.pause_rate
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.pause_rate.html#module-voxatlas.features.phonology.rhythm.pause_rate">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.percent_c
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.percent_c.html#module-voxatlas.features.phonology.rhythm.percent_c">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.percent_v
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.percent_v.html#module-voxatlas.features.phonology.rhythm.percent_v">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.syllable_duration
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.syllable_duration.html#module-voxatlas.features.phonology.rhythm.syllable_duration">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.syllable_rate
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.syllable_rate.html#module-voxatlas.features.phonology.rhythm.syllable_rate">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.varco_c
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.varco_c.html#module-voxatlas.features.phonology.rhythm.varco_c">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.phonology.rhythm.varco_v
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.phonology.rhythm.varco_v.html#module-voxatlas.features.phonology.rhythm.varco_v">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.html#module-voxatlas.features.syntax">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.clause_structure
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.html#module-voxatlas.features.syntax.clause_structure">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.clause_structure.coordination
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.coordination.html#module-voxatlas.features.syntax.clause_structure.coordination">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.clause_structure.relative_clause
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.relative_clause.html#module-voxatlas.features.syntax.clause_structure.relative_clause">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.clause_structure.subordinate_clause
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.clause_structure.subordinate_clause.html#module-voxatlas.features.syntax.clause_structure.subordinate_clause">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.complexity
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.html#module-voxatlas.features.syntax.complexity">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.complexity.branching_factor
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.branching_factor.html#module-voxatlas.features.syntax.complexity.branching_factor">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.complexity.clause_depth
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.clause_depth.html#module-voxatlas.features.syntax.complexity.clause_depth">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.complexity.mean_dependency_length
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.mean_dependency_length.html#module-voxatlas.features.syntax.complexity.mean_dependency_length">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.complexity.parse_tree_depth
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.complexity.parse_tree_depth.html#module-voxatlas.features.syntax.complexity.parse_tree_depth">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.dependencies
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.dependencies.html#module-voxatlas.features.syntax.dependencies">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.local_structure
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.html#module-voxatlas.features.syntax.local_structure">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.local_structure.dep_label
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.dep_label.html#module-voxatlas.features.syntax.local_structure.dep_label">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.local_structure.dependency_distance
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.dependency_distance.html#module-voxatlas.features.syntax.local_structure.dependency_distance">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.local_structure.head_distance
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.head_distance.html#module-voxatlas.features.syntax.local_structure.head_distance">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.features.syntax.local_structure.pos
+
+      <ul>
+        <li><a href="api/generated/voxatlas.features.syntax.local_structure.pos.html#module-voxatlas.features.syntax.local_structure.pos">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.pipeline
+
+      <ul>
+        <li><a href="api/generated/voxatlas.pipeline.html#module-voxatlas.pipeline">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.pipeline.cache
+
+      <ul>
+        <li><a href="api/generated/voxatlas.pipeline.cache.html#module-voxatlas.pipeline.cache">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.pipeline.execution_plan
+
+      <ul>
+        <li><a href="api/generated/voxatlas.pipeline.execution_plan.html#module-voxatlas.pipeline.execution_plan">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.pipeline.executor
+
+      <ul>
+        <li><a href="api/generated/voxatlas.pipeline.executor.html#module-voxatlas.pipeline.executor">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.pipeline.feature_store
+
+      <ul>
+        <li><a href="api/generated/voxatlas.pipeline.feature_store.html#module-voxatlas.pipeline.feature_store">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.pipeline.pipeline
+
+      <ul>
+        <li><a href="api/generated/voxatlas.pipeline.pipeline.html#module-voxatlas.pipeline.pipeline">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.registry
+
+      <ul>
+        <li><a href="api/generated/voxatlas.registry.html#module-voxatlas.registry">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.registry.discovery
+
+      <ul>
+        <li><a href="api/generated/voxatlas.registry.discovery.html#module-voxatlas.registry.discovery">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.registry.exceptions
+
+      <ul>
+        <li><a href="api/generated/voxatlas.registry.exceptions.html#module-voxatlas.registry.exceptions">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.registry.feature_registry
+
+      <ul>
+        <li><a href="api/generated/voxatlas.registry.feature_registry.html#module-voxatlas.registry.feature_registry">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.registry.validator
+
+      <ul>
+        <li><a href="api/generated/voxatlas.registry.validator.html#module-voxatlas.registry.validator">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.units
+
+      <ul>
+        <li><a href="api/generated/voxatlas.units.html#module-voxatlas.units">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.units.alignment
+
+      <ul>
+        <li><a href="api/generated/voxatlas.units.alignment.html#module-voxatlas.units.alignment">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.units.alignment_loader
+
+      <ul>
+        <li><a href="api/generated/voxatlas.units.alignment_loader.html#module-voxatlas.units.alignment_loader">module</a>
+</li>
+      </ul></li>
+      <li>
+    voxatlas.units.units
+
+      <ul>
+        <li><a href="api/generated/voxatlas.units.units.html#module-voxatlas.units.units">module</a>
+</li>
+      </ul></li>
+      <li><a href="api/generated/voxatlas.pipeline.pipeline.VoxAtlasPipeline.html#voxatlas.pipeline.pipeline.VoxAtlasPipeline">VoxAtlasPipeline (class in voxatlas.pipeline.pipeline)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.morphology.word_formation.features.WordFormationFeaturesExtractor.html#voxatlas.features.morphology.word_formation.features.WordFormationFeaturesExtractor">WordFormationFeaturesExtractor (class in voxatlas.features.morphology.word_formation.features)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor.html#voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor">WordFrequencyExtractor (class in voxatlas.features.lexical.frequency.word_frequency)</a>
+</li>
+      <li><a href="api/generated/voxatlas.features.lexical.properties.word_length.WordLengthExtractor.html#voxatlas.features.lexical.properties.word_length.WordLengthExtractor">WordLengthExtractor (class in voxatlas.features.lexical.properties.word_length)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor.html#voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor">ZipfFrequencyExtractor (class in voxatlas.features.lexical.frequency.zipf_frequency)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, VoxAtlas contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+voxatlas.cli
+============
+
+.. currentmodule:: voxatlas.cli
+
+.. automodule:: voxatlas.cli
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+
+   commands
+
+   main
+
+
+
+
+

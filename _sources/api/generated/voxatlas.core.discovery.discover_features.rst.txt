@@ -1,0 +1,6 @@
+voxatlas.core.discovery.discover_features
+=========================================
+
+.. currentmodule:: voxatlas.core.discovery
+
+.. autofunction:: discover_features

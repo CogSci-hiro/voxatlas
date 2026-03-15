@@ -1,0 +1,6 @@
+voxatlas.syntax.dependency_utils.extract_dependency_features
+============================================================
+
+.. currentmodule:: voxatlas.syntax.dependency_utils
+
+.. autofunction:: extract_dependency_features

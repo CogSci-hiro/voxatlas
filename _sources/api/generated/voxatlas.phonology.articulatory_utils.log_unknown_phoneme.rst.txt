@@ -1,0 +1,6 @@
+voxatlas.phonology.articulatory_utils.log_unknown_phoneme
+=========================================================
+
+.. currentmodule:: voxatlas.phonology.articulatory_utils
+
+.. autofunction:: log_unknown_phoneme

@@ -1,0 +1,6 @@
+voxatlas.phonology.formant_utils.compute_onset_mid_offset
+=========================================================
+
+.. currentmodule:: voxatlas.phonology.formant_utils
+
+.. autofunction:: compute_onset_mid_offset

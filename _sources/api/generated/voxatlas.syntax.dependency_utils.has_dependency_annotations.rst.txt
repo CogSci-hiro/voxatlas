@@ -1,0 +1,6 @@
+voxatlas.syntax.dependency_utils.has_dependency_annotations
+===========================================================
+
+.. currentmodule:: voxatlas.syntax.dependency_utils
+
+.. autofunction:: has_dependency_annotations

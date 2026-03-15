@@ -1,0 +1,29 @@
+voxatlas.config
+===============
+
+.. currentmodule:: voxatlas.config
+
+.. automodule:: voxatlas.config
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+
+   config
+
+   defaults
+
+   exceptions
+
+   feature_config
+
+   schema
+
+
+
+
+

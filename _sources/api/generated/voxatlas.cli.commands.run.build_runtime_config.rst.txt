@@ -1,0 +1,6 @@
+voxatlas.cli.commands.run.build_runtime_config
+==============================================
+
+.. currentmodule:: voxatlas.cli.commands.run
+
+.. autofunction:: build_runtime_config

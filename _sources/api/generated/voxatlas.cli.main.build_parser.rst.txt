@@ -1,0 +1,6 @@
+voxatlas.cli.main.build_parser
+==============================
+
+.. currentmodule:: voxatlas.cli.main
+
+.. autofunction:: build_parser

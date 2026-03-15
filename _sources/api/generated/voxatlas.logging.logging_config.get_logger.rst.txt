@@ -1,0 +1,6 @@
+voxatlas.logging.logging_config.get_logger
+==========================================
+
+.. currentmodule:: voxatlas.logging.logging_config
+
+.. autofunction:: get_logger

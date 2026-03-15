@@ -1,0 +1,6 @@
+voxatlas.nlp.token_classifier.classify_tokens
+=============================================
+
+.. currentmodule:: voxatlas.nlp.token_classifier
+
+.. autofunction:: classify_tokens

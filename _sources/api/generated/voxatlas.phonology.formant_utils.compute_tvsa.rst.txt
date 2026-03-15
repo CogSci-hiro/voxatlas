@@ -1,0 +1,6 @@
+voxatlas.phonology.formant_utils.compute_tvsa
+=============================================
+
+.. currentmodule:: voxatlas.phonology.formant_utils
+
+.. autofunction:: compute_tvsa

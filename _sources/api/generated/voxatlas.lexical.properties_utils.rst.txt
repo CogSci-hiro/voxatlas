@@ -1,0 +1,20 @@
+voxatlas.lexical.properties_utils
+=================================
+
+.. currentmodule:: voxatlas.lexical.properties_utils
+
+.. automodule:: voxatlas.lexical.properties_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   compute_lexical_properties
+
+

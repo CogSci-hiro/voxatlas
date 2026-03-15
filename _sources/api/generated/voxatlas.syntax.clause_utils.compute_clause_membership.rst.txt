@@ -1,0 +1,6 @@
+voxatlas.syntax.clause_utils.compute_clause_membership
+======================================================
+
+.. currentmodule:: voxatlas.syntax.clause_utils
+
+.. autofunction:: compute_clause_membership

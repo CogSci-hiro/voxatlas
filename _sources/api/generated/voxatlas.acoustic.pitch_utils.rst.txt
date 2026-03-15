@@ -1,0 +1,30 @@
+voxatlas.acoustic.pitch_utils
+=============================
+
+.. currentmodule:: voxatlas.acoustic.pitch_utils
+
+.. automodule:: voxatlas.acoustic.pitch_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   compute_contour_shape
+
+   compute_f0
+
+   compute_f0_derivative
+
+   compute_f0_range
+
+   compute_f0_slope
+
+   compute_f0_variability
+
+

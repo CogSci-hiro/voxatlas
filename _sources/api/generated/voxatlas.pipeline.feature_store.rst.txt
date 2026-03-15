@@ -1,0 +1,20 @@
+﻿voxatlas.pipeline.feature_store
+===============================
+
+.. currentmodule:: voxatlas.pipeline.feature_store
+
+.. automodule:: voxatlas.pipeline.feature_store
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   FeatureStore
+
+
+
+

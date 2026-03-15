@@ -1,0 +1,6 @@
+voxatlas.morphology.word_formation_utils.detect_compound
+========================================================
+
+.. currentmodule:: voxatlas.morphology.word_formation_utils
+
+.. autofunction:: detect_compound

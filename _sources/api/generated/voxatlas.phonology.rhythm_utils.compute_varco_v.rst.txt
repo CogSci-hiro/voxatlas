@@ -1,0 +1,6 @@
+voxatlas.phonology.rhythm_utils.compute_varco_v
+===============================================
+
+.. currentmodule:: voxatlas.phonology.rhythm_utils
+
+.. autofunction:: compute_varco_v

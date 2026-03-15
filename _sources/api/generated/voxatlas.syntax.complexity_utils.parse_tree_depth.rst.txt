@@ -1,0 +1,6 @@
+voxatlas.syntax.complexity_utils.parse_tree_depth
+=================================================
+
+.. currentmodule:: voxatlas.syntax.complexity_utils
+
+.. autofunction:: parse_tree_depth

@@ -1,0 +1,6 @@
+voxatlas.phonology.prosody_utils.compute_word_positions
+=======================================================
+
+.. currentmodule:: voxatlas.phonology.prosody_utils
+
+.. autofunction:: compute_word_positions

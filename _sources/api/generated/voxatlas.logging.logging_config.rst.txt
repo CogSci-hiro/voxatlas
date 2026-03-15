@@ -1,0 +1,22 @@
+voxatlas.logging.logging_config
+===============================
+
+.. currentmodule:: voxatlas.logging.logging_config
+
+.. automodule:: voxatlas.logging.logging_config
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   configure_logging
+
+   get_logger
+
+

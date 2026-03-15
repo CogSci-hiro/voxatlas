@@ -1,0 +1,20 @@
+voxatlas.morphology.inflection_utils
+====================================
+
+.. currentmodule:: voxatlas.morphology.inflection_utils
+
+.. automodule:: voxatlas.morphology.inflection_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   extract_inflection_features
+
+

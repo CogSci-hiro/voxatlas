@@ -1,0 +1,6 @@
+voxatlas.cli.main.main
+======================
+
+.. currentmodule:: voxatlas.cli.main
+
+.. autofunction:: main
