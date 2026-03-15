@@ -182,7 +182,7 @@ def lookup_lexical_properties(tokens, resources):
     >>> resources = {"animacy": {"dog": 1.0}, "concreteness": {"dog": 4.5}}
     >>> out = lookup_lexical_properties(tokens, resources)
     >>> out.loc[0, ["id", "animacy", "concreteness"]].to_dict()
-    {'id': 1, 'animacy': 1.0, 'concreteness': 4.5}
+    {'id': 1.0, 'animacy': 1.0, 'concreteness': 4.5}
     """
     if tokens is None:
         raise ValueError("Lexical property features require token units")

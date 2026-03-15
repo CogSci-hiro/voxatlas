@@ -661,118 +661,31 @@ as <code class="docutils literal notranslate"><span class="pre">label</span></co
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Unit</span> <span class="pre">Labels</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-----------</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Methods</span> <span class="pre">that</span> <span class="pre">accept</span> <span class="pre">a</span> <span class="pre">``unit_type``</span> <span class="pre">(for</span> <span class="pre">example</span> <span class="pre">:meth:`table`)</span> <span class="pre">understand</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">both</span> <span class="pre">singular</span> <span class="pre">and</span> <span class="pre">plural</span> <span class="pre">labels</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;frame&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;frames&quot;``</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;token&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;tokens&quot;``</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;phoneme&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;phonemes&quot;``</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;syllable&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;syllables&quot;``</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;sentence&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;sentences&quot;``</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;word&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;words&quot;``</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;ipu&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;ipus&quot;``</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``&quot;turn&quot;``</span> <span class="pre">/</span> <span class="pre">``&quot;turns&quot;``</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Table</span> <span class="pre">Conventions</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-----------------</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">``Units``</span> <span class="pre">works</span> <span class="pre">best</span> <span class="pre">when</span> <span class="pre">each</span> <span class="pre">DataFrame</span> <span class="pre">follows</span> <span class="pre">a</span> <span class="pre">few</span> <span class="pre">simple</span> <span class="pre">conventions</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``id``</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>unique identifier for the unit row (typically integer-like).</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">``start``</span> <span class="pre">and</span> <span class="pre">``end``</span></span></dt>
-<dd><p>(commonly seconds). Used by <a class="reference internal" href="#voxatlas.Units.duration" title="voxatlas.Units.duration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">duration()</span></code></a> and by many extractors.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>segment boundaries on a shared timeline</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">Parent-child</span> <span class="pre">links</span> <span class="pre">(optional)</span></span></dt>
-<dd><p><code class="docutils literal notranslate"><span class="pre">&lt;parent&gt;_id</span></code> column on the child table. For example, syllables that
+<p class="rubric">Notes</p>
+<p><strong>Unit labels</strong>
+Methods that accept a <code class="docutils literal notranslate"><span class="pre">unit_type</span></code> (for example, <a class="reference internal" href="#voxatlas.Units.table" title="voxatlas.Units.table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">table()</span></code></a>) accept
+both singular and plural labels:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;frame&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;frames&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;token&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;tokens&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;phoneme&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;phonemes&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;syllable&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;syllables&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;sentence&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;sentences&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;word&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;words&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;ipu&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;ipus&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;turn&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;turns&quot;</span></code></p></li>
+</ul>
+<p><strong>Table conventions</strong>
+<code class="docutils literal notranslate"><span class="pre">Units</span></code> works best when each DataFrame follows a few simple conventions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: unique identifier for the unit row (typically integer-like).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code>: segment boundaries on a shared timeline
+(commonly seconds). Used by <a class="reference internal" href="#voxatlas.Units.duration" title="voxatlas.Units.duration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">duration()</span></code></a> and by many extractors.</p></li>
+<li><p>Parent-child links (optional): to connect units explicitly, include an
+<code class="docutils literal notranslate"><span class="pre">&lt;parent&gt;_id</span></code> column on the child table. For example, syllables that
 belong to words can carry a <code class="docutils literal notranslate"><span class="pre">word_id</span></code> column; phonemes that belong to
 syllables can carry a <code class="docutils literal notranslate"><span class="pre">syllable_id</span></code> column. <a class="reference internal" href="#voxatlas.Units.parent" title="voxatlas.Units.parent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parent()</span></code></a> and
-<a class="reference internal" href="#voxatlas.Units.children" title="voxatlas.Units.children"><code class="xref py py-meth docutils literal notranslate"><span class="pre">children()</span></code></a> use this naming convention.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>to connect units explicitly, include an</p>
-</dd>
-</dl>
-</dd></dl>
-
-<p class="rubric">Notes</p>
-<ul class="simple">
+<a class="reference internal" href="#voxatlas.Units.children" title="voxatlas.Units.children"><code class="xref py py-meth docutils literal notranslate"><span class="pre">children()</span></code></a> use this naming convention.</p></li>
 <li><p><a class="reference internal" href="#voxatlas.Units.table" title="voxatlas.Units.table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">table()</span></code></a> returns the underlying DataFrame object. If you mutate it,
 you are mutating the table stored on the <code class="docutils literal notranslate"><span class="pre">Units</span></code> instance.</p></li>
 <li><p>If a requested table is missing (<code class="docutils literal notranslate"><span class="pre">None</span></code>), <a class="reference internal" href="#voxatlas.Units.table" title="voxatlas.Units.table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">table()</span></code></a> raises
@@ -789,7 +702,7 @@ attribute first.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">units</span> <span class="o">=</span> <span class="n">Units</span><span class="p">(</span><span class="n">words</span><span class="o">=</span><span class="n">words</span><span class="p">,</span> <span class="n">syllables</span><span class="o">=</span><span class="n">syllables</span><span class="p">,</span> <span class="n">speaker</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">units</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(1, 4)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">units</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">units</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="go">1.0</span>
 </pre></div>
 </div>

@@ -49,9 +49,10 @@ class Units:
     speaker : str | None
         Speaker label associated with this stream (if known).
 
-    Unit Labels
-    -----------
-    Methods that accept a ``unit_type`` (for example :meth:`table`) understand
+    Notes
+    -----
+    **Unit labels**
+    Methods that accept a ``unit_type`` (for example, :meth:`table`) accept
     both singular and plural labels:
 
     - ``"frame"`` / ``"frames"``
@@ -63,8 +64,7 @@ class Units:
     - ``"ipu"`` / ``"ipus"``
     - ``"turn"`` / ``"turns"``
 
-    Table Conventions
-    -----------------
+    **Table conventions**
     ``Units`` works best when each DataFrame follows a few simple conventions:
 
     - ``id``: unique identifier for the unit row (typically integer-like).
@@ -76,8 +76,6 @@ class Units:
       syllables can carry a ``syllable_id`` column. :meth:`parent` and
       :meth:`children` use this naming convention.
 
-    Notes
-    -----
     - :meth:`table` returns the underlying DataFrame object. If you mutate it,
       you are mutating the table stored on the ``Units`` instance.
     - If a requested table is missing (``None``), :meth:`table` raises
@@ -95,7 +93,7 @@ class Units:
     >>> units = Units(words=words, syllables=syllables, speaker="A")
     >>> units.table("word").shape
     (1, 4)
-    >>> units.duration("word").iloc[0]
+    >>> float(units.duration("word").iloc[0])
     1.0
     """
 

@@ -412,9 +412,10 @@
 <span class="sd">    speaker : str | None</span>
 <span class="sd">        Speaker label associated with this stream (if known).</span>
 
-<span class="sd">    Unit Labels</span>
-<span class="sd">    -----------</span>
-<span class="sd">    Methods that accept a ``unit_type`` (for example :meth:`table`) understand</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    **Unit labels**</span>
+<span class="sd">    Methods that accept a ``unit_type`` (for example, :meth:`table`) accept</span>
 <span class="sd">    both singular and plural labels:</span>
 
 <span class="sd">    - ``&quot;frame&quot;`` / ``&quot;frames&quot;``</span>
@@ -426,8 +427,7 @@
 <span class="sd">    - ``&quot;ipu&quot;`` / ``&quot;ipus&quot;``</span>
 <span class="sd">    - ``&quot;turn&quot;`` / ``&quot;turns&quot;``</span>
 
-<span class="sd">    Table Conventions</span>
-<span class="sd">    -----------------</span>
+<span class="sd">    **Table conventions**</span>
 <span class="sd">    ``Units`` works best when each DataFrame follows a few simple conventions:</span>
 
 <span class="sd">    - ``id``: unique identifier for the unit row (typically integer-like).</span>
@@ -439,8 +439,6 @@
 <span class="sd">      syllables can carry a ``syllable_id`` column. :meth:`parent` and</span>
 <span class="sd">      :meth:`children` use this naming convention.</span>
 
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
 <span class="sd">    - :meth:`table` returns the underlying DataFrame object. If you mutate it,</span>
 <span class="sd">      you are mutating the table stored on the ``Units`` instance.</span>
 <span class="sd">    - If a requested table is missing (``None``), :meth:`table` raises</span>
@@ -458,7 +456,7 @@
 <span class="sd">    &gt;&gt;&gt; units = Units(words=words, syllables=syllables, speaker=&quot;A&quot;)</span>
 <span class="sd">    &gt;&gt;&gt; units.table(&quot;word&quot;).shape</span>
 <span class="sd">    (1, 4)</span>
-<span class="sd">    &gt;&gt;&gt; units.duration(&quot;word&quot;).iloc[0]</span>
+<span class="sd">    &gt;&gt;&gt; float(units.duration(&quot;word&quot;).iloc[0])</span>
 <span class="sd">    1.0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
