@@ -29,13 +29,30 @@ class RhythmIntervalsExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.rhythm.intervals import RhythmIntervalsExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = RhythmIntervalsExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.rhythm.intervals import RhythmIntervalsExtractor
+    >>> from voxatlas.features.feature_output import ScalarFeatureOutput
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> from voxatlas.units import Units
+    >>> phonemes = pd.DataFrame(
+    ...     {"id": [1, 2, 3], "start": [0.0, 0.1, 0.2], "end": [0.1, 0.2, 0.3], "label": ["p", "a", "a"]}
+    ... )
+    >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+    >>> units = Units(phonemes=phonemes, ipus=ipus)
+    >>> store = FeatureStore()
+    >>> store.add(
+    ...     "phonology.articulatory.vowel",
+    ...     ScalarFeatureOutput(
+    ...         feature="phonology.articulatory.vowel",
+    ...         unit="phoneme",
+    ...         values=pd.Series([0.0, 1.0, 1.0], index=[1, 2, 3], dtype="float32"),
+    ...     ),
+    ... )
+    >>> feature_input = FeatureInput(audio=None, units=units, context={"feature_store": store})
+    >>> out = RhythmIntervalsExtractor().compute(feature_input, {})
+    >>> out.values["type"].tolist()
+    ['c', 'v']
     """
     name = "phonology.rhythm.intervals"
     input_units = "phoneme"
@@ -63,10 +80,28 @@ class RhythmIntervalsExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = RhythmIntervalsExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.rhythm.intervals import RhythmIntervalsExtractor
+        >>> from voxatlas.features.feature_output import ScalarFeatureOutput
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> from voxatlas.units import Units
+        >>> phonemes = pd.DataFrame({"id": [1], "start": [0.0], "end": [0.1], "label": ["a"]})
+        >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+        >>> units = Units(phonemes=phonemes, ipus=ipus)
+        >>> store = FeatureStore()
+        >>> store.add(
+        ...     "phonology.articulatory.vowel",
+        ...     ScalarFeatureOutput(
+        ...         feature="phonology.articulatory.vowel",
+        ...         unit="phoneme",
+        ...         values=pd.Series([1.0], index=[1], dtype="float32"),
+        ...     ),
+        ... )
+        >>> feature_input = FeatureInput(audio=None, units=units, context={"feature_store": store})
+        >>> result = RhythmIntervalsExtractor().compute(feature_input, {})
+        >>> result.unit
+        'ipu'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires phoneme and IPU units")

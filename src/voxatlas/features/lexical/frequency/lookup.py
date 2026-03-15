@@ -36,13 +36,17 @@ class LexicalFrequencyLookupExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.frequency.lookup import LexicalFrequencyLookupExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = LexicalFrequencyLookupExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.lexical.frequency.lookup import LexicalFrequencyLookupExtractor
+    >>> from voxatlas.units import Units
+    >>> tokens = pd.DataFrame([{"id": 1, "lemma": "hello"}])
+    >>> units = Units(tokens=tokens)
+    >>> params = LexicalFrequencyLookupExtractor.default_config.copy()
+    >>> params["lexicon"] = pd.DataFrame([{"lemma": "hello", "frequency": 10.0}])
+    >>> out = LexicalFrequencyLookupExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> float(out.values.loc[0, "frequency"])
+    10.0
     """
     name = "lexical.frequency.lookup"
     input_units = "token"
@@ -74,10 +78,17 @@ class LexicalFrequencyLookupExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = LexicalFrequencyLookupExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.lexical.frequency.lookup import LexicalFrequencyLookupExtractor
+        >>> from voxatlas.units import Units
+        >>> tokens = pd.DataFrame([{"id": 1, "lemma": "hello"}])
+        >>> units = Units(tokens=tokens)
+        >>> params = LexicalFrequencyLookupExtractor.default_config.copy()
+        >>> params["lexicon"] = pd.DataFrame([{"lemma": "hello", "frequency": 10.0}])
+        >>> result = LexicalFrequencyLookupExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> result.unit
+        'token'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires token units")

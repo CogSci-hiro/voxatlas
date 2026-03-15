@@ -29,13 +29,17 @@ class SyntaxLocalStructureDependencyDistanceExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.syntax.local_structure.dependency_distance import SyntaxLocalStructureDependencyDistanceExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SyntaxLocalStructureDependencyDistanceExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.syntax.local_structure.dependency_distance import SyntaxLocalStructureDependencyDistanceExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> deps = pd.DataFrame({"token_id": [1, 2], "head_id": [2, pd.NA]})
+    >>> store = FeatureStore()
+    >>> store.add("syntax.dependencies", TableFeatureOutput(feature="syntax.dependencies", unit="token", values=deps))
+    >>> out = SyntaxLocalStructureDependencyDistanceExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> out.values.to_dict()
+    {1: 1.0, 2: 0.0}
     """
     name = "syntax.local_structure.dependency_distance"
     input_units = "token"
@@ -63,10 +67,17 @@ class SyntaxLocalStructureDependencyDistanceExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = SyntaxLocalStructureDependencyDistanceExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.syntax.local_structure.dependency_distance import SyntaxLocalStructureDependencyDistanceExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> deps = pd.DataFrame({"token_id": [1], "head_id": [pd.NA]})
+        >>> store = FeatureStore()
+        >>> store.add("syntax.dependencies", TableFeatureOutput(feature="syntax.dependencies", unit="token", values=deps))
+        >>> result = SyntaxLocalStructureDependencyDistanceExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get("syntax.dependencies").values
         values = absolute_dependency_distance(table)

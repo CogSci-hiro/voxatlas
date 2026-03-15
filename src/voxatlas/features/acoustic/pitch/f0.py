@@ -40,13 +40,19 @@ class F0Extractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.acoustic.pitch.f0 import F0Extractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = F0Extractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.acoustic.pitch.f0 import F0Extractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> sr = 16000
+    >>> t = np.arange(0, sr // 10) / sr
+    >>> waveform = (0.1 * np.sin(2 * np.pi * 100 * t)).astype(np.float32)
+    >>> audio = Audio(waveform=waveform, sample_rate=sr)
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+    >>> params = F0Extractor.default_config.copy()
+    >>> out = F0Extractor().compute(feature_input, params)
+    >>> out.unit
+    'frame'
     """
 
     name = "acoustic.pitch.f0"
@@ -88,10 +94,19 @@ class F0Extractor(BaseExtractor):
 
         Examples
         --------
-        Usage example::
-
-            output = F0Extractor().compute(feature_input, params)
-            print(output.time.shape, output.values.shape)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.acoustic.pitch.f0 import F0Extractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> sr = 16000
+        >>> t = np.arange(0, sr // 10) / sr
+        >>> waveform = (0.1 * np.sin(2 * np.pi * 100 * t)).astype(np.float32)
+        >>> audio = Audio(waveform=waveform, sample_rate=sr)
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+        >>> params = F0Extractor.default_config.copy()
+        >>> out = F0Extractor().compute(feature_input, params)
+        >>> out.time.shape[0] == out.values.shape[0]
+        True
         """
         if feature_input.audio is None:
             raise ValueError(f"{self.name} requires audio input")

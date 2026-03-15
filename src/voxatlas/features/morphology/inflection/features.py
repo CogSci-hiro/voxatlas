@@ -27,13 +27,19 @@ class InflectionFeaturesExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.inflection.features import InflectionFeaturesExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = InflectionFeaturesExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.morphology.inflection.features import InflectionFeaturesExtractor
+    >>> from voxatlas.units import Units
+    >>> tokens = pd.DataFrame([{"id": 1, "lemma": "be"}])
+    >>> units = Units(tokens=tokens)
+    >>> params = InflectionFeaturesExtractor.default_config.copy()
+    >>> params["morphological_analysis"] = {"be": "VerbForm=Fin|Tense=Pres"}
+    >>> out = InflectionFeaturesExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> out.unit
+    'token'
+    >>> out.values.loc[0, ["VerbForm", "Tense"]].to_dict()
+    {'VerbForm': 'Fin', 'Tense': 'Pres'}
     """
     name = "morphology.inflection.features"
     input_units = "token"
@@ -64,10 +70,17 @@ class InflectionFeaturesExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = InflectionFeaturesExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.morphology.inflection.features import InflectionFeaturesExtractor
+        >>> from voxatlas.units import Units
+        >>> tokens = pd.DataFrame([{"id": 1, "lemma": "be"}])
+        >>> units = Units(tokens=tokens)
+        >>> params = InflectionFeaturesExtractor.default_config.copy()
+        >>> params["morphological_analysis"] = {"be": "VerbForm=Fin|Tense=Pres"}
+        >>> result = InflectionFeaturesExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> "VerbForm" in result.values.columns
+        True
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires token units")

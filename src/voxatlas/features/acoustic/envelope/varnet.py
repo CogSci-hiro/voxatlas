@@ -52,19 +52,22 @@ class VarnetEnvelope(BaseExtractor):
 
     Examples
     --------
-        from voxatlas.features.acoustic.envelope.varnet import VarnetEnvelope
-        from voxatlas.features.feature_input import FeatureInput
-
-        extractor = VarnetEnvelope()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.acoustic.envelope.varnet import VarnetEnvelope
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+    >>> params = VarnetEnvelope.default_config.copy()
+    >>> out = VarnetEnvelope().compute(feature_input, params)
+    >>> out.unit
+    'frame'
     """
-    name = "acoustic.envelope.varnet"
-    input_units = None
-    output_units = "frame"
-    dependencies = []
-    default_config = {
+    name: str = "acoustic.envelope.varnet"
+    input_units: str | None = None
+    output_units: str | None = "frame"
+    dependencies: list[str] = []
+    default_config: dict = {
         "frame_length": 0.050,
         "frame_step": 0.010,
         "smoothing": 9,
@@ -91,10 +94,16 @@ class VarnetEnvelope(BaseExtractor):
         
         Examples
         --------
-            extractor = VarnetEnvelope()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.acoustic.envelope.varnet import VarnetEnvelope
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+        >>> params = VarnetEnvelope.default_config.copy()
+        >>> result = VarnetEnvelope().compute(feature_input, params)
+        >>> result.values.shape[0] > 0
+        True
         """
         if feature_input.audio is None:
             raise ValueError(f"{self.name} requires audio input")

@@ -27,13 +27,16 @@ class ProsodicPositionInWordExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.prosody.position_word import ProsodicPositionInWordExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = ProsodicPositionInWordExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.prosody.position_word import ProsodicPositionInWordExtractor
+    >>> from voxatlas.units import Units
+    >>> syllables = pd.DataFrame({"id": [10, 11], "start": [0.0, 0.5], "end": [0.5, 1.0]})
+    >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0]})
+    >>> units = Units(syllables=syllables, words=words)
+    >>> out = ProsodicPositionInWordExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+    >>> int(out.values.loc[10]), int(out.values.loc[11])
+    (1, 2)
     """
     name = "phonology.prosody.position_in_word"
     input_units = "syllable"
@@ -61,10 +64,16 @@ class ProsodicPositionInWordExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = ProsodicPositionInWordExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.prosody.position_word import ProsodicPositionInWordExtractor
+        >>> from voxatlas.units import Units
+        >>> syllables = pd.DataFrame({"id": [10], "start": [0.0], "end": [0.5]})
+        >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0]})
+        >>> units = Units(syllables=syllables, words=words)
+        >>> result = ProsodicPositionInWordExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+        >>> result.unit
+        'syllable'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires syllable and word units")

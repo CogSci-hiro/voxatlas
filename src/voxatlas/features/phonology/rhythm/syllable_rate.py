@@ -33,13 +33,16 @@ class RhythmSyllableRateExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.rhythm.syllable_rate import RhythmSyllableRateExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = RhythmSyllableRateExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.rhythm.syllable_rate import RhythmSyllableRateExtractor
+    >>> from voxatlas.units import Units
+    >>> syllables = pd.DataFrame({"id": [1, 2], "start": [0.0, 0.5], "end": [0.25, 0.75]})
+    >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+    >>> units = Units(syllables=syllables, ipus=ipus)
+    >>> out = RhythmSyllableRateExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+    >>> float(out.values.loc[5])
+    2.0
     """
     name = "phonology.rhythm.syllable_rate"
     input_units = "syllable"
@@ -67,10 +70,16 @@ class RhythmSyllableRateExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = RhythmSyllableRateExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.rhythm.syllable_rate import RhythmSyllableRateExtractor
+        >>> from voxatlas.units import Units
+        >>> syllables = pd.DataFrame({"id": [1], "start": [0.0], "end": [0.25]})
+        >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+        >>> units = Units(syllables=syllables, ipus=ipus)
+        >>> result = RhythmSyllableRateExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+        >>> result.unit
+        'ipu'
         """
         units = feature_input.units
         if units is None:

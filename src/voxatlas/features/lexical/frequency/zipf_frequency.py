@@ -35,13 +35,17 @@ class ZipfFrequencyExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.frequency.zipf_frequency import ZipfFrequencyExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = ZipfFrequencyExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.lexical.frequency.zipf_frequency import ZipfFrequencyExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "frequency": [1000.0]})
+    >>> store = FeatureStore()
+    >>> store.add("lexical.frequency.lookup", TableFeatureOutput(feature="lexical.frequency.lookup", unit="token", values=table))
+    >>> out = ZipfFrequencyExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    6.0
     """
     name = "lexical.frequency.zipf"
     input_units = "token"
@@ -69,10 +73,17 @@ class ZipfFrequencyExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = ZipfFrequencyExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.lexical.frequency.zipf_frequency import ZipfFrequencyExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "frequency": [1000.0]})
+        >>> store = FeatureStore()
+        >>> store.add("lexical.frequency.lookup", TableFeatureOutput(feature="lexical.frequency.lookup", unit="token", values=table))
+        >>> result = ZipfFrequencyExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "lexical.frequency.lookup"

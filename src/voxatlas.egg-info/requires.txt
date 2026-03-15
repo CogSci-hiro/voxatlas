@@ -18,6 +18,7 @@ numpydoc
 pydata-sphinx-theme
 sphinx-copybutton
 sphinx-design
+sphinxcontrib-mermaid
 
 [semantics]
 transformers

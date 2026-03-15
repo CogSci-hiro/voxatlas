@@ -226,3 +226,4 @@ src/voxatlas/units/__init__.py
 src/voxatlas/units/alignment.py
 src/voxatlas/units/alignment_loader.py
 src/voxatlas/units/units.py
+tests/test_docstring_examples.py

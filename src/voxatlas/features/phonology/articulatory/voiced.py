@@ -30,13 +30,21 @@ class ArticulatoryVoicedExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.articulatory.voiced import ArticulatoryVoicedExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = ArticulatoryVoicedExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.phonology.articulatory.voiced import ArticulatoryVoicedExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "voiced": [1]})
+    >>> store = FeatureStore()
+    >>> store.add(
+    ...     "phonology.articulatory.features",
+    ...     TableFeatureOutput(feature="phonology.articulatory.features", unit="phoneme", values=table),
+    ... )
+    >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+    >>> out = ArticulatoryVoicedExtractor().compute(feature_input, {})
+    >>> float(out.values.loc[1])
+    1.0
     """
     name = "phonology.articulatory.voiced"
     input_units = "phoneme"
@@ -64,10 +72,21 @@ class ArticulatoryVoicedExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = ArticulatoryVoicedExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.phonology.articulatory.voiced import ArticulatoryVoicedExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "voiced": [1]})
+        >>> store = FeatureStore()
+        >>> store.add(
+        ...     "phonology.articulatory.features",
+        ...     TableFeatureOutput(feature="phonology.articulatory.features", unit="phoneme", values=table),
+        ... )
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> result = ArticulatoryVoicedExtractor().compute(feature_input, {})
+        >>> result.unit
+        'phoneme'
         """
         table = feature_input.context["feature_store"].get(
             "phonology.articulatory.features"

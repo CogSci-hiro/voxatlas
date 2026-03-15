@@ -68,6 +68,7 @@ dev = [
     "pydata-sphinx-theme",
     "sphinx-copybutton",
     "sphinx-design",
+    "sphinxcontrib-mermaid",
 ]
 
 # setuptools configuration

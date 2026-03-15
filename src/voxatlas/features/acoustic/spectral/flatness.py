@@ -35,13 +35,28 @@ class SpectralFlatnessExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.acoustic.spectral.flatness import SpectralFlatnessExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SpectralFlatnessExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.features.acoustic.spectral.flatness import SpectralFlatnessExtractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import MatrixFeatureOutput
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> store = FeatureStore()
+    >>> spectrum = MatrixFeatureOutput(
+    ...     feature="acoustic.spectral.spectrum",
+    ...     unit="frame",
+    ...     time=np.array([0.0, 0.01], dtype=np.float32),
+    ...     frequency=np.array([0.0, 1000.0, 2000.0], dtype=np.float32),
+    ...     values=np.array([[1.0, 1.0, 1.0], [1.0, 2.0, 3.0]], dtype=np.float32),
+    ... )
+    >>> store.add("acoustic.spectral.spectrum", spectrum)
+    >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+    >>> out = SpectralFlatnessExtractor().compute(feature_input, SpectralFlatnessExtractor.default_config.copy())
+    >>> out.values.shape
+    (2,)
+    >>> float(out.values[0])
+    1.0
+    >>> round(float(out.values[1]), 3)
+    0.909
     """
     name = "acoustic.spectral.flatness"
     input_units = None
@@ -71,10 +86,24 @@ class SpectralFlatnessExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = SpectralFlatnessExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.features.acoustic.spectral.flatness import SpectralFlatnessExtractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import MatrixFeatureOutput
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> store = FeatureStore()
+        >>> spectrum = MatrixFeatureOutput(
+        ...     feature="acoustic.spectral.spectrum",
+        ...     unit="frame",
+        ...     time=np.array([0.0], dtype=np.float32),
+        ...     frequency=np.array([0.0, 1000.0, 2000.0], dtype=np.float32),
+        ...     values=np.array([[1.0, 1.0, 1.0]], dtype=np.float32),
+        ... )
+        >>> store.add("acoustic.spectral.spectrum", spectrum)
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> result = SpectralFlatnessExtractor().compute(feature_input, SpectralFlatnessExtractor.default_config.copy())
+        >>> result.unit
+        'frame'
         """
         spectrum_output = feature_input.context["feature_store"].get(
             "acoustic.spectral.spectrum"

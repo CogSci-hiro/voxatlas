@@ -34,13 +34,17 @@ class LexicalPropertyLookupExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.properties.lookup import LexicalPropertyLookupExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = LexicalPropertyLookupExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.lexical.properties.lookup import LexicalPropertyLookupExtractor
+    >>> from voxatlas.units import Units
+    >>> tokens = pd.DataFrame([{"id": 1, "lemma": "dog", "upos": "NOUN"}])
+    >>> units = Units(tokens=tokens)
+    >>> params = LexicalPropertyLookupExtractor.default_config.copy()
+    >>> params["language"] = ""  # empty resources, so values remain NaN
+    >>> out = LexicalPropertyLookupExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> out.values.loc[0, "pos"]
+    'NOUN'
     """
     name = "lexical.properties.lookup"
     input_units = "token"
@@ -71,10 +75,17 @@ class LexicalPropertyLookupExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = LexicalPropertyLookupExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.lexical.properties.lookup import LexicalPropertyLookupExtractor
+        >>> from voxatlas.units import Units
+        >>> tokens = pd.DataFrame([{"id": 1, "lemma": "dog", "upos": "NOUN"}])
+        >>> units = Units(tokens=tokens)
+        >>> params = LexicalPropertyLookupExtractor.default_config.copy()
+        >>> params["language"] = ""
+        >>> result = LexicalPropertyLookupExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> result.unit
+        'token'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires token units")

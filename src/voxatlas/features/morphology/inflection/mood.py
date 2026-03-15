@@ -30,13 +30,17 @@ class InflectionMoodExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.inflection.mood import InflectionMoodExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = InflectionMoodExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.inflection.mood import InflectionMoodExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "Mood": ["Ind"]})
+    >>> store = FeatureStore()
+    >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=table))
+    >>> out = InflectionMoodExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> out.values.loc[1]
+    'Ind'
     """
     name = "morphology.inflection.mood"
     input_units = "token"
@@ -64,10 +68,17 @@ class InflectionMoodExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = InflectionMoodExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.inflection.mood import InflectionMoodExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "Mood": ["Ind"]})
+        >>> store = FeatureStore()
+        >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=table))
+        >>> result = InflectionMoodExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "morphology.inflection.features"

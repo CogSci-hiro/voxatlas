@@ -31,13 +31,17 @@ class VerbMorphologyFeaturesExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.verb_morphology.features import VerbMorphologyFeaturesExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = VerbMorphologyFeaturesExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.verb_morphology.features import VerbMorphologyFeaturesExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> inflection = pd.DataFrame([{"id": 1, "upos": "VERB", "VerbForm": "Fin"}])
+    >>> store = FeatureStore()
+    >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=inflection))
+    >>> out = VerbMorphologyFeaturesExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[0, "Finite"])
+    1.0
     """
     name = "morphology.verb_morphology.features"
     input_units = "token"
@@ -65,10 +69,17 @@ class VerbMorphologyFeaturesExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = VerbMorphologyFeaturesExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.verb_morphology.features import VerbMorphologyFeaturesExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> inflection = pd.DataFrame([{"id": 1, "upos": "VERB", "VerbForm": "Fin"}])
+        >>> store = FeatureStore()
+        >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=inflection))
+        >>> result = VerbMorphologyFeaturesExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> "VerbForm" in result.values.columns
+        True
         """
         inflection_table = feature_input.context["feature_store"].get(
             "morphology.inflection.features"

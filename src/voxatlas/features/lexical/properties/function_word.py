@@ -34,13 +34,17 @@ class FunctionWordExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.properties.function_word import FunctionWordExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = FunctionWordExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.lexical.properties.function_word import FunctionWordExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "function_word": [1.0]})
+    >>> store = FeatureStore()
+    >>> store.add("lexical.properties.lookup", TableFeatureOutput(feature="lexical.properties.lookup", unit="token", values=table))
+    >>> out = FunctionWordExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    1.0
     """
     name = "lexical.properties.function_word"
     input_units = "token"
@@ -68,10 +72,17 @@ class FunctionWordExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = FunctionWordExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.lexical.properties.function_word import FunctionWordExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "function_word": [1.0]})
+        >>> store = FeatureStore()
+        >>> store.add("lexical.properties.lookup", TableFeatureOutput(feature="lexical.properties.lookup", unit="token", values=table))
+        >>> result = FunctionWordExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "lexical.properties.lookup"

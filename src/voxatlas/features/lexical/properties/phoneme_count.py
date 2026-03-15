@@ -34,13 +34,17 @@ class PhonemeCountExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.properties.phoneme_count import PhonemeCountExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = PhonemeCountExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.lexical.properties.phoneme_count import PhonemeCountExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "phoneme_count": [3]})
+    >>> store = FeatureStore()
+    >>> store.add("lexical.properties.features", TableFeatureOutput(feature="lexical.properties.features", unit="token", values=table))
+    >>> out = PhonemeCountExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    3.0
     """
     name = "lexical.properties.phoneme_count"
     input_units = "token"
@@ -68,10 +72,17 @@ class PhonemeCountExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = PhonemeCountExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.lexical.properties.phoneme_count import PhonemeCountExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "phoneme_count": [3]})
+        >>> store = FeatureStore()
+        >>> store.add("lexical.properties.features", TableFeatureOutput(feature="lexical.properties.features", unit="token", values=table))
+        >>> result = PhonemeCountExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get("lexical.properties.features").values
         values = pd.Series(

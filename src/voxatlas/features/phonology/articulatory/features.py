@@ -35,13 +35,20 @@ class ArticulatoryFeaturesExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.articulatory.features import ArticulatoryFeaturesExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = ArticulatoryFeaturesExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.articulatory.features import ArticulatoryFeaturesExtractor
+    >>> from voxatlas.units import Units
+    >>> phonemes = pd.DataFrame(
+    ...     {"id": [1, 2], "start": [0.0, 0.1], "end": [0.1, 0.2], "label": ["a", "p"]}
+    ... )
+    >>> units = Units(phonemes=phonemes)
+    >>> params = ArticulatoryFeaturesExtractor.default_config.copy()
+    >>> out = ArticulatoryFeaturesExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> out.unit
+    'phoneme'
+    >>> "vowel" in out.values.columns
+    True
     """
     name = "phonology.articulatory.features"
     input_units = "phoneme"
@@ -72,10 +79,16 @@ class ArticulatoryFeaturesExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = ArticulatoryFeaturesExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.articulatory.features import ArticulatoryFeaturesExtractor
+        >>> from voxatlas.units import Units
+        >>> phonemes = pd.DataFrame({"id": [1], "start": [0.0], "end": [0.1], "label": ["a"]})
+        >>> units = Units(phonemes=phonemes)
+        >>> params = ArticulatoryFeaturesExtractor.default_config.copy()
+        >>> result = ArticulatoryFeaturesExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> result.values.shape[0]
+        1
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires phoneme units")

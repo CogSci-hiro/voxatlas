@@ -576,12 +576,19 @@ The result is returned as a token-aligned scalar series so later discourse-level
 <p class="rubric">Notes</p>
 <p>This extractor declares the upstream dependencies [‘morphology.derivation.segmentation’] and is executed only after those features are available in the pipeline feature store.</p>
 <p class="rubric">Examples</p>
-<p>from voxatlas.features.morphology.derivation.complexity import MorphologicalComplexityExtractor
-from voxatlas.features.feature_input import FeatureInput</p>
-<p>extractor = MorphologicalComplexityExtractor()
-feature_input = FeatureInput(audio=audio, units=units, context={})
-output = extractor.compute(feature_input, {})
-print(output)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.feature_input</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureInput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.feature_output</span><span class="w"> </span><span class="kn">import</span> <span class="n">TableFeatureOutput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.morphology.derivation.complexity</span><span class="w"> </span><span class="kn">import</span> <span class="n">MorphologicalComplexityExtractor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline.feature_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureStore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;morphological_complexity&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">FeatureStore</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;morphology.derivation.segmentation&quot;</span><span class="p">,</span> <span class="n">TableFeatureOutput</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="s2">&quot;morphology.derivation.segmentation&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">table</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">MorphologicalComplexityExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">FeatureInput</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;feature_store&quot;</span><span class="p">:</span> <span class="n">store</span><span class="p">}),</span> <span class="p">{})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor.name">
 <span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'morphology.derivation.morphological_complexity'</span></span><a class="headerlink" href="#voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor.name" title="Link to this definition">#</a></dt>
@@ -627,10 +634,19 @@ print(output)</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>extractor = MorphologicalComplexityExtractor()
-feature_input = FeatureInput(audio=audio, units=units, context={})
-result = extractor.compute(feature_input, {})
-print(result)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.feature_input</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureInput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.feature_output</span><span class="w"> </span><span class="kn">import</span> <span class="n">TableFeatureOutput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.morphology.derivation.complexity</span><span class="w"> </span><span class="kn">import</span> <span class="n">MorphologicalComplexityExtractor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.pipeline.feature_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureStore</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;morphological_complexity&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">FeatureStore</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;morphology.derivation.segmentation&quot;</span><span class="p">,</span> <span class="n">TableFeatureOutput</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="s2">&quot;morphology.derivation.segmentation&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">table</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">MorphologicalComplexityExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">FeatureInput</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;feature_store&quot;</span><span class="p">:</span> <span class="n">store</span><span class="p">}),</span> <span class="p">{})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">unit</span>
+<span class="go">&#39;token&#39;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

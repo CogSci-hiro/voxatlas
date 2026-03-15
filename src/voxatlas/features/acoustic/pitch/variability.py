@@ -35,13 +35,23 @@ class F0VariabilityExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.acoustic.pitch.variability import F0VariabilityExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = F0VariabilityExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.features.acoustic.pitch.variability import F0VariabilityExtractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import VectorFeatureOutput
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> store = FeatureStore()
+    >>> base = VectorFeatureOutput(
+    ...     feature="acoustic.pitch.f0",
+    ...     unit="frame",
+    ...     time=np.array([0.0, 0.01, 0.02], dtype=np.float32),
+    ...     values=np.array([100.0, 110.0, np.nan], dtype=np.float32),
+    ... )
+    >>> store.add("acoustic.pitch.f0", base)
+    >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+    >>> out = F0VariabilityExtractor().compute(feature_input, {})
+    >>> float(np.nanmax(out.values))
+    5.0
     """
     name = "acoustic.pitch.f0.variability"
     input_units = None
@@ -69,10 +79,23 @@ class F0VariabilityExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = F0VariabilityExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.features.acoustic.pitch.variability import F0VariabilityExtractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import VectorFeatureOutput
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> store = FeatureStore()
+        >>> base = VectorFeatureOutput(
+        ...     feature="acoustic.pitch.f0",
+        ...     unit="frame",
+        ...     time=np.array([0.0, 0.01, 0.02], dtype=np.float32),
+        ...     values=np.array([100.0, 110.0, np.nan], dtype=np.float32),
+        ... )
+        >>> store.add("acoustic.pitch.f0", base)
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> result = F0VariabilityExtractor().compute(feature_input, {})
+        >>> result.unit
+        'frame'
         """
         f0_output = feature_input.context["feature_store"].get("acoustic.pitch.f0")
         values = compute_f0_variability(f0_output.values)

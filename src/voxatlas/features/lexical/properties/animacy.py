@@ -34,13 +34,17 @@ class AnimacyExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.properties.animacy import AnimacyExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = AnimacyExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.lexical.properties.animacy import AnimacyExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "animacy": [1.0]})
+    >>> store = FeatureStore()
+    >>> store.add("lexical.properties.lookup", TableFeatureOutput(feature="lexical.properties.lookup", unit="token", values=table))
+    >>> out = AnimacyExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    1.0
     """
     name = "lexical.properties.animacy"
     input_units = "token"
@@ -68,10 +72,17 @@ class AnimacyExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = AnimacyExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.lexical.properties.animacy import AnimacyExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "animacy": [1.0]})
+        >>> store = FeatureStore()
+        >>> store.add("lexical.properties.lookup", TableFeatureOutput(feature="lexical.properties.lookup", unit="token", values=table))
+        >>> result = AnimacyExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "lexical.properties.lookup"

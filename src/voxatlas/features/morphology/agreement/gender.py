@@ -30,13 +30,17 @@ class GenderAgreementExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.agreement.gender import GenderAgreementExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = GenderAgreementExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.agreement.gender import GenderAgreementExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1, 2], "GenderAgreement": [0.0, 0.0]})
+    >>> store = FeatureStore()
+    >>> store.add("morphology.agreement.features", TableFeatureOutput(feature="morphology.agreement.features", unit="token", values=table))
+    >>> out = GenderAgreementExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    0.0
     """
     name = "morphology.agreement.gender"
     input_units = "token"
@@ -64,10 +68,17 @@ class GenderAgreementExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = GenderAgreementExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.agreement.gender import GenderAgreementExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "GenderAgreement": [0.0]})
+        >>> store = FeatureStore()
+        >>> store.add("morphology.agreement.features", TableFeatureOutput(feature="morphology.agreement.features", unit="token", values=table))
+        >>> result = GenderAgreementExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "morphology.agreement.features"

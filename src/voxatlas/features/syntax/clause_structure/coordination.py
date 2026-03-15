@@ -32,13 +32,17 @@ class SyntaxCoordinationExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.syntax.clause_structure.coordination import SyntaxCoordinationExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SyntaxCoordinationExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.syntax.clause_structure.coordination import SyntaxCoordinationExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> deps = pd.DataFrame({"id": [1, 2], "deprel": ["conj", "root"]})
+    >>> store = FeatureStore()
+    >>> store.add("syntax.dependencies", TableFeatureOutput(feature="syntax.dependencies", unit="token", values=deps))
+    >>> out = SyntaxCoordinationExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> out.values.to_dict()
+    {1: 1, 2: 0}
     """
     name = "syntax.clause_structure.coordination"
     input_units = "token"
@@ -66,10 +70,17 @@ class SyntaxCoordinationExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = SyntaxCoordinationExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.syntax.clause_structure.coordination import SyntaxCoordinationExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> deps = pd.DataFrame({"id": [1], "deprel": ["root"]})
+        >>> store = FeatureStore()
+        >>> store.add("syntax.dependencies", TableFeatureOutput(feature="syntax.dependencies", unit="token", values=deps))
+        >>> result = SyntaxCoordinationExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get("syntax.dependencies").values
         values = compute_clause_membership(table, COORDINATION_LABELS)

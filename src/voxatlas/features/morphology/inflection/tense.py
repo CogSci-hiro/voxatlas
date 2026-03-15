@@ -30,13 +30,17 @@ class InflectionTenseExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.inflection.tense import InflectionTenseExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = InflectionTenseExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.inflection.tense import InflectionTenseExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "Tense": ["Past"]})
+    >>> store = FeatureStore()
+    >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=table))
+    >>> out = InflectionTenseExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> out.values.loc[1]
+    'Past'
     """
     name = "morphology.inflection.tense"
     input_units = "token"
@@ -64,10 +68,17 @@ class InflectionTenseExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = InflectionTenseExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.inflection.tense import InflectionTenseExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "Tense": ["Past"]})
+        >>> store = FeatureStore()
+        >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=table))
+        >>> result = InflectionTenseExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "morphology.inflection.features"

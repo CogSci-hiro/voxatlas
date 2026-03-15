@@ -34,13 +34,17 @@ class SyllableCountExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.properties.syllable_count import SyllableCountExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SyllableCountExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.lexical.properties.syllable_count import SyllableCountExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "syllable_count": [2]})
+    >>> store = FeatureStore()
+    >>> store.add("lexical.properties.features", TableFeatureOutput(feature="lexical.properties.features", unit="token", values=table))
+    >>> out = SyllableCountExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    2.0
     """
     name = "lexical.properties.syllable_count"
     input_units = "token"
@@ -68,10 +72,17 @@ class SyllableCountExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = SyllableCountExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.lexical.properties.syllable_count import SyllableCountExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "syllable_count": [2]})
+        >>> store = FeatureStore()
+        >>> store.add("lexical.properties.features", TableFeatureOutput(feature="lexical.properties.features", unit="token", values=table))
+        >>> result = SyllableCountExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get("lexical.properties.features").values
         values = pd.Series(

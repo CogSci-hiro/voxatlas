@@ -7,6 +7,13 @@ import sys
 import types
 from pathlib import Path
 
+try:
+    import sphinxcontrib.mermaid as _sphinxcontrib_mermaid  # noqa: F401
+
+    _HAS_SPHINXCONTRIB_MERMAID = True
+except Exception:
+    _HAS_SPHINXCONTRIB_MERMAID = False
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = PROJECT_ROOT / "src"
 
@@ -52,7 +59,15 @@ def _install_doc_mocks() -> None:
 
     _ensure_mock_module("numpy", {"ndarray": ndarray, "float64": _TypeExpr("float64")})
     _ensure_mock_module("pandas", {"DataFrame": dataframe, "Series": series})
-    _ensure_mock_module("yaml")
+    _ensure_mock_module(
+        "yaml",
+        {
+            "dump": lambda *args, **kwargs: "",
+            "safe_dump": lambda *args, **kwargs: "",
+            "safe_load": lambda *args, **kwargs: {},
+            "load": lambda *args, **kwargs: {},
+        },
+    )
     _ensure_mock_module("soundfile")
     _ensure_mock_module("parselmouth")
     _ensure_mock_module("spacy")
@@ -117,3 +132,32 @@ html_css_files = ["custom.css"]
 html_theme_options = {
     "github_url": "https://github.com/your-org/voxatlas",
 }
+
+
+def setup(app):
+    if _HAS_SPHINXCONTRIB_MERMAID:
+        app.setup_extension("sphinxcontrib.mermaid")
+        return
+
+    from docutils import nodes
+    from docutils.parsers.rst import Directive, directives
+
+    class MermaidFallbackDirective(Directive):
+        has_content = True
+        optional_arguments = 0
+        final_argument_whitespace = False
+        option_spec = {
+            "caption": directives.unchanged,
+            "name": directives.unchanged,
+            "class": directives.class_option,
+        }
+
+        def run(self):
+            code = "\n".join(self.content)
+            literal = nodes.literal_block(code, code)
+            literal["language"] = "mermaid"
+            if "class" in self.options:
+                literal["classes"].extend(self.options["class"])
+            return [literal]
+
+    app.add_directive("mermaid", MermaidFallbackDirective)

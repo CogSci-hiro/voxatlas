@@ -33,13 +33,22 @@ class RhythmPercentVExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.rhythm.percent_v import RhythmPercentVExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = RhythmPercentVExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.phonology.rhythm.percent_v import RhythmPercentVExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> intervals = pd.DataFrame(
+    ...     [{"ipu_id": 1, "type": "v", "duration": 0.5}, {"ipu_id": 1, "type": "c", "duration": 0.5}]
+    ... )
+    >>> store = FeatureStore()
+    >>> store.add(
+    ...     "phonology.rhythm.intervals",
+    ...     TableFeatureOutput(feature="phonology.rhythm.intervals", unit="ipu", values=intervals),
+    ... )
+    >>> out = RhythmPercentVExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    50.0
     """
     name = "phonology.rhythm.percent_v"
     input_units = "phoneme"
@@ -67,10 +76,21 @@ class RhythmPercentVExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = RhythmPercentVExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.phonology.rhythm.percent_v import RhythmPercentVExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> intervals = pd.DataFrame([{"ipu_id": 1, "type": "v", "duration": 1.0}])
+        >>> store = FeatureStore()
+        >>> store.add(
+        ...     "phonology.rhythm.intervals",
+        ...     TableFeatureOutput(feature="phonology.rhythm.intervals", unit="ipu", values=intervals),
+        ... )
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> result = RhythmPercentVExtractor().compute(feature_input, {})
+        >>> result.unit
+        'ipu'
         """
         intervals = feature_input.context["feature_store"].get("phonology.rhythm.intervals").values
         values = compute_percent_v(intervals)

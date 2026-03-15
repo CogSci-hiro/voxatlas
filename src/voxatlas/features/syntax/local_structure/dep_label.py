@@ -30,13 +30,17 @@ class SyntaxLocalStructureDependencyLabelExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.syntax.local_structure.dep_label import SyntaxLocalStructureDependencyLabelExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SyntaxLocalStructureDependencyLabelExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.syntax.local_structure.dep_label import SyntaxLocalStructureDependencyLabelExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> deps = pd.DataFrame({"token_id": [1, 2], "dep_label": ["nsubj", "root"]})
+    >>> store = FeatureStore()
+    >>> store.add("syntax.dependencies", TableFeatureOutput(feature="syntax.dependencies", unit="token", values=deps))
+    >>> out = SyntaxLocalStructureDependencyLabelExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> out.values.loc[1]
+    'nsubj'
     """
     name = "syntax.local_structure.dep_label"
     input_units = "token"
@@ -64,10 +68,17 @@ class SyntaxLocalStructureDependencyLabelExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = SyntaxLocalStructureDependencyLabelExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.syntax.local_structure.dep_label import SyntaxLocalStructureDependencyLabelExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> deps = pd.DataFrame({"token_id": [1], "dep_label": ["root"]})
+        >>> store = FeatureStore()
+        >>> store.add("syntax.dependencies", TableFeatureOutput(feature="syntax.dependencies", unit="token", values=deps))
+        >>> result = SyntaxLocalStructureDependencyLabelExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get("syntax.dependencies").values
         values = pd.Series(

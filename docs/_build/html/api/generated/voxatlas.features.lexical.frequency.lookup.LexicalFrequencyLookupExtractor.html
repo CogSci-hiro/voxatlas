@@ -580,12 +580,19 @@ The output value is</p>
 Values are returned as a token-aligned scalar series so later lexical statistics can operate on a common index.</p></li>
 </ol>
 <p class="rubric">Examples</p>
-<p>from voxatlas.features.lexical.frequency.lookup import LexicalFrequencyLookupExtractor
-from voxatlas.features.feature_input import FeatureInput</p>
-<p>extractor = LexicalFrequencyLookupExtractor()
-feature_input = FeatureInput(audio=audio, units=units, context={})
-output = extractor.compute(feature_input, {})
-print(output)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.feature_input</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureInput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.lexical.frequency.lookup</span><span class="w"> </span><span class="kn">import</span> <span class="n">LexicalFrequencyLookupExtractor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">}])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">units</span> <span class="o">=</span> <span class="n">Units</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="n">tokens</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">LexicalFrequencyLookupExtractor</span><span class="o">.</span><span class="n">default_config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;lexicon&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">}])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">LexicalFrequencyLookupExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">FeatureInput</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{}),</span> <span class="n">params</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;frequency&quot;</span><span class="p">])</span>
+<span class="go">10.0</span>
+</pre></div>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor.name">
 <span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'lexical.frequency.lookup'</span></span><a class="headerlink" href="#voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor.name" title="Link to this definition">#</a></dt>
@@ -631,10 +638,19 @@ print(output)</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>extractor = LexicalFrequencyLookupExtractor()
-feature_input = FeatureInput(audio=audio, units=units, context={})
-result = extractor.compute(feature_input, {})
-print(result)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.feature_input</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureInput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.lexical.frequency.lookup</span><span class="w"> </span><span class="kn">import</span> <span class="n">LexicalFrequencyLookupExtractor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">}])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">units</span> <span class="o">=</span> <span class="n">Units</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="n">tokens</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">LexicalFrequencyLookupExtractor</span><span class="o">.</span><span class="n">default_config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;lexicon&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;lemma&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">}])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">LexicalFrequencyLookupExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">FeatureInput</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{}),</span> <span class="n">params</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">unit</span>
+<span class="go">&#39;token&#39;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

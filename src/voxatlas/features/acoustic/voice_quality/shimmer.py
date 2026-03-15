@@ -35,13 +35,25 @@ class ShimmerExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.acoustic.voice_quality.shimmer import ShimmerExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = ShimmerExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.acoustic.voice_quality.shimmer import ShimmerExtractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import VectorFeatureOutput
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+    >>> store = FeatureStore()
+    >>> f0_out = VectorFeatureOutput(
+    ...     feature="acoustic.pitch.f0",
+    ...     unit="frame",
+    ...     time=np.array([0.0, 0.01, 0.02, 0.03], dtype=np.float32),
+    ...     values=np.array([100.0, 100.0, 100.0, 100.0], dtype=np.float32),
+    ... )
+    >>> store.add("acoustic.pitch.f0", f0_out)
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={"feature_store": store})
+    >>> out = ShimmerExtractor().compute(feature_input, {})
+    >>> (np.isnan(out.values[0]), out.values[1:].tolist())
+    (True, [0.0, 0.0, 0.0])
     """
     name = "acoustic.voice_quality.shimmer"
     input_units = None
@@ -69,10 +81,25 @@ class ShimmerExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = ShimmerExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.acoustic.voice_quality.shimmer import ShimmerExtractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import VectorFeatureOutput
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+        >>> store = FeatureStore()
+        >>> f0_out = VectorFeatureOutput(
+        ...     feature="acoustic.pitch.f0",
+        ...     unit="frame",
+        ...     time=np.array([0.0, 0.01], dtype=np.float32),
+        ...     values=np.array([100.0, 100.0], dtype=np.float32),
+        ... )
+        >>> store.add("acoustic.pitch.f0", f0_out)
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={"feature_store": store})
+        >>> result = ShimmerExtractor().compute(feature_input, {})
+        >>> result.unit
+        'frame'
         """
         if feature_input.audio is None:
             raise ValueError(f"{self.name} requires audio input")

@@ -29,13 +29,15 @@ class RhythmSyllableDurationExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.rhythm.syllable_duration import RhythmSyllableDurationExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = RhythmSyllableDurationExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.rhythm.syllable_duration import RhythmSyllableDurationExtractor
+    >>> from voxatlas.units import Units
+    >>> syllables = pd.DataFrame({"id": [1, 2], "start": [0.0, 0.5], "end": [0.5, 1.0]})
+    >>> units = Units(syllables=syllables)
+    >>> out = RhythmSyllableDurationExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+    >>> float(out.values.loc[1])
+    0.5
     """
     name = "phonology.rhythm.syllable_duration"
     input_units = "syllable"
@@ -63,10 +65,15 @@ class RhythmSyllableDurationExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = RhythmSyllableDurationExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.rhythm.syllable_duration import RhythmSyllableDurationExtractor
+        >>> from voxatlas.units import Units
+        >>> syllables = pd.DataFrame({"id": [1], "start": [0.0], "end": [0.25]})
+        >>> units = Units(syllables=syllables)
+        >>> result = RhythmSyllableDurationExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+        >>> result.unit
+        'syllable'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires syllable units")

@@ -30,13 +30,17 @@ class InflectionDefinitenessExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.inflection.definiteness import InflectionDefinitenessExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = InflectionDefinitenessExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.inflection.definiteness import InflectionDefinitenessExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "Definite": ["Def"]})
+    >>> store = FeatureStore()
+    >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=table))
+    >>> out = InflectionDefinitenessExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> out.values.loc[1]
+    'Def'
     """
     name = "morphology.inflection.definiteness"
     input_units = "token"
@@ -64,10 +68,17 @@ class InflectionDefinitenessExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = InflectionDefinitenessExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.inflection.definiteness import InflectionDefinitenessExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "Definite": ["Def"]})
+        >>> store = FeatureStore()
+        >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=table))
+        >>> result = InflectionDefinitenessExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "morphology.inflection.features"

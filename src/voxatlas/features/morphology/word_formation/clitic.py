@@ -30,13 +30,17 @@ class CliticExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.word_formation.clitic import CliticExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = CliticExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.word_formation.clitic import CliticExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "Clitic": [1.0]})
+    >>> store = FeatureStore()
+    >>> store.add("morphology.word_formation.features", TableFeatureOutput(feature="morphology.word_formation.features", unit="token", values=table))
+    >>> out = CliticExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    1.0
     """
     name = "morphology.word_formation.clitic"
     input_units = "token"
@@ -64,10 +68,17 @@ class CliticExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = CliticExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.word_formation.clitic import CliticExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "Clitic": [1.0]})
+        >>> store = FeatureStore()
+        >>> store.add("morphology.word_formation.features", TableFeatureOutput(feature="morphology.word_formation.features", unit="token", values=table))
+        >>> result = CliticExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "morphology.word_formation.features"

@@ -34,13 +34,24 @@ class FormantTVSAExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.formant.tvsa import FormantTVSAExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = FormantTVSAExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.phonology.formant.tvsa import FormantTVSAExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> from voxatlas.units import Units
+    >>> tracks = pd.DataFrame(
+    ...     [
+    ...         {"frame_id": 1, "start": 0.0, "end": 0.01, "time": 0.005, "phoneme_id": 1, "label": "i", "ipa": "i", "is_vowel": 1.0, "F1": 300.0, "F2": 2200.0, "F3": 3000.0},
+    ...         {"frame_id": 2, "start": 0.1, "end": 0.11, "time": 0.105, "phoneme_id": 2, "label": "a", "ipa": "a", "is_vowel": 1.0, "F1": 700.0, "F2": 1200.0, "F3": 2600.0},
+    ...         {"frame_id": 3, "start": 0.2, "end": 0.21, "time": 0.205, "phoneme_id": 3, "label": "u", "ipa": "u", "is_vowel": 1.0, "F1": 350.0, "F2": 900.0, "F3": 2400.0},
+    ...     ]
+    ... )
+    >>> store = FeatureStore()
+    >>> store.add("phonology.formant.tracks", TableFeatureOutput(feature="phonology.formant.tracks", unit="frame", values=tracks))
+    >>> out = FormantTVSAExtractor().compute(FeatureInput(audio=None, units=Units(speaker="A"), context={"feature_store": store}), {})
+    >>> out.unit
+    'conversation'
     """
     name = "phonology.formant.tvsa"
     input_units = "phoneme"
@@ -68,10 +79,24 @@ class FormantTVSAExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = FormantTVSAExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.phonology.formant.tvsa import FormantTVSAExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> from voxatlas.units import Units
+        >>> tracks = pd.DataFrame(
+        ...     [
+        ...         {"frame_id": 1, "start": 0.0, "end": 0.01, "time": 0.005, "phoneme_id": 1, "label": "i", "ipa": "i", "is_vowel": 1.0, "F1": 300.0, "F2": 2200.0, "F3": 3000.0},
+        ...         {"frame_id": 2, "start": 0.1, "end": 0.11, "time": 0.105, "phoneme_id": 2, "label": "a", "ipa": "a", "is_vowel": 1.0, "F1": 700.0, "F2": 1200.0, "F3": 2600.0},
+        ...         {"frame_id": 3, "start": 0.2, "end": 0.21, "time": 0.205, "phoneme_id": 3, "label": "u", "ipa": "u", "is_vowel": 1.0, "F1": 350.0, "F2": 900.0, "F3": 2400.0},
+        ...     ]
+        ... )
+        >>> store = FeatureStore()
+        >>> store.add("phonology.formant.tracks", TableFeatureOutput(feature="phonology.formant.tracks", unit="frame", values=tracks))
+        >>> result = FormantTVSAExtractor().compute(FeatureInput(audio=None, units=Units(speaker="A"), context={"feature_store": store}), {})
+        >>> list(result.values.index)
+        ['A']
         """
         tracks = feature_input.context["feature_store"].get("phonology.formant.tracks").values
         speaker = feature_input.units.speaker if feature_input.units is not None else "speaker"

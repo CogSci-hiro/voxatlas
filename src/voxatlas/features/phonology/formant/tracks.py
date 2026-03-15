@@ -28,13 +28,20 @@ class FormantTracksExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.formant.tracks import FormantTracksExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = FormantTracksExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> import pandas as pd
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.formant.tracks import FormantTracksExtractor
+    >>> from voxatlas.units import Units
+    >>> audio = Audio(waveform=np.zeros(800, dtype=np.float32), sample_rate=8000)
+    >>> phonemes = pd.DataFrame(columns=["id", "start", "end", "label"])
+    >>> units = Units(phonemes=phonemes)
+    >>> params = FormantTracksExtractor.default_config.copy()
+    >>> params["use_parselmouth"] = False
+    >>> out = FormantTracksExtractor().compute(FeatureInput(audio=audio, units=units, context={}), params)
+    >>> ("F1" in out.values.columns, out.unit)
+    (True, 'frame')
     """
     name = "phonology.formant.tracks"
     input_units = "phoneme"
@@ -70,10 +77,20 @@ class FormantTracksExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = FormantTracksExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> import pandas as pd
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.formant.tracks import FormantTracksExtractor
+        >>> from voxatlas.units import Units
+        >>> audio = Audio(waveform=np.zeros(800, dtype=np.float32), sample_rate=8000)
+        >>> phonemes = pd.DataFrame(columns=["id", "start", "end", "label"])
+        >>> units = Units(phonemes=phonemes)
+        >>> params = FormantTracksExtractor.default_config.copy()
+        >>> params["use_parselmouth"] = False
+        >>> result = FormantTracksExtractor().compute(FeatureInput(audio=audio, units=units, context={}), params)
+        >>> result.values.empty
+        True
         """
         if feature_input.audio is None:
             raise ValueError(f"{self.name} requires audio input")

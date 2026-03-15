@@ -25,13 +25,17 @@ class SyntaxDependenciesExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.syntax.dependencies import SyntaxDependenciesExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SyntaxDependenciesExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.syntax.dependencies import SyntaxDependenciesExtractor
+    >>> from voxatlas.units import Units
+    >>> tokens = pd.DataFrame(
+    ...     {"id": [1, 2], "token": ["hello", "world"], "head": [2, 0], "dep_rel": ["nsubj", "root"], "pos": ["INTJ", "NOUN"]}
+    ... )
+    >>> units = Units(tokens=tokens)
+    >>> out = SyntaxDependenciesExtractor().compute(FeatureInput(audio=None, units=units, context={}), {"backend": "spacy"})
+    >>> out.values.loc[:, ["token_id", "head_id"]].to_dict(orient="list")
+    {'token_id': [1, 2], 'head_id': [2, 0]}
     """
 
     name = "syntax.dependencies"
@@ -67,10 +71,17 @@ class SyntaxDependenciesExtractor(BaseExtractor):
 
         Examples
         --------
-        Usage example::
-
-            output = SyntaxDependenciesExtractor().compute(feature_input, params)
-            print(output.values.columns)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.syntax.dependencies import SyntaxDependenciesExtractor
+        >>> from voxatlas.units import Units
+        >>> tokens = pd.DataFrame(
+        ...     {"id": [1, 2], "token": ["hello", "world"], "head": [2, 0], "dep_rel": ["nsubj", "root"], "pos": ["INTJ", "NOUN"]}
+        ... )
+        >>> units = Units(tokens=tokens)
+        >>> result = SyntaxDependenciesExtractor().compute(FeatureInput(audio=None, units=units, context={}), {"backend": "spacy"})
+        >>> result.unit
+        'token'
         """
         tokens = feature_input.units.get("token")
         values = extract_dependency_features(

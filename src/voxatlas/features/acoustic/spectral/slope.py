@@ -31,13 +31,28 @@ class SpectralSlopeExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.acoustic.spectral.slope import SpectralSlopeExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SpectralSlopeExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.features.acoustic.spectral.slope import SpectralSlopeExtractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import MatrixFeatureOutput
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> store = FeatureStore()
+    >>> spectrum = MatrixFeatureOutput(
+    ...     feature="acoustic.spectral.spectrum",
+    ...     unit="frame",
+    ...     time=np.array([0.0, 0.01], dtype=np.float32),
+    ...     frequency=np.array([0.0, 1000.0, 2000.0], dtype=np.float32),
+    ...     values=np.array([[1.0, 2.0, 3.0], [3.0, 2.0, 1.0]], dtype=np.float32),
+    ... )
+    >>> store.add("acoustic.spectral.spectrum", spectrum)
+    >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+    >>> out = SpectralSlopeExtractor().compute(feature_input, {})
+    >>> out.values.shape
+    (2,)
+    >>> float(np.sign(out.values[0]))
+    1.0
+    >>> float(np.sign(out.values[1]))
+    -1.0
     """
     name = "acoustic.spectral.slope"
     input_units = None
@@ -65,10 +80,24 @@ class SpectralSlopeExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = SpectralSlopeExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.features.acoustic.spectral.slope import SpectralSlopeExtractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import MatrixFeatureOutput
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> store = FeatureStore()
+        >>> spectrum = MatrixFeatureOutput(
+        ...     feature="acoustic.spectral.spectrum",
+        ...     unit="frame",
+        ...     time=np.array([0.0], dtype=np.float32),
+        ...     frequency=np.array([0.0, 1000.0, 2000.0], dtype=np.float32),
+        ...     values=np.array([[1.0, 2.0, 3.0]], dtype=np.float32),
+        ... )
+        >>> store.add("acoustic.spectral.spectrum", spectrum)
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> result = SpectralSlopeExtractor().compute(feature_input, {})
+        >>> result.unit
+        'frame'
         """
         spectrum_output = feature_input.context["feature_store"].get(
             "acoustic.spectral.spectrum"

@@ -30,13 +30,17 @@ class WordFrequencyExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.frequency.word_frequency import WordFrequencyExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = WordFrequencyExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.lexical.frequency.word_frequency import WordFrequencyExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "frequency": [10.0]})
+    >>> store = FeatureStore()
+    >>> store.add("lexical.frequency.lookup", TableFeatureOutput(feature="lexical.frequency.lookup", unit="token", values=table))
+    >>> out = WordFrequencyExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    10.0
     """
 
     name = "lexical.frequency.word"
@@ -72,10 +76,17 @@ class WordFrequencyExtractor(BaseExtractor):
 
         Examples
         --------
-        Usage example::
-
-            output = WordFrequencyExtractor().compute(feature_input, params)
-            print(output.values.head())
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.lexical.frequency.word_frequency import WordFrequencyExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "frequency": [10.0]})
+        >>> store = FeatureStore()
+        >>> store.add("lexical.frequency.lookup", TableFeatureOutput(feature="lexical.frequency.lookup", unit="token", values=table))
+        >>> result = WordFrequencyExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "lexical.frequency.lookup"

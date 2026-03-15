@@ -30,13 +30,17 @@ class DerivationalSegmentationExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.derivation.segmentation import DerivationalSegmentationExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = DerivationalSegmentationExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.morphology.derivation.segmentation import DerivationalSegmentationExtractor
+    >>> from voxatlas.units import Units
+    >>> tokens = pd.DataFrame([{"id": 1, "token": "hello"}])
+    >>> units = Units(tokens=tokens)
+    >>> params = DerivationalSegmentationExtractor.default_config.copy()
+    >>> params["language"] = ""  # no resource prefixes/suffixes
+    >>> out = DerivationalSegmentationExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> float(out.values.loc[0, "morpheme_count"])
+    1.0
     """
     name = "morphology.derivation.segmentation"
     input_units = "token"
@@ -67,10 +71,17 @@ class DerivationalSegmentationExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = DerivationalSegmentationExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.morphology.derivation.segmentation import DerivationalSegmentationExtractor
+        >>> from voxatlas.units import Units
+        >>> tokens = pd.DataFrame([{"id": 1, "token": "hello"}])
+        >>> units = Units(tokens=tokens)
+        >>> params = DerivationalSegmentationExtractor.default_config.copy()
+        >>> params["language"] = ""
+        >>> result = DerivationalSegmentationExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> "prefix_presence" in result.values.columns
+        True
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires token units")

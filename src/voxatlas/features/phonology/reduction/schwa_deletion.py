@@ -32,13 +32,18 @@ class SchwaDeletionExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.reduction.schwa_deletion import SchwaDeletionExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SchwaDeletionExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.reduction.schwa_deletion import SchwaDeletionExtractor
+    >>> from voxatlas.units import Units
+    >>> words = pd.DataFrame({"id": [1], "label": ["hello"], "start": [0.0], "end": [1.0]})
+    >>> phonemes = pd.DataFrame([{"word_id": 1, "label": "h"}])
+    >>> units = Units(words=words, phonemes=phonemes)
+    >>> params = SchwaDeletionExtractor.default_config.copy()
+    >>> params["pronunciation_dictionary"] = {"hello": "h ə"}
+    >>> out = SchwaDeletionExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> float(out.values.loc[1])
+    1.0
     """
     name = "phonology.reduction.schwa_deletion"
     input_units = "word"
@@ -69,10 +74,18 @@ class SchwaDeletionExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = SchwaDeletionExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.reduction.schwa_deletion import SchwaDeletionExtractor
+        >>> from voxatlas.units import Units
+        >>> words = pd.DataFrame({"id": [1], "label": ["hello"], "start": [0.0], "end": [1.0]})
+        >>> phonemes = pd.DataFrame([{"word_id": 1, "label": "h"}])
+        >>> units = Units(words=words, phonemes=phonemes)
+        >>> params = SchwaDeletionExtractor.default_config.copy()
+        >>> params["pronunciation_dictionary"] = {"hello": "h ə"}
+        >>> result = SchwaDeletionExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> result.unit
+        'word'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires word and phoneme units")

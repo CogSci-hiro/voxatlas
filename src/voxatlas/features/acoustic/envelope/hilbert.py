@@ -53,13 +53,16 @@ class HilbertEnvelope(BaseExtractor):
 
     Examples
     --------
-        from voxatlas.features.acoustic.envelope.hilbert import HilbertEnvelope
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = HilbertEnvelope()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.acoustic.envelope.hilbert import HilbertEnvelope
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+    >>> params = HilbertEnvelope.default_config.copy()
+    >>> out = HilbertEnvelope().compute(feature_input, params)
+    >>> out.unit
+    'frame'
     """
     name = "acoustic.envelope.hilbert"
     input_units = None
@@ -92,10 +95,16 @@ class HilbertEnvelope(BaseExtractor):
         
         Examples
         --------
-            extractor = HilbertEnvelope()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.acoustic.envelope.hilbert import HilbertEnvelope
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+        >>> params = HilbertEnvelope.default_config.copy()
+        >>> result = HilbertEnvelope().compute(feature_input, params)
+        >>> result.values.shape[0] > 0
+        True
         """
         if feature_input.audio is None:
             raise ValueError(f"{self.name} requires audio input")

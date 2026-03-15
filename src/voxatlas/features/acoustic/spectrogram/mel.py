@@ -37,13 +37,28 @@ class MelSpectrogramExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.acoustic.spectrogram.mel import MelSpectrogramExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = MelSpectrogramExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.acoustic.spectrogram.mel import MelSpectrogramExtractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import MatrixFeatureOutput
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> audio = Audio(waveform=np.zeros(800, dtype=np.float32), sample_rate=8000)
+    >>> store = FeatureStore()
+    >>> stft_out = MatrixFeatureOutput(
+    ...     feature="acoustic.spectrogram.stft",
+    ...     unit="frame",
+    ...     time=np.array([0.0, 0.01], dtype=np.float32),
+    ...     frequency=np.array([0.0, 2000.0, 4000.0], dtype=np.float32),
+    ...     values=np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]], dtype=np.float32),
+    ... )
+    >>> store.add("acoustic.spectrogram.stft", stft_out)
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={"feature_store": store})
+    >>> params = MelSpectrogramExtractor.default_config.copy()
+    >>> params["n_mels"] = 2
+    >>> out = MelSpectrogramExtractor().compute(feature_input, params)
+    >>> out.values.shape
+    (2, 2)
     """
     name = "acoustic.spectrogram.mel"
     input_units = None
@@ -77,10 +92,28 @@ class MelSpectrogramExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = MelSpectrogramExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.acoustic.spectrogram.mel import MelSpectrogramExtractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import MatrixFeatureOutput
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> audio = Audio(waveform=np.zeros(800, dtype=np.float32), sample_rate=8000)
+        >>> store = FeatureStore()
+        >>> stft_out = MatrixFeatureOutput(
+        ...     feature="acoustic.spectrogram.stft",
+        ...     unit="frame",
+        ...     time=np.array([0.0], dtype=np.float32),
+        ...     frequency=np.array([0.0, 2000.0, 4000.0], dtype=np.float32),
+        ...     values=np.array([[1.0, 0.0, 0.0]], dtype=np.float32),
+        ... )
+        >>> store.add("acoustic.spectrogram.stft", stft_out)
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={"feature_store": store})
+        >>> params = MelSpectrogramExtractor.default_config.copy()
+        >>> params["n_mels"] = 2
+        >>> result = MelSpectrogramExtractor().compute(feature_input, params)
+        >>> result.unit
+        'frame'
         """
         stft_output = feature_input.context["feature_store"].get(
             "acoustic.spectrogram.stft"

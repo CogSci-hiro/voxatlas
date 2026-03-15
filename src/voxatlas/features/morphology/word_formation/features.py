@@ -27,13 +27,18 @@ class WordFormationFeaturesExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.word_formation.features import WordFormationFeaturesExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = WordFormationFeaturesExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.morphology.word_formation.features import WordFormationFeaturesExtractor
+    >>> from voxatlas.units import Units
+    >>> tokens = pd.DataFrame([{"id": 1, "text": "ice-cream"}])
+    >>> units = Units(tokens=tokens)
+    >>> params = WordFormationFeaturesExtractor.default_config.copy()
+    >>> params["clitic_list"] = ["l"]
+    >>> params["lexicon_lookup"] = ["ice", "cream"]
+    >>> out = WordFormationFeaturesExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> out.values.loc[0, ["Compound", "Clitic"]].to_dict()
+    {'Compound': 1.0, 'Clitic': 0.0}
     """
     name = "morphology.word_formation.features"
     input_units = "token"
@@ -67,10 +72,18 @@ class WordFormationFeaturesExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = WordFormationFeaturesExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.morphology.word_formation.features import WordFormationFeaturesExtractor
+        >>> from voxatlas.units import Units
+        >>> tokens = pd.DataFrame([{"id": 1, "text": "ice-cream"}])
+        >>> units = Units(tokens=tokens)
+        >>> params = WordFormationFeaturesExtractor.default_config.copy()
+        >>> params["clitic_list"] = ["l"]
+        >>> params["lexicon_lookup"] = ["ice", "cream"]
+        >>> result = WordFormationFeaturesExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> result.unit
+        'token'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires token units")

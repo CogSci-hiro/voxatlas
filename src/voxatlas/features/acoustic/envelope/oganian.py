@@ -61,19 +61,22 @@ class OganianEnvelope(BaseExtractor):
 
     Examples
     --------
-        from voxatlas.features.acoustic.envelope.oganian import OganianEnvelope
-        from voxatlas.features.feature_input import FeatureInput
-
-        extractor = OganianEnvelope()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.acoustic.envelope.oganian import OganianEnvelope
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+    >>> params = OganianEnvelope.default_config.copy()
+    >>> out = OganianEnvelope().compute(feature_input, params)
+    >>> out.unit
+    'frame'
     """
-    name = "acoustic.envelope.oganian"
-    input_units = None
-    output_units = "frame"
-    dependencies = []
-    default_config = {
+    name: str = "acoustic.envelope.oganian"
+    input_units: str | None = None
+    output_units: str | None = "frame"
+    dependencies: list[str] = []
+    default_config: dict = {
         "frame_length": 0.025,
         "frame_step": 0.010,
         "smoothing": 7,
@@ -100,10 +103,16 @@ class OganianEnvelope(BaseExtractor):
         
         Examples
         --------
-            extractor = OganianEnvelope()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.acoustic.envelope.oganian import OganianEnvelope
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+        >>> params = OganianEnvelope.default_config.copy()
+        >>> result = OganianEnvelope().compute(feature_input, params)
+        >>> result.values.shape[0] > 0
+        True
         """
         if feature_input.audio is None:
             raise ValueError(f"{self.name} requires audio input")

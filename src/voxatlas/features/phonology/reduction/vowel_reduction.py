@@ -32,13 +32,18 @@ class VowelReductionExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.reduction.vowel_reduction import VowelReductionExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = VowelReductionExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.reduction.vowel_reduction import VowelReductionExtractor
+    >>> from voxatlas.units import Units
+    >>> words = pd.DataFrame({"id": [1], "label": ["hello"], "start": [0.0], "end": [1.0]})
+    >>> phonemes = pd.DataFrame([{"word_id": 1, "label": "ə"}])
+    >>> units = Units(words=words, phonemes=phonemes)
+    >>> params = VowelReductionExtractor.default_config.copy()
+    >>> params["pronunciation_dictionary"] = {"hello": "i"}
+    >>> out = VowelReductionExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> float(out.values.loc[1])
+    1.0
     """
     name = "phonology.reduction.vowel_reduction"
     input_units = "word"
@@ -70,10 +75,18 @@ class VowelReductionExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = VowelReductionExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.reduction.vowel_reduction import VowelReductionExtractor
+        >>> from voxatlas.units import Units
+        >>> words = pd.DataFrame({"id": [1], "label": ["hello"], "start": [0.0], "end": [1.0]})
+        >>> phonemes = pd.DataFrame([{"word_id": 1, "label": "ə"}])
+        >>> units = Units(words=words, phonemes=phonemes)
+        >>> params = VowelReductionExtractor.default_config.copy()
+        >>> params["pronunciation_dictionary"] = {"hello": "i"}
+        >>> result = VowelReductionExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> result.unit
+        'word'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires word and phoneme units")

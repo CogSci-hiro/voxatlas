@@ -30,13 +30,17 @@ class VerbMorphologyFiniteExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.verb_morphology.finite import VerbMorphologyFiniteExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = VerbMorphologyFiniteExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.verb_morphology.finite import VerbMorphologyFiniteExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "Finite": [1.0]})
+    >>> store = FeatureStore()
+    >>> store.add("morphology.verb_morphology.features", TableFeatureOutput(feature="morphology.verb_morphology.features", unit="token", values=table))
+    >>> out = VerbMorphologyFiniteExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    1.0
     """
     name = "morphology.verb_morphology.finite"
     input_units = "token"
@@ -64,10 +68,17 @@ class VerbMorphologyFiniteExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = VerbMorphologyFiniteExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.verb_morphology.finite import VerbMorphologyFiniteExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "Finite": [1.0]})
+        >>> store = FeatureStore()
+        >>> store.add("morphology.verb_morphology.features", TableFeatureOutput(feature="morphology.verb_morphology.features", unit="token", values=table))
+        >>> result = VerbMorphologyFiniteExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "morphology.verb_morphology.features"

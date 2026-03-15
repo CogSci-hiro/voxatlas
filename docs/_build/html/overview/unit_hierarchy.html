@@ -44,6 +44,442 @@
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/unit_hierarchy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -362,7 +798,11 @@
                   
   <section id="unit-hierarchy">
 <h1>Unit Hierarchy<a class="headerlink" href="#unit-hierarchy" title="Link to this heading">#</a></h1>
-<p>VoxAtlas models conversational analysis at multiple units of observation.</p>
+<p>VoxAtlas models conversational analysis at multiple <strong>units of observation</strong>
+(turns, words, phonemes, etc.). Many features are defined “per unit”: for
+example, a per-word feature produces one value per row in the word table.</p>
+<p>VoxAtlas represents these unit tables for a single stream (for example one
+conversation channel) with <a class="reference internal" href="../api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units" title="voxatlas.units.units.Units"><code class="xref py py-class docutils literal notranslate"><span class="pre">Units</span></code></a>.</p>
 <p>Typical examples include:</p>
 <ul class="simple">
 <li><p>conversation-level measurements</p></li>
@@ -370,14 +810,114 @@
 <li><p>utterance and sentence-level measurements</p></li>
 <li><p>token, word, syllable, or phoneme-level measurements</p></li>
 </ul>
-<p>This hierarchy helps features declare what they consume and what they produce,
-so pipeline validation can keep incompatible combinations from being run
-together.</p>
+<p>Extractors declare the unit level they consume and produce via
+<code class="docutils literal notranslate"><span class="pre">BaseExtractor.input_units</span></code> and <code class="docutils literal notranslate"><span class="pre">BaseExtractor.output_units</span></code>. This metadata
+is validated when extractors are registered and is surfaced in the CLI and API
+docs. At runtime, extractors should still validate that required tables and
+columns are present for the current dataset/stream.</p>
+<section id="unit-labels">
+<h2>Unit labels<a class="headerlink" href="#unit-labels" title="Link to this heading">#</a></h2>
+<p>Extractor unit labels must be one of the supported strings (or <code class="docutils literal notranslate"><span class="pre">None</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">conversation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turn</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ipu</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sentence</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">word</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">token</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syllable</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phoneme</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">conversation</span></code> is a <em>logical</em> level used for global or summary features; it
+is not stored as a table on <a class="reference internal" href="../api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units" title="voxatlas.units.units.Units"><code class="xref py py-class docutils literal notranslate"><span class="pre">Units</span></code></a>.</p>
+</section>
+<section id="the-units-container">
+<h2>The <code class="docutils literal notranslate"><span class="pre">Units</span></code> container<a class="headerlink" href="#the-units-container" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units" title="voxatlas.units.units.Units"><code class="xref py py-class docutils literal notranslate"><span class="pre">Units</span></code></a> is a lightweight wrapper around a set of
+optional Pandas DataFrames:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frames</span></code> (frame-level time grid)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tokens</span></code> (token-level segmentation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phonemes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syllables</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">words</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sentences</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ipus</span></code> (inter-pausal units)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turns</span></code></p></li>
+</ul>
+<p>Tables are optional. Missing tables are represented as <code class="docutils literal notranslate"><span class="pre">None</span></code> and requesting
+them via <a class="reference internal" href="../api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.table" title="voxatlas.units.units.Units.table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">table()</span></code></a> raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+</section>
+<section id="table-conventions">
+<h2>Table conventions<a class="headerlink" href="#table-conventions" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Units</span></code> does not enforce a rigid schema, but most features assume a few
+common conventions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: unique identifier for the unit row</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> / <code class="docutils literal notranslate"><span class="pre">end</span></code>: segment boundaries on a shared timeline (commonly
+seconds)</p></li>
+<li><p>optional parent-child links using an <code class="docutils literal notranslate"><span class="pre">&lt;parent&gt;_id</span></code> column on the child
+table (for example, syllables can include <code class="docutils literal notranslate"><span class="pre">word_id</span></code>)</p></li>
+</ul>
+<p>The helper methods <a class="reference internal" href="../api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.parent" title="voxatlas.units.units.Units.parent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parent()</span></code></a> and
+<a class="reference internal" href="../api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units.children" title="voxatlas.units.units.Units.children"><code class="xref py py-meth docutils literal notranslate"><span class="pre">children()</span></code></a> implement this naming convention.</p>
+</section>
+<section id="illustrated-hierarchy-typical">
+<h2>Illustrated hierarchy (typical)<a class="headerlink" href="#illustrated-hierarchy-typical" title="Link to this heading">#</a></h2>
+<p>Many datasets provide a hierarchy like the following. The arrows are labeled
+with the <em>child column</em> that links to the parent (for example, an <code class="docutils literal notranslate"><span class="pre">ipu</span></code> row
+can carry a <code class="docutils literal notranslate"><span class="pre">turn_id</span></code> to identify its parent turn).</p>
+<pre  class="mermaid">
+        graph TD
+  turn((turns)) --&gt;|turn_id| ipu([ipus])
+  ipu --&gt;|ipu_id| sentence[sentences]
+  sentence --&gt;|sentence_id| word[[words]]
+  word --&gt;|word_id| syllable([syllables])
+  syllable --&gt;|syllable_id| phoneme[/phonemes/]
+
+  token[/tokens/]:::optional
+  frames[(&quot;frames (time grid)&quot;)]:::time
+
+  word -. optional .-&gt; token
+  frames -. time-aligned via start/end .-&gt; word
+
+  classDef top fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1;
+  classDef mid fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20;
+  classDef low fill:#FFF3E0,stroke:#EF6C00,stroke-width:2px,color:#E65100;
+  classDef time fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px,color:#4A148C;
+  classDef optional fill:#F5F5F5,stroke:#616161,stroke-dasharray:4 3,color:#424242;
+
+  class turn top;
+  class ipu,sentence mid;
+  class word,syllable,phoneme low;
+    </pre><p>The exact set of tables and links depends on the dataset. Features should be
+written defensively (for example, fall back to time-alignment when explicit
+links are unavailable, or raise a clear error when a required mapping is
+missing).</p>
+</section>
+<section id="common-access-patterns">
+<h2>Common access patterns<a class="headerlink" href="#common-access-patterns" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a table (singular/plural labels both work)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">)</span>
+
+<span class="c1"># Durations from start/end</span>
+<span class="n">word_durations</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">)</span>
+
+<span class="c1"># Parent ids (requires a &lt;parent&gt;_id column on the child table)</span>
+<span class="n">word_ids_for_syllables</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="s2">&quot;syllable&quot;</span><span class="p">,</span> <span class="s2">&quot;word&quot;</span><span class="p">)</span>
+
+<span class="c1"># Group children by parent id</span>
+<span class="n">syllables_by_word</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">children</span><span class="p">(</span><span class="s2">&quot;word&quot;</span><span class="p">,</span> <span class="s2">&quot;syllable&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="../api/generated/voxatlas.units.html"><span class="doc">voxatlas.units</span></a></p></li>
 <li><p><a class="reference internal" href="../api/generated/voxatlas.units.units.html"><span class="doc">voxatlas.units.units</span></a></p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.features.base_extractor.html"><span class="doc">voxatlas.features.base_extractor</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -411,6 +951,11 @@ together.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-labels">Unit labels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-units-container">The <code class="docutils literal notranslate"><span class="pre">Units</span></code> container</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-conventions">Table conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrated-hierarchy-typical">Illustrated hierarchy (typical)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-access-patterns">Common access patterns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
 </ul>
   </nav></div>

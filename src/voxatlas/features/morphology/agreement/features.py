@@ -31,13 +31,23 @@ class AgreementFeaturesExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.agreement.features import AgreementFeaturesExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = AgreementFeaturesExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.agreement.features import AgreementFeaturesExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> inflection = pd.DataFrame(
+    ...     [
+    ...         {"id": 1, "head": 2, "dep_rel": "nsubj", "Person": 3, "Number": "Sing"},
+    ...         {"id": 2, "head": 0, "dep_rel": "root", "Person": 3, "Number": "Sing"},
+    ...     ]
+    ... )
+    >>> store = FeatureStore()
+    >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=inflection))
+    >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+    >>> out = AgreementFeaturesExtractor().compute(feature_input, {})
+    >>> list(map(float, out.values["SubjectVerbAgreement"].tolist()))
+    [1.0, 1.0]
     """
     name = "morphology.agreement.features"
     input_units = "token"
@@ -65,10 +75,23 @@ class AgreementFeaturesExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = AgreementFeaturesExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.agreement.features import AgreementFeaturesExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> inflection = pd.DataFrame(
+        ...     [
+        ...         {"id": 1, "head": 2, "dep_rel": "nsubj", "Person": 3, "Number": "Sing"},
+        ...         {"id": 2, "head": 0, "dep_rel": "root", "Person": 3, "Number": "Sing"},
+        ...     ]
+        ... )
+        >>> store = FeatureStore()
+        >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=inflection))
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> result = AgreementFeaturesExtractor().compute(feature_input, {})
+        >>> result.unit
+        'token'
         """
         inflection_table = feature_input.context["feature_store"].get(
             "morphology.inflection.features"

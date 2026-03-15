@@ -30,13 +30,17 @@ class InflectionPersonExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.inflection.person import InflectionPersonExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = InflectionPersonExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.inflection.person import InflectionPersonExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "Person": [3]})
+    >>> store = FeatureStore()
+    >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=table))
+    >>> out = InflectionPersonExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> out.values.loc[1]
+    3
     """
     name = "morphology.inflection.person"
     input_units = "token"
@@ -64,10 +68,17 @@ class InflectionPersonExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = InflectionPersonExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.inflection.person import InflectionPersonExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "Person": [3]})
+        >>> store = FeatureStore()
+        >>> store.add("morphology.inflection.features", TableFeatureOutput(feature="morphology.inflection.features", unit="token", values=table))
+        >>> result = InflectionPersonExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "morphology.inflection.features"

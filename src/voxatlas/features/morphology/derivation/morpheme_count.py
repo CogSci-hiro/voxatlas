@@ -30,13 +30,17 @@ class MorphemeCountExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.morphology.derivation.morpheme_count import MorphemeCountExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = MorphemeCountExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.morphology.derivation.morpheme_count import MorphemeCountExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "morpheme_count": [2.0]})
+    >>> store = FeatureStore()
+    >>> store.add("morphology.derivation.segmentation", TableFeatureOutput(feature="morphology.derivation.segmentation", unit="token", values=table))
+    >>> out = MorphemeCountExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    2.0
     """
     name = "morphology.derivation.morpheme_count"
     input_units = "token"
@@ -64,10 +68,17 @@ class MorphemeCountExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = MorphemeCountExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.morphology.derivation.morpheme_count import MorphemeCountExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "morpheme_count": [2.0]})
+        >>> store = FeatureStore()
+        >>> store.add("morphology.derivation.segmentation", TableFeatureOutput(feature="morphology.derivation.segmentation", unit="token", values=table))
+        >>> result = MorphemeCountExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "morphology.derivation.segmentation"

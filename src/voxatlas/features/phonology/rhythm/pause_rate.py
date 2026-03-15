@@ -33,13 +33,18 @@ class RhythmPauseRateExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.rhythm.pause_rate import RhythmPauseRateExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = RhythmPauseRateExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.rhythm.pause_rate import RhythmPauseRateExtractor
+    >>> from voxatlas.units import Units
+    >>> syllables = pd.DataFrame({"id": [1, 2], "start": [0.0, 0.3], "end": [0.2, 0.5]})
+    >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+    >>> units = Units(syllables=syllables, ipus=ipus)
+    >>> params = RhythmPauseRateExtractor.default_config.copy()
+    >>> params["pause_threshold"] = 0.05
+    >>> out = RhythmPauseRateExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> float(out.values.loc[5])
+    1.0
     """
     name = "phonology.rhythm.pause_rate"
     input_units = "syllable"
@@ -69,10 +74,16 @@ class RhythmPauseRateExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = RhythmPauseRateExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.rhythm.pause_rate import RhythmPauseRateExtractor
+        >>> from voxatlas.units import Units
+        >>> syllables = pd.DataFrame({"id": [1], "start": [0.0], "end": [0.2]})
+        >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+        >>> units = Units(syllables=syllables, ipus=ipus)
+        >>> result = RhythmPauseRateExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+        >>> result.unit
+        'ipu'
         """
         units = feature_input.units
         if units is None:

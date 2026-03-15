@@ -362,22 +362,113 @@
                   
   <section id="feature-system">
 <h1>Feature System<a class="headerlink" href="#feature-system" title="Link to this heading">#</a></h1>
-<p>Each VoxAtlas feature extractor follows a common interface so the registry and
-pipeline can discover, validate, and execute it consistently.</p>
+<p>VoxAtlas features are implemented as small, composable <strong>extractors</strong> that
+share a common contract. The registry and pipeline use this contract to
+discover features, validate metadata (names/units/dependencies), and execute
+extractors consistently.</p>
 <p>The feature system centers on:</p>
 <ul class="simple">
-<li><p>extractor classes</p></li>
-<li><p>structured feature inputs</p></li>
-<li><p>typed feature outputs</p></li>
-<li><p>registry metadata and validation</p></li>
+<li><p><strong>extractor classes</strong> that implement one feature</p></li>
+<li><p><strong>structured feature inputs</strong> (audio, units, shared context)</p></li>
+<li><p><strong>typed feature outputs</strong> (scalar/vector/matrix/table/array containers)</p></li>
+<li><p><strong>registry metadata</strong> used for discovery, validation, and dependency planning</p></li>
 </ul>
+<section id="extractor-contract-what-you-implement">
+<h2>Extractor contract (what you implement)<a class="headerlink" href="#extractor-contract-what-you-implement" title="Link to this heading">#</a></h2>
+<p>All extractors inherit from <a class="reference internal" href="../api/generated/voxatlas.features.base_extractor.BaseExtractor.html#voxatlas.features.base_extractor.BaseExtractor" title="voxatlas.features.base_extractor.BaseExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExtractor</span></code></a>
+and typically define:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (required): fully-qualified feature name like <code class="docutils literal notranslate"><span class="pre">&quot;acoustic.pitch.f0&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_units</span></code> / <code class="docutils literal notranslate"><span class="pre">output_units</span></code> (optional): unit labels such as <code class="docutils literal notranslate"><span class="pre">&quot;token&quot;</span></code>
+or <code class="docutils literal notranslate"><span class="pre">&quot;frame&quot;</span></code> (or <code class="docutils literal notranslate"><span class="pre">None</span></code> for audio/global features)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code> (optional): upstream feature names that must run first</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_config</span></code> (optional): per-feature default parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compute(feature_input,</span> <span class="pre">params)</span></code> (required): returns a structured feature
+output</p></li>
+</ul>
+<p>Extractors should be stateless. If you need upstream results, read them from
+<code class="docutils literal notranslate"><span class="pre">feature_input.context[&quot;feature_store&quot;]</span></code> rather than storing them on the
+extractor instance.</p>
+</section>
+<section id="feature-inputs-what-you-receive">
+<h2>Feature inputs (what you receive)<a class="headerlink" href="#feature-inputs-what-you-receive" title="Link to this heading">#</a></h2>
+<p>Each extractor invocation receives a
+<a class="reference internal" href="../api/generated/voxatlas.features.feature_input.FeatureInput.html#voxatlas.features.feature_input.FeatureInput" title="voxatlas.features.feature_input.FeatureInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureInput</span></code></a> bundle:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feature_input.audio</span></code>: <a class="reference internal" href="../api/generated/voxatlas.audio.audio.Audio.html#voxatlas.audio.audio.Audio" title="voxatlas.audio.audio.Audio"><code class="xref py py-class docutils literal notranslate"><span class="pre">Audio</span></code></a> or <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feature_input.units</span></code>: <a class="reference internal" href="../api/generated/voxatlas.units.units.Units.html#voxatlas.units.units.Units" title="voxatlas.units.units.Units"><code class="xref py py-class docutils literal notranslate"><span class="pre">Units</span></code></a> or <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feature_input.context</span></code>: shared runtime dictionary (pipeline config + feature store)</p></li>
+</ul>
+<p>The pipeline stores the runtime config and the feature store in the context:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">feature_input</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;feature_store&quot;</span><span class="p">]</span>
+<span class="n">upstream</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;syntax.dependencies&quot;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">feature_input</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="feature-outputs-what-you-return">
+<h2>Feature outputs (what you return)<a class="headerlink" href="#feature-outputs-what-you-return" title="Link to this heading">#</a></h2>
+<p>VoxAtlas standardizes common output shapes in
+<a class="reference internal" href="../api/generated/voxatlas.features.feature_output.html#module-voxatlas.features.feature_output" title="voxatlas.features.feature_output"><code class="xref py py-mod docutils literal notranslate"><span class="pre">voxatlas.features.feature_output</span></code></a>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/generated/voxatlas.features.feature_output.ScalarFeatureOutput.html#voxatlas.features.feature_output.ScalarFeatureOutput" title="voxatlas.features.feature_output.ScalarFeatureOutput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarFeatureOutput</span></code></a>: one scalar per unit</p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.features.feature_output.VectorFeatureOutput.html#voxatlas.features.feature_output.VectorFeatureOutput" title="voxatlas.features.feature_output.VectorFeatureOutput"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorFeatureOutput</span></code></a>: time-aligned 1D sequence</p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.features.feature_output.MatrixFeatureOutput.html#voxatlas.features.feature_output.MatrixFeatureOutput" title="voxatlas.features.feature_output.MatrixFeatureOutput"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatrixFeatureOutput</span></code></a>: time-frequency matrix</p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.features.feature_output.TableFeatureOutput.html#voxatlas.features.feature_output.TableFeatureOutput" title="voxatlas.features.feature_output.TableFeatureOutput"><code class="xref py py-class docutils literal notranslate"><span class="pre">TableFeatureOutput</span></code></a>: tabular output (DataFrame)</p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.features.feature_output.ArrayFeatureOutput.html#voxatlas.features.feature_output.ArrayFeatureOutput" title="voxatlas.features.feature_output.ArrayFeatureOutput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrayFeatureOutput</span></code></a>: raw NumPy array</p></li>
+</ul>
+<p>Most extractors should return one of these dataclasses so downstream consumers
+and writers can handle outputs uniformly.</p>
+</section>
+<section id="registry-discovery-how-features-become-runnable">
+<h2>Registry + discovery (how features become runnable)<a class="headerlink" href="#registry-discovery-how-features-become-runnable" title="Link to this heading">#</a></h2>
+<p>VoxAtlas uses a global <a class="reference internal" href="../api/generated/voxatlas.core.registry.FeatureRegistry.html#voxatlas.core.registry.FeatureRegistry" title="voxatlas.core.registry.FeatureRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureRegistry</span></code></a> instance
+to map feature names to extractor classes and metadata.</p>
+<ul class="simple">
+<li><p><strong>Registration:</strong> feature modules typically call <code class="docutils literal notranslate"><span class="pre">registry.register(MyExtractor)</span></code>
+at import time.</p></li>
+<li><p><strong>Discovery:</strong> <code class="xref py py-func docutils literal notranslate"><span class="pre">voxatlas.core.discovery.discover_features()</span></code> walks the
+<code class="docutils literal notranslate"><span class="pre">voxatlas.features</span></code> package and imports modules to trigger registrations.</p></li>
+<li><p><strong>Optional dependencies:</strong> if importing a feature module fails due to a missing
+third-party dependency, discovery records an <em>unavailable</em> registry entry (name,
+units, dependencies, missing dependency) so the CLI can still report it.</p></li>
+</ul>
+</section>
+<section id="configuration-and-parameters">
+<h2>Configuration and parameters<a class="headerlink" href="#configuration-and-parameters" title="Link to this heading">#</a></h2>
+<p>The pipeline resolves per-feature parameters by merging:</p>
+<ol class="arabic simple">
+<li><p>an extractor’s <code class="docutils literal notranslate"><span class="pre">default_config</span></code> (if provided), with</p></li>
+<li><p>user overrides under <code class="docutils literal notranslate"><span class="pre">config[&quot;feature_config&quot;][&lt;feature_name&gt;]</span></code></p></li>
+</ol>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">voxatlas.config.feature_config.resolve_feature_config()</span></code> for the exact
+merge behavior.</p>
+</section>
+<section id="units-and-alignment">
+<h2>Units and alignment<a class="headerlink" href="#units-and-alignment" title="Link to this heading">#</a></h2>
+<p>Unit labels declared on extractors are validated when the extractor is
+registered (for example <code class="docutils literal notranslate"><span class="pre">&quot;token&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;word&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;frame&quot;</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">&quot;conversation&quot;</span></code>). For how unit tables are represented at runtime, see
+<a class="reference internal" href="unit_hierarchy.html"><span class="doc">Unit Hierarchy</span></a>.</p>
+<p>At execution time, extractors should still check that required unit tables and
+columns exist for the current dataset/stream and raise clear errors when they
+do not.</p>
+</section>
 <section id="useful-api-pages">
 <h2>Useful API pages<a class="headerlink" href="#useful-api-pages" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="../api/generated/voxatlas.features.base_extractor.html"><span class="doc">voxatlas.features.base_extractor</span></a></p></li>
 <li><p><a class="reference internal" href="../api/generated/voxatlas.features.feature_input.html"><span class="doc">voxatlas.features.feature_input</span></a></p></li>
 <li><p><a class="reference internal" href="../api/generated/voxatlas.features.feature_output.html"><span class="doc">voxatlas.features.feature_output</span></a></p></li>
-<li><p><a class="reference internal" href="../api/generated/voxatlas.registry.feature_registry.html"><span class="doc">voxatlas.registry.feature_registry</span></a></p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.core.registry.FeatureRegistry.html"><span class="doc">FeatureRegistry</span></a></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">voxatlas.core.discovery.discover_features()</span></code></p></li>
+</ul>
+</section>
+<section id="where-to-go-next">
+<h2>Where to go next<a class="headerlink" href="#where-to-go-next" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../developer/writing_extractors.html"><span class="doc">Writing Extractors</span></a> for a step-by-step extractor tutorial</p></li>
+<li><p><a class="reference internal" href="pipeline.html"><span class="doc">Pipeline</span></a> for how dependencies, parallelism, and caching are executed</p></li>
 </ul>
 </section>
 </section>
@@ -411,7 +502,14 @@ pipeline can discover, validate, and execute it consistently.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extractor-contract-what-you-implement">Extractor contract (what you implement)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-inputs-what-you-receive">Feature inputs (what you receive)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-outputs-what-you-return">Feature outputs (what you return)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registry-discovery-how-features-become-runnable">Registry + discovery (how features become runnable)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-and-parameters">Configuration and parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units-and-alignment">Units and alignment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-api-pages">Useful API pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-go-next">Where to go next</a></li>
 </ul>
   </nav></div>
 

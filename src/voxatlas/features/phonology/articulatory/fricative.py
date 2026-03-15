@@ -30,13 +30,21 @@ class ArticulatoryFricativeExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.articulatory.fricative import ArticulatoryFricativeExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = ArticulatoryFricativeExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.phonology.articulatory.fricative import ArticulatoryFricativeExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "fricative": [1]})
+    >>> store = FeatureStore()
+    >>> store.add(
+    ...     "phonology.articulatory.features",
+    ...     TableFeatureOutput(feature="phonology.articulatory.features", unit="phoneme", values=table),
+    ... )
+    >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+    >>> out = ArticulatoryFricativeExtractor().compute(feature_input, {})
+    >>> float(out.values.loc[1])
+    1.0
     """
     name = "phonology.articulatory.fricative"
     input_units = "phoneme"
@@ -64,10 +72,21 @@ class ArticulatoryFricativeExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = ArticulatoryFricativeExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.phonology.articulatory.fricative import ArticulatoryFricativeExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "fricative": [1]})
+        >>> store = FeatureStore()
+        >>> store.add(
+        ...     "phonology.articulatory.features",
+        ...     TableFeatureOutput(feature="phonology.articulatory.features", unit="phoneme", values=table),
+        ... )
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> result = ArticulatoryFricativeExtractor().compute(feature_input, {})
+        >>> result.unit
+        'phoneme'
         """
         table = feature_input.context["feature_store"].get(
             "phonology.articulatory.features"

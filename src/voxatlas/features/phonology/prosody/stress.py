@@ -27,13 +27,18 @@ class ProsodicStressExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.phonology.prosody.stress import ProsodicStressExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = ProsodicStressExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.phonology.prosody.stress import ProsodicStressExtractor
+    >>> from voxatlas.units import Units
+    >>> syllables = pd.DataFrame({"id": [10, 11], "start": [0.0, 0.5], "end": [0.5, 1.0]})
+    >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0]})
+    >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+    >>> units = Units(syllables=syllables, words=words, ipus=ipus)
+    >>> params = ProsodicStressExtractor.default_config.copy()
+    >>> out = ProsodicStressExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+    >>> float(out.values.loc[10]), float(out.values.loc[11])
+    (0.0, 1.0)
     """
     name = "phonology.prosody.stressed"
     input_units = "syllable"
@@ -64,10 +69,18 @@ class ProsodicStressExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = ProsodicStressExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.phonology.prosody.stress import ProsodicStressExtractor
+        >>> from voxatlas.units import Units
+        >>> syllables = pd.DataFrame({"id": [10], "start": [0.0], "end": [0.5]})
+        >>> words = pd.DataFrame({"id": [1], "start": [0.0], "end": [1.0]})
+        >>> ipus = pd.DataFrame({"id": [5], "start": [0.0], "end": [1.0]})
+        >>> units = Units(syllables=syllables, words=words, ipus=ipus)
+        >>> params = ProsodicStressExtractor.default_config.copy()
+        >>> result = ProsodicStressExtractor().compute(FeatureInput(audio=None, units=units, context={}), params)
+        >>> result.unit
+        'syllable'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires syllable, word, and IPU units")

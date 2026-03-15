@@ -32,13 +32,17 @@ class SyntaxComplexityMeanDependencyLengthExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.syntax.complexity.mean_dependency_length import SyntaxComplexityMeanDependencyLengthExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = SyntaxComplexityMeanDependencyLengthExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.syntax.complexity.mean_dependency_length import SyntaxComplexityMeanDependencyLengthExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> deps = pd.DataFrame({"token_id": [1, 2], "head_id": [2, 0], "dep_label": ["nsubj", "root"], "sentence_id": [0, 0]})
+    >>> store = FeatureStore()
+    >>> store.add("syntax.dependencies", TableFeatureOutput(feature="syntax.dependencies", unit="token", values=deps))
+    >>> out = SyntaxComplexityMeanDependencyLengthExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[0])
+    1.0
     """
     name = "syntax.complexity.mean_dependency_length"
     input_units = "sentence"
@@ -66,10 +70,17 @@ class SyntaxComplexityMeanDependencyLengthExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = SyntaxComplexityMeanDependencyLengthExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.syntax.complexity.mean_dependency_length import SyntaxComplexityMeanDependencyLengthExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> deps = pd.DataFrame({"token_id": [1], "head_id": [0], "dep_label": ["root"], "sentence_id": [0]})
+        >>> store = FeatureStore()
+        >>> store.add("syntax.dependencies", TableFeatureOutput(feature="syntax.dependencies", unit="token", values=deps))
+        >>> result = SyntaxComplexityMeanDependencyLengthExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'sentence'
         """
         table = feature_input.context["feature_store"].get("syntax.dependencies").values
         values = compute_mean_dependency_length_by_sentence(table)

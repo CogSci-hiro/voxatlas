@@ -31,13 +31,16 @@ class STFTSpectrogramExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.acoustic.spectrogram.stft import STFTSpectrogramExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = STFTSpectrogramExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.acoustic.spectrogram.stft import STFTSpectrogramExtractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+    >>> params = STFTSpectrogramExtractor.default_config.copy()
+    >>> out = STFTSpectrogramExtractor().compute(feature_input, params)
+    >>> (out.values.shape[0] == len(out.time), out.values.shape[1] == len(out.frequency))
+    (True, True)
     """
     name = "acoustic.spectrogram.stft"
     input_units = None
@@ -71,10 +74,16 @@ class STFTSpectrogramExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = STFTSpectrogramExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.acoustic.spectrogram.stft import STFTSpectrogramExtractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+        >>> params = STFTSpectrogramExtractor.default_config.copy()
+        >>> result = STFTSpectrogramExtractor().compute(feature_input, params)
+        >>> result.unit
+        'frame'
         """
         if feature_input.audio is None:
             raise ValueError(f"{self.name} requires audio input")

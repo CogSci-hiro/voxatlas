@@ -37,13 +37,23 @@ class F0SlopeExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.acoustic.pitch.slope import F0SlopeExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = F0SlopeExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.features.acoustic.pitch.slope import F0SlopeExtractor
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import VectorFeatureOutput
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> store = FeatureStore()
+    >>> base = VectorFeatureOutput(
+    ...     feature="acoustic.pitch.f0",
+    ...     unit="frame",
+    ...     time=np.array([0.0, 0.01, 0.02], dtype=np.float32),
+    ...     values=np.array([100.0, 110.0, 120.0], dtype=np.float32),
+    ... )
+    >>> store.add("acoustic.pitch.f0", base)
+    >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+    >>> out = F0SlopeExtractor().compute(feature_input, {"window": 3})
+    >>> out.values.shape == base.values.shape
+    True
     """
     name = "acoustic.pitch.f0.slope"
     input_units = None
@@ -73,10 +83,23 @@ class F0SlopeExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = F0SlopeExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import numpy as np
+        >>> from voxatlas.features.acoustic.pitch.slope import F0SlopeExtractor
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import VectorFeatureOutput
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> store = FeatureStore()
+        >>> base = VectorFeatureOutput(
+        ...     feature="acoustic.pitch.f0",
+        ...     unit="frame",
+        ...     time=np.array([0.0, 0.01, 0.02], dtype=np.float32),
+        ...     values=np.array([100.0, 110.0, 120.0], dtype=np.float32),
+        ... )
+        >>> store.add("acoustic.pitch.f0", base)
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> result = F0SlopeExtractor().compute(feature_input, {"window": 3})
+        >>> result.unit
+        'frame'
         """
         f0_output = feature_input.context["feature_store"].get("acoustic.pitch.f0")
         values = compute_f0_slope(

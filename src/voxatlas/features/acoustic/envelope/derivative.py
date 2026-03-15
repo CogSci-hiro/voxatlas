@@ -76,22 +76,30 @@ def _make_derivative_extractor(base_key, dependency_name):
 
         Examples
         --------
-            from voxatlas.features.acoustic.envelope.derivative import OganianDerivative
-            from voxatlas.features.feature_input import FeatureInput
-
-            # Assumes the upstream dependency (``acoustic.envelope.oganian``)
-            # has already been computed and is available in the feature store.
-            extractor = OganianDerivative()
-            feature_input = FeatureInput(audio=audio, units=units, context={"feature_store": feature_store})
-            output = extractor.compute(feature_input, {})
-            print(output)
+        >>> import numpy as np
+        >>> from voxatlas.features.acoustic.envelope.derivative import OganianDerivative
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import VectorFeatureOutput
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> store = FeatureStore()
+        >>> base = VectorFeatureOutput(
+        ...     feature="acoustic.envelope.oganian",
+        ...     unit="frame",
+        ...     time=np.array([0.0, 0.01, 0.02], dtype=np.float32),
+        ...     values=np.array([0.0, 1.0, 1.0], dtype=np.float32),
+        ... )
+        >>> store.add("acoustic.envelope.oganian", base)
+        >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+        >>> out = OganianDerivative().compute(feature_input, {})
+        >>> out.values.tolist()
+        [0.0, 1.0, 0.0]
         """
 
-        name = f"{dependency_name}.derivative"
-        input_units = None
-        output_units = "frame"
-        dependencies = [dependency_name]
-        default_config = {
+        name: str = f"{dependency_name}.derivative"
+        input_units: str | None = None
+        output_units: str | None = "frame"
+        dependencies: list[str] = [dependency_name]
+        default_config: dict = {
             "frame_length": 0.025,
             "frame_step": 0.010,
             "smoothing": 1,
@@ -130,11 +138,56 @@ def _make_derivative_extractor(base_key, dependency_name):
 
             Examples
             --------
-            Usage example::
+            >>> import numpy as np
+            >>> from voxatlas.features.acoustic.envelope.derivative import LogEnergyDerivative
+            >>> from voxatlas.features.feature_input import FeatureInput
+            >>> from voxatlas.features.feature_output import VectorFeatureOutput
+            >>> from voxatlas.pipeline.feature_store import FeatureStore
+            >>> store = FeatureStore()
+            >>> base = VectorFeatureOutput(
+            ...     feature="acoustic.envelope.log_energy",
+            ...     unit="frame",
+            ...     time=np.array([0.0, 0.01, 0.02], dtype=np.float32),
+            ...     values=np.array([0.0, 0.0, 2.0], dtype=np.float32),
+            ... )
+            >>> store.add("acoustic.envelope.log_energy", base)
+            >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+            >>> LogEnergyDerivative().compute(feature_input, {}).values.tolist()
+            [0.0, 0.0, 2.0]
 
-                extractor = type(self)()
-                output = extractor.compute(feature_input, params)
-                print(output)
+            >>> import numpy as np
+            >>> from voxatlas.features.acoustic.envelope.derivative import PraatIntensityDerivative
+            >>> from voxatlas.features.feature_input import FeatureInput
+            >>> from voxatlas.features.feature_output import VectorFeatureOutput
+            >>> from voxatlas.pipeline.feature_store import FeatureStore
+            >>> store = FeatureStore()
+            >>> base = VectorFeatureOutput(
+            ...     feature="acoustic.envelope.praat_intensity",
+            ...     unit="frame",
+            ...     time=np.array([0.0, 0.01, 0.02], dtype=np.float32),
+            ...     values=np.array([1.0, 3.0, 6.0], dtype=np.float32),
+            ... )
+            >>> store.add("acoustic.envelope.praat_intensity", base)
+            >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+            >>> PraatIntensityDerivative().compute(feature_input, {}).values.tolist()
+            [0.0, 2.0, 3.0]
+
+            >>> import numpy as np
+            >>> from voxatlas.features.acoustic.envelope.derivative import RmsDerivative
+            >>> from voxatlas.features.feature_input import FeatureInput
+            >>> from voxatlas.features.feature_output import VectorFeatureOutput
+            >>> from voxatlas.pipeline.feature_store import FeatureStore
+            >>> store = FeatureStore()
+            >>> base = VectorFeatureOutput(
+            ...     feature="acoustic.envelope.rms",
+            ...     unit="frame",
+            ...     time=np.array([0.0, 0.01, 0.02], dtype=np.float32),
+            ...     values=np.array([0.5, 0.5, 0.0], dtype=np.float32),
+            ... )
+            >>> store.add("acoustic.envelope.rms", base)
+            >>> feature_input = FeatureInput(audio=None, units=None, context={"feature_store": store})
+            >>> RmsDerivative().compute(feature_input, {}).values.tolist()
+            [0.0, 0.0, -0.5]
             """
             base_output = feature_input.context["feature_store"].get(dependency_name)
             values = compute_derivative(base_output.values)

@@ -362,23 +362,103 @@
                   
   <section id="feature-registry">
 <h1>Feature Registry<a class="headerlink" href="#feature-registry" title="Link to this heading">#</a></h1>
-<p>The registry layer is responsible for discovering available features and
-validating that they satisfy the expected contract.</p>
+<p>The <strong>feature registry</strong> is VoxAtlas’ central lookup table for feature
+extractors. It maps a fully-qualified feature name (for example
+<code class="docutils literal notranslate"><span class="pre">&quot;acoustic.pitch.f0&quot;</span></code>) to:</p>
+<ul class="simple">
+<li><p>the extractor class that implements the feature (when available), and</p></li>
+<li><p>metadata needed by the CLI, discovery tooling, and the pipeline (units,
+dependencies, availability status).</p></li>
+</ul>
+<p>The pipeline uses the registry to resolve extractors and walk declared
+dependencies. The CLI uses it to list and inspect features without having to
+manually import each feature module.</p>
 <section id="responsibilities">
 <h2>Responsibilities<a class="headerlink" href="#responsibilities" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>discover extractor implementations</p></li>
-<li><p>register feature metadata</p></li>
-<li><p>validate dependencies and units</p></li>
-<li><p>surface configuration errors early</p></li>
+<li><p>discover extractor implementations (import-time registration)</p></li>
+<li><p>store and expose feature metadata (<code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureRegistryEntry</span></code>)</p></li>
+<li><p>validate the extractor contract (name pattern, unit labels, dependencies)</p></li>
+<li><p>track <em>unavailable</em> features when optional dependencies are missing</p></li>
 </ul>
+</section>
+<section id="registration">
+<h2>Registration<a class="headerlink" href="#registration" title="Link to this heading">#</a></h2>
+<p>Most features register themselves at import time:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.core.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">registry</span>
+
+<span class="n">registry</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">MyExtractor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Registration validates the extractor contract (see
+<code class="xref py py-func docutils literal notranslate"><span class="pre">voxatlas.core.registry.validate_extractor_contract()</span></code>) and stores an entry
+containing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_units</span></code> / <code class="docutils literal notranslate"><span class="pre">output_units</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">available</span></code> (<code class="docutils literal notranslate"><span class="pre">True</span></code> for normal registered extractors)</p></li>
+</ul>
+</section>
+<section id="discovery">
+<h2>Discovery<a class="headerlink" href="#discovery" title="Link to this heading">#</a></h2>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">voxatlas.core.discovery.discover_features()</span></code> walks the
+<code class="docutils literal notranslate"><span class="pre">voxatlas.features</span></code> package and imports modules to trigger registrations.</p>
+<p>Discovery also supports <em>optional dependencies</em>:</p>
+<ul class="simple">
+<li><p>If importing a feature module fails because a third-party dependency is
+missing, VoxAtlas records an <strong>unavailable</strong> registry entry using
+<a class="reference internal" href="../api/generated/voxatlas.core.registry.FeatureRegistry.html#voxatlas.core.registry.FeatureRegistry.register_unavailable" title="voxatlas.core.registry.FeatureRegistry.register_unavailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">voxatlas.core.registry.FeatureRegistry.register_unavailable()</span></code></a>.</p></li>
+<li><p>Unavailable entries keep the declared <code class="docutils literal notranslate"><span class="pre">name</span></code>/<code class="docutils literal notranslate"><span class="pre">dependencies</span></code>/<code class="docutils literal notranslate"><span class="pre">units</span></code> so
+the CLI can still report what exists and what is missing.</p></li>
+<li><p>When you later install the missing dependency (for example the <code class="docutils literal notranslate"><span class="pre">syntax</span></code> or
+<code class="docutils literal notranslate"><span class="pre">acoustic</span></code> optional dependency groups), discovery can register the real
+extractor class on the next run.</p></li>
+</ul>
+</section>
+<section id="validation-rules-high-level">
+<h2>Validation rules (high level)<a class="headerlink" href="#validation-rules-high-level" title="Link to this heading">#</a></h2>
+<p>The registry enforces a few consistency rules up front:</p>
+<ul class="simple">
+<li><p><strong>Feature names:</strong> must be lowercase dot-separated segments (at least two
+segments).</p></li>
+<li><p><strong>Units:</strong> must be one of the supported unit labels (or <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></li>
+<li><p><strong>Dependencies:</strong> must be a list of valid feature names.</p></li>
+</ul>
+<p>These checks catch obvious configuration errors early and keep registry metadata
+consistent for downstream tooling.</p>
+</section>
+<section id="inspecting-features-cli-python">
+<h2>Inspecting features (CLI + Python)<a class="headerlink" href="#inspecting-features-cli-python" title="Link to this heading">#</a></h2>
+<p>CLI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>voxatlas<span class="w"> </span>features<span class="w"> </span>list
+voxatlas<span class="w"> </span>features<span class="w"> </span>info<span class="w"> </span>acoustic.pitch.dummy
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.core.discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">discover_features</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.core.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">registry</span>
+
+<span class="n">discover_features</span><span class="p">()</span>
+<span class="n">entries</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="n">pitch</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">by_family</span><span class="p">(</span><span class="s2">&quot;acoustic.pitch&quot;</span><span class="p">)</span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">grouped</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="unavailable-features">
+<h2>Unavailable features<a class="headerlink" href="#unavailable-features" title="Link to this heading">#</a></h2>
+<p>When a feature is present in the codebase but cannot be imported, registry
+resolution raises <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureNotRegisteredError</span></code>
+with additional context about the missing dependency.</p>
+<p>This is also surfaced in the CLI as a status like <code class="docutils literal notranslate"><span class="pre">missing:spacy</span></code>.</p>
 </section>
 <section id="reference-pages">
 <h2>Reference pages<a class="headerlink" href="#reference-pages" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../api/generated/voxatlas.registry.discovery.html"><span class="doc">voxatlas.registry.discovery</span></a></p></li>
-<li><p><a class="reference internal" href="../api/generated/voxatlas.registry.feature_registry.html"><span class="doc">voxatlas.registry.feature_registry</span></a></p></li>
-<li><p><a class="reference internal" href="../api/generated/voxatlas.registry.validator.html"><span class="doc">voxatlas.registry.validator</span></a></p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.core.registry.FeatureRegistry.html"><span class="doc">FeatureRegistry</span></a></p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.core.registry.FeatureRegistry.list_features.html"><span class="doc">list_features</span></a></p></li>
+<li><p><a class="reference internal" href="../api/generated/voxatlas.core.registry.register_feature.html"><span class="doc">register_feature</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -413,6 +493,11 @@ validating that they satisfy the expected contract.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#responsibilities">Responsibilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registration">Registration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovery">Discovery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-rules-high-level">Validation rules (high level)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-features-cli-python">Inspecting features (CLI + Python)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unavailable-features">Unavailable features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-pages">Reference pages</a></li>
 </ul>
   </nav></div>

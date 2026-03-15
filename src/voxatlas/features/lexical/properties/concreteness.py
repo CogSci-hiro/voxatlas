@@ -34,13 +34,17 @@ class ConcretenessExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.properties.concreteness import ConcretenessExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = ConcretenessExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.feature_output import TableFeatureOutput
+    >>> from voxatlas.features.lexical.properties.concreteness import ConcretenessExtractor
+    >>> from voxatlas.pipeline.feature_store import FeatureStore
+    >>> table = pd.DataFrame({"id": [1], "concreteness": [4.5]})
+    >>> store = FeatureStore()
+    >>> store.add("lexical.properties.lookup", TableFeatureOutput(feature="lexical.properties.lookup", unit="token", values=table))
+    >>> out = ConcretenessExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+    >>> float(out.values.loc[1])
+    4.5
     """
     name = "lexical.properties.concreteness"
     input_units = "token"
@@ -68,10 +72,17 @@ class ConcretenessExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = ConcretenessExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.feature_output import TableFeatureOutput
+        >>> from voxatlas.features.lexical.properties.concreteness import ConcretenessExtractor
+        >>> from voxatlas.pipeline.feature_store import FeatureStore
+        >>> table = pd.DataFrame({"id": [1], "concreteness": [4.5]})
+        >>> store = FeatureStore()
+        >>> store.add("lexical.properties.lookup", TableFeatureOutput(feature="lexical.properties.lookup", unit="token", values=table))
+        >>> result = ConcretenessExtractor().compute(FeatureInput(audio=None, units=None, context={"feature_store": store}), {})
+        >>> result.unit
+        'token'
         """
         table = feature_input.context["feature_store"].get(
             "lexical.properties.lookup"

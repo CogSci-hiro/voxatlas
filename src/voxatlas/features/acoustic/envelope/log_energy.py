@@ -58,20 +58,23 @@ class LogEnergyEnvelope(BaseExtractor):
 
     Examples
     --------
-        from voxatlas.features.acoustic.envelope.log_energy import LogEnergyEnvelope
-        from voxatlas.features.feature_input import FeatureInput
-
-        extractor = LogEnergyEnvelope()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import numpy as np
+    >>> from voxatlas.audio.audio import Audio
+    >>> from voxatlas.features.acoustic.envelope.log_energy import LogEnergyEnvelope
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+    >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+    >>> params = LogEnergyEnvelope.default_config.copy()
+    >>> out = LogEnergyEnvelope().compute(feature_input, params)
+    >>> out.unit
+    'frame'
     """
 
-    name = "acoustic.envelope.log_energy"
-    input_units = None
-    output_units = "frame"
-    dependencies = []
-    default_config = {
+    name: str = "acoustic.envelope.log_energy"
+    input_units: str | None = None
+    output_units: str | None = "frame"
+    dependencies: list[str] = []
+    default_config: dict = {
         "frame_length": 0.025,
         "frame_step": 0.010,
         "smoothing": 1,
@@ -105,10 +108,16 @@ class LogEnergyEnvelope(BaseExtractor):
 
         Examples
         --------
-        Usage example::
-
-            output = LogEnergyEnvelope().compute(feature_input, params)
-            print(output.values.shape)
+        >>> import numpy as np
+        >>> from voxatlas.audio.audio import Audio
+        >>> from voxatlas.features.acoustic.envelope.log_energy import LogEnergyEnvelope
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> audio = Audio(waveform=np.zeros(1600, dtype=np.float32), sample_rate=16000)
+        >>> feature_input = FeatureInput(audio=audio, units=None, context={})
+        >>> params = LogEnergyEnvelope.default_config.copy()
+        >>> out = LogEnergyEnvelope().compute(feature_input, params)
+        >>> out.values.shape[0] > 0
+        True
         """
         if feature_input.audio is None:
             raise ValueError(f"{self.name} requires audio input")

@@ -31,13 +31,17 @@ class LexicalPropertiesExtractor(BaseExtractor):
     
     Examples
     --------
-        from voxatlas.features.lexical.properties.features import LexicalPropertiesExtractor
-        from voxatlas.features.feature_input import FeatureInput
-    
-        extractor = LexicalPropertiesExtractor()
-        feature_input = FeatureInput(audio=audio, units=units, context={})
-        output = extractor.compute(feature_input, {})
-        print(output)
+    >>> import pandas as pd
+    >>> from voxatlas.features.feature_input import FeatureInput
+    >>> from voxatlas.features.lexical.properties.features import LexicalPropertiesExtractor
+    >>> from voxatlas.units import Units
+    >>> tokens = pd.DataFrame([{"id": 1, "token": "hello"}])
+    >>> syllables = pd.DataFrame([{"id": 10, "word_id": 1}, {"id": 11, "word_id": 1}])
+    >>> phonemes = pd.DataFrame([{"id": 20, "word_id": 1}, {"id": 21, "word_id": 1}, {"id": 22, "word_id": 1}])
+    >>> units = Units(tokens=tokens, syllables=syllables, phonemes=phonemes)
+    >>> out = LexicalPropertiesExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+    >>> out.values.loc[0, ["word_length", "syllable_count", "phoneme_count"]].to_dict()
+    {'word_length': 5, 'syllable_count': 2, 'phoneme_count': 3}
     """
     name = "lexical.properties.features"
     input_units = "token"
@@ -65,10 +69,17 @@ class LexicalPropertiesExtractor(BaseExtractor):
         
         Examples
         --------
-            extractor = LexicalPropertiesExtractor()
-            feature_input = FeatureInput(audio=audio, units=units, context={})
-            result = extractor.compute(feature_input, {})
-            print(result)
+        >>> import pandas as pd
+        >>> from voxatlas.features.feature_input import FeatureInput
+        >>> from voxatlas.features.lexical.properties.features import LexicalPropertiesExtractor
+        >>> from voxatlas.units import Units
+        >>> tokens = pd.DataFrame([{"id": 1, "token": "hello"}])
+        >>> syllables = pd.DataFrame([{"id": 10, "word_id": 1}])
+        >>> phonemes = pd.DataFrame([{"id": 20, "word_id": 1}])
+        >>> units = Units(tokens=tokens, syllables=syllables, phonemes=phonemes)
+        >>> result = LexicalPropertiesExtractor().compute(FeatureInput(audio=None, units=units, context={}), {})
+        >>> result.unit
+        'token'
         """
         if feature_input.units is None:
             raise ValueError(f"{self.name} requires token, syllable, and phoneme units")
