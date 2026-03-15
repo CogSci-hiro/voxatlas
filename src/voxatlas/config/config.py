@@ -89,6 +89,42 @@ def expand_defaults(cfg: dict) -> dict:
     """
     Merge a user configuration with VoxAtlas defaults.
 
+    What "Expand Defaults" Means
+    ----------------------------
+    VoxAtlas maintains a small built-in default configuration
+    (:data:`voxatlas.config.defaults.DEFAULT_CONFIG`). ``expand_defaults``
+    starts from a deep copy of that default mapping and then applies the user
+    configuration on top.
+
+    This is a **shallow top-level merge**:
+
+    - Only the first level of keys is merged (via ``dict.update``).
+    - If the user provides a top-level key, it **replaces** the default value
+      for that key entirely.
+    - Nested mappings are **not** deep-merged. For example, providing a
+      ``pipeline`` mapping replaces the whole default ``pipeline`` mapping.
+
+    Concretely, given the default:
+
+    .. code-block:: python
+
+        {"features": [], "pipeline": {"cache": True}}
+
+    The following user config:
+
+    .. code-block:: python
+
+        {"pipeline": {"n_jobs": 4}}
+
+    Produces:
+
+    .. code-block:: python
+
+        {"features": [], "pipeline": {"n_jobs": 4}}
+
+    (note how ``pipeline.cache`` is not preserved because nested dicts are not
+    merged).
+
     Parameters
     ----------
     cfg : dict
@@ -101,7 +137,10 @@ def expand_defaults(cfg: dict) -> dict:
 
     Notes
     -----
-    The merge is shallow at the top level of the configuration dictionary.
+    If you want to override just one pipeline option while keeping other
+    defaults, pass the full desired ``pipeline`` mapping (or use
+    :func:`load_and_prepare_config`, which is the recommended config entry
+    point for most workflows).
 
     Examples
     --------
