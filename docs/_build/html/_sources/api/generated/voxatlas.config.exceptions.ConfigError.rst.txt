@@ -1,7 +1,0 @@
-voxatlas.config.exceptions.ConfigError
-======================================
-
-.. currentmodule:: voxatlas.config.exceptions
-
-.. autoexception:: ConfigError
-   :members:

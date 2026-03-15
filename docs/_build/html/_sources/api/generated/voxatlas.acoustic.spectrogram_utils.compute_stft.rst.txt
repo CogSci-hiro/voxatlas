@@ -1,6 +1,0 @@
-voxatlas.acoustic.spectrogram_utils.compute_stft
-================================================
-
-.. currentmodule:: voxatlas.acoustic.spectrogram_utils
-
-.. autofunction:: compute_stft

@@ -4,8 +4,3 @@
 .. currentmodule:: voxatlas.registry.discovery
 
 .. automodule:: voxatlas.registry.discovery
-
-
-
-
-

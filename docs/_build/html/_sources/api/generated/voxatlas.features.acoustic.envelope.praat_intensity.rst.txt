@@ -1,20 +1,6 @@
-voxatlas.features.acoustic.envelope.praat_intensity
+﻿voxatlas.features.acoustic.envelope.praat_intensity
 ===================================================
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.praat_intensity
 
 .. automodule:: voxatlas.features.acoustic.envelope.praat_intensity
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   PraatIntensityEnvelope
-
-
-
-

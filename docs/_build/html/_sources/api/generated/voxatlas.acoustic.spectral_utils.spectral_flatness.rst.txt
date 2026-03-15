@@ -1,6 +1,0 @@
-voxatlas.acoustic.spectral_utils.spectral_flatness
-==================================================
-
-.. currentmodule:: voxatlas.acoustic.spectral_utils
-
-.. autofunction:: spectral_flatness

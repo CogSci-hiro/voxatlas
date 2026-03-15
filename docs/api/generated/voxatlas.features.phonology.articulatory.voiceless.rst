@@ -1,20 +1,6 @@
-voxatlas.features.phonology.articulatory.voiceless
+﻿voxatlas.features.phonology.articulatory.voiceless
 ==================================================
 
 .. currentmodule:: voxatlas.features.phonology.articulatory.voiceless
 
 .. automodule:: voxatlas.features.phonology.articulatory.voiceless
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   ArticulatoryVoicelessExtractor
-
-
-
-

@@ -4,23 +4,3 @@
 .. currentmodule:: voxatlas.registry.validator
 
 .. automodule:: voxatlas.registry.validator
-
-
-
-
-
-.. rubric:: Functions
-
-.. autosummary::
-   :toctree:
-
-
-   validate_dependencies
-
-   validate_extractor_contract
-
-   validate_feature_name
-
-   validate_units
-
-

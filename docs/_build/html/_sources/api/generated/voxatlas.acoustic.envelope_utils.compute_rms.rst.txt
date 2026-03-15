@@ -1,6 +1,0 @@
-voxatlas.acoustic.envelope_utils.compute_rms
-============================================
-
-.. currentmodule:: voxatlas.acoustic.envelope_utils
-
-.. autofunction:: compute_rms

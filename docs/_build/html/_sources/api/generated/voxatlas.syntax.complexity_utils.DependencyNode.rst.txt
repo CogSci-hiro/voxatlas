@@ -1,8 +1,0 @@
-voxatlas.syntax.complexity_utils.DependencyNode
-===============================================
-
-.. currentmodule:: voxatlas.syntax.complexity_utils
-
-.. autoclass:: DependencyNode
-   :members:
-   :show-inheritance:

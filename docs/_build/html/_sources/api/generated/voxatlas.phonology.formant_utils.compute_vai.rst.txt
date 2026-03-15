@@ -1,6 +1,0 @@
-voxatlas.phonology.formant_utils.compute_vai
-============================================
-
-.. currentmodule:: voxatlas.phonology.formant_utils
-
-.. autofunction:: compute_vai

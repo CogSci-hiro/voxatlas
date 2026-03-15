@@ -1,6 +1,0 @@
-voxatlas.syntax.agreement_utils.identify_agreement_relations
-============================================================
-
-.. currentmodule:: voxatlas.syntax.agreement_utils
-
-.. autofunction:: identify_agreement_relations

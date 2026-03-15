@@ -1,20 +1,6 @@
-voxatlas.features.phonology.rhythm.intervals
+﻿voxatlas.features.phonology.rhythm.intervals
 ============================================
 
 .. currentmodule:: voxatlas.features.phonology.rhythm.intervals
 
 .. automodule:: voxatlas.features.phonology.rhythm.intervals
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   RhythmIntervalsExtractor
-
-
-
-

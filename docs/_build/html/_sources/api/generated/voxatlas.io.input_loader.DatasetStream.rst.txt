@@ -1,8 +1,0 @@
-voxatlas.io.input_loader.DatasetStream
-======================================
-
-.. currentmodule:: voxatlas.io.input_loader
-
-.. autoclass:: DatasetStream
-   :members:
-   :show-inheritance:

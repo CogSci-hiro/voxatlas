@@ -1,20 +1,6 @@
-voxatlas.features.morphology.inflection.person
+﻿voxatlas.features.morphology.inflection.person
 ==============================================
 
 .. currentmodule:: voxatlas.features.morphology.inflection.person
 
 .. automodule:: voxatlas.features.morphology.inflection.person
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   InflectionPersonExtractor
-
-
-
-

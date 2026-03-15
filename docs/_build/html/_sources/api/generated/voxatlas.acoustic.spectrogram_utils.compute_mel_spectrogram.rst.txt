@@ -1,6 +1,0 @@
-voxatlas.acoustic.spectrogram_utils.compute_mel_spectrogram
-===========================================================
-
-.. currentmodule:: voxatlas.acoustic.spectrogram_utils
-
-.. autofunction:: compute_mel_spectrogram

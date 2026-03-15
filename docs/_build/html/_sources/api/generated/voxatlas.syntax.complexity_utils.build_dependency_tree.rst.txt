@@ -1,6 +1,0 @@
-voxatlas.syntax.complexity_utils.build_dependency_tree
-======================================================
-
-.. currentmodule:: voxatlas.syntax.complexity_utils
-
-.. autofunction:: build_dependency_tree

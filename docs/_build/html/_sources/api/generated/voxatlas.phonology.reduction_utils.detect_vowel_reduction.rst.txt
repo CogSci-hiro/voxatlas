@@ -1,6 +1,0 @@
-voxatlas.phonology.reduction_utils.detect_vowel_reduction
-=========================================================
-
-.. currentmodule:: voxatlas.phonology.reduction_utils
-
-.. autofunction:: detect_vowel_reduction

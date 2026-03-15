@@ -1,6 +1,0 @@
-voxatlas.syntax.dependency_utils.finalize_dependency_table
-==========================================================
-
-.. currentmodule:: voxatlas.syntax.dependency_utils
-
-.. autofunction:: finalize_dependency_table

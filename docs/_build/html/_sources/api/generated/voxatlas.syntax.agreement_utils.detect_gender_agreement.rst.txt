@@ -1,6 +1,0 @@
-voxatlas.syntax.agreement_utils.detect_gender_agreement
-=======================================================
-
-.. currentmodule:: voxatlas.syntax.agreement_utils
-
-.. autofunction:: detect_gender_agreement

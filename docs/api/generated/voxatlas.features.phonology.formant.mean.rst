@@ -1,20 +1,6 @@
-voxatlas.features.phonology.formant.mean
+﻿voxatlas.features.phonology.formant.mean
 ========================================
 
 .. currentmodule:: voxatlas.features.phonology.formant.mean
 
 .. automodule:: voxatlas.features.phonology.formant.mean
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   FormantMeanExtractor
-
-
-
-

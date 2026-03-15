@@ -1,6 +1,0 @@
-voxatlas.morphology.derivation_utils.segment_token
-==================================================
-
-.. currentmodule:: voxatlas.morphology.derivation_utils
-
-.. autofunction:: segment_token

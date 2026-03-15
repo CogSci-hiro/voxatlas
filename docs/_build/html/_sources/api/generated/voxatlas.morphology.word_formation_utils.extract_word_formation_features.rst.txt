@@ -1,6 +1,0 @@
-voxatlas.morphology.word_formation_utils.extract_word_formation_features
-========================================================================
-
-.. currentmodule:: voxatlas.morphology.word_formation_utils
-
-.. autofunction:: extract_word_formation_features

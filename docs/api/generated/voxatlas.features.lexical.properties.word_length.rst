@@ -1,20 +1,6 @@
-voxatlas.features.lexical.properties.word_length
+﻿voxatlas.features.lexical.properties.word_length
 ================================================
 
 .. currentmodule:: voxatlas.features.lexical.properties.word_length
 
 .. automodule:: voxatlas.features.lexical.properties.word_length
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   WordLengthExtractor
-
-
-
-

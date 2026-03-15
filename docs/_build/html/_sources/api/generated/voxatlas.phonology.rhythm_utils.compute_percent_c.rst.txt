@@ -1,6 +1,0 @@
-voxatlas.phonology.rhythm_utils.compute_percent_c
-=================================================
-
-.. currentmodule:: voxatlas.phonology.rhythm_utils
-
-.. autofunction:: compute_percent_c

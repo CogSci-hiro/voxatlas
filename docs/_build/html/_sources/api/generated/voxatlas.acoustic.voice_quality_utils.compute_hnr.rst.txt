@@ -1,6 +1,0 @@
-voxatlas.acoustic.voice_quality_utils.compute_hnr
-=================================================
-
-.. currentmodule:: voxatlas.acoustic.voice_quality_utils
-
-.. autofunction:: compute_hnr

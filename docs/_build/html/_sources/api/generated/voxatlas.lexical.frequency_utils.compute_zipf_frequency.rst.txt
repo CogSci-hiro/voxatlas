@@ -1,6 +1,0 @@
-voxatlas.lexical.frequency_utils.compute_zipf_frequency
-=======================================================
-
-.. currentmodule:: voxatlas.lexical.frequency_utils
-
-.. autofunction:: compute_zipf_frequency

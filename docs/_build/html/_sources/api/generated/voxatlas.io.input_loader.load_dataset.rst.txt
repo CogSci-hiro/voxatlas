@@ -1,6 +1,0 @@
-voxatlas.io.input_loader.load_dataset
-=====================================
-
-.. currentmodule:: voxatlas.io.input_loader
-
-.. autofunction:: load_dataset

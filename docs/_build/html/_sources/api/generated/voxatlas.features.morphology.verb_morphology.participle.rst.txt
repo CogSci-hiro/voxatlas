@@ -1,20 +1,6 @@
-voxatlas.features.morphology.verb_morphology.participle
+﻿voxatlas.features.morphology.verb_morphology.participle
 =======================================================
 
 .. currentmodule:: voxatlas.features.morphology.verb_morphology.participle
 
 .. automodule:: voxatlas.features.morphology.verb_morphology.participle
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   VerbMorphologyParticipleExtractor
-
-
-
-

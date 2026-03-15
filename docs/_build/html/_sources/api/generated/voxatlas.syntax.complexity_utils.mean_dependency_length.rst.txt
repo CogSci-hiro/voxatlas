@@ -1,6 +1,0 @@
-voxatlas.syntax.complexity_utils.mean_dependency_length
-=======================================================
-
-.. currentmodule:: voxatlas.syntax.complexity_utils
-
-.. autofunction:: mean_dependency_length

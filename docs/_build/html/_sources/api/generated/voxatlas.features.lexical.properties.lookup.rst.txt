@@ -1,20 +1,6 @@
-voxatlas.features.lexical.properties.lookup
+﻿voxatlas.features.lexical.properties.lookup
 ===========================================
 
 .. currentmodule:: voxatlas.features.lexical.properties.lookup
 
 .. automodule:: voxatlas.features.lexical.properties.lookup
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   LexicalPropertyLookupExtractor
-
-
-
-

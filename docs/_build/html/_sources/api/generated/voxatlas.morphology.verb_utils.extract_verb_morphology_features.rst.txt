@@ -1,6 +1,0 @@
-voxatlas.morphology.verb_utils.extract_verb_morphology_features
-===============================================================
-
-.. currentmodule:: voxatlas.morphology.verb_utils
-
-.. autofunction:: extract_verb_morphology_features

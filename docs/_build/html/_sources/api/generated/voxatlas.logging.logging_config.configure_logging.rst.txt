@@ -1,6 +1,0 @@
-voxatlas.logging.logging_config.configure_logging
-=================================================
-
-.. currentmodule:: voxatlas.logging.logging_config
-
-.. autofunction:: configure_logging

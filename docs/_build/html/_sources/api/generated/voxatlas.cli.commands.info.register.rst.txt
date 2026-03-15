@@ -1,6 +1,0 @@
-voxatlas.cli.commands.info.register
-===================================
-
-.. currentmodule:: voxatlas.cli.commands.info
-
-.. autofunction:: register

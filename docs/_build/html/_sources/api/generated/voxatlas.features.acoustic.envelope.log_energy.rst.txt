@@ -1,20 +1,6 @@
-voxatlas.features.acoustic.envelope.log_energy
+﻿voxatlas.features.acoustic.envelope.log_energy
 ==============================================
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.log_energy
 
 .. automodule:: voxatlas.features.acoustic.envelope.log_energy
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   LogEnergyEnvelope
-
-
-
-

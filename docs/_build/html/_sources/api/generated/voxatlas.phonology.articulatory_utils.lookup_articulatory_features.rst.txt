@@ -1,6 +1,0 @@
-voxatlas.phonology.articulatory_utils.lookup_articulatory_features
-==================================================================
-
-.. currentmodule:: voxatlas.phonology.articulatory_utils
-
-.. autofunction:: lookup_articulatory_features

@@ -1,30 +1,6 @@
-voxatlas.features.acoustic.envelope.derivative
+﻿voxatlas.features.acoustic.envelope.derivative
 ==============================================
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.derivative
 
 .. automodule:: voxatlas.features.acoustic.envelope.derivative
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   HilbertDerivative
-
-   LogEnergyDerivative
-
-   OganianDerivative
-
-   PraatIntensityDerivative
-
-   RmsDerivative
-
-   VarnetDerivative
-
-
-
-

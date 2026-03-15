@@ -1,7 +1,0 @@
-voxatlas.config.exceptions.ConfigValidationError
-================================================
-
-.. currentmodule:: voxatlas.config.exceptions
-
-.. autoexception:: ConfigValidationError
-   :members:

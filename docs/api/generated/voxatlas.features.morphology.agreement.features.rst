@@ -1,20 +1,6 @@
-voxatlas.features.morphology.agreement.features
+﻿voxatlas.features.morphology.agreement.features
 ===============================================
 
 .. currentmodule:: voxatlas.features.morphology.agreement.features
 
 .. automodule:: voxatlas.features.morphology.agreement.features
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   AgreementFeaturesExtractor
-
-
-
-

@@ -1,6 +1,0 @@
-voxatlas.syntax.complexity_utils.compute_mean_dependency_length_by_sentence
-===========================================================================
-
-.. currentmodule:: voxatlas.syntax.complexity_utils
-
-.. autofunction:: compute_mean_dependency_length_by_sentence

@@ -9,27 +9,61 @@ from voxatlas.registry.feature_registry import registry
 class OganianEnvelope(BaseExtractor):
     r"""
     Extract the ``acoustic.envelope.oganian`` feature within the VoxAtlas pipeline.
-    
-    This public extractor defines the reusable API for computing ``acoustic.envelope.oganian`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.
-    
+
+    Computes a smoothed, frame-aligned amplitude envelope derived from the
+    Hilbert analytic signal. This envelope is the precursor contour used by
+    Oganian & Chang (2019) to define speech envelope landmarks, and is intended
+    as a base contour for downstream onset/peak-rate style features.
+
     Algorithm
     ---------
-    The extractor follows the standard VoxAtlas feature-computation pattern.
-    
-    1. Input preparation
-       Structured audio, unit tables, and dependency outputs are gathered from ``feature_input``.
-    
-    2. Feature-specific computation
-       The implementation applies the domain-specific transformation required by this extractor.
-    
-    3. Packaging
-       Results are aligned to ``frame`` units and returned as a ``FeatureOutput`` object.
-    
+    The implementation mirrors the code path.
+
+    1. Analytic-signal envelope
+       Given waveform :math:`x[n]`, the extractor forms
+
+       .. math::
+
+          z[n] = x[n] + j\,\mathcal{H}\{x[n]\},
+
+       where :math:`\mathcal{H}` is the Hilbert transform, and computes the
+       magnitude envelope :math:`a[n] = |z[n]|`.
+
+    2. Frame pooling
+       :math:`a[n]` is segmented into overlapping analysis frames and converted
+       into a frame-level contour by taking the mean amplitude per frame.
+
+    3. Smoothing
+       The resulting frame contour is smoothed with a short moving-average
+       window of length ``smoothing`` frames.
+
+    Attributes
+    ----------
+    name : str
+        Registry key for this extractor (``"acoustic.envelope.oganian"``).
+    input_units : str | None
+        Required input unit level. ``None`` means this extractor operates
+        directly on waveform audio.
+    output_units : str | None
+        Output alignment unit (``"frame"``).
+    dependencies : list[str]
+        Upstream features required before execution. Empty for this extractor.
+    default_config : dict
+        Default runtime parameters:
+        ``frame_length=0.025``, ``frame_step=0.01``,
+        ``peak_threshold=0.1``, ``smoothing=7``.
+
+    References
+    ----------
+    Oganian, Y., & Chang, E. F. (2019). A speech envelope landmark for syllable
+        encoding in human superior temporal gyrus. *Science Advances, 5*(11),
+        eaay6279. https://doi.org/10.1126/sciadv.aay6279
+
     Examples
     --------
         from voxatlas.features.acoustic.envelope.oganian import OganianEnvelope
         from voxatlas.features.feature_input import FeatureInput
-    
+
         extractor = OganianEnvelope()
         feature_input = FeatureInput(audio=audio, units=units, context={})
         output = extractor.compute(feature_input, {})

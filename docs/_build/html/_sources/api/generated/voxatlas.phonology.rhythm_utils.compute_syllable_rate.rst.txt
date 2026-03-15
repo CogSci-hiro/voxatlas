@@ -1,6 +1,0 @@
-voxatlas.phonology.rhythm_utils.compute_syllable_rate
-=====================================================
-
-.. currentmodule:: voxatlas.phonology.rhythm_utils
-
-.. autofunction:: compute_syllable_rate

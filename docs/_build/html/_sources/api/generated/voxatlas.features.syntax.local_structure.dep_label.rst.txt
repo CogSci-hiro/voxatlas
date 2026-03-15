@@ -1,20 +1,6 @@
-voxatlas.features.syntax.local_structure.dep_label
+﻿voxatlas.features.syntax.local_structure.dep_label
 ==================================================
 
 .. currentmodule:: voxatlas.features.syntax.local_structure.dep_label
 
 .. automodule:: voxatlas.features.syntax.local_structure.dep_label
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   SyntaxLocalStructureDependencyLabelExtractor
-
-
-
-

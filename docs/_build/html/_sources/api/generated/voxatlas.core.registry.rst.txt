@@ -1,6 +1,0 @@
-voxatlas.core.registry
-======================
-
-.. currentmodule:: voxatlas.core
-
-.. autodata:: registry

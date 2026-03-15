@@ -1,6 +1,0 @@
-voxatlas.lexical.property_utils.classify_function_word
-======================================================
-
-.. currentmodule:: voxatlas.lexical.property_utils
-
-.. autofunction:: classify_function_word

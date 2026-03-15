@@ -1,6 +1,0 @@
-voxatlas.syntax.dependency_utils.sentence_slices
-================================================
-
-.. currentmodule:: voxatlas.syntax.dependency_utils
-
-.. autofunction:: sentence_slices

@@ -1,6 +1,0 @@
-voxatlas.phonology.rhythm_utils.compute_delta_v
-===============================================
-
-.. currentmodule:: voxatlas.phonology.rhythm_utils
-
-.. autofunction:: compute_delta_v

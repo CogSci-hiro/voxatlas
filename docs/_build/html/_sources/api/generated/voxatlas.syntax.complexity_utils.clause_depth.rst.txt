@@ -1,6 +1,0 @@
-voxatlas.syntax.complexity_utils.clause_depth
-=============================================
-
-.. currentmodule:: voxatlas.syntax.complexity_utils
-
-.. autofunction:: clause_depth

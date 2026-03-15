@@ -1,6 +1,0 @@
-voxatlas.acoustic.spectral_utils.spectral_slope
-===============================================
-
-.. currentmodule:: voxatlas.acoustic.spectral_utils
-
-.. autofunction:: spectral_slope

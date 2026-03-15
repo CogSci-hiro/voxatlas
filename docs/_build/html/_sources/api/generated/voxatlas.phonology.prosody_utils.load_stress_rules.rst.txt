@@ -1,6 +1,0 @@
-voxatlas.phonology.prosody_utils.load_stress_rules
-==================================================
-
-.. currentmodule:: voxatlas.phonology.prosody_utils
-
-.. autofunction:: load_stress_rules

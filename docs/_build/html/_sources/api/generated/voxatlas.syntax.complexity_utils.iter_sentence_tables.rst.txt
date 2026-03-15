@@ -1,6 +1,0 @@
-voxatlas.syntax.complexity_utils.iter_sentence_tables
-=====================================================
-
-.. currentmodule:: voxatlas.syntax.complexity_utils
-
-.. autofunction:: iter_sentence_tables

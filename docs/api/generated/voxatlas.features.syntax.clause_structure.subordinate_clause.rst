@@ -1,20 +1,6 @@
-voxatlas.features.syntax.clause_structure.subordinate_clause
+﻿voxatlas.features.syntax.clause_structure.subordinate_clause
 ============================================================
 
 .. currentmodule:: voxatlas.features.syntax.clause_structure.subordinate_clause
 
 .. automodule:: voxatlas.features.syntax.clause_structure.subordinate_clause
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   SyntaxSubordinateClauseExtractor
-
-
-
-

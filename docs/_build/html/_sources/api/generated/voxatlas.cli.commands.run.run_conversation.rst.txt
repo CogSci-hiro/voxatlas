@@ -1,6 +1,0 @@
-voxatlas.cli.commands.run.run_conversation
-==========================================
-
-.. currentmodule:: voxatlas.cli.commands.run
-
-.. autofunction:: run_conversation

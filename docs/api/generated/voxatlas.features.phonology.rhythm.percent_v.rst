@@ -1,20 +1,6 @@
-voxatlas.features.phonology.rhythm.percent_v
+﻿voxatlas.features.phonology.rhythm.percent_v
 ============================================
 
 .. currentmodule:: voxatlas.features.phonology.rhythm.percent_v
 
 .. automodule:: voxatlas.features.phonology.rhythm.percent_v
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   RhythmPercentVExtractor
-
-
-
-

@@ -4,17 +4,3 @@
 .. currentmodule:: voxatlas.units.alignment
 
 .. automodule:: voxatlas.units.alignment
-
-
-
-
-
-.. rubric:: Functions
-
-.. autosummary::
-   :toctree:
-
-
-   load_alignment
-
-

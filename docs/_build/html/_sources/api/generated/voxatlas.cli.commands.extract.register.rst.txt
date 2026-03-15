@@ -1,6 +1,0 @@
-voxatlas.cli.commands.extract.register
-======================================
-
-.. currentmodule:: voxatlas.cli.commands.extract
-
-.. autofunction:: register

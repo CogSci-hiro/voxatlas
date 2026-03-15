@@ -1,20 +1,6 @@
-voxatlas.features.acoustic.envelope.oganian
+﻿voxatlas.features.acoustic.envelope.oganian
 ===========================================
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.oganian
 
 .. automodule:: voxatlas.features.acoustic.envelope.oganian
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   OganianEnvelope
-
-
-
-

@@ -4,19 +4,3 @@
 .. currentmodule:: voxatlas.pipeline.executor
 
 .. automodule:: voxatlas.pipeline.executor
-
-
-
-
-
-.. rubric:: Functions
-
-.. autosummary::
-   :toctree:
-
-
-   parallel_execute_layer
-
-   run_feature
-
-

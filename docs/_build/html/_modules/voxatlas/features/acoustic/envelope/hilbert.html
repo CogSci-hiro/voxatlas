@@ -374,7 +374,9 @@
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract the ``acoustic.envelope.hilbert`` feature within the VoxAtlas pipeline.</span>
 <span class="sd">    </span>
-<span class="sd">    This public extractor defines the reusable API for computing ``acoustic.envelope.hilbert`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.</span>
+<span class="sd">    Computes a Hilbert-based amplitude envelope from the raw audio waveform.</span>
+<span class="sd">    It does not require linguistic units as input and returns a frame-aligned</span>
+<span class="sd">    time series.</span>
 <span class="sd">    </span>
 <span class="sd">    Algorithm</span>
 <span class="sd">    ---------</span>
@@ -391,7 +393,23 @@
 <span class="sd">    </span>
 <span class="sd">    2. Magnitude envelope</span>
 <span class="sd">       The returned contour is the magnitude :math:`a[n] = |z[n]|` and is then aligned to frame times as required by the output container.</span>
-<span class="sd">    </span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str</span>
+<span class="sd">        Registry key for this extractor (``&quot;acoustic.envelope.hilbert&quot;``).</span>
+<span class="sd">    input_units : str | None</span>
+<span class="sd">        Required input unit level. ``None`` means this extractor operates</span>
+<span class="sd">        directly on waveform audio.</span>
+<span class="sd">    output_units : str | None</span>
+<span class="sd">        Output alignment unit (``&quot;frame&quot;``).</span>
+<span class="sd">    dependencies : list[str]</span>
+<span class="sd">        Upstream features required before execution. Empty for this extractor.</span>
+<span class="sd">    default_config : dict</span>
+<span class="sd">        Default runtime parameters:</span>
+<span class="sd">        ``frame_length=0.025``, ``frame_step=0.01``,</span>
+<span class="sd">        ``peak_threshold=0.1``, ``smoothing=1``.</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">        from voxatlas.features.acoustic.envelope.hilbert import HilbertEnvelope</span>

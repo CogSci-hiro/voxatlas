@@ -1,6 +1,0 @@
-voxatlas.syntax.agreement_utils.detect_subject_verb_agreement
-=============================================================
-
-.. currentmodule:: voxatlas.syntax.agreement_utils
-
-.. autofunction:: detect_subject_verb_agreement

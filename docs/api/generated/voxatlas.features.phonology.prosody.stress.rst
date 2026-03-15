@@ -1,20 +1,6 @@
-voxatlas.features.phonology.prosody.stress
+﻿voxatlas.features.phonology.prosody.stress
 ==========================================
 
 .. currentmodule:: voxatlas.features.phonology.prosody.stress
 
 .. automodule:: voxatlas.features.phonology.prosody.stress
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   ProsodicStressExtractor
-
-
-
-

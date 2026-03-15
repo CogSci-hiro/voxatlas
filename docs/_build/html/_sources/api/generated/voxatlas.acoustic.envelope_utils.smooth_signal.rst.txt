@@ -1,6 +1,0 @@
-voxatlas.acoustic.envelope_utils.smooth_signal
-==============================================
-
-.. currentmodule:: voxatlas.acoustic.envelope_utils
-
-.. autofunction:: smooth_signal

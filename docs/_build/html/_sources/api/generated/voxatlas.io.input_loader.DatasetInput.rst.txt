@@ -1,8 +1,0 @@
-voxatlas.io.input_loader.DatasetInput
-=====================================
-
-.. currentmodule:: voxatlas.io.input_loader
-
-.. autoclass:: DatasetInput
-   :members:
-   :show-inheritance:

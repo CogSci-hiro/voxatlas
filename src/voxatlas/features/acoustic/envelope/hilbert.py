@@ -11,7 +11,9 @@ class HilbertEnvelope(BaseExtractor):
     r"""
     Extract the ``acoustic.envelope.hilbert`` feature within the VoxAtlas pipeline.
     
-    This public extractor defines the reusable API for computing ``acoustic.envelope.hilbert`` from VoxAtlas structured inputs. It consumes ``None`` units and produces values aligned to ``frame`` units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.
+    Computes a Hilbert-based amplitude envelope from the raw audio waveform.
+    It does not require linguistic units as input and returns a frame-aligned
+    time series.
     
     Algorithm
     ---------
@@ -28,7 +30,23 @@ class HilbertEnvelope(BaseExtractor):
     
     2. Magnitude envelope
        The returned contour is the magnitude :math:`a[n] = |z[n]|` and is then aligned to frame times as required by the output container.
-    
+
+    Attributes
+    ----------
+    name : str
+        Registry key for this extractor (``"acoustic.envelope.hilbert"``).
+    input_units : str | None
+        Required input unit level. ``None`` means this extractor operates
+        directly on waveform audio.
+    output_units : str | None
+        Output alignment unit (``"frame"``).
+    dependencies : list[str]
+        Upstream features required before execution. Empty for this extractor.
+    default_config : dict
+        Default runtime parameters:
+        ``frame_length=0.025``, ``frame_step=0.01``,
+        ``peak_threshold=0.1``, ``smoothing=1``.
+
     Examples
     --------
         from voxatlas.features.acoustic.envelope.hilbert import HilbertEnvelope

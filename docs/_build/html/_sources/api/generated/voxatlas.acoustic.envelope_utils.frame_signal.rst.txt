@@ -1,6 +1,0 @@
-voxatlas.acoustic.envelope_utils.frame_signal
-=============================================
-
-.. currentmodule:: voxatlas.acoustic.envelope_utils
-
-.. autofunction:: frame_signal

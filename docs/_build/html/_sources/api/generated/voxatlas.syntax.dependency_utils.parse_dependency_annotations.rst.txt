@@ -1,6 +1,0 @@
-voxatlas.syntax.dependency_utils.parse_dependency_annotations
-=============================================================
-
-.. currentmodule:: voxatlas.syntax.dependency_utils
-
-.. autofunction:: parse_dependency_annotations

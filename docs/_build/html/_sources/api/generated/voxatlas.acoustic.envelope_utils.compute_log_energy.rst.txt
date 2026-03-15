@@ -1,6 +1,0 @@
-voxatlas.acoustic.envelope_utils.compute_log_energy
-===================================================
-
-.. currentmodule:: voxatlas.acoustic.envelope_utils
-
-.. autofunction:: compute_log_energy

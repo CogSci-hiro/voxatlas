@@ -1,6 +1,0 @@
-voxatlas.phonology.formant_utils.compute_vowel_trajectory
-=========================================================
-
-.. currentmodule:: voxatlas.phonology.formant_utils
-
-.. autofunction:: compute_vowel_trajectory

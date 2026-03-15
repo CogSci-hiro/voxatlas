@@ -1,6 +1,0 @@
-voxatlas.phonology.articulatory_utils.load_phonology_resources
-==============================================================
-
-.. currentmodule:: voxatlas.phonology.articulatory_utils
-
-.. autofunction:: load_phonology_resources

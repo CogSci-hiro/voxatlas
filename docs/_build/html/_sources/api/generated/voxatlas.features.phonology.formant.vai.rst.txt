@@ -1,20 +1,6 @@
-voxatlas.features.phonology.formant.vai
+﻿voxatlas.features.phonology.formant.vai
 =======================================
 
 .. currentmodule:: voxatlas.features.phonology.formant.vai
 
 .. automodule:: voxatlas.features.phonology.formant.vai
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   FormantVAIExtractor
-
-
-
-

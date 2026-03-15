@@ -1,20 +1,6 @@
-voxatlas.features.acoustic.pitch.variability
+﻿voxatlas.features.acoustic.pitch.variability
 ============================================
 
 .. currentmodule:: voxatlas.features.acoustic.pitch.variability
 
 .. automodule:: voxatlas.features.acoustic.pitch.variability
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   F0VariabilityExtractor
-
-
-
-

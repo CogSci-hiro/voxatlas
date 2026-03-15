@@ -1,6 +1,0 @@
-voxatlas.lexical.property_utils.load_lexical_property_resources
-===============================================================
-
-.. currentmodule:: voxatlas.lexical.property_utils
-
-.. autofunction:: load_lexical_property_resources

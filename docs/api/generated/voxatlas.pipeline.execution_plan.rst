@@ -4,17 +4,3 @@
 .. currentmodule:: voxatlas.pipeline.execution_plan
 
 .. automodule:: voxatlas.pipeline.execution_plan
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   ExecutionPlan
-
-
-
-

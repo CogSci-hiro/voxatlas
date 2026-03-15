@@ -1,20 +1,6 @@
-voxatlas.features.phonology.formant.midpoint
+﻿voxatlas.features.phonology.formant.midpoint
 ============================================
 
 .. currentmodule:: voxatlas.features.phonology.formant.midpoint
 
 .. automodule:: voxatlas.features.phonology.formant.midpoint
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   FormantMidpointExtractor
-
-
-
-

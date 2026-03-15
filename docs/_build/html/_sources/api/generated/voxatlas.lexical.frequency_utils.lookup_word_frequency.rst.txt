@@ -1,6 +1,0 @@
-voxatlas.lexical.frequency_utils.lookup_word_frequency
-======================================================
-
-.. currentmodule:: voxatlas.lexical.frequency_utils
-
-.. autofunction:: lookup_word_frequency

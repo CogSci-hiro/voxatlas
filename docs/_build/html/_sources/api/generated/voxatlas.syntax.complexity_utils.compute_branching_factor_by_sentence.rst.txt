@@ -1,6 +1,0 @@
-voxatlas.syntax.complexity_utils.compute_branching_factor_by_sentence
-=====================================================================
-
-.. currentmodule:: voxatlas.syntax.complexity_utils
-
-.. autofunction:: compute_branching_factor_by_sentence

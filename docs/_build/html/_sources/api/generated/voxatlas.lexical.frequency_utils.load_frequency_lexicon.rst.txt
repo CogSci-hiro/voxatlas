@@ -1,6 +1,0 @@
-voxatlas.lexical.frequency_utils.load_frequency_lexicon
-=======================================================
-
-.. currentmodule:: voxatlas.lexical.frequency_utils
-
-.. autofunction:: load_frequency_lexicon

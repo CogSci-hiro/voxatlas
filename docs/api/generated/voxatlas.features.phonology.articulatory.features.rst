@@ -1,20 +1,6 @@
-voxatlas.features.phonology.articulatory.features
+﻿voxatlas.features.phonology.articulatory.features
 =================================================
 
 .. currentmodule:: voxatlas.features.phonology.articulatory.features
 
 .. automodule:: voxatlas.features.phonology.articulatory.features
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   ArticulatoryFeaturesExtractor
-
-
-
-

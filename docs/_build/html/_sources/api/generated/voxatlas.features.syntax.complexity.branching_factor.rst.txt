@@ -1,20 +1,6 @@
-voxatlas.features.syntax.complexity.branching_factor
+﻿voxatlas.features.syntax.complexity.branching_factor
 ====================================================
 
 .. currentmodule:: voxatlas.features.syntax.complexity.branching_factor
 
 .. automodule:: voxatlas.features.syntax.complexity.branching_factor
-
-
-
-.. rubric:: Classes
-
-.. autosummary::
-   :toctree:
-
-
-   SyntaxComplexityBranchingFactorExtractor
-
-
-
-
