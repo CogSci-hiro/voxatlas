@@ -1,4 +1,4 @@
-voxatlas.features.acoustic.pitch
+﻿voxatlas.features.acoustic.pitch
 ================================
 
 .. currentmodule:: voxatlas.features.acoustic.pitch

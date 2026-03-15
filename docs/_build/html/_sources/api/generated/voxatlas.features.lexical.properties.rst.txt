@@ -1,4 +1,4 @@
-voxatlas.features.lexical.properties
+﻿voxatlas.features.lexical.properties
 ====================================
 
 .. currentmodule:: voxatlas.features.lexical.properties

@@ -1,4 +1,4 @@
-voxatlas.features.acoustic.spectrogram
+﻿voxatlas.features.acoustic.spectrogram
 ======================================
 
 .. currentmodule:: voxatlas.features.acoustic.spectrogram

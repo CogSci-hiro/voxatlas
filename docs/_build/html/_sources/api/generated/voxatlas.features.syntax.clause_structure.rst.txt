@@ -1,4 +1,4 @@
-voxatlas.features.syntax.clause_structure
+﻿voxatlas.features.syntax.clause_structure
 =========================================
 
 .. currentmodule:: voxatlas.features.syntax.clause_structure

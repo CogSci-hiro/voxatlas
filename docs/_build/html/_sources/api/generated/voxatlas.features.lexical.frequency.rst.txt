@@ -1,4 +1,4 @@
-voxatlas.features.lexical.frequency
+﻿voxatlas.features.lexical.frequency
 ===================================
 
 .. currentmodule:: voxatlas.features.lexical.frequency

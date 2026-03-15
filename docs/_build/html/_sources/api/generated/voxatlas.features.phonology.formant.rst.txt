@@ -1,4 +1,4 @@
-voxatlas.features.phonology.formant
+﻿voxatlas.features.phonology.formant
 ===================================
 
 .. currentmodule:: voxatlas.features.phonology.formant

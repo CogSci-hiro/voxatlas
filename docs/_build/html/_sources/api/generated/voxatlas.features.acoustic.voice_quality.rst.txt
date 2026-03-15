@@ -1,4 +1,4 @@
-voxatlas.features.acoustic.voice_quality
+﻿voxatlas.features.acoustic.voice_quality
 ========================================
 
 .. currentmodule:: voxatlas.features.acoustic.voice_quality

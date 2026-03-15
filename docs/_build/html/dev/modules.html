@@ -1026,25 +1026,68 @@ is scheduled for execution.</p>
 <dt class="sig sig-object py" id="voxatlas.expand_defaults">
 <span class="sig-prename descclassname"><span class="pre">voxatlas.</span></span><span class="sig-name descname"><span class="pre">expand_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/voxatlas/config/config.html#expand_defaults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.expand_defaults" title="Link to this definition">#</a></dt>
 <dd><p>Merge a user configuration with VoxAtlas defaults.</p>
+<section id="what-expand-defaults-means">
+<h2>What “Expand Defaults” Means<a class="headerlink" href="#what-expand-defaults-means" title="Link to this heading">#</a></h2>
+<p>VoxAtlas maintains a small built-in default configuration
+(<code class="xref py py-data docutils literal notranslate"><span class="pre">voxatlas.config.defaults.DEFAULT_CONFIG</span></code>). <code class="docutils literal notranslate"><span class="pre">expand_defaults</span></code>
+starts from a deep copy of that default mapping and then applies the user
+configuration on top.</p>
+<p>This is a <strong>shallow top-level merge</strong>:</p>
+<ul class="simple">
+<li><p>Only the first level of keys is merged (via <code class="docutils literal notranslate"><span class="pre">dict.update</span></code>).</p></li>
+<li><p>If the user provides a top-level key, it <strong>replaces</strong> the default value
+for that key entirely.</p></li>
+<li><p>Nested mappings are <strong>not</strong> deep-merged. For example, providing a
+<code class="docutils literal notranslate"><span class="pre">pipeline</span></code> mapping replaces the whole default <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> mapping.</p></li>
+</ul>
+<p>Concretely, given the default:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;pipeline&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;cache&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>The following user config:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;pipeline&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;n_jobs&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Produces:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;pipeline&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;n_jobs&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>(note how <code class="docutils literal notranslate"><span class="pre">pipeline.cache</span></code> is not preserved because nested dicts are not
+merged).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>cfg</strong> (<em>dict</em>) – User-supplied configuration dictionary.</p>
+<dt class="field-odd">param cfg<span class="colon">:</span></dt>
+<dd class="field-odd"><p>User-supplied configuration dictionary.</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Configuration with top-level defaults applied.</p>
+<dt class="field-even">type cfg<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Configuration with top-level defaults applied.</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The merge is shallow at the top level of the configuration dictionary.</p>
+<p>If you want to override just one pipeline option while keeping other
+defaults, pass the full desired <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> mapping (or use
+<a class="reference internal" href="#voxatlas.load_and_prepare_config" title="voxatlas.load_and_prepare_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_and_prepare_config()</span></code></a>, which is the recommended config entry
+point for most workflows).</p>
 <p class="rubric">Examples</p>
 <p>Usage example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">expand_defaults</span><span class="p">({</span><span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;acoustic.pitch.f0&quot;</span><span class="p">]})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
+</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cfg</strong> (<em>dict</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -1113,32 +1156,80 @@ workflows.</p>
 <dt class="sig sig-object py" id="voxatlas.load_config">
 <span class="sig-prename descclassname"><span class="pre">voxatlas.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/voxatlas/config/config.html#load_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.load_config" title="Link to this definition">#</a></dt>
 <dd><p>Load a VoxAtlas YAML configuration file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Filesystem path to a YAML configuration file.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Parsed configuration dictionary.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>OSError</strong> – Raised when the file cannot be opened.</p></li>
-<li><p><strong>yaml.YAMLError</strong> – Raised when the YAML document is invalid.</p></li>
+<section id="expected-yaml-format">
+<h2>Expected YAML Format<a class="headerlink" href="#expected-yaml-format" title="Link to this heading">#</a></h2>
+<p>VoxAtlas configuration files are YAML mappings (YAML “dicts”) with a small
+set of conventional top-level keys. The minimal valid config contains a
+<code class="docutils literal notranslate"><span class="pre">features</span></code> list:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">features</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acoustic.pitch.dummy</span>
+</pre></div>
+</div>
+<p>Optional keys supported by the pipeline and config layer include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pipeline</span></code>: pipeline runtime options (mapping)
+- <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code>: number of worker processes per dependency layer (int)
+- <code class="docutils literal notranslate"><span class="pre">cache</span></code>: enable/disable on-disk feature caching (bool)
+- <code class="docutils literal notranslate"><span class="pre">cache_dir</span></code>: cache directory when caching is enabled (str)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feature_config</span></code>: per-feature parameter overrides (mapping)
+- keys are feature names from <code class="docutils literal notranslate"><span class="pre">features</span></code>
+- values are extractor-specific parameter mappings</p></li>
 </ul>
+<p>Example with per-feature parameters and pipeline options:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">features</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phonology.prosody.stressed</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acoustic.pitch.f0</span>
+
+<span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">n_jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">cache_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.voxatlas_cache</span>
+
+<span class="nt">feature_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">phonology.prosody.stressed</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fra</span>
+<span class="w">    </span><span class="nt">resource_root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/resources/phonology</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Filesystem path to a YAML configuration file.</p>
+</dd>
+<dt class="field-even">type path<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Parsed configuration dictionary.</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+<dt class="field-odd">raises OSError<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Raised when the file cannot be opened.</p>
+</dd>
+<dt class="field-even">raises yaml.YAMLError<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raised when the YAML document is invalid.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>This function parses YAML only. It does not apply defaults or schema
-validation.</p>
+validation. For the recommended entry point that validates and applies
+defaults, see <a class="reference internal" href="#voxatlas.load_and_prepare_config" title="voxatlas.load_and_prepare_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_and_prepare_config()</span></code></a>.</p>
 <p class="rubric">Examples</p>
 <p>Usage example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
+</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
