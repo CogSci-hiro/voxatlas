@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>voxatlas.io.input_loader &#8212; VoxAtlas 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=bdbbbe79" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/voxatlas/io/input_loader';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">VoxAtlas 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/index.html">
+    Documentations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/index.html">
+    Documentations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">voxatlas.io.input_loader</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for voxatlas.io.input_loader</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.audio.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Audio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.audio.loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_audio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units.alignment_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_textgrid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>
+
+
+<div class="viewcode-block" id="DatasetStream">
+<a class="viewcode-back" href="../../../dev/modules.html#voxatlas.DatasetStream">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DatasetStream</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represent one aligned stream from a conversation dataset.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    audio : Audio | None</span>
+<span class="sd">        Audio stream for one channel, if available.</span>
+<span class="sd">    units : Units | None</span>
+<span class="sd">        Hierarchical unit container for the same channel, if available.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DatasetStream</span>
+<span class="sd">        Dataclass describing one multimodal stream.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    A stream may contain audio only, units only, or both modalities.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Usage example::</span>
+
+<span class="sd">        stream = dataset.streams()[0]</span>
+<span class="sd">        print(stream.audio is not None, stream.units is not None)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">audio</span><span class="p">:</span> <span class="n">Audio</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">units</span><span class="p">:</span> <span class="n">Units</span> <span class="o">|</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="DatasetInput">
+<a class="viewcode-back" href="../../../dev/modules.html#voxatlas.DatasetInput">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DatasetInput</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Store every stream loaded for one conversation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    audio_streams : list of Audio | None</span>
+<span class="sd">        Audio streams loaded from the dataset.</span>
+<span class="sd">    units_streams : list of Units | None</span>
+<span class="sd">        Alignment streams loaded from TextGrid files.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DatasetInput</span>
+<span class="sd">        Dataclass containing per-channel dataset inputs.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Audio and alignment streams are paired by channel order when both</span>
+<span class="sd">    modalities are present.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Usage example::</span>
+
+<span class="sd">        dataset = load_dataset(&quot;/path/to/dataset&quot;, &quot;conversation01&quot;)</span>
+<span class="sd">        print(len(dataset.streams()))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">audio_streams</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Audio</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">units_streams</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Units</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="DatasetInput.streams">
+<a class="viewcode-back" href="../../../dev/modules.html#voxatlas.DatasetInput.streams">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">streams</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DatasetStream</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return paired stream objects for the conversation.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of DatasetStream</span>
+<span class="sd">            Stream objects pairing audio and alignment data where possible.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            Raised when the audio and alignment channel counts differ.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        When only one modality is present, the other field is set to ``None``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Usage example::</span>
+
+<span class="sd">            for stream in dataset.streams():</span>
+<span class="sd">                print(stream.units)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">audio_streams</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">units_streams</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">audio_streams</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units_streams</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Audio/alignment channel mismatch.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">audio_streams</span><span class="p">)</span><span class="si">}</span><span class="s2"> audio stream(s) and &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units_streams</span><span class="p">)</span><span class="si">}</span><span class="s2"> alignment stream(s).</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;Please ensure audio channels match ch1/ch2 alignment files.&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">return</span> <span class="p">[</span>
+                <span class="n">DatasetStream</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="n">audio</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">audio</span><span class="p">,</span> <span class="n">units</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">audio_streams</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units_streams</span><span class="p">)</span>
+            <span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">audio_streams</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span>
+                <span class="n">DatasetStream</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="n">audio</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">audio</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">audio_streams</span>
+            <span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">units_streams</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span>
+                <span class="n">DatasetStream</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">units</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">units_streams</span>
+            <span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">[]</span></div>
+</div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_structure_error</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="s2">&quot;Invalid dataset structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;Expected:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;alignment/palign/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch1.TextGrid</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;alignment/palign/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch2.TextGrid</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;alignment/syll/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch1.TextGrid</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;alignment/syll/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch2.TextGrid</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;alignment/ipu/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch1.TextGrid</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;alignment/ipu/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch2.TextGrid</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;Please rename files accordingly.&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_validate_tiers</span><span class="p">(</span>
+    <span class="n">tiers</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">expected_tiers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">tier_name</span> <span class="ow">in</span> <span class="n">expected_tiers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tier_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tiers</span><span class="p">:</span>
+            <span class="n">expected</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">expected_tiers</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid SPPAS alignment file.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Missing tier: </span><span class="si">{</span><span class="n">tier_name</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected tiers for </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> file:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Please export SPPAS </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> output again.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;File: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_validate_structure</span><span class="p">(</span><span class="n">dataset_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">conversation_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dataset_root</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Dataset root does not exist: </span><span class="si">{</span><span class="n">dataset_root</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;Please provide a valid dataset directory.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dataset_root</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Dataset root is not a directory: </span><span class="si">{</span><span class="n">dataset_root</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;Please provide a valid dataset directory.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">audio_dir</span> <span class="o">=</span> <span class="n">dataset_root</span> <span class="o">/</span> <span class="s2">&quot;audio&quot;</span>
+    <span class="n">alignment_dir</span> <span class="o">=</span> <span class="n">dataset_root</span> <span class="o">/</span> <span class="s2">&quot;alignment&quot;</span>
+    <span class="n">palign_dir</span> <span class="o">=</span> <span class="n">alignment_dir</span> <span class="o">/</span> <span class="s2">&quot;palign&quot;</span>
+    <span class="n">syll_dir</span> <span class="o">=</span> <span class="n">alignment_dir</span> <span class="o">/</span> <span class="s2">&quot;syll&quot;</span>
+    <span class="n">ipu_dir</span> <span class="o">=</span> <span class="n">alignment_dir</span> <span class="o">/</span> <span class="s2">&quot;ipu&quot;</span>
+
+    <span class="n">audio_path</span> <span class="o">=</span> <span class="n">audio_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">.wav&quot;</span>
+    <span class="n">alignment_paths</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;palign&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;ch1&quot;</span><span class="p">:</span> <span class="n">palign_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch1.TextGrid&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ch2&quot;</span><span class="p">:</span> <span class="n">palign_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch2.TextGrid&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;syll&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;ch1&quot;</span><span class="p">:</span> <span class="n">syll_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch1.TextGrid&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ch2&quot;</span><span class="p">:</span> <span class="n">syll_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch2.TextGrid&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;ipu&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;ch1&quot;</span><span class="p">:</span> <span class="n">ipu_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch1.TextGrid&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ch2&quot;</span><span class="p">:</span> <span class="n">ipu_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">_ch2.TextGrid&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">has_audio</span> <span class="o">=</span> <span class="n">audio_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+    <span class="n">has_alignment</span> <span class="o">=</span> <span class="n">alignment_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_audio</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">has_alignment</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Invalid dataset structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;Expected at least one modality under:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;audio/</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;alignment/</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;Please provide audio and/or alignment files.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">has_alignment</span><span class="p">:</span>
+        <span class="n">missing_dirs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">path</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="p">(</span><span class="n">palign_dir</span><span class="p">,</span> <span class="n">syll_dir</span><span class="p">,</span> <span class="n">ipu_dir</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">missing_dirs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="n">_structure_error</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">group_paths</span> <span class="ow">in</span> <span class="n">alignment_paths</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">group_paths</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">_structure_error</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;audio_path&quot;</span><span class="p">:</span> <span class="n">audio_path</span> <span class="k">if</span> <span class="n">has_audio</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;alignment_paths&quot;</span><span class="p">:</span> <span class="n">alignment_paths</span> <span class="k">if</span> <span class="n">has_alignment</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_load_audio</span><span class="p">(</span><span class="n">audio_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Audio</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">audio_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">load_audio</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">audio_path</span><span class="p">),</span> <span class="n">channel_mode</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_load_alignments</span><span class="p">(</span><span class="n">alignment_paths</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Units</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">alignment_paths</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">units_streams</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">speaker_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;ch1&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ch2&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">channel</span><span class="p">,</span> <span class="n">speaker</span> <span class="ow">in</span> <span class="n">speaker_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">palign_tiers</span> <span class="o">=</span> <span class="n">load_textgrid</span><span class="p">(</span><span class="n">alignment_paths</span><span class="p">[</span><span class="s2">&quot;palign&quot;</span><span class="p">][</span><span class="n">channel</span><span class="p">])</span>
+        <span class="n">syll_tiers</span> <span class="o">=</span> <span class="n">load_textgrid</span><span class="p">(</span><span class="n">alignment_paths</span><span class="p">[</span><span class="s2">&quot;syll&quot;</span><span class="p">][</span><span class="n">channel</span><span class="p">])</span>
+        <span class="n">ipu_tiers</span> <span class="o">=</span> <span class="n">load_textgrid</span><span class="p">(</span><span class="n">alignment_paths</span><span class="p">[</span><span class="s2">&quot;ipu&quot;</span><span class="p">][</span><span class="n">channel</span><span class="p">])</span>
+
+        <span class="n">_validate_tiers</span><span class="p">(</span>
+            <span class="n">palign_tiers</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;TokensAlign&quot;</span><span class="p">,</span> <span class="s2">&quot;PhonAlign&quot;</span><span class="p">],</span>
+            <span class="n">alignment_paths</span><span class="p">[</span><span class="s2">&quot;palign&quot;</span><span class="p">][</span><span class="n">channel</span><span class="p">],</span>
+            <span class="s2">&quot;palign&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">_validate_tiers</span><span class="p">(</span>
+            <span class="n">syll_tiers</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;SyllAlign&quot;</span><span class="p">,</span> <span class="s2">&quot;SyllClassAlign&quot;</span><span class="p">],</span>
+            <span class="n">alignment_paths</span><span class="p">[</span><span class="s2">&quot;syll&quot;</span><span class="p">][</span><span class="n">channel</span><span class="p">],</span>
+            <span class="s2">&quot;syll&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">_validate_tiers</span><span class="p">(</span>
+            <span class="n">ipu_tiers</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;IPU&quot;</span><span class="p">],</span>
+            <span class="n">alignment_paths</span><span class="p">[</span><span class="s2">&quot;ipu&quot;</span><span class="p">][</span><span class="n">channel</span><span class="p">],</span>
+            <span class="s2">&quot;ipu&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">units_streams</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">Units</span><span class="p">(</span>
+                <span class="n">phonemes</span><span class="o">=</span><span class="n">palign_tiers</span><span class="p">[</span><span class="s2">&quot;PhonAlign&quot;</span><span class="p">],</span>
+                <span class="n">syllables</span><span class="o">=</span><span class="n">syll_tiers</span><span class="p">[</span><span class="s2">&quot;SyllAlign&quot;</span><span class="p">],</span>
+                <span class="n">words</span><span class="o">=</span><span class="n">palign_tiers</span><span class="p">[</span><span class="s2">&quot;TokensAlign&quot;</span><span class="p">],</span>
+                <span class="n">ipus</span><span class="o">=</span><span class="n">ipu_tiers</span><span class="p">[</span><span class="s2">&quot;IPU&quot;</span><span class="p">],</span>
+                <span class="n">speaker</span><span class="o">=</span><span class="n">speaker</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">units_streams</span>
+
+
+<div class="viewcode-block" id="load_dataset">
+<a class="viewcode-back" href="../../../dev/modules.html#voxatlas.load_dataset">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_dataset</span><span class="p">(</span><span class="n">dataset_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">conversation_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DatasetInput</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load audio and alignment inputs for one conversation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dataset_root : str</span>
+<span class="sd">        Root directory containing ``audio/`` and ``alignment/`` subdirectories.</span>
+<span class="sd">    conversation_id : str</span>
+<span class="sd">        Conversation identifier shared by the audio and alignment files.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DatasetInput</span>
+<span class="sd">        Loaded dataset object with channel-wise streams.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        Raised when the directory layout is invalid or required files are</span>
+<span class="sd">        missing.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    VoxAtlas expects the SPPAS-style alignment layout used by the repository</span>
+<span class="sd">    examples and tests.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Usage example::</span>
+
+<span class="sd">        dataset = load_dataset(&quot;/path/to/dataset&quot;, &quot;conversation01&quot;)</span>
+<span class="sd">        stream = dataset.streams()[0]</span>
+<span class="sd">        print(stream.audio, stream.units)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dataset_root_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dataset_root</span><span class="p">)</span>
+    <span class="n">validated</span> <span class="o">=</span> <span class="n">_validate_structure</span><span class="p">(</span><span class="n">dataset_root_path</span><span class="p">,</span> <span class="n">conversation_id</span><span class="p">)</span>
+    <span class="n">audio_streams</span> <span class="o">=</span> <span class="n">_load_audio</span><span class="p">(</span><span class="n">validated</span><span class="p">[</span><span class="s2">&quot;audio_path&quot;</span><span class="p">])</span>
+    <span class="n">units_streams</span> <span class="o">=</span> <span class="n">_load_alignments</span><span class="p">(</span><span class="n">validated</span><span class="p">[</span><span class="s2">&quot;alignment_paths&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">audio_streams</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">units_streams</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;No dataset inputs found.</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;Please provide audio and/or alignment files.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">audio_streams</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">units_streams</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">audio_streams</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">units_streams</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Audio/alignment channel mismatch.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">audio_streams</span><span class="p">)</span><span class="si">}</span><span class="s2"> audio stream(s) and &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">units_streams</span><span class="p">)</span><span class="si">}</span><span class="s2"> alignment stream(s).</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;Please ensure audio channels match ch1/ch2 alignment files.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">DatasetInput</span><span class="p">(</span>
+        <span class="n">audio_streams</span><span class="o">=</span><span class="n">audio_streams</span><span class="p">,</span>
+        <span class="n">units_streams</span><span class="o">=</span><span class="n">units_streams</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, VoxAtlas contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

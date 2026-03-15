@@ -1,0 +1,11 @@
+MatrixFeatureOutput
+====================================================
+
+Defined in: ``voxatlas.features.feature_output``
+
+.. currentmodule:: voxatlas.features.feature_output
+
+.. autoclass:: MatrixFeatureOutput
+   :members:
+   :undoc-members:
+   :show-inheritance:

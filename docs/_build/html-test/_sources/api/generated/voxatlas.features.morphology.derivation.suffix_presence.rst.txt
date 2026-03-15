@@ -1,0 +1,20 @@
+voxatlas.features.morphology.derivation.suffix_presence
+=======================================================
+
+.. currentmodule:: voxatlas.features.morphology.derivation.suffix_presence
+
+.. automodule:: voxatlas.features.morphology.derivation.suffix_presence
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   SuffixPresenceExtractor
+
+
+
+

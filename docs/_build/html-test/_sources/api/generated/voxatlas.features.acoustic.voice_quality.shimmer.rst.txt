@@ -1,0 +1,20 @@
+voxatlas.features.acoustic.voice_quality.shimmer
+================================================
+
+.. currentmodule:: voxatlas.features.acoustic.voice_quality.shimmer
+
+.. automodule:: voxatlas.features.acoustic.voice_quality.shimmer
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   ShimmerExtractor
+
+
+
+
