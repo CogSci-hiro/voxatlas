@@ -1,0 +1,6 @@
+voxatlas.phonology.rhythm_utils.compute_rhythm_intervals
+========================================================
+
+.. currentmodule:: voxatlas.phonology.rhythm_utils
+
+.. autofunction:: compute_rhythm_intervals

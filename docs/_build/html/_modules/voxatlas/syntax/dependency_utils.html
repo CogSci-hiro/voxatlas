@@ -1,0 +1,1261 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>voxatlas.syntax.dependency_utils &#8212; VoxAtlas 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/voxatlas/syntax/dependency_utils';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">VoxAtlas 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/minimal_example.html">
+    Minimal Example
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/architecture.html">
+    Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/pipeline.html">
+    Pipeline
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/unit_hierarchy.html">
+    Unit Hierarchy
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../overview/feature_system.html">
+    Feature System
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorials/acoustic_features.html">
+    Acoustic Features Tutorial
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorials/linguistic_features.html">
+    Linguistic Features Tutorial
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorials/conversational_features.html">
+    Conversational Features Tutorial
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../tutorials/building_features.html">
+    Building Features
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../developer/writing_extractors.html">
+    Writing Extractors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../developer/feature_registry.html">
+    Feature Registry
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../developer/pipeline_internals.html">
+    Pipeline Internals
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../api/modules.html">
+    API Reference
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started/minimal_example.html">
+    Minimal Example
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/architecture.html">
+    Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/pipeline.html">
+    Pipeline
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/unit_hierarchy.html">
+    Unit Hierarchy
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview/feature_system.html">
+    Feature System
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/acoustic_features.html">
+    Acoustic Features Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/linguistic_features.html">
+    Linguistic Features Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/conversational_features.html">
+    Conversational Features Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials/building_features.html">
+    Building Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../developer/writing_extractors.html">
+    Writing Extractors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../developer/feature_registry.html">
+    Feature Registry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../developer/pipeline_internals.html">
+    Pipeline Internals
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/your-org/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">voxatlas.syntax.dependency_utils</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for voxatlas.syntax.dependency_utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="n">HEAD_COLUMNS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;head_id&quot;</span><span class="p">,</span> <span class="s2">&quot;head&quot;</span><span class="p">)</span>
+<span class="n">DEP_LABEL_COLUMNS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;dep_label&quot;</span><span class="p">,</span> <span class="s2">&quot;deprel&quot;</span><span class="p">,</span> <span class="s2">&quot;dep_rel&quot;</span><span class="p">,</span> <span class="s2">&quot;dependency_relation&quot;</span><span class="p">)</span>
+<span class="n">POS_COLUMNS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;pos&quot;</span><span class="p">,</span> <span class="s2">&quot;upos&quot;</span><span class="p">,</span> <span class="s2">&quot;POS&quot;</span><span class="p">,</span> <span class="s2">&quot;xpos&quot;</span><span class="p">)</span>
+<span class="n">SENTENCE_ID_COLUMNS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sentence_id&quot;</span><span class="p">,</span> <span class="s2">&quot;sentence_index&quot;</span><span class="p">)</span>
+<span class="n">SENTENCE_START_COLUMNS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sentence_start&quot;</span><span class="p">,</span> <span class="s2">&quot;is_sent_start&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="require_column">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.require_column.html#voxatlas.syntax.dependency_utils.require_column">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">require_column</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ``require_column`` public API.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    table : pd.DataFrame</span>
+<span class="sd">        Tabular annotation aligned to a VoxAtlas unit level.</span>
+<span class="sd">    column : str</span>
+<span class="sd">        String argument consumed by this API.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        String value derived from the supplied metadata or lookup resources.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = require_column(table=..., column=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dependency features require a &#39;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">&#39; column&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">column</span></div>
+
+
+
+<div class="viewcode-block" id="find_first_column">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.find_first_column.html#voxatlas.syntax.dependency_utils.find_first_column">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_first_column</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ``find_first_column`` public API.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    table : pd.DataFrame</span>
+<span class="sd">        Tabular annotation aligned to a VoxAtlas unit level.</span>
+<span class="sd">    columns : Iterable[str]</span>
+<span class="sd">        Argument used by the syntax API.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str | None</span>
+<span class="sd">        Return value produced by ``find_first_column``.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = find_first_column(table=..., columns=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">column</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="sentence_slices">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.sentence_slices.html#voxatlas.syntax.dependency_utils.sentence_slices">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sentence_slices</span><span class="p">(</span><span class="n">tokens</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ``sentence_slices`` public API.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tokens : pd.DataFrame</span>
+<span class="sd">        Token-level annotation table used for morphological or syntactic computation.</span>
+<span class="sd">    </span>
+<span class="sd">    tokens example</span>
+<span class="sd">    --------------</span>
+<span class="sd">    token_id | sentence_id | head | dep_rel | text</span>
+<span class="sd">    1 | 0 | 2 | nsubj | hello</span>
+<span class="sd">    2 | 0 | 0 | root | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of pandas.DataFrame</span>
+<span class="sd">        Sentence- or unit-level slices derived from the input table.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = sentence_slices(tokens=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sentence_id_col</span> <span class="o">=</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">SENTENCE_ID_COLUMNS</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sentence_id_col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">tokens</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">sentence_id_col</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+
+    <span class="n">sentence_start_col</span> <span class="o">=</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">SENTENCE_START_COLUMNS</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sentence_start_col</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">tokens</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
+
+    <span class="n">boundaries</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="n">sentence_start_col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">boundaries</span><span class="p">:</span>
+        <span class="n">boundaries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">sentences</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">boundaries</span><span class="p">[</span><span class="n">idx</span><span class="p">]:</span>
+            <span class="n">sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokens</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">idx</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokens</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">sentences</span> <span class="ow">or</span> <span class="p">[</span><span class="n">tokens</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span></div>
+
+
+
+<div class="viewcode-block" id="sentence_identifier">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.sentence_identifier.html#voxatlas.syntax.dependency_utils.sentence_identifier">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sentence_identifier</span><span class="p">(</span><span class="n">sentence</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">fallback</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ``sentence_identifier`` public API.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sentence : pd.DataFrame</span>
+<span class="sd">        Tabular annotation aligned to a VoxAtlas unit level and used as structured pipeline input.</span>
+<span class="sd">    fallback : int</span>
+<span class="sd">        Integer argument controlling execution or indexing.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int</span>
+<span class="sd">        Integer quantity derived from the supplied signal or annotations.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = sentence_identifier(sentence=..., fallback=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sentence_id_col</span> <span class="o">=</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">SENTENCE_ID_COLUMNS</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sentence_id_col</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">sentence</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fallback</span>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">sentence_id_col</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">fallback</span>
+
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="build_dependency_table_from_annotations">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.build_dependency_table_from_annotations.html#voxatlas.syntax.dependency_utils.build_dependency_table_from_annotations">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_dependency_table_from_annotations</span><span class="p">(</span><span class="n">tokens</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build dependency table from annotations for the VoxAtlas pipeline.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tokens : pd.DataFrame</span>
+<span class="sd">        Token-level annotation table used for morphological or syntactic computation.</span>
+<span class="sd">    </span>
+<span class="sd">    tokens example</span>
+<span class="sd">    --------------</span>
+<span class="sd">    token_id | sentence_id | head | dep_rel | text</span>
+<span class="sd">    1 | 0 | 2 | nsubj | hello</span>
+<span class="sd">    2 | 0 | 0 | root | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Tabular result aligned to a VoxAtlas unit level or registry resource.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = build_dependency_table_from_annotations(tokens=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">id_col</span> <span class="o">=</span> <span class="n">require_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
+    <span class="n">head_col</span> <span class="o">=</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">HEAD_COLUMNS</span><span class="p">)</span>
+    <span class="n">dep_label_col</span> <span class="o">=</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">DEP_LABEL_COLUMNS</span><span class="p">)</span>
+    <span class="n">pos_col</span> <span class="o">=</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">POS_COLUMNS</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">head_col</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dep_label_col</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">pos_col</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">head_col</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">missing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;head column in </span><span class="si">{</span><span class="n">HEAD_COLUMNS</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dep_label_col</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">missing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;dependency label column in </span><span class="si">{</span><span class="n">DEP_LABEL_COLUMNS</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pos_col</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">missing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;POS column in </span><span class="si">{</span><span class="n">POS_COLUMNS</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Dependency features require existing dependency annotations or a parser. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Missing </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;token_id&quot;</span><span class="p">:</span> <span class="n">tokens</span><span class="p">[</span><span class="n">id_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="s2">&quot;head_id&quot;</span><span class="p">:</span> <span class="n">tokens</span><span class="p">[</span><span class="n">head_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="s2">&quot;dep_label&quot;</span><span class="p">:</span> <span class="n">tokens</span><span class="p">[</span><span class="n">dep_label_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="n">tokens</span><span class="p">[</span><span class="n">pos_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">sentence_id_col</span> <span class="o">=</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">SENTENCE_ID_COLUMNS</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sentence_id_col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">table</span><span class="p">[</span><span class="s2">&quot;sentence_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="n">sentence_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">return</span> <span class="n">finalize_dependency_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="has_dependency_annotations">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.has_dependency_annotations.html#voxatlas.syntax.dependency_utils.has_dependency_annotations">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">has_dependency_annotations</span><span class="p">(</span><span class="n">tokens</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ``has_dependency_annotations`` public API.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tokens : pd.DataFrame</span>
+<span class="sd">        Token-level annotation table used for morphological or syntactic computation.</span>
+<span class="sd">    </span>
+<span class="sd">    tokens example</span>
+<span class="sd">    --------------</span>
+<span class="sd">    token_id | sentence_id | head | dep_rel | text</span>
+<span class="sd">    1 | 0 | 2 | nsubj | hello</span>
+<span class="sd">    2 | 0 | 0 | root | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        Boolean flag indicating whether the requested condition holds.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = has_dependency_annotations(tokens=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="n">tokens</span><span class="o">.</span><span class="n">columns</span>
+        <span class="ow">and</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">HEAD_COLUMNS</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="ow">and</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">DEP_LABEL_COLUMNS</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="ow">and</span> <span class="n">find_first_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">POS_COLUMNS</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_run_custom_parser</span><span class="p">(</span>
+    <span class="n">tokens</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">parser</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">sentence_slices</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;token_id&quot;</span><span class="p">,</span> <span class="s2">&quot;head_id&quot;</span><span class="p">,</span> <span class="s2">&quot;dep_label&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parsed</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">required</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Custom dependency parser must return a DataFrame with &quot;</span>
+            <span class="s2">&quot;&#39;token_id&#39;, &#39;head_id&#39;, &#39;dep_label&#39;, and &#39;pos&#39; columns&quot;</span>
+        <span class="p">)</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">keep_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;token_id&quot;</span><span class="p">,</span> <span class="s2">&quot;head_id&quot;</span><span class="p">,</span> <span class="s2">&quot;dep_label&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="s2">&quot;sentence_id&quot;</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">keep_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sentence_id&quot;</span><span class="p">)</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">keep_columns</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">finalize_dependency_table</span><span class="p">(</span><span class="n">parsed</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="finalize_dependency_table">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.finalize_dependency_table.html#voxatlas.syntax.dependency_utils.finalize_dependency_table">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">finalize_dependency_table</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ``finalize_dependency_table`` public API.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    table : pd.DataFrame</span>
+<span class="sd">        Tabular annotation aligned to a VoxAtlas unit level.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Tabular result aligned to a VoxAtlas unit level or registry resource.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = finalize_dependency_table(table=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;token_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;token_id&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+        <span class="s2">&quot;Int64&quot;</span>
+    <span class="p">)</span>
+    <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;head_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;head_id&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+        <span class="s2">&quot;Int64&quot;</span>
+    <span class="p">)</span>
+    <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;dep_label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;dep_label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+    <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+    <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;token_id&quot;</span><span class="p">]</span>
+    <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;deprel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;dep_label&quot;</span><span class="p">]</span>
+    <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;dependency_label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;dep_label&quot;</span><span class="p">]</span>
+    <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;upos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">normalized</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ensure_sentence_alignment</span><span class="p">(</span><span class="n">sentence</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">parsed_rows</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">parsed_rows</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Dependency parser token count does not match the provided token units&quot;</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_load_spacy_pipeline</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spacy_nlp&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spacy_nlp&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pipeline</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pipeline</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;spaCy is not installed. Install the &#39;syntax&#39; extra or provide &quot;</span>
+            <span class="s2">&quot;&#39;spacy_nlp&#39; in params/context.&quot;</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+
+    <span class="n">model_name</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spacy_model&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spacy_model&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;en_core_web_sm&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Unable to load spaCy model &#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&#39;. Provide &#39;spacy_nlp&#39; or install &quot;</span>
+            <span class="s2">&quot;the model before running syntax.dependencies.&quot;</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_parse_with_spacy</span><span class="p">(</span><span class="n">tokens</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">nlp</span> <span class="o">=</span> <span class="n">_load_spacy_pipeline</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">spacy.tokens</span><span class="w"> </span><span class="kn">import</span> <span class="n">Doc</span>
+    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;spaCy is not available for dependency parsing&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+
+    <span class="n">rows</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">fallback_sentence_id</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sentence_slices</span><span class="p">(</span><span class="n">tokens</span><span class="p">)):</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">[</span><span class="s2">&quot;token&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">Doc</span><span class="p">(</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">,</span> <span class="n">words</span><span class="o">=</span><span class="n">words</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+            <span class="n">token</span><span class="o">.</span><span class="n">is_sent_start</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">nlp</span><span class="o">.</span><span class="n">pipeline</span><span class="p">:</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="n">component</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+        <span class="n">sentence_rows</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">sentence_ids</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">current_sentence_id</span> <span class="o">=</span> <span class="n">sentence_identifier</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">fallback_sentence_id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">parsed_token</span><span class="p">,</span> <span class="n">token_id</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">sentence_ids</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="n">head_id</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+            <span class="k">if</span> <span class="n">parsed_token</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">i</span> <span class="o">!=</span> <span class="n">parsed_token</span><span class="o">.</span><span class="n">i</span><span class="p">:</span>
+                <span class="n">head_id</span> <span class="o">=</span> <span class="n">sentence_ids</span><span class="p">[</span><span class="n">parsed_token</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">sentence_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;token_id&quot;</span><span class="p">:</span> <span class="n">token_id</span><span class="p">,</span>
+                    <span class="s2">&quot;head_id&quot;</span><span class="p">:</span> <span class="n">head_id</span><span class="p">,</span>
+                    <span class="s2">&quot;dep_label&quot;</span><span class="p">:</span> <span class="n">parsed_token</span><span class="o">.</span><span class="n">dep_</span> <span class="ow">or</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="n">parsed_token</span><span class="o">.</span><span class="n">pos_</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;sentence_id&quot;</span><span class="p">:</span> <span class="n">current_sentence_id</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+        <span class="n">_ensure_sentence_alignment</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">sentence_rows</span><span class="p">)</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sentence_rows</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">finalize_dependency_table</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_load_stanza_pipeline</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stanza_pipeline&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stanza_pipeline&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pipeline</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pipeline</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">stanza</span>
+    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Stanza is not installed. Provide &#39;stanza_pipeline&#39; in params/context &quot;</span>
+            <span class="s2">&quot;or install stanza.&quot;</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+
+    <span class="n">language</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;language&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;language&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;en&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">stanza</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">(</span>
+            <span class="n">lang</span><span class="o">=</span><span class="n">language</span><span class="p">,</span>
+            <span class="n">processors</span><span class="o">=</span><span class="s2">&quot;tokenize,pos,depparse&quot;</span><span class="p">,</span>
+            <span class="n">tokenize_pretokenized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>  <span class="c1"># pragma: no cover - depends on local stanza setup</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Unable to initialize the Stanza pipeline. Provide &#39;stanza_pipeline&#39; &quot;</span>
+            <span class="s2">&quot;in params/context or download the required Stanza models.&quot;</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_parse_with_stanza</span><span class="p">(</span><span class="n">tokens</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">_load_stanza_pipeline</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="n">rows</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">fallback_sentence_id</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sentence_slices</span><span class="p">(</span><span class="n">tokens</span><span class="p">)):</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">[</span><span class="s2">&quot;token&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">document</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">([</span><span class="n">words</span><span class="p">])</span>
+        <span class="n">parsed_words</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">parsed_sentence</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">sentences</span><span class="p">:</span>
+            <span class="n">parsed_words</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">parsed_sentence</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
+
+        <span class="n">_ensure_sentence_alignment</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">parsed_words</span><span class="p">)</span>
+        <span class="n">sentence_ids</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">current_sentence_id</span> <span class="o">=</span> <span class="n">sentence_identifier</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">fallback_sentence_id</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">parsed_word</span><span class="p">,</span> <span class="n">token_id</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">parsed_words</span><span class="p">,</span> <span class="n">sentence_ids</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="n">head_id</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+            <span class="k">if</span> <span class="n">parsed_word</span><span class="o">.</span><span class="n">head</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">head_id</span> <span class="o">=</span> <span class="n">sentence_ids</span><span class="p">[</span><span class="n">parsed_word</span><span class="o">.</span><span class="n">head</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;token_id&quot;</span><span class="p">:</span> <span class="n">token_id</span><span class="p">,</span>
+                    <span class="s2">&quot;head_id&quot;</span><span class="p">:</span> <span class="n">head_id</span><span class="p">,</span>
+                    <span class="s2">&quot;dep_label&quot;</span><span class="p">:</span> <span class="n">parsed_word</span><span class="o">.</span><span class="n">deprel</span> <span class="ow">or</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="n">parsed_word</span><span class="o">.</span><span class="n">upos</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;sentence_id&quot;</span><span class="p">:</span> <span class="n">current_sentence_id</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">finalize_dependency_table</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="parse_dependency_annotations">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.parse_dependency_annotations.html#voxatlas.syntax.dependency_utils.parse_dependency_annotations">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_dependency_annotations</span><span class="p">(</span><span class="n">tokens</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse dependency annotations into a structured representation.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tokens : pd.DataFrame</span>
+<span class="sd">        Token-level annotation table used for morphological or syntactic computation.</span>
+<span class="sd">    params : dict | None</span>
+<span class="sd">        Resolved feature configuration for this invocation. Keys are feature-specific and merged from defaults and pipeline settings.</span>
+<span class="sd">    context : dict | None</span>
+<span class="sd">        Additional pipeline metadata, configuration, and dependency outputs available to the current computation stage.</span>
+<span class="sd">    </span>
+<span class="sd">    tokens example</span>
+<span class="sd">    --------------</span>
+<span class="sd">    token_id | sentence_id | head | dep_rel | text</span>
+<span class="sd">    1 | 0 | 2 | nsubj | hello</span>
+<span class="sd">    2 | 0 | 0 | root | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Tabular result aligned to a VoxAtlas unit level or registry resource.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = parse_dependency_annotations(tokens=..., params=..., context=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">params</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">context</span> <span class="ow">or</span> <span class="p">{}</span>
+
+    <span class="n">require_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
+    <span class="n">require_column</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">)</span>
+
+    <span class="n">custom_parser</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parser&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parser&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">custom_parser</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_run_custom_parser</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">custom_parser</span><span class="p">)</span>
+
+    <span class="n">backend</span> <span class="o">=</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backend&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;syntax_backend&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;spacy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;spacy&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_parse_with_spacy</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;stanza&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_parse_with_stanza</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Unsupported dependency parser backend &#39;</span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+        <span class="s2">&quot;Expected &#39;spacy&#39; or &#39;stanza&#39;.&quot;</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="extract_dependency_features">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.extract_dependency_features.html#voxatlas.syntax.dependency_utils.extract_dependency_features">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_dependency_features</span><span class="p">(</span><span class="n">tokens</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract dependency features from structured VoxAtlas data.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tokens : pd.DataFrame</span>
+<span class="sd">        Token-level annotation table used for morphological or syntactic computation.</span>
+<span class="sd">    params : dict | None</span>
+<span class="sd">        Resolved feature configuration for this invocation. Keys are feature-specific and merged from defaults and pipeline settings.</span>
+<span class="sd">    context : dict | None</span>
+<span class="sd">        Additional pipeline metadata, configuration, and dependency outputs available to the current computation stage.</span>
+<span class="sd">    </span>
+<span class="sd">    tokens example</span>
+<span class="sd">    --------------</span>
+<span class="sd">    token_id | sentence_id | head | dep_rel | text</span>
+<span class="sd">    1 | 0 | 2 | nsubj | hello</span>
+<span class="sd">    2 | 0 | 0 | root | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Tabular result aligned to a VoxAtlas unit level or registry resource.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = extract_dependency_features(tokens=..., params=..., context=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">tokens</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;syntax.dependencies requires token units&quot;</span><span class="p">)</span>
+
+    <span class="n">ordered_tokens</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">has_dependency_annotations</span><span class="p">(</span><span class="n">ordered_tokens</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">build_dependency_table_from_annotations</span><span class="p">(</span><span class="n">ordered_tokens</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parse_dependency_annotations</span><span class="p">(</span><span class="n">ordered_tokens</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="signed_head_distance">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.signed_head_distance.html#voxatlas.syntax.dependency_utils.signed_head_distance">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">signed_head_distance</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ``signed_head_distance`` public API.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    table : pd.DataFrame</span>
+<span class="sd">        Tabular annotation aligned to a VoxAtlas unit level.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        One-dimensional values aligned to the index of the supplied table.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = signed_head_distance(table=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">head_id</span><span class="p">):</span>
+            <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">head_id</span> <span class="o">-</span> <span class="n">row</span><span class="o">.</span><span class="n">token_id</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;token_id&quot;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="absolute_dependency_distance">
+<a class="viewcode-back" href="../../../api/generated/voxatlas.syntax.dependency_utils.absolute_dependency_distance.html#voxatlas.syntax.dependency_utils.absolute_dependency_distance">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">absolute_dependency_distance</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ``absolute_dependency_distance`` public API.</span>
+<span class="sd">    </span>
+<span class="sd">    This public function belongs to the syntax layer of VoxAtlas and can be reused by higher-level pipeline stages or feature extractors.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    table : pd.DataFrame</span>
+<span class="sd">        Tabular annotation aligned to a VoxAtlas unit level.</span>
+<span class="sd">    </span>
+<span class="sd">    table example</span>
+<span class="sd">    -------------</span>
+<span class="sd">    unit_id | start | end | speaker | label</span>
+<span class="sd">    0 | 0.12 | 0.45 | A | hello</span>
+<span class="sd">    1 | 0.46 | 0.80 | A | world</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        One-dimensional values aligned to the index of the supplied table.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        value = absolute_dependency_distance(table=...)</span>
+<span class="sd">        print(value)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">signed_head_distance</span><span class="p">(</span><span class="n">table</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, VoxAtlas contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

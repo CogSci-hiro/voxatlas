@@ -1,0 +1,6 @@
+voxatlas.phonology.reduction_utils.detect_schwa_deletion
+========================================================
+
+.. currentmodule:: voxatlas.phonology.reduction_utils
+
+.. autofunction:: detect_schwa_deletion

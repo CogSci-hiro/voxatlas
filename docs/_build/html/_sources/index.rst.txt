@@ -1,0 +1,57 @@
+VoxAtlas
+========
+
+VoxAtlas is a feature extraction engine for conversational speech.
+
+The documentation follows an MNE-style layout: API reference pages are
+generated from docstrings, algorithm details live next to the extractor code,
+and tutorials show end-to-end usage patterns.
+
+Getting Started
+---------------
+
+.. toctree::
+   :maxdepth: 1
+
+   getting_started/installation
+   getting_started/minimal_example
+
+Overview
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   overview/architecture
+   overview/pipeline
+   overview/unit_hierarchy
+   overview/feature_system
+
+Tutorials
+---------
+
+.. toctree::
+   :maxdepth: 1
+
+   tutorials/acoustic_features
+   tutorials/linguistic_features
+   tutorials/conversational_features
+   tutorials/building_features
+
+Developer Guide
+---------------
+
+.. toctree::
+   :maxdepth: 1
+
+   developer/writing_extractors
+   developer/feature_registry
+   developer/pipeline_internals
+
+API Reference
+-------------
+
+.. toctree::
+   :maxdepth: 2
+
+   api/modules

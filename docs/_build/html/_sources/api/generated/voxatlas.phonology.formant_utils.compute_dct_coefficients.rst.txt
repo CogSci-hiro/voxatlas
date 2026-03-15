@@ -1,0 +1,6 @@
+voxatlas.phonology.formant_utils.compute_dct_coefficients
+=========================================================
+
+.. currentmodule:: voxatlas.phonology.formant_utils
+
+.. autofunction:: compute_dct_coefficients

@@ -1,0 +1,6 @@
+voxatlas.config.config.load_and_prepare_config
+==============================================
+
+.. currentmodule:: voxatlas.config.config
+
+.. autofunction:: load_and_prepare_config

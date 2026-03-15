@@ -1,0 +1,22 @@
+voxatlas.syntax.clause_utils
+============================
+
+.. currentmodule:: voxatlas.syntax.clause_utils
+
+.. automodule:: voxatlas.syntax.clause_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   compute_clause_membership
+
+   ensure_clause_columns
+
+

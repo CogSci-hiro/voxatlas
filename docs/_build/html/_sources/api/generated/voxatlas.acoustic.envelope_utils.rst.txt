@@ -1,0 +1,36 @@
+voxatlas.acoustic.envelope_utils
+================================
+
+.. currentmodule:: voxatlas.acoustic.envelope_utils
+
+.. automodule:: voxatlas.acoustic.envelope_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   compute_derivative
+
+   compute_hilbert
+
+   compute_log_energy
+
+   compute_peak_rate
+
+   compute_rms
+
+   compute_variability
+
+   detect_peaks
+
+   frame_signal
+
+   smooth_signal
+
+

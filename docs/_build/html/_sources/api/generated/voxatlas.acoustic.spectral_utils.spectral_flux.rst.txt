@@ -1,0 +1,6 @@
+voxatlas.acoustic.spectral_utils.spectral_flux
+==============================================
+
+.. currentmodule:: voxatlas.acoustic.spectral_utils
+
+.. autofunction:: spectral_flux

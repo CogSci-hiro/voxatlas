@@ -1,0 +1,6 @@
+voxatlas.phonology.reduction_utils.get_observed_pronunciation
+=============================================================
+
+.. currentmodule:: voxatlas.phonology.reduction_utils
+
+.. autofunction:: get_observed_pronunciation

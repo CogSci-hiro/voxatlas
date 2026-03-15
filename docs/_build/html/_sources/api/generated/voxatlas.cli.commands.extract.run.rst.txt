@@ -1,0 +1,6 @@
+voxatlas.cli.commands.extract.run
+=================================
+
+.. currentmodule:: voxatlas.cli.commands.extract
+
+.. autofunction:: run

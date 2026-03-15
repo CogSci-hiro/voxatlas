@@ -1,0 +1,6 @@
+voxatlas.acoustic.envelope_utils.detect_peaks
+=============================================
+
+.. currentmodule:: voxatlas.acoustic.envelope_utils
+
+.. autofunction:: detect_peaks

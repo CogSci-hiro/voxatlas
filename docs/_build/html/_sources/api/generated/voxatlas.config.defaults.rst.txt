@@ -1,0 +1,11 @@
+voxatlas.config.defaults
+========================
+
+.. currentmodule:: voxatlas.config.defaults
+
+.. automodule:: voxatlas.config.defaults
+
+
+
+
+

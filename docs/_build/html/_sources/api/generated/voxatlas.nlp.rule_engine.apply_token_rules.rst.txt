@@ -1,0 +1,6 @@
+voxatlas.nlp.rule_engine.apply_token_rules
+==========================================
+
+.. currentmodule:: voxatlas.nlp.rule_engine
+
+.. autofunction:: apply_token_rules

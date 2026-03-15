@@ -1,0 +1,20 @@
+voxatlas.nlp.vocab_loader
+=========================
+
+.. currentmodule:: voxatlas.nlp.vocab_loader
+
+.. automodule:: voxatlas.nlp.vocab_loader
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   load_canonical_vocab
+
+

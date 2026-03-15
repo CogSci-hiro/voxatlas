@@ -1,0 +1,20 @@
+voxatlas.features.morphology.derivation.complexity
+==================================================
+
+.. currentmodule:: voxatlas.features.morphology.derivation.complexity
+
+.. automodule:: voxatlas.features.morphology.derivation.complexity
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   MorphologicalComplexityExtractor
+
+
+
+

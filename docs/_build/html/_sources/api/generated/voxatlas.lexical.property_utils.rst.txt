@@ -1,0 +1,24 @@
+voxatlas.lexical.property_utils
+===============================
+
+.. currentmodule:: voxatlas.lexical.property_utils
+
+.. automodule:: voxatlas.lexical.property_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   classify_function_word
+
+   load_lexical_property_resources
+
+   lookup_lexical_properties
+
+

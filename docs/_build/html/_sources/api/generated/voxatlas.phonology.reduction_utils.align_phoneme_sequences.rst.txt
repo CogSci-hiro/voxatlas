@@ -1,0 +1,6 @@
+voxatlas.phonology.reduction_utils.align_phoneme_sequences
+==========================================================
+
+.. currentmodule:: voxatlas.phonology.reduction_utils
+
+.. autofunction:: align_phoneme_sequences

@@ -1,0 +1,6 @@
+voxatlas.lexical.property_utils.lookup_lexical_properties
+=========================================================
+
+.. currentmodule:: voxatlas.lexical.property_utils
+
+.. autofunction:: lookup_lexical_properties

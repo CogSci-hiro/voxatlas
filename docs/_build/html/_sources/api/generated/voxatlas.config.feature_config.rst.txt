@@ -1,0 +1,20 @@
+voxatlas.config.feature_config
+==============================
+
+.. currentmodule:: voxatlas.config.feature_config
+
+.. automodule:: voxatlas.config.feature_config
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   resolve_feature_config
+
+

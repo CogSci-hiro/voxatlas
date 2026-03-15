@@ -1,0 +1,22 @@
+voxatlas.cli.main
+=================
+
+.. currentmodule:: voxatlas.cli.main
+
+.. automodule:: voxatlas.cli.main
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   build_parser
+
+   main
+
+

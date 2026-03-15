@@ -1,0 +1,30 @@
+voxatlas.features.acoustic.envelope.onset
+=========================================
+
+.. currentmodule:: voxatlas.features.acoustic.envelope.onset
+
+.. automodule:: voxatlas.features.acoustic.envelope.onset
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   HilbertOnset
+
+   LogEnergyOnset
+
+   OganianOnset
+
+   PraatIntensityOnset
+
+   RmsOnset
+
+   VarnetOnset
+
+
+
+

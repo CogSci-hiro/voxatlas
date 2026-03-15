@@ -1,0 +1,20 @@
+voxatlas.features.morphology.word_formation.features
+====================================================
+
+.. currentmodule:: voxatlas.features.morphology.word_formation.features
+
+.. automodule:: voxatlas.features.morphology.word_formation.features
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   WordFormationFeaturesExtractor
+
+
+
+

@@ -1,0 +1,25 @@
+voxatlas.lexical
+================
+
+.. currentmodule:: voxatlas.lexical
+
+.. automodule:: voxatlas.lexical
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+
+   frequency_utils
+
+   properties_utils
+
+   property_utils
+
+
+
+
+

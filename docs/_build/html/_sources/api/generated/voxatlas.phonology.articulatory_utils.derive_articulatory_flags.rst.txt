@@ -1,0 +1,6 @@
+voxatlas.phonology.articulatory_utils.derive_articulatory_flags
+===============================================================
+
+.. currentmodule:: voxatlas.phonology.articulatory_utils
+
+.. autofunction:: derive_articulatory_flags

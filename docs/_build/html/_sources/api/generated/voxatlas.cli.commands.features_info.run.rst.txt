@@ -1,0 +1,6 @@
+voxatlas.cli.commands.features_info.run
+=======================================
+
+.. currentmodule:: voxatlas.cli.commands.features_info
+
+.. autofunction:: run

@@ -1,0 +1,6 @@
+voxatlas.nlp.mapping_loader.load_mapping_table
+==============================================
+
+.. currentmodule:: voxatlas.nlp.mapping_loader
+
+.. autofunction:: load_mapping_table

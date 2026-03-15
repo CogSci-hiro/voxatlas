@@ -1,0 +1,6 @@
+voxatlas.syntax.dependency_utils.require_column
+===============================================
+
+.. currentmodule:: voxatlas.syntax.dependency_utils
+
+.. autofunction:: require_column

@@ -1,0 +1,13 @@
+Documentations
+==============
+
+Use these pages for conceptual documentation, architecture notes, and
+developer-facing explanations of how the system is organized.
+
+- :doc:`../getting_started/minimal_example`
+- :doc:`../overview/architecture`
+- :doc:`../overview/pipeline`
+- :doc:`../overview/unit_hierarchy`
+- :doc:`../overview/feature_system`
+- :doc:`../developer/feature_registry`
+- :doc:`../developer/pipeline_internals`

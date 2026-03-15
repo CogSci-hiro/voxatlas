@@ -1,0 +1,28 @@
+voxatlas.phonology.reduction_utils
+==================================
+
+.. currentmodule:: voxatlas.phonology.reduction_utils
+
+.. automodule:: voxatlas.phonology.reduction_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   align_phoneme_sequences
+
+   detect_schwa_deletion
+
+   detect_vowel_reduction
+
+   get_expected_pronunciation
+
+   get_observed_pronunciation
+
+

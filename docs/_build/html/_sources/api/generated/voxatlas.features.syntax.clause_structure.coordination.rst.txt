@@ -1,0 +1,20 @@
+voxatlas.features.syntax.clause_structure.coordination
+======================================================
+
+.. currentmodule:: voxatlas.features.syntax.clause_structure.coordination
+
+.. automodule:: voxatlas.features.syntax.clause_structure.coordination
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   SyntaxCoordinationExtractor
+
+
+
+

@@ -1,0 +1,20 @@
+voxatlas.nlp.mapping_loader
+===========================
+
+.. currentmodule:: voxatlas.nlp.mapping_loader
+
+.. automodule:: voxatlas.nlp.mapping_loader
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   load_mapping_table
+
+

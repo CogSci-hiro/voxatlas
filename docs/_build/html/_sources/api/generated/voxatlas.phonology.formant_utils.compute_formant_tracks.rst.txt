@@ -1,0 +1,6 @@
+voxatlas.phonology.formant_utils.compute_formant_tracks
+=======================================================
+
+.. currentmodule:: voxatlas.phonology.formant_utils
+
+.. autofunction:: compute_formant_tracks

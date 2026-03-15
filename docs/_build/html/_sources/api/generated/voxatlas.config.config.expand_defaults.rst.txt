@@ -1,0 +1,6 @@
+voxatlas.config.config.expand_defaults
+======================================
+
+.. currentmodule:: voxatlas.config.config
+
+.. autofunction:: expand_defaults

@@ -1,0 +1,6 @@
+voxatlas.nlp.vocab_loader.load_canonical_vocab
+==============================================
+
+.. currentmodule:: voxatlas.nlp.vocab_loader
+
+.. autofunction:: load_canonical_vocab

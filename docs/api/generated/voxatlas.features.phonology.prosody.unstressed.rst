@@ -1,0 +1,20 @@
+voxatlas.features.phonology.prosody.unstressed
+==============================================
+
+.. currentmodule:: voxatlas.features.phonology.prosody.unstressed
+
+.. automodule:: voxatlas.features.phonology.prosody.unstressed
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   ProsodicUnstressedExtractor
+
+
+
+

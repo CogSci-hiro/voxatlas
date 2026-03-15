@@ -1,0 +1,20 @@
+voxatlas.features.morphology.word_formation.clitic
+==================================================
+
+.. currentmodule:: voxatlas.features.morphology.word_formation.clitic
+
+.. automodule:: voxatlas.features.morphology.word_formation.clitic
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   CliticExtractor
+
+
+
+

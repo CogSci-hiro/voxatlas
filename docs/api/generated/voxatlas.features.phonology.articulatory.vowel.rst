@@ -1,0 +1,20 @@
+voxatlas.features.phonology.articulatory.vowel
+==============================================
+
+.. currentmodule:: voxatlas.features.phonology.articulatory.vowel
+
+.. automodule:: voxatlas.features.phonology.articulatory.vowel
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   ArticulatoryVowelExtractor
+
+
+
+

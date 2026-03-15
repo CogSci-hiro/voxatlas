@@ -1,0 +1,23 @@
+voxatlas.core
+=============
+
+.. currentmodule:: voxatlas.core
+
+.. automodule:: voxatlas.core
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+
+   discovery
+
+   registry
+
+
+
+
+

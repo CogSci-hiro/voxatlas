@@ -1,0 +1,6 @@
+voxatlas.cli.commands.features_list.colorize
+============================================
+
+.. currentmodule:: voxatlas.cli.commands.features_list
+
+.. autofunction:: colorize

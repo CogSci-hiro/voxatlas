@@ -1,0 +1,3 @@
+"""
+Lexical property feature family.
+"""

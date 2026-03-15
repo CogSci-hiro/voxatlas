@@ -1,0 +1,6 @@
+voxatlas.acoustic.pitch_utils.compute_f0_range
+==============================================
+
+.. currentmodule:: voxatlas.acoustic.pitch_utils
+
+.. autofunction:: compute_f0_range

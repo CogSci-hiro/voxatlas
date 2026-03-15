@@ -1,0 +1,20 @@
+voxatlas.features.acoustic.spectral.spread
+==========================================
+
+.. currentmodule:: voxatlas.features.acoustic.spectral.spread
+
+.. automodule:: voxatlas.features.acoustic.spectral.spread
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree:
+
+
+   SpectralSpreadExtractor
+
+
+
+

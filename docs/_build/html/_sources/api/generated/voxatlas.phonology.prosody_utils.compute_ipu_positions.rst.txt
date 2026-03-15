@@ -1,0 +1,6 @@
+voxatlas.phonology.prosody_utils.compute_ipu_positions
+======================================================
+
+.. currentmodule:: voxatlas.phonology.prosody_utils
+
+.. autofunction:: compute_ipu_positions

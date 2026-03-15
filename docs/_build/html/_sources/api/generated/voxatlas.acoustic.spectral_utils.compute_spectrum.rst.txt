@@ -1,0 +1,6 @@
+voxatlas.acoustic.spectral_utils.compute_spectrum
+=================================================
+
+.. currentmodule:: voxatlas.acoustic.spectral_utils
+
+.. autofunction:: compute_spectrum

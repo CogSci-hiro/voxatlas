@@ -1,0 +1,20 @@
+voxatlas.config.schema
+======================
+
+.. currentmodule:: voxatlas.config.schema
+
+.. automodule:: voxatlas.config.schema
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   validate_config
+
+

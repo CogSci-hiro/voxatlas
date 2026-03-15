@@ -1,0 +1,6 @@
+voxatlas.syntax.dependency_utils.absolute_dependency_distance
+=============================================================
+
+.. currentmodule:: voxatlas.syntax.dependency_utils
+
+.. autofunction:: absolute_dependency_distance

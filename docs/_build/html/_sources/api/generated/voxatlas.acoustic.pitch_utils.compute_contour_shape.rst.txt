@@ -1,0 +1,6 @@
+voxatlas.acoustic.pitch_utils.compute_contour_shape
+===================================================
+
+.. currentmodule:: voxatlas.acoustic.pitch_utils
+
+.. autofunction:: compute_contour_shape

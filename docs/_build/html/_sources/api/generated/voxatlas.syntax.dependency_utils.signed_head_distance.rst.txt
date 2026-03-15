@@ -1,0 +1,6 @@
+voxatlas.syntax.dependency_utils.signed_head_distance
+=====================================================
+
+.. currentmodule:: voxatlas.syntax.dependency_utils
+
+.. autofunction:: signed_head_distance

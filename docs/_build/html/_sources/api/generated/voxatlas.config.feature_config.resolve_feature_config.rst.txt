@@ -1,0 +1,6 @@
+voxatlas.config.feature_config.resolve_feature_config
+=====================================================
+
+.. currentmodule:: voxatlas.config.feature_config
+
+.. autofunction:: resolve_feature_config

@@ -1,0 +1,6 @@
+voxatlas.syntax.complexity_utils.branching_factor
+=================================================
+
+.. currentmodule:: voxatlas.syntax.complexity_utils
+
+.. autofunction:: branching_factor

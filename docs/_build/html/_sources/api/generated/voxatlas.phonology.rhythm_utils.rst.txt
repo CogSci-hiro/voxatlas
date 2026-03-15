@@ -1,0 +1,40 @@
+voxatlas.phonology.rhythm_utils
+===============================
+
+.. currentmodule:: voxatlas.phonology.rhythm_utils
+
+.. automodule:: voxatlas.phonology.rhythm_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   compute_delta_c
+
+   compute_delta_v
+
+   compute_npvi
+
+   compute_pause_rate
+
+   compute_percent_c
+
+   compute_percent_v
+
+   compute_rhythm_intervals
+
+   compute_syllable_durations
+
+   compute_syllable_rate
+
+   compute_varco_c
+
+   compute_varco_v
+
+

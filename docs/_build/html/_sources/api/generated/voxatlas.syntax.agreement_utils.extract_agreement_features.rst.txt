@@ -1,0 +1,6 @@
+voxatlas.syntax.agreement_utils.extract_agreement_features
+==========================================================
+
+.. currentmodule:: voxatlas.syntax.agreement_utils
+
+.. autofunction:: extract_agreement_features

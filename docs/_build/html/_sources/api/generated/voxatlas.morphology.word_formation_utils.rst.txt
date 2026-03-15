@@ -1,0 +1,26 @@
+voxatlas.morphology.word_formation_utils
+========================================
+
+.. currentmodule:: voxatlas.morphology.word_formation_utils
+
+.. automodule:: voxatlas.morphology.word_formation_utils
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree:
+
+
+   detect_clitic
+
+   detect_compound
+
+   extract_word_formation_features
+
+   load_clitic_list
+
+
