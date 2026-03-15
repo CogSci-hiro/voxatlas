@@ -1,8 +1,11 @@
-voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor
+﻿InflectionDefinitenessExtractor
 ====================================================================================
+
+Defined in: ``voxatlas.features.morphology.inflection.definiteness``
 
 .. currentmodule:: voxatlas.features.morphology.inflection.definiteness
 
 .. autoclass:: InflectionDefinitenessExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

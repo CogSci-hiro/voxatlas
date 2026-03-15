@@ -1,5 +1,7 @@
-voxatlas.registry.validator.validate_dependencies
+﻿validate_dependencies
 =================================================
+
+Defined in: ``voxatlas.registry.validator``
 
 .. currentmodule:: voxatlas.registry.validator
 

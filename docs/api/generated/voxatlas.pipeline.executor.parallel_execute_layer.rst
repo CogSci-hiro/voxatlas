@@ -1,5 +1,7 @@
-voxatlas.pipeline.executor.parallel_execute_layer
+﻿parallel_execute_layer
 =================================================
+
+Defined in: ``voxatlas.pipeline.executor``
 
 .. currentmodule:: voxatlas.pipeline.executor
 

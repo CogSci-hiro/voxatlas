@@ -1,8 +1,11 @@
-voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor
+﻿ArticulatoryNasalExtractor
 =========================================================================
+
+Defined in: ``voxatlas.features.phonology.articulatory.nasal``
 
 .. currentmodule:: voxatlas.features.phonology.articulatory.nasal
 
 .. autoclass:: ArticulatoryNasalExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

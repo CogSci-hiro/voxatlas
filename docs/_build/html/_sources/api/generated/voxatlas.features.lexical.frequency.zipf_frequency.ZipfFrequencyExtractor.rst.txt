@@ -1,8 +1,11 @@
-voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor
+﻿ZipfFrequencyExtractor
 =========================================================================
+
+Defined in: ``voxatlas.features.lexical.frequency.zipf_frequency``
 
 .. currentmodule:: voxatlas.features.lexical.frequency.zipf_frequency
 
 .. autoclass:: ZipfFrequencyExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

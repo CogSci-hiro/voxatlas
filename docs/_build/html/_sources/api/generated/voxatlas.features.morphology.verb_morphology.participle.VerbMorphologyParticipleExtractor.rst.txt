@@ -1,8 +1,11 @@
-voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor
+﻿VerbMorphologyParticipleExtractor
 =========================================================================================
+
+Defined in: ``voxatlas.features.morphology.verb_morphology.participle``
 
 .. currentmodule:: voxatlas.features.morphology.verb_morphology.participle
 
 .. autoclass:: VerbMorphologyParticipleExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor
+﻿LexicalPropertyLookupExtractor
 ==========================================================================
+
+Defined in: ``voxatlas.features.lexical.properties.lookup``
 
 .. currentmodule:: voxatlas.features.lexical.properties.lookup
 
 .. autoclass:: LexicalPropertyLookupExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor
+﻿FormantCentralizationExtractor
 =================================================================================
+
+Defined in: ``voxatlas.features.phonology.formant.centralization``
 
 .. currentmodule:: voxatlas.features.phonology.formant.centralization
 
 .. autoclass:: FormantCentralizationExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

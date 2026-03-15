@@ -1,8 +1,11 @@
-voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor
+﻿FormantTrajectoryExtractor
 =========================================================================
+
+Defined in: ``voxatlas.features.phonology.formant.trajectory``
 
 .. currentmodule:: voxatlas.features.phonology.formant.trajectory
 
 .. autoclass:: FormantTrajectoryExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.peak_rate.LogEnergyPeakRate
+﻿LogEnergyPeakRate
 ===============================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.peak_rate``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.peak_rate
 
 .. autoclass:: LogEnergyPeakRate
    :members:
+   :undoc-members:
    :show-inheritance:

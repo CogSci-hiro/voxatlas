@@ -1,8 +1,11 @@
-voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor
+﻿SyntaxLocalStructureDependencyDistanceExtractor
 ============================================================================================================
+
+Defined in: ``voxatlas.features.syntax.local_structure.dependency_distance``
 
 .. currentmodule:: voxatlas.features.syntax.local_structure.dependency_distance
 
 .. autoclass:: SyntaxLocalStructureDependencyDistanceExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

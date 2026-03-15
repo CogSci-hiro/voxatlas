@@ -1,5 +1,7 @@
-{{ fullname }}
+{{ objname }}
 {{ underline }}
+
+Defined in: ``{{ module }}``
 
 .. currentmodule:: {{ module }}
 

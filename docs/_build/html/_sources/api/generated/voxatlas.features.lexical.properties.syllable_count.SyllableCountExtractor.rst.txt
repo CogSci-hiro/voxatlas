@@ -1,8 +1,11 @@
-voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor
+﻿SyllableCountExtractor
 ==========================================================================
+
+Defined in: ``voxatlas.features.lexical.properties.syllable_count``
 
 .. currentmodule:: voxatlas.features.lexical.properties.syllable_count
 
 .. autoclass:: SyllableCountExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

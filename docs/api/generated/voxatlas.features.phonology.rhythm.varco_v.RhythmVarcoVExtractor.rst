@@ -1,8 +1,11 @@
-voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor
+﻿RhythmVarcoVExtractor
 ================================================================
+
+Defined in: ``voxatlas.features.phonology.rhythm.varco_v``
 
 .. currentmodule:: voxatlas.features.phonology.rhythm.varco_v
 
 .. autoclass:: RhythmVarcoVExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

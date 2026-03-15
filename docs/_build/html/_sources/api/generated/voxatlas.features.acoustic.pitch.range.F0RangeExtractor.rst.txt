@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.pitch.range.F0RangeExtractor
+﻿F0RangeExtractor
 =======================================================
+
+Defined in: ``voxatlas.features.acoustic.pitch.range``
 
 .. currentmodule:: voxatlas.features.acoustic.pitch.range
 
 .. autoclass:: F0RangeExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor
+﻿STFTSpectrogramExtractor
 ====================================================================
+
+Defined in: ``voxatlas.features.acoustic.spectrogram.stft``
 
 .. currentmodule:: voxatlas.features.acoustic.spectrogram.stft
 
 .. autoclass:: STFTSpectrogramExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

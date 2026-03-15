@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.peak_rate.VarnetPeakRate
+﻿VarnetPeakRate
 ============================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.peak_rate``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.peak_rate
 
 .. autoclass:: VarnetPeakRate
    :members:
+   :undoc-members:
    :show-inheritance:

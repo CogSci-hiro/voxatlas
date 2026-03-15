@@ -1,8 +1,11 @@
-voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor
+﻿ConcretenessExtractor
 =======================================================================
+
+Defined in: ``voxatlas.features.lexical.properties.concreteness``
 
 .. currentmodule:: voxatlas.features.lexical.properties.concreteness
 
 .. autoclass:: ConcretenessExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

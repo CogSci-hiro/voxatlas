@@ -1,4 +1,4 @@
-voxatlas.registry.validator
+﻿voxatlas.registry.validator
 ===========================
 
 .. currentmodule:: voxatlas.registry.validator

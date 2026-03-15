@@ -1,5 +1,7 @@
-voxatlas.registry.validator.validate_feature_name
+﻿validate_feature_name
 =================================================
+
+Defined in: ``voxatlas.registry.validator``
 
 .. currentmodule:: voxatlas.registry.validator
 

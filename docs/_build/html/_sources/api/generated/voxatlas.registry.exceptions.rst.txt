@@ -1,4 +1,4 @@
-voxatlas.registry.exceptions
+﻿voxatlas.registry.exceptions
 ============================
 
 .. currentmodule:: voxatlas.registry.exceptions

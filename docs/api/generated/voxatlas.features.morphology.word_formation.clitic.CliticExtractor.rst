@@ -1,8 +1,11 @@
-voxatlas.features.morphology.word_formation.clitic.CliticExtractor
+﻿CliticExtractor
 ==================================================================
+
+Defined in: ``voxatlas.features.morphology.word_formation.clitic``
 
 .. currentmodule:: voxatlas.features.morphology.word_formation.clitic
 
 .. autoclass:: CliticExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

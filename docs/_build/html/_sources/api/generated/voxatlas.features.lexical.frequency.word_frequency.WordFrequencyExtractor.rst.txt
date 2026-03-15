@@ -1,8 +1,11 @@
-voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor
+﻿WordFrequencyExtractor
 =========================================================================
+
+Defined in: ``voxatlas.features.lexical.frequency.word_frequency``
 
 .. currentmodule:: voxatlas.features.lexical.frequency.word_frequency
 
 .. autoclass:: WordFrequencyExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

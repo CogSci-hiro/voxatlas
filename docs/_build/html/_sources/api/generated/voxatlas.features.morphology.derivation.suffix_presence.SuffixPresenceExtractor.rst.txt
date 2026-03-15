@@ -1,8 +1,11 @@
-voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor
+﻿SuffixPresenceExtractor
 ===============================================================================
+
+Defined in: ``voxatlas.features.morphology.derivation.suffix_presence``
 
 .. currentmodule:: voxatlas.features.morphology.derivation.suffix_presence
 
 .. autoclass:: SuffixPresenceExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

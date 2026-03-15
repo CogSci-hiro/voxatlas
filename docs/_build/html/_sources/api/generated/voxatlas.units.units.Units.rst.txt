@@ -1,8 +1,11 @@
-voxatlas.units.units.Units
+﻿Units
 ==========================
+
+Defined in: ``voxatlas.units.units``
 
 .. currentmodule:: voxatlas.units.units
 
 .. autoclass:: Units
    :members:
+   :undoc-members:
    :show-inheritance:

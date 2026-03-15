@@ -1,8 +1,11 @@
-voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor
+﻿MorphologicalComplexityExtractor
 ===================================================================================
+
+Defined in: ``voxatlas.features.morphology.derivation.complexity``
 
 .. currentmodule:: voxatlas.features.morphology.derivation.complexity
 
 .. autoclass:: MorphologicalComplexityExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

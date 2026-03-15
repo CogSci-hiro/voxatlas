@@ -1,8 +1,11 @@
-voxatlas.features.phonology.formant.vsa.FormantVSAExtractor
+﻿FormantVSAExtractor
 ===========================================================
+
+Defined in: ``voxatlas.features.phonology.formant.vsa``
 
 .. currentmodule:: voxatlas.features.phonology.formant.vsa
 
 .. autoclass:: FormantVSAExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,5 +1,7 @@
-voxatlas.registry.validator.validate_extractor_contract
+﻿validate_extractor_contract
 =======================================================
+
+Defined in: ``voxatlas.registry.validator``
 
 .. currentmodule:: voxatlas.registry.validator
 

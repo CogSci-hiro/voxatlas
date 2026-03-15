@@ -1,8 +1,11 @@
-voxatlas.features.phonology.formant.variance.FormantVarianceExtractor
+﻿FormantVarianceExtractor
 =====================================================================
+
+Defined in: ``voxatlas.features.phonology.formant.variance``
 
 .. currentmodule:: voxatlas.features.phonology.formant.variance
 
 .. autoclass:: FormantVarianceExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

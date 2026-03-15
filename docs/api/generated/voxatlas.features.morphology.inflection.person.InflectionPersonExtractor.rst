@@ -1,8 +1,11 @@
-voxatlas.features.morphology.inflection.person.InflectionPersonExtractor
+﻿InflectionPersonExtractor
 ========================================================================
+
+Defined in: ``voxatlas.features.morphology.inflection.person``
 
 .. currentmodule:: voxatlas.features.morphology.inflection.person
 
 .. autoclass:: InflectionPersonExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

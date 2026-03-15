@@ -1,8 +1,11 @@
-voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor
+﻿ProsodicStressExtractor
 ==================================================================
+
+Defined in: ``voxatlas.features.phonology.prosody.stress``
 
 .. currentmodule:: voxatlas.features.phonology.prosody.stress
 
 .. autoclass:: ProsodicStressExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

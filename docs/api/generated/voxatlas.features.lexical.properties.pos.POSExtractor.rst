@@ -1,8 +1,11 @@
-voxatlas.features.lexical.properties.pos.POSExtractor
+﻿POSExtractor
 =====================================================
+
+Defined in: ``voxatlas.features.lexical.properties.pos``
 
 .. currentmodule:: voxatlas.features.lexical.properties.pos
 
 .. autoclass:: POSExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

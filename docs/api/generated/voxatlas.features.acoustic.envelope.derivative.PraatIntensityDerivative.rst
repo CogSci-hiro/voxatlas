@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative
+﻿PraatIntensityDerivative
 =======================================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.derivative``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.derivative
 
 .. autoclass:: PraatIntensityDerivative
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.derivative.VarnetDerivative
+﻿VarnetDerivative
 ===============================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.derivative``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.derivative
 
 .. autoclass:: VarnetDerivative
    :members:
+   :undoc-members:
    :show-inheritance:

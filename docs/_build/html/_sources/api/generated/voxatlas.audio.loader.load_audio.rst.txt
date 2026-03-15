@@ -1,5 +1,7 @@
-voxatlas.audio.loader.load_audio
+﻿load_audio
 ================================
+
+Defined in: ``voxatlas.audio.loader``
 
 .. currentmodule:: voxatlas.audio.loader
 

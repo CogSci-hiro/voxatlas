@@ -1,5 +1,7 @@
-voxatlas.pipeline.executor.run_feature
+﻿run_feature
 ======================================
+
+Defined in: ``voxatlas.pipeline.executor``
 
 .. currentmodule:: voxatlas.pipeline.executor
 

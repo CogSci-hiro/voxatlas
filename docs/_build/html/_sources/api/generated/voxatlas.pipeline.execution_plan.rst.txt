@@ -1,4 +1,4 @@
-voxatlas.pipeline.execution_plan
+﻿voxatlas.pipeline.execution_plan
 ================================
 
 .. currentmodule:: voxatlas.pipeline.execution_plan

@@ -1,8 +1,11 @@
-voxatlas.features.feature_output.TableFeatureOutput
+﻿TableFeatureOutput
 ===================================================
+
+Defined in: ``voxatlas.features.feature_output``
 
 .. currentmodule:: voxatlas.features.feature_output
 
 .. autoclass:: TableFeatureOutput
    :members:
+   :undoc-members:
    :show-inheritance:

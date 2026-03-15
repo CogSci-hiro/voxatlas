@@ -1,8 +1,11 @@
-voxatlas.features.phonology.formant.median.FormantMedianExtractor
+﻿FormantMedianExtractor
 =================================================================
+
+Defined in: ``voxatlas.features.phonology.formant.median``
 
 .. currentmodule:: voxatlas.features.phonology.formant.median
 
 .. autoclass:: FormantMedianExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

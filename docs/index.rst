@@ -22,7 +22,7 @@ VoxAtlas is a feature extraction engine for conversational speech.
    getting_started/installation
    documentation/index
    tutorials/index
-   api/modules
+   api/index
 
 .. grid:: 1 2 2 2
    :gutter: 3
@@ -51,11 +51,11 @@ VoxAtlas is a feature extraction engine for conversational speech.
       conversation workflows.
 
    .. grid-item-card:: API Reference
-      :link: api/modules
+      :link: api/index
       :link-type: doc
       :class-card: landing-card
 
-      Explore the generated module and class reference for the VoxAtlas codebase.
+      Explore the curated user-facing API reference organized by workflow.
 
 .. grid:: 1 1 2 2
    :gutter: 3

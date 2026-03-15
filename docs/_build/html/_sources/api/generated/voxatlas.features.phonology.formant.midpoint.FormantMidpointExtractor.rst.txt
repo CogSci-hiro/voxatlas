@@ -1,8 +1,11 @@
-voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor
+﻿FormantMidpointExtractor
 =====================================================================
+
+Defined in: ``voxatlas.features.phonology.formant.midpoint``
 
 .. currentmodule:: voxatlas.features.phonology.formant.midpoint
 
 .. autoclass:: FormantMidpointExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor
+﻿VerbMorphologyFeaturesExtractor
 =====================================================================================
+
+Defined in: ``voxatlas.features.morphology.verb_morphology.features``
 
 .. currentmodule:: voxatlas.features.morphology.verb_morphology.features
 
 .. autoclass:: VerbMorphologyFeaturesExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

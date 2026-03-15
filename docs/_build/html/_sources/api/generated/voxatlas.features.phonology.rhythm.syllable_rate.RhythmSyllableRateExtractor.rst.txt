@@ -1,8 +1,11 @@
-voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor
+﻿RhythmSyllableRateExtractor
 ============================================================================
+
+Defined in: ``voxatlas.features.phonology.rhythm.syllable_rate``
 
 .. currentmodule:: voxatlas.features.phonology.rhythm.syllable_rate
 
 .. autoclass:: RhythmSyllableRateExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

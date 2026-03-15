@@ -1,8 +1,11 @@
-voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor
+﻿ArticulatoryApproximantExtractor
 =====================================================================================
+
+Defined in: ``voxatlas.features.phonology.articulatory.approximant``
 
 .. currentmodule:: voxatlas.features.phonology.articulatory.approximant
 
 .. autoclass:: ArticulatoryApproximantExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

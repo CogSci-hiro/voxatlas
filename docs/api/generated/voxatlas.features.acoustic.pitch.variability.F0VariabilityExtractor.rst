@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor
+﻿F0VariabilityExtractor
 ===================================================================
+
+Defined in: ``voxatlas.features.acoustic.pitch.variability``
 
 .. currentmodule:: voxatlas.features.acoustic.pitch.variability
 
 .. autoclass:: F0VariabilityExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

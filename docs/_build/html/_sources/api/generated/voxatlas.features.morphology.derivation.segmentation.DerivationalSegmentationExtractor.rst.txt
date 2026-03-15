@@ -1,8 +1,11 @@
-voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor
+﻿DerivationalSegmentationExtractor
 ======================================================================================
+
+Defined in: ``voxatlas.features.morphology.derivation.segmentation``
 
 .. currentmodule:: voxatlas.features.morphology.derivation.segmentation
 
 .. autoclass:: DerivationalSegmentationExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

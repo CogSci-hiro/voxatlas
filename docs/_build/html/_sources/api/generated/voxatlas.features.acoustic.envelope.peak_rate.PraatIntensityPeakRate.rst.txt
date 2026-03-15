@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.peak_rate.PraatIntensityPeakRate
+﻿PraatIntensityPeakRate
 ====================================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.peak_rate``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.peak_rate
 
 .. autoclass:: PraatIntensityPeakRate
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.morphology.inflection.number.InflectionNumberExtractor
+﻿InflectionNumberExtractor
 ========================================================================
+
+Defined in: ``voxatlas.features.morphology.inflection.number``
 
 .. currentmodule:: voxatlas.features.morphology.inflection.number
 
 .. autoclass:: InflectionNumberExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

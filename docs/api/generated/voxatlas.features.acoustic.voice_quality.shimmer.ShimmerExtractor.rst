@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor
+﻿ShimmerExtractor
 =================================================================
+
+Defined in: ``voxatlas.features.acoustic.voice_quality.shimmer``
 
 .. currentmodule:: voxatlas.features.acoustic.voice_quality.shimmer
 
 .. autoclass:: ShimmerExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

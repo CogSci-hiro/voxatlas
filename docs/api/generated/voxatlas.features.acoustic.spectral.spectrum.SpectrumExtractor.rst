@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor
+﻿SpectrumExtractor
 ==============================================================
+
+Defined in: ``voxatlas.features.acoustic.spectral.spectrum``
 
 .. currentmodule:: voxatlas.features.acoustic.spectral.spectrum
 
 .. autoclass:: SpectrumExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

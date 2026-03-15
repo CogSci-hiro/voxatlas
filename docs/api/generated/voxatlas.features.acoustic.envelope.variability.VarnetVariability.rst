@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.variability.VarnetVariability
+﻿VarnetVariability
 =================================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.variability``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.variability
 
 .. autoclass:: VarnetVariability
    :members:
+   :undoc-members:
    :show-inheritance:

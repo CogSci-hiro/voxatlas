@@ -1,8 +1,11 @@
-voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor
+﻿ArticulatoryVoicedExtractor
 ===========================================================================
+
+Defined in: ``voxatlas.features.phonology.articulatory.voiced``
 
 .. currentmodule:: voxatlas.features.phonology.articulatory.voiced
 
 .. autoclass:: ArticulatoryVoicedExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

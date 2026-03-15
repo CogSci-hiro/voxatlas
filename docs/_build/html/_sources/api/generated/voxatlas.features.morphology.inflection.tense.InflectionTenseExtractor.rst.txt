@@ -1,8 +1,11 @@
-voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor
+﻿InflectionTenseExtractor
 ======================================================================
+
+Defined in: ``voxatlas.features.morphology.inflection.tense``
 
 .. currentmodule:: voxatlas.features.morphology.inflection.tense
 
 .. autoclass:: InflectionTenseExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.derivative.OganianDerivative
+﻿OganianDerivative
 ================================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.derivative``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.derivative
 
 .. autoclass:: OganianDerivative
    :members:
+   :undoc-members:
    :show-inheritance:

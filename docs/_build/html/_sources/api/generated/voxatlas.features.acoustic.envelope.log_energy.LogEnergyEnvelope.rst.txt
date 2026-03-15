@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope
+﻿LogEnergyEnvelope
 ================================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.log_energy``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.log_energy
 
 .. autoclass:: LogEnergyEnvelope
    :members:
+   :undoc-members:
    :show-inheritance:

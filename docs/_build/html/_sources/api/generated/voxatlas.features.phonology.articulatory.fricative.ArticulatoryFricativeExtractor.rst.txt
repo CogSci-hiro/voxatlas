@@ -1,8 +1,11 @@
-voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor
+﻿ArticulatoryFricativeExtractor
 =================================================================================
+
+Defined in: ``voxatlas.features.phonology.articulatory.fricative``
 
 .. currentmodule:: voxatlas.features.phonology.articulatory.fricative
 
 .. autoclass:: ArticulatoryFricativeExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

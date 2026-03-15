@@ -1,8 +1,11 @@
-voxatlas.features.morphology.word_formation.compound.CompoundExtractor
+﻿CompoundExtractor
 ======================================================================
+
+Defined in: ``voxatlas.features.morphology.word_formation.compound``
 
 .. currentmodule:: voxatlas.features.morphology.word_formation.compound
 
 .. autoclass:: CompoundExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

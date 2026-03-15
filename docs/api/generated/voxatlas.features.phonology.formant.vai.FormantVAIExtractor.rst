@@ -1,8 +1,11 @@
-voxatlas.features.phonology.formant.vai.FormantVAIExtractor
+﻿FormantVAIExtractor
 ===========================================================
+
+Defined in: ``voxatlas.features.phonology.formant.vai``
 
 .. currentmodule:: voxatlas.features.phonology.formant.vai
 
 .. autoclass:: FormantVAIExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

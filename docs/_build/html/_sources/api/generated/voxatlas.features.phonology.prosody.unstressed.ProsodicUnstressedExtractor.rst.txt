@@ -1,8 +1,11 @@
-voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor
+﻿ProsodicUnstressedExtractor
 ==========================================================================
+
+Defined in: ``voxatlas.features.phonology.prosody.unstressed``
 
 .. currentmodule:: voxatlas.features.phonology.prosody.unstressed
 
 .. autoclass:: ProsodicUnstressedExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

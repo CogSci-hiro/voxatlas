@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope
+﻿PraatIntensityEnvelope
 ==========================================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.praat_intensity``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.praat_intensity
 
 .. autoclass:: PraatIntensityEnvelope
    :members:
+   :undoc-members:
    :show-inheritance:

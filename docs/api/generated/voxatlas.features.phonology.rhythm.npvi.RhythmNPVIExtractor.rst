@@ -1,8 +1,11 @@
-voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor
+﻿RhythmNPVIExtractor
 ===========================================================
+
+Defined in: ``voxatlas.features.phonology.rhythm.npvi``
 
 .. currentmodule:: voxatlas.features.phonology.rhythm.npvi
 
 .. autoclass:: RhythmNPVIExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

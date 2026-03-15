@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.onset.RmsOnset
+﻿RmsOnset
 ==================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.onset``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.onset
 
 .. autoclass:: RmsOnset
    :members:
+   :undoc-members:
    :show-inheritance:

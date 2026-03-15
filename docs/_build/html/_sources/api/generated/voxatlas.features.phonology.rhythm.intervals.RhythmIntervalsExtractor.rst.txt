@@ -1,8 +1,11 @@
-voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor
+﻿RhythmIntervalsExtractor
 =====================================================================
+
+Defined in: ``voxatlas.features.phonology.rhythm.intervals``
 
 .. currentmodule:: voxatlas.features.phonology.rhythm.intervals
 
 .. autoclass:: RhythmIntervalsExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

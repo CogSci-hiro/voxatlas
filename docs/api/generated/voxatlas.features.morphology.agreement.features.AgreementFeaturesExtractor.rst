@@ -1,8 +1,11 @@
-voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor
+﻿AgreementFeaturesExtractor
 ==========================================================================
+
+Defined in: ``voxatlas.features.morphology.agreement.features``
 
 .. currentmodule:: voxatlas.features.morphology.agreement.features
 
 .. autoclass:: AgreementFeaturesExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,4 +1,4 @@
-voxatlas.pipeline.cache
+﻿voxatlas.pipeline.cache
 =======================
 
 .. currentmodule:: voxatlas.pipeline.cache

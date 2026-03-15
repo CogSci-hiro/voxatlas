@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative
+﻿LogEnergyDerivative
 ==================================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.derivative``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.derivative
 
 .. autoclass:: LogEnergyDerivative
    :members:
+   :undoc-members:
    :show-inheritance:

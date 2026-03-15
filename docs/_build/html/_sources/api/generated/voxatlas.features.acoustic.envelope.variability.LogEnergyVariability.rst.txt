@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.variability.LogEnergyVariability
+﻿LogEnergyVariability
 ====================================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.variability``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.variability
 
 .. autoclass:: LogEnergyVariability
    :members:
+   :undoc-members:
    :show-inheritance:

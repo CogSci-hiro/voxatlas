@@ -1,8 +1,11 @@
-voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor
+﻿SyntaxCoordinationExtractor
 ==================================================================================
+
+Defined in: ``voxatlas.features.syntax.clause_structure.coordination``
 
 .. currentmodule:: voxatlas.features.syntax.clause_structure.coordination
 
 .. autoclass:: SyntaxCoordinationExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

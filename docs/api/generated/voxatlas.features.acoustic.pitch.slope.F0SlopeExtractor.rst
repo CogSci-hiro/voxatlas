@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor
+﻿F0SlopeExtractor
 =======================================================
+
+Defined in: ``voxatlas.features.acoustic.pitch.slope``
 
 .. currentmodule:: voxatlas.features.acoustic.pitch.slope
 
 .. autoclass:: F0SlopeExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.feature_output.ScalarFeatureOutput
+﻿ScalarFeatureOutput
 ====================================================
+
+Defined in: ``voxatlas.features.feature_output``
 
 .. currentmodule:: voxatlas.features.feature_output
 
 .. autoclass:: ScalarFeatureOutput
    :members:
+   :undoc-members:
    :show-inheritance:

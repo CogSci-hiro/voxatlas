@@ -1,4 +1,4 @@
-voxatlas.pipeline.feature_store
+﻿voxatlas.pipeline.feature_store
 ===============================
 
 .. currentmodule:: voxatlas.pipeline.feature_store

@@ -1,8 +1,11 @@
-voxatlas.features.lexical.properties.function_word.FunctionWordExtractor
+﻿FunctionWordExtractor
 ========================================================================
+
+Defined in: ``voxatlas.features.lexical.properties.function_word``
 
 .. currentmodule:: voxatlas.features.lexical.properties.function_word
 
 .. autoclass:: FunctionWordExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,4 +1,4 @@
-voxatlas.registry.feature_registry
+﻿voxatlas.registry.feature_registry
 ==================================
 
 .. currentmodule:: voxatlas.registry.feature_registry

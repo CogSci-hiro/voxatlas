@@ -1,5 +1,7 @@
-voxatlas.registry.validator.validate_units
+﻿validate_units
 ==========================================
+
+Defined in: ``voxatlas.registry.validator``
 
 .. currentmodule:: voxatlas.registry.validator
 

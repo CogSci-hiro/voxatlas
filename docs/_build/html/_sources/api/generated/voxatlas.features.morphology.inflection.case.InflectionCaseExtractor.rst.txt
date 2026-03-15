@@ -1,8 +1,11 @@
-voxatlas.features.morphology.inflection.case.InflectionCaseExtractor
+﻿InflectionCaseExtractor
 ====================================================================
+
+Defined in: ``voxatlas.features.morphology.inflection.case``
 
 .. currentmodule:: voxatlas.features.morphology.inflection.case
 
 .. autoclass:: InflectionCaseExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

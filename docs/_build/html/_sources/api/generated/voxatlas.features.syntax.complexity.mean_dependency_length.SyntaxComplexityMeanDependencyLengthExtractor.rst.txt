@@ -1,8 +1,11 @@
-voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor
+﻿SyntaxComplexityMeanDependencyLengthExtractor
 ========================================================================================================
+
+Defined in: ``voxatlas.features.syntax.complexity.mean_dependency_length``
 
 .. currentmodule:: voxatlas.features.syntax.complexity.mean_dependency_length
 
 .. autoclass:: SyntaxComplexityMeanDependencyLengthExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

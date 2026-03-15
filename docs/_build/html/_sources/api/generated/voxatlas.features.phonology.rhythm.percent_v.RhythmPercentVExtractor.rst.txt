@@ -1,8 +1,11 @@
-voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor
+﻿RhythmPercentVExtractor
 ====================================================================
+
+Defined in: ``voxatlas.features.phonology.rhythm.percent_v``
 
 .. currentmodule:: voxatlas.features.phonology.rhythm.percent_v
 
 .. autoclass:: RhythmPercentVExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

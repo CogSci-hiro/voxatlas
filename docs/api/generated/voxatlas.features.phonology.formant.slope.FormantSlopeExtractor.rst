@@ -1,8 +1,11 @@
-voxatlas.features.phonology.formant.slope.FormantSlopeExtractor
+﻿FormantSlopeExtractor
 ===============================================================
+
+Defined in: ``voxatlas.features.phonology.formant.slope``
 
 .. currentmodule:: voxatlas.features.phonology.formant.slope
 
 .. autoclass:: FormantSlopeExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

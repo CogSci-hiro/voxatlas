@@ -1,4 +1,4 @@
-voxatlas.units.alignment_loader
+﻿voxatlas.units.alignment_loader
 ===============================
 
 .. currentmodule:: voxatlas.units.alignment_loader

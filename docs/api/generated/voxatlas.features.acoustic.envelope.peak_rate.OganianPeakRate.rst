@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.peak_rate.OganianPeakRate
+﻿OganianPeakRate
 =============================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.peak_rate``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.peak_rate
 
 .. autoclass:: OganianPeakRate
    :members:
+   :undoc-members:
    :show-inheritance:

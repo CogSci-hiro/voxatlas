@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor
+﻿F0ContourShapeExtractor
 ======================================================================
+
+Defined in: ``voxatlas.features.acoustic.pitch.contour_shape``
 
 .. currentmodule:: voxatlas.features.acoustic.pitch.contour_shape
 
 .. autoclass:: F0ContourShapeExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

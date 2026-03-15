@@ -1,8 +1,11 @@
-voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor
+﻿ArticulatoryPlosiveExtractor
 =============================================================================
+
+Defined in: ``voxatlas.features.phonology.articulatory.plosive``
 
 .. currentmodule:: voxatlas.features.phonology.articulatory.plosive
 
 .. autoclass:: ArticulatoryPlosiveExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

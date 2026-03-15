@@ -1,8 +1,11 @@
-voxatlas.pipeline.cache.DiskCache
+﻿DiskCache
 =================================
+
+Defined in: ``voxatlas.pipeline.cache``
 
 .. currentmodule:: voxatlas.pipeline.cache
 
 .. autoclass:: DiskCache
    :members:
+   :undoc-members:
    :show-inheritance:

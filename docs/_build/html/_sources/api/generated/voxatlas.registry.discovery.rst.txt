@@ -1,4 +1,4 @@
-voxatlas.registry.discovery
+﻿voxatlas.registry.discovery
 ===========================
 
 .. currentmodule:: voxatlas.registry.discovery

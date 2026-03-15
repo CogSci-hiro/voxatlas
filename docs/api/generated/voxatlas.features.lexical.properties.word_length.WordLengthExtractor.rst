@@ -1,8 +1,11 @@
-voxatlas.features.lexical.properties.word_length.WordLengthExtractor
+﻿WordLengthExtractor
 ====================================================================
+
+Defined in: ``voxatlas.features.lexical.properties.word_length``
 
 .. currentmodule:: voxatlas.features.lexical.properties.word_length
 
 .. autoclass:: WordLengthExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

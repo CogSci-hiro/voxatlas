@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope
+﻿VarnetEnvelope
 =========================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.varnet``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.varnet
 
 .. autoclass:: VarnetEnvelope
    :members:
+   :undoc-members:
    :show-inheritance:

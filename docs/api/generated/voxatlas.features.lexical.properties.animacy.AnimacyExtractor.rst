@@ -1,8 +1,11 @@
-voxatlas.features.lexical.properties.animacy.AnimacyExtractor
+﻿AnimacyExtractor
 =============================================================
+
+Defined in: ``voxatlas.features.lexical.properties.animacy``
 
 .. currentmodule:: voxatlas.features.lexical.properties.animacy
 
 .. autoclass:: AnimacyExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

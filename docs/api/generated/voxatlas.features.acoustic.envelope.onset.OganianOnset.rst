@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.envelope.onset.OganianOnset
+﻿OganianOnset
 ======================================================
+
+Defined in: ``voxatlas.features.acoustic.envelope.onset``
 
 .. currentmodule:: voxatlas.features.acoustic.envelope.onset
 
 .. autoclass:: OganianOnset
    :members:
+   :undoc-members:
    :show-inheritance:

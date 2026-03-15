@@ -1,8 +1,11 @@
-voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor
+﻿MorphemeCountExtractor
 =============================================================================
+
+Defined in: ``voxatlas.features.morphology.derivation.morpheme_count``
 
 .. currentmodule:: voxatlas.features.morphology.derivation.morpheme_count
 
 .. autoclass:: MorphemeCountExtractor
    :members:
+   :undoc-members:
    :show-inheritance:

@@ -1,8 +1,11 @@
-voxatlas.features.acoustic.pitch.f0.F0Extractor
+﻿F0Extractor
 ===============================================
+
+Defined in: ``voxatlas.features.acoustic.pitch.f0``
 
 .. currentmodule:: voxatlas.features.acoustic.pitch.f0
 
 .. autoclass:: F0Extractor
    :members:
+   :undoc-members:
    :show-inheritance:
