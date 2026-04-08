@@ -129,8 +129,9 @@ autodoc_mock_imports = [
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+html_logo = "_static/logo_no-background.svg"
 html_theme_options = {
-    "github_url": "https://github.com/your-org/voxatlas",
+    "github_url": "https://github.com/CogSci-hiro/voxatlas",
 }
 
 

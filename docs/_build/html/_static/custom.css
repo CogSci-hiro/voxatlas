@@ -1,6 +1,30 @@
+.landing-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 0 2.5rem;
+  isolation: isolate;
+}
+
+.landing-hero::after {
+  content: "";
+  position: absolute;
+  inset: -2rem -1rem auto auto;
+  width: min(34rem, 52vw);
+  aspect-ratio: 1;
+  background-image: url("logo_no-background.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .landing-intro {
   font-size: 1.1rem;
   max-width: 52rem;
+  position: relative;
+  z-index: 1;
 }
 
 .sd-card.landing-card {
@@ -31,4 +55,24 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-brand img {
+  max-height: 2.5rem;
+  width: auto;
+}
+
+@media (max-width: 900px) {
+  .landing-hero {
+    padding-bottom: 1.5rem;
+  }
+
+  .landing-hero::after {
+    inset: 0 auto auto 50%;
+    width: min(24rem, 80vw);
+    transform: translateX(-50%);
+    opacity: 0.1;
+  }
 }

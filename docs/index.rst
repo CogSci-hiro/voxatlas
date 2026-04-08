@@ -3,6 +3,7 @@ VoxAtlas
 
 .. raw:: html
 
+   <div class="landing-hero">
    <p class="landing-kicker">Documentation Home</p>
 
 VoxAtlas is a feature extraction engine for conversational speech.
@@ -14,6 +15,7 @@ VoxAtlas is a feature extraction engine for conversational speech.
    alongside conceptual documentation, tutorials highlight workflows, and the
    API reference is generated directly from docstrings.
    </p>
+   </div>
 
 .. toctree::
    :maxdepth: 1
