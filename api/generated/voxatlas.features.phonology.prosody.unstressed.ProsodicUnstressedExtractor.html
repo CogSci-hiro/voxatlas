@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ProsodicUnstressedExtractor &#8212; VoxAtlas 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=4169b350" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SchwaDeletionExtractor" href="voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor.html" />
+    <link rel="prev" title="ProsodicStressExtractor" href="voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">VoxAtlas 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/index.html">
+    Documentations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/CogSci-hiro/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/index.html">
+    Documentations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorials/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/CogSci-hiro/voxatlas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data.html">Data Handling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.audio.loader.load_audio.html">load_audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.units.alignment.load_alignment.html">load_alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.units.alignment_loader.load_textgrid.html">load_textgrid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../units.html">Units</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.units.units.Units.html">Units</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../acoustics.html">Acoustics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.hilbert.HilbertEnvelope.html">HilbertEnvelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.log_energy.LogEnergyEnvelope.html">LogEnergyEnvelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.oganian.OganianEnvelope.html">OganianEnvelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.praat_intensity.PraatIntensityEnvelope.html">PraatIntensityEnvelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.rms.RMSEnvelope.html">RMSEnvelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.varnet.VarnetEnvelope.html">VarnetEnvelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.HilbertDerivative.html">HilbertDerivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.LogEnergyDerivative.html">LogEnergyDerivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.OganianDerivative.html">OganianDerivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.PraatIntensityDerivative.html">PraatIntensityDerivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.RmsDerivative.html">RmsDerivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.envelope.derivative.VarnetDerivative.html">VarnetDerivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.pitch.f0.F0Extractor.html">F0Extractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.pitch.derivative.F0DerivativeExtractor.html">F0DerivativeExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.pitch.range.F0RangeExtractor.html">F0RangeExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.pitch.slope.F0SlopeExtractor.html">F0SlopeExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.pitch.variability.F0VariabilityExtractor.html">F0VariabilityExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.pitch.contour_shape.F0ContourShapeExtractor.html">F0ContourShapeExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectral.spectrum.SpectrumExtractor.html">SpectrumExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectral.centroid.SpectralCentroidExtractor.html">SpectralCentroidExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectral.flatness.SpectralFlatnessExtractor.html">SpectralFlatnessExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectral.flux.SpectralFluxExtractor.html">SpectralFluxExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectral.rolloff.SpectralRolloffExtractor.html">SpectralRolloffExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectral.slope.SpectralSlopeExtractor.html">SpectralSlopeExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectral.spread.SpectralSpreadExtractor.html">SpectralSpreadExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.mel.MelSpectrogramExtractor.html">MelSpectrogramExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.spectrogram.stft.STFTSpectrogramExtractor.html">STFTSpectrogramExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.hnr.HNRExtractor.html">HNRExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.jitter.JitterExtractor.html">JitterExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.acoustic.voice_quality.shimmer.ShimmerExtractor.html">ShimmerExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../phonology.html">Phonology</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.approximant.ArticulatoryApproximantExtractor.html">ArticulatoryApproximantExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.consonant.ArticulatoryConsonantExtractor.html">ArticulatoryConsonantExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.features.ArticulatoryFeaturesExtractor.html">ArticulatoryFeaturesExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.fricative.ArticulatoryFricativeExtractor.html">ArticulatoryFricativeExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.nasal.ArticulatoryNasalExtractor.html">ArticulatoryNasalExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.plosive.ArticulatoryPlosiveExtractor.html">ArticulatoryPlosiveExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.voiced.ArticulatoryVoicedExtractor.html">ArticulatoryVoicedExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.voiceless.ArticulatoryVoicelessExtractor.html">ArticulatoryVoicelessExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.articulatory.vowel.ArticulatoryVowelExtractor.html">ArticulatoryVowelExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.centralization.FormantCentralizationExtractor.html">FormantCentralizationExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.dct.FormantDCTExtractor.html">FormantDCTExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.mean.FormantMeanExtractor.html">FormantMeanExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.median.FormantMedianExtractor.html">FormantMedianExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.midpoint.FormantMidpointExtractor.html">FormantMidpointExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.onset_mid_offset.FormantOnsetMidOffsetExtractor.html">FormantOnsetMidOffsetExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.polynomial.FormantPolynomialExtractor.html">FormantPolynomialExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.slope.FormantSlopeExtractor.html">FormantSlopeExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.tracks.FormantTracksExtractor.html">FormantTracksExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.trajectory.FormantTrajectoryExtractor.html">FormantTrajectoryExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.tvsa.FormantTVSAExtractor.html">FormantTVSAExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.vai.FormantVAIExtractor.html">FormantVAIExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.variance.FormantVarianceExtractor.html">FormantVarianceExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.formant.vsa.FormantVSAExtractor.html">FormantVSAExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.prosody.position_ipu.ProsodicPositionInIPUExtractor.html">ProsodicPositionInIPUExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.prosody.position_word.ProsodicPositionInWordExtractor.html">ProsodicPositionInWordExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor.html">ProsodicStressExtractor</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">ProsodicUnstressedExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor.html">SchwaDeletionExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.reduction.vowel_reduction.VowelReductionExtractor.html">VowelReductionExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.delta_c.RhythmDeltaCExtractor.html">RhythmDeltaCExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.delta_v.RhythmDeltaVExtractor.html">RhythmDeltaVExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.intervals.RhythmIntervalsExtractor.html">RhythmIntervalsExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.npvi.RhythmNPVIExtractor.html">RhythmNPVIExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.pause_rate.RhythmPauseRateExtractor.html">RhythmPauseRateExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.percent_c.RhythmPercentCExtractor.html">RhythmPercentCExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.percent_v.RhythmPercentVExtractor.html">RhythmPercentVExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.syllable_duration.RhythmSyllableDurationExtractor.html">RhythmSyllableDurationExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.syllable_rate.RhythmSyllableRateExtractor.html">RhythmSyllableRateExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.varco_c.RhythmVarcoCExtractor.html">RhythmVarcoCExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.phonology.rhythm.varco_v.RhythmVarcoVExtractor.html">RhythmVarcoVExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../morphology.html">Morphology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.agreement.features.AgreementFeaturesExtractor.html">AgreementFeaturesExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.agreement.gender.GenderAgreementExtractor.html">GenderAgreementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.agreement.subject_verb.SubjectVerbAgreementExtractor.html">SubjectVerbAgreementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.derivation.complexity.MorphologicalComplexityExtractor.html">MorphologicalComplexityExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.derivation.morpheme_count.MorphemeCountExtractor.html">MorphemeCountExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.derivation.prefix_presence.PrefixPresenceExtractor.html">PrefixPresenceExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.derivation.segmentation.DerivationalSegmentationExtractor.html">DerivationalSegmentationExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.derivation.suffix_presence.SuffixPresenceExtractor.html">SuffixPresenceExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.aspect.InflectionAspectExtractor.html">InflectionAspectExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.case.InflectionCaseExtractor.html">InflectionCaseExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.definiteness.InflectionDefinitenessExtractor.html">InflectionDefinitenessExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.features.InflectionFeaturesExtractor.html">InflectionFeaturesExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.gender.InflectionGenderExtractor.html">InflectionGenderExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.mood.InflectionMoodExtractor.html">InflectionMoodExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.number.InflectionNumberExtractor.html">InflectionNumberExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.person.InflectionPersonExtractor.html">InflectionPersonExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.inflection.tense.InflectionTenseExtractor.html">InflectionTenseExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.features.VerbMorphologyFeaturesExtractor.html">VerbMorphologyFeaturesExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.finite.VerbMorphologyFiniteExtractor.html">VerbMorphologyFiniteExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.infinitive.VerbMorphologyInfinitiveExtractor.html">VerbMorphologyInfinitiveExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.verb_morphology.participle.VerbMorphologyParticipleExtractor.html">VerbMorphologyParticipleExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.word_formation.clitic.CliticExtractor.html">CliticExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.word_formation.compound.CompoundExtractor.html">CompoundExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.morphology.word_formation.features.WordFormationFeaturesExtractor.html">WordFormationFeaturesExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lexical.html">Lexical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.frequency.lookup.LexicalFrequencyLookupExtractor.html">LexicalFrequencyLookupExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.frequency.word_frequency.WordFrequencyExtractor.html">WordFrequencyExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.frequency.zipf_frequency.ZipfFrequencyExtractor.html">ZipfFrequencyExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.animacy.AnimacyExtractor.html">AnimacyExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.concreteness.ConcretenessExtractor.html">ConcretenessExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.features.LexicalPropertiesExtractor.html">LexicalPropertiesExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.function_word.FunctionWordExtractor.html">FunctionWordExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.lookup.LexicalPropertyLookupExtractor.html">LexicalPropertyLookupExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.phoneme_count.PhonemeCountExtractor.html">PhonemeCountExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.pos.POSExtractor.html">POSExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.syllable_count.SyllableCountExtractor.html">SyllableCountExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.lexical.properties.word_length.WordLengthExtractor.html">WordLengthExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syntax.html">Syntax</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.coordination.SyntaxCoordinationExtractor.html">SyntaxCoordinationExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.relative_clause.SyntaxRelativeClauseExtractor.html">SyntaxRelativeClauseExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.clause_structure.subordinate_clause.SyntaxSubordinateClauseExtractor.html">SyntaxSubordinateClauseExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.complexity.branching_factor.SyntaxComplexityBranchingFactorExtractor.html">SyntaxComplexityBranchingFactorExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.complexity.clause_depth.SyntaxComplexityClauseDepthExtractor.html">SyntaxComplexityClauseDepthExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.complexity.mean_dependency_length.SyntaxComplexityMeanDependencyLengthExtractor.html">SyntaxComplexityMeanDependencyLengthExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.complexity.parse_tree_depth.SyntaxComplexityParseTreeDepthExtractor.html">SyntaxComplexityParseTreeDepthExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.dependencies.SyntaxDependenciesExtractor.html">SyntaxDependenciesExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.local_structure.dep_label.SyntaxLocalStructureDependencyLabelExtractor.html">SyntaxLocalStructureDependencyLabelExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.local_structure.dependency_distance.SyntaxLocalStructureDependencyDistanceExtractor.html">SyntaxLocalStructureDependencyDistanceExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.local_structure.head_distance.SyntaxLocalStructureHeadDistanceExtractor.html">SyntaxLocalStructureHeadDistanceExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.syntax.local_structure.pos.SyntaxLocalStructurePOSExtractor.html">SyntaxLocalStructurePOSExtractor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../features.html">Feature Extraction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.base_extractor.BaseExtractor.html">BaseExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.feature_input.FeatureInput.html">FeatureInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.feature_output.TableFeatureOutput.html">TableFeatureOutput</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../registry.html">Feature Registry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.core.registry.FeatureRegistry.html">FeatureRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.core.registry.register_feature.html">register_feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.core.registry.FeatureRegistry.list_features.html">list_features</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pipeline.html">Pipeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.pipeline.pipeline.VoxAtlasPipeline.html">VoxAtlasPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.pipeline.pipeline.VoxAtlasPipeline.run.html">run</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../config.html">Configuration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.config.config.load_config.html">load_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.config.config.expand_defaults.html">expand_defaults</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../output.html">Outputs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.feature_output.ScalarFeatureOutput.html">ScalarFeatureOutput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.feature_output.VectorFeatureOutput.html">VectorFeatureOutput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.features.feature_output.ArrayFeatureOutput.html">ArrayFeatureOutput</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cli.html">CLI</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="voxatlas.cli.main.main.html">main</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../phonology.html" class="nav-link">Phonology</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ProsodicUnstressedExtractor</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="prosodicunstressedextractor">
+<h1>ProsodicUnstressedExtractor<a class="headerlink" href="#prosodicunstressedextractor" title="Link to this heading">#</a></h1>
+<p>Defined in: <code class="docutils literal notranslate"><span class="pre">voxatlas.features.phonology.prosody.unstressed</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">voxatlas.features.phonology.prosody.unstressed.</span></span><span class="sig-name descname"><span class="pre">ProsodicUnstressedExtractor</span></span><a class="reference internal" href="../../_modules/voxatlas/features/phonology/prosody/unstressed.html#ProsodicUnstressedExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="voxatlas.features.base_extractor.BaseExtractor.html#voxatlas.features.base_extractor.BaseExtractor" title="voxatlas.features.base_extractor.BaseExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExtractor</span></code></a></p>
+<p>Extract the <code class="docutils literal notranslate"><span class="pre">phonology.prosody.unstressed</span></code> feature within the VoxAtlas pipeline.</p>
+<p>This public extractor defines the reusable API for computing <code class="docutils literal notranslate"><span class="pre">phonology.prosody.unstressed</span></code> from VoxAtlas structured inputs. It consumes <code class="docutils literal notranslate"><span class="pre">syllable</span></code> units and produces values aligned to <code class="docutils literal notranslate"><span class="pre">syllable</span></code> units, making the extractor a stable pipeline node that can be cited independently of the surrounding execution machinery.</p>
+<section id="algorithm">
+<h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h2>
+<p>The extractor derives prosodic position or stress information from the aligned unit hierarchy.</p>
+<ol class="arabic simple">
+<li><p>Hierarchical alignment
+Word, syllable, and IPU tables are linked so each target unit has access to its local structural context.</p></li>
+<li><p>Prosodic computation
+Depending on the feature, VoxAtlas computes a positional index, a normalized relative position, or a stress indicator <span class="math notranslate nohighlight">\(\mathbf{1}[\mathrm{stressed}]\)</span>.</p></li>
+<li><p>Packaging
+The result is returned on the requested unit level for later modeling of prominence and discourse structure.</p></li>
+</ol>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.feature_input</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureInput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.phonology.prosody.unstressed</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProsodicUnstressedExtractor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">syllables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ipus</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">units</span> <span class="o">=</span> <span class="n">Units</span><span class="p">(</span><span class="n">syllables</span><span class="o">=</span><span class="n">syllables</span><span class="p">,</span> <span class="n">words</span><span class="o">=</span><span class="n">words</span><span class="p">,</span> <span class="n">ipus</span><span class="o">=</span><span class="n">ipus</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">ProsodicUnstressedExtractor</span><span class="o">.</span><span class="n">default_config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">ProsodicUnstressedExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">FeatureInput</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{}),</span> <span class="n">params</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">11</span><span class="p">])</span>
+<span class="go">(1.0, 0.0)</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'phonology.prosody.unstressed'</span></span><a class="headerlink" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.input_units">
+<span class="sig-name descname"><span class="pre">input_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'syllable'</span></span><a class="headerlink" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.input_units" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.output_units">
+<span class="sig-name descname"><span class="pre">output_units</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'syllable'</span></span><a class="headerlink" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.output_units" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.dependencies" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.default_config">
+<span class="sig-name descname"><span class="pre">default_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'language':</span> <span class="pre">None,</span> <span class="pre">'resource_root':</span> <span class="pre">None}</span></span><a class="headerlink" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.default_config" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/voxatlas/features/phonology/prosody/unstressed.html#ProsodicUnstressedExtractor.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.compute" title="Link to this definition">#</a></dt>
+<dd><p>Compute the extractor output for a single pipeline invocation.</p>
+<p>This method is the reusable execution entry point for the extractor. It receives the standard <code class="docutils literal notranslate"><span class="pre">FeatureInput</span></code> bundle, applies the configured algorithm, and returns feature values aligned to the extractor output units for storage in the pipeline feature store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature_input</strong> (<em>object</em>) – Structured extractor input bundling audio, hierarchical units, and execution context for this feature computation.</p></li>
+<li><p><strong>params</strong> (<em>object</em>) – Resolved feature configuration for this invocation. Keys are feature-specific and merged from defaults and pipeline settings.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Structured output aligned to the <code class="docutils literal notranslate"><span class="pre">syllable</span></code> unit level when applicable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>FeatureOutput</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.feature_input</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureInput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.features.phonology.prosody.unstressed</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProsodicUnstressedExtractor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">voxatlas.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">syllables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ipus</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">units</span> <span class="o">=</span> <span class="n">Units</span><span class="p">(</span><span class="n">syllables</span><span class="o">=</span><span class="n">syllables</span><span class="p">,</span> <span class="n">words</span><span class="o">=</span><span class="n">words</span><span class="p">,</span> <span class="n">ipus</span><span class="o">=</span><span class="n">ipus</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">ProsodicUnstressedExtractor</span><span class="o">.</span><span class="n">default_config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ProsodicUnstressedExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">FeatureInput</span><span class="p">(</span><span class="n">audio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{}),</span> <span class="n">params</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">unit</span>
+<span class="go">&#39;syllable&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="voxatlas.features.phonology.prosody.stress.ProsodicStressExtractor.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ProsodicStressExtractor</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="voxatlas.features.phonology.reduction.schwa_deletion.SchwaDeletionExtractor.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SchwaDeletionExtractor</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor"><code class="docutils literal notranslate"><span class="pre">ProsodicUnstressedExtractor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.name"><code class="docutils literal notranslate"><span class="pre">ProsodicUnstressedExtractor.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.input_units"><code class="docutils literal notranslate"><span class="pre">ProsodicUnstressedExtractor.input_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.output_units"><code class="docutils literal notranslate"><span class="pre">ProsodicUnstressedExtractor.output_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.dependencies"><code class="docutils literal notranslate"><span class="pre">ProsodicUnstressedExtractor.dependencies</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.default_config"><code class="docutils literal notranslate"><span class="pre">ProsodicUnstressedExtractor.default_config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.compute"><code class="docutils literal notranslate"><span class="pre">ProsodicUnstressedExtractor.compute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/api/generated/voxatlas.features.phonology.prosody.unstressed.ProsodicUnstressedExtractor.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, VoxAtlas contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
